@@ -1,3 +1,8 @@
 name: planecards
 channels:
+  - conda-forge
   - defaults
+dependencies:
+  - pip:
+    - pyyaml
+prefix: /Users/lebensold/opt/anaconda3/envs/planecards
