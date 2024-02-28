@@ -1,4 +1,6 @@
 import argparse
+import yaml
+from planecards.plane_card import PlaneCard
 
 def get_parser():
     parser = argparse.ArgumentParser(
@@ -11,4 +13,8 @@ def get_parser():
 if __name__ == "__main__":
     parser = get_parser()
     args = parser.parse_args()
-    print(vars(args))
+
+    plane_card = yaml.safe_load(open(args.pc_path, 'rb'))
+    pc = PlaneCard(plane_card)
+    pc.parse()
+    print(pc.results())
