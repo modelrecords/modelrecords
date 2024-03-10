@@ -7,7 +7,7 @@ def get_parser():
         description="Planecards CLI"
     )
     parser.add_argument("--pc_path", default="", type=str, help="")
-    
+
     return parser
 
 if __name__ == "__main__":

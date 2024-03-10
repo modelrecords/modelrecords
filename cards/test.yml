@@ -4,6 +4,15 @@ question_answers:
   model_size: 400M
   redteam: false
   model_name: TacoNet
+  data_sources: null
+
+question_sets:
+  - fmti2023
+
+question_answers:
+  data_size: 1
+  data_sources: 0
+  data_creators: 0
 
 question_sets:
   - fmti2023

@@ -39,7 +39,7 @@ class FMTI2023(Survey):
 
     def name(self):
         return 'FMTI - 2023'
-    
+
     def parse(self):
         """
         Parses the survey answers.
