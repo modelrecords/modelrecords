@@ -1,20 +1,29 @@
 import argparse
+import os
 import yaml
 from planecards.plane_card import PlaneCard
 
-def get_parser():
-    parser = argparse.ArgumentParser(
-        description="Planecards CLI"
-    )
-    parser.add_argument("--pc_path", default="", type=str, help="")
 
+def get_parser():
+    parser = argparse.ArgumentParser(description="Planecards CLI")
+    parser.add_argument(
+        "--pc_dir",
+        default="cards",
+        type=str,
+        help="Directory containing plane card YAML files",
+    )
     return parser
+
 
 if __name__ == "__main__":
     parser = get_parser()
     args = parser.parse_args()
 
-    plane_card = yaml.safe_load(open(args.pc_path, 'rb'))
-    pc = PlaneCard(plane_card)
-    pc.parse()
-    print(pc.results())
+    for filename in os.listdir(args.pc_dir):
+        if filename.endswith(".yaml"):
+            file_path = os.path.join(args.pc_dir, filename)
+            plane_card = yaml.safe_load(open(file_path, "rb"))
+            model_name = os.path.splitext(filename)[0]
+            pc = PlaneCard(plane_card, model_name)
+            pc.parse()
+            print(pc.results())

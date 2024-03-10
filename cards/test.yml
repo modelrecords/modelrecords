@@ -8,11 +8,3 @@ question_answers:
 
 question_sets:
   - fmti2023
-
-question_answers:
-  data_size: 1
-  data_sources: 0
-  data_creators: 0
-
-question_sets:
-  - fmti2023
