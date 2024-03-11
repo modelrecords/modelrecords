@@ -158,7 +158,8 @@ class FMTI2023(Survey):
         for question_set in self.QUESTION_SET:
             for question, _ in question_set.items():
                 if question not in self.answers:
-                    raise ValueError(f"Question {question} not answered.")
+                    print(f"Question {question} not answered.")
+                    continue
 
                 answer = self.answers[question]
                 if answer not in [0, 1]:
