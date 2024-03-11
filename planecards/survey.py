@@ -155,9 +155,19 @@ class FMTI2023(Survey):
         Parses the survey answers.
         """
         # validation, checking, etc.
-        for question, answer in self.answers.items():
-            if answer == 1:
-                self.score += 1
+        for question_set in self.QUESTION_SET:
+            for question, _ in question_set.items():
+                if question not in self.answers:
+                    raise ValueError(f"Question {question} not answered.")
+
+                answer = self.answers[question]
+                if answer not in [0, 1]:
+                    raise ValueError(
+                        f"Answer {answer} for question {question} is not valid."
+                    )
+
+                if answer == 1:
+                    self.score += 1
 
         # support for calling out to a magical LLM that can read the project repo and be asked questions
 
