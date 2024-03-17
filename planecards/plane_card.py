@@ -1,5 +1,15 @@
+import datetime
 from planecards.survey import FMTI2023
 
+class DotDict(dict):
+    __delattr__ = dict.__delitem__
+    __getattr__ = dict.get
+    __setattr__ = dict.__setitem__
+    def __init__(self, dct):
+            for key, value in dct.items():
+                if hasattr(value, 'keys'):
+                    value = DotDict(value)
+                self[key] = value
 
 class PlaneCard:
     """
@@ -15,17 +25,16 @@ class PlaneCard:
 
     QUESTION_SETS = {"fmti2023": FMTI2023}
 
-    def __init__(self, plane_card, model_name, locale=None):
+    def __init__(self, plane_card, locale=None):
         """
         Initializes a PlaneCard object.
 
         Args:
             plane_card (dict): A dictionary containing plane card attributes.
-            model_name (str): The model name extracted from the plane card attributes.
             locale (str, optional): The locale to use for question text retrieval. Defaults to None.
         """
-        self.plane_card_attrs = plane_card
-        self.model_name = model_name
+        self.plane_card_attrs = DotDict(plane_card)
+        self.model_name = self.plane_card_attrs.pc.metadata.model_name
         self.locale = locale
 
     def parse(self):
@@ -35,12 +44,20 @@ class PlaneCard:
         self.question_sets_parsed = []
         for question_set in self.plane_card_attrs["question_sets"]:
             qs = self.QUESTION_SETS[question_set](
-                self.plane_card_attrs["question_answers"],
+                self.plane_card_attrs["pc"],
                 self.model_name,
             )
             qs.parse()
             self.question_sets_parsed.append(qs)
-
+    
+    def results_as_dict(self):
+        out = self.plane_card_attrs
+        today = datetime.datetime.today()
+        out.last_updated = today.strftime("%a %b %y")
+        for qsp in self.question_sets_parsed:
+            out[f'result_{qsp.name()}'] = qsp.result()
+        return out
+    
     def results(self):
         """
         Prints the parsed question sets.

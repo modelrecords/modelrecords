@@ -12,6 +12,12 @@ def get_parser():
         type=str,
         help="Directory containing plane card YAML files",
     )
+    parser.add_argument(
+        "--pdf_dir",
+        default=None,
+        type=str,
+        h
+    )
     return parser
 
 

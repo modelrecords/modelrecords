@@ -1,0 +1,99 @@
+
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks = true,
+    citecolor = {blue},
+    urlcolor = {blue},
+}
+
+\usepackage{setspace}
+\usepackage{changepage}
+\usepackage[breakable]{tcolorbox}
+\usepackage{float}
+\usepackage{enumitem}
+
+\title{\VAR{pc.metadata.name}: Model Card}
+\author{planecards}
+\date{pc.metadata.last_updated}
+
+\begin{document}
+
+\newenvironment{mcsection}[1]
+    {
+        \textbf{#1}
+
+     
+        \begin{itemize}[leftmargin=*,topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,after=\vspace{\medskipamount}]
+    }
+    {
+        \end{itemize}
+    }
+
+\begin{adjustwidth}{-60pt}{-30pt}
+\begin{singlespace}
+
+\tcbset{colback=white!10!white}
+\begin{tcolorbox}[title=\textbf{\VAR{pc.metadata.name} : Model Card},
+    breakable, sharp corners, boxrule=0.7pt]
+\small{
+
+% Refer to section 4.1 of the \href{https://arxiv.org/abs/1810.03993}{model card paper } -- remove this line after filling in this section.
+
+\begin{mcsection}{Model Details}
+    \item Detail 1...
+    \item Detail 2...
+\end{mcsection}
+
+\begin{mcsection}{Intended Use}
+    \item Intended use 1...
+\end{mcsection}
+
+\begin{mcsection}{Factors}
+    \item Factors 1...
+\end{mcsection}
+
+\begin{mcsection}{Metrics}
+    \item Metrics 1....
+\end{mcsection}
+
+\begin{mcsection}{Evaluation Data}
+    \item Evaluation data 1...
+\end{mcsection}
+
+\begin{mcsection}{Training Data}
+    \item Training data 1...
+\end{mcsection}
+
+\begin{mcsection}{Ethical Considerations}
+    \item Ethical considerations 1....
+\end{mcsection}
+
+\begin{mcsection}{Caveats and Recommendations}
+    \item Caveats and recommendations 1...
+\end{mcsection}
+
+\textbf{Quantitative Analyses}
+
+\begin{table}[H]
+\centering
+\small{
+\begin{tabular}{lr}
+Measurement 1       & 0.751  \\
+Measurement 2       & 0.762 \\
+Measurement 3       & 0.773 \\
+Measurement 4       & 0.784 \\
+Measurement average & 0.768  \\ \hline
+\textbf{Model measurement}  & \textbf{0.791} \\ \hline
+\end{tabular} } \\
+\caption[Short caption used in list of tables.]{\small{Longer caption to explain what the measurements are.}}
+\end{table}
+
+}
+\end{tcolorbox}
+\end{singlespace}
+\end{adjustwidth}
+
+\end{document}

@@ -1,10 +1,11 @@
-question_answers:
+pc:
   ckpt_path: model.ckpt
   model_type: pytorch
-  model_size: 400M
+  model_model_size: 400M
   redteam: false
-  model_name: TacoNet
-  data_sources: null
+  metadata:
+    name: TacoNet
+  upstream_data_sources: null
 
 question_sets:
   - fmti2023
