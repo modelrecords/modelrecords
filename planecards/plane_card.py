@@ -1,5 +1,16 @@
 import datetime
 from planecards.survey import FMTI2023
+from collections.abc import MutableMapping
+
+def flatten(dictionary, parent_key='', separator='.'):
+    items = []
+    for key, value in dictionary.items():
+        new_key = parent_key + separator + key if parent_key else key
+        if isinstance(value, MutableMapping):
+            items.extend(flatten(value, new_key, separator=separator).items())
+        else:
+            items.append((new_key, value))
+    return dict(items)
 
 class DotDict(dict):
     __delattr__ = dict.__delitem__
@@ -42,9 +53,9 @@ class PlaneCard:
         Parses the plane card attributes and stores the parsed question sets.
         """
         self.question_sets_parsed = []
-        for question_set in self.plane_card_attrs["question_sets"]:
+        for question_set in self.plane_card_attrs["pc"].question_sets:
             qs = self.QUESTION_SETS[question_set](
-                self.plane_card_attrs["pc"],
+                flatten(self.plane_card_attrs["pc"]),
                 self.model_name,
             )
             qs.parse()
