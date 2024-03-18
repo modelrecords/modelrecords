@@ -45,7 +45,7 @@ class PlaneCard:
             locale (str, optional): The locale to use for question text retrieval. Defaults to None.
         """
         self.plane_card_attrs = DotDict(plane_card)
-        self.model_name = self.plane_card_attrs.pc.metadata.model_name
+        self.model_name = self.plane_card_attrs.pc.metadata.name
         self.locale = locale
 
     def parse(self):

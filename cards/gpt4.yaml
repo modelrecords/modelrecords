@@ -7,7 +7,7 @@ pc:
       Generative Pre-trained Transformer 4 (GPT-4) is a multimodal large 
       language model created by OpenAI, and the fourth in its series of GPT foundation models.
   question_sets:
-    - fmti2023      
+    - fmti2023
   upstream:
     additional_dependencies: 0
     broader_environmental_impact: 0
