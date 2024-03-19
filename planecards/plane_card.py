@@ -1,5 +1,5 @@
 import datetime
-from planecards.survey import FMTI2023
+from planecards.surveys.fmti2023 import FMTI2023
 from collections.abc import MutableMapping
 
 def flatten(dictionary, parent_key='', separator='.'):
@@ -22,7 +22,7 @@ class DotDict(dict):
                     value = DotDict(value)
                 self[key] = value
 
-class PlaneCard:
+class PlaneCardModel:
     """
     A class representing a plane card.
 
@@ -36,7 +36,7 @@ class PlaneCard:
 
     QUESTION_SETS = {"fmti2023": FMTI2023}
 
-    def __init__(self, plane_card, locale=None):
+    def __init__(self, plane_card_params, locale=None):
         """
         Initializes a PlaneCard object.
 
@@ -44,7 +44,7 @@ class PlaneCard:
             plane_card (dict): A dictionary containing plane card attributes.
             locale (str, optional): The locale to use for question text retrieval. Defaults to None.
         """
-        self.plane_card_attrs = DotDict(plane_card)
+        self.plane_card_attrs = DotDict(plane_card_params)
         self.model_name = self.plane_card_attrs.pc.metadata.name
         self.locale = locale
 
