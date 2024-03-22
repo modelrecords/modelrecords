@@ -1,0 +1,7 @@
+pc:
+  metadata:
+    name: Llama 2 7B
+    version: 1.0.0  
+  relations:
+    upstream:
+      - llama2>=1.0.0
