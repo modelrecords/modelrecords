@@ -8,4 +8,3 @@ dependencies:
     - semantic_version
     - jinja2
     - omegaconf
-prefix: /Users/lebensold/opt/anaconda3/envs/planecards
