@@ -1,6 +1,7 @@
 import os
 from jinja2 import Environment, PackageLoader, select_autoescape
 from planecards.plane_card import PlaneCardModel
+from pathlib import Path
 
 class CardDocumentRenderer:
     
@@ -28,7 +29,8 @@ class CardDocumentRenderer:
     def render_tex(self):
         return self.template.render(self.plane_card_model.results_as_dict())
         
-    def save_pdf(self):
+    def save_pdf(self):        
+        Path(self.output_dir).mkdir(parents=True, exist_ok=True)
         with open(f'{self.output_dir}/{self.output_filename}', 'w') as f:
             f.write(self.render_tex())
         os.system(f'{self.pdf_cmd} --output-directory={self.output_dir} {self.output_dir}/{self.output_filename} ')
