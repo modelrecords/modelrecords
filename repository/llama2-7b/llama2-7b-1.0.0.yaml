@@ -1,7 +1,16 @@
 pc:
   metadata:
     name: Llama 2 7B
-    version: 1.0.0  
+    version: 1.0.0
+  upstream: 
+    environmental:
+      refs:
+        - https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md#hardware-and-software
+      tco2e: 31.22
+      energy_consumption: 400
+      energy_unit: W
+      compute_hours: 184320
+      
   relations:
     upstream:
       - llama2>=1.0.0

@@ -2,7 +2,7 @@ pc:
   metadata:
     name: Llama 2
     version: 1.0.0  
-  properties:
+  tags:
     - opensource
   question_sets:
     - fmti2023
