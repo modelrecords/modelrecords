@@ -1,0 +1,83 @@
+q
+/TRP1 gs
+0 g 0 G
+0 g 0 G
+0 g 0 G
+BT
+/F47 9.9626 Tf 90 710.037 Td [([12])]TJ
+0 g 0 G
+ [-500(\223Dataset)-250(Card)-250(for)-250(HH-RLHF,)70(\224)-250(https://huggingf)10(ace.co/datasets/Anthropic/hh-)-50(rlhf.)-360(Accessed:)]TJ 21.579 -10.909 Td [(2023-07-08.)]TJ
+0 g 0 G
+ -21.579 -18.922 Td [([13])]TJ
+0 g 0 G
+ [-500(\223Elo)-250(rating)-250(system,)70(\224)-250(https://en.wikipedia.or)18(g/wiki/Elo_rating_system.)-360(Accessed:)-310(2023-07-05.)]TJ
+0 g 0 G
+ 0 -18.922 Td [([14])]TJ
+0 g 0 G
+ [-500(L.)-250(Zheng,)-250(W)92(.-L.)-250(Chiang,)-250(Y)129(.)-250(Sheng,)-250(and)-250(H.)-250(Zhang,)-250(\223Chatbot)-250(Arena)-250(Leaderboard)-250(W)80(eek)-250(8,)70(\224)]TJ 21.579 -10.909 Td [(https://lmsys.or)18(g/blog/2023-)-50(06-)-50(22-)-50(leaderboard/,)-250(2023.)-360(Accessed:)-310(2023-07-05.)]TJ
+0 g 0 G
+ -21.579 -18.922 Td [([15])]TJ
+0 g 0 G
+ [-500(A.)-250(P)15(arrish,)-250(A.)-250(Chen,)-250(N.)-250(Nangia,)-250(V)129(.)-250(P)15(admakumar)40(,)-250(J.)-250(Phang,)-250(J.)-250(Thompson,)-250(P)111(.)-250(M.)-250(Htut,)-250(and)-250(S.)-250(R.)]TJ 21.579 -10.909 Td [(Bo)25(wman,)-250(\223BBQ:)-250(A)-250(hand-b)20(uilt)-250(bias)-250(benchmark)-250(for)-250(question)-250(answering,)70(\224)]TJ/F50 9.9626 Tf 289.113 0 Td [(CoRR)]TJ/F44 9.9626 Tf 26.292 0 Td [(abs/2110.08193)]TJ/F47 9.9626 Tf 66.978 0 Td [(\0502021\051)]TJ -382.383 -10.909 Td [(,)]TJ/F55 9.9626 Tf 4.981 0 Td [(2110.08193)]TJ/F47 9.9626 Tf 59.776 0 Td [(.)-250(https://arxi)25(v)65(.or)18(g/abs/2110.08193.)]TJ
+0 g 0 G
+ -86.336 -18.922 Td [([16])]TJ
+0 g 0 G
+ [-500(S.)-250(Lin,)-250(J.)-250(Hilton,)-250(and)-250(O.)-250(Ev)25(ans,)-250(\223T)35(ruthfulQA:)-250(Measuring)-250(Ho)25(w)-250(Models)-250(Mimic)-250(Human)-250(F)15(alsehoods.)70(\224)]TJ 21.579 -10.909 Td [(2021.)]TJ
+0 g 0 G
+ -21.579 -18.922 Td [([17])]TJ
+0 g 0 G
+ [-500(J.)-250(C.)-250(O.)-500(M.)-250(E.)-250(K.)-250(H.)-250(K.)-250(H.)-250(E.)-250(K.)-250(J.)-250(L.)-250(D.)-250(L.)-250(J.)-250(M.)-250(A.)-250(S.)-250(S.)-250(W)92(.)-250(G.)-250(W)92(.)-250(A.)-250(Y)129(.)-250(B.)-250(A.)-250(L.)-250(B.)-250(G.)-250(M.)-250(G.)-250(P)111(.)-250(H.)-250(J.)]TJ 21.579 -10.909 Td [(H.)-245(S.)-245(J.)-246(K.)-245(R.)-245(S.)-245(D.)-246(R.)-245(S.)-245(S.)-245(C.)-245(T)74(.)-246(P)111(.)-245(A.)-245(N.)-245(F)80(.)-246(A.)-245(S.)-245(B.)-245(S.)-246(E.)-245(A.)-245(F)80(.)-245(C.)-245(G.)-246(V)129(.)-245(G.)-245(F)80(.)-245(G.)-246(P)111(.)-245(K.)-245(A.)-245(M.)-245(C.)-246(R.)-245(S.)-245(S.)]TJ 0 -10.909 Td [(H.)-250(S.)-250(J.)-250(W)92(.)-250(NLLB)-250(T)70(eam,)-250(Marta)-250(R.)-250(Costa-juss\340,)-250(\223No)-250(language)-250(left)-250(behind:)-310(Scaling)-250(human-centered)]TJ 0 -10.909 Td [(machine)-250(translation,)70(\224.)]TJ
+0 g 0 G
+ -21.579 -18.922 Td [([18])]TJ
+0 g 0 G
+ [-500(K.)-250(P)15(apineni,)-250(S.)-250(Rouk)10(os,)-250(T)74(.)-250(W)80(ard,)-250(and)-250(W)92(.-J.)-250(Zhu,)-250(\223Bleu:)-310(a)-250(Method)-250(for)-250(Automatic)-250(Ev)25(aluation)-250(of)]TJ 21.579 -10.909 Td [(Machine)-250(T)35(ranslation,)70(\224)-250(in)]TJ/F50 9.9626 Tf 101.329 0 Td [(Pr)45(oceedings)-250(of)-250(the)-250(40th)-250(Annual)-250(Meeting)-250(of)-250(the)-250(Association)-250(for)]TJ -101.329 -10.909 Td [(Computational)-250(Linguistics)]TJ/F47 9.9626 Tf 106.011 0 Td [(,)-250(pp.)-250(311\226318.)-360(Association)-250(for)-250(Computational)-250(Linguistics,)-250(Philadelphia,)]TJ -106.011 -10.909 Td [(Pennsylv)25(ania,)-250(USA,)-250(July)65(,)-250(2002.)-360(https://aclanthology)65(.or)18(g/P02-)-50(1040.)]TJ
+0 g 0 G
+ -21.579 -18.922 Td [([19])]TJ
+0 g 0 G
+ [-500(M.)-250(Post,)-250(\223)80(A)-250(call)-250(for)-250(clarity)-250(in)-250(reporting)-250(BLEU)-250(scores,)70(\224)-250(in)]TJ/F50 9.9626 Tf 251.405 0 Td [(Pr)45(oceedings)-250(of)-250(the)-250(Thir)37(d)-250(Confer)37(ence)-250(on)]TJ -229.826 -10.91 Td [(Mac)15(hine)-250(T)55(r)15(anslation:)-310(Resear)37(c)15(h)-250(P)80(aper)10(s)]TJ/F47 9.9626 Tf 155.785 0 Td [(,)-250(pp.)-250(186\226191.)-360(Association)-250(for)-250(Computational)-250(Linguistics,)]TJ -155.785 -10.909 Td [(Belgium,)-250(Brussels,)-250(Oct.,)-250(2018.)-360(https://www)65(.acl)10(web)40(.or)18(g/anthology/W18-)-50(6319.)]TJ
+0 g 0 G
+ -21.579 -18.922 Td [([20])]TJ
+0 g 0 G
+ [-500(A.)-250(La)20(vie,)-250(\223Ev)25(aluating)-250(the)-250(Output)-250(of)-250(Machine)-250(T)35(ranslation)-250(Systems,)70(\224)]TJ 21.579 -10.909 Td [(https://www)65(.cs.cmu.edu/~ala)20(vie/Presentations/MT)92(-)-50(Ev)25(aluation-)-50(MT)92(-)-50(Summit-)-50(T)45(utorial-)-50(19Sep11.pdf,)]TJ 0 -10.909 Td [(2011.)-360(Accessed:)-310(2023-07-05.)]TJ
+0 g 0 G
+ -21.579 -18.922 Td [([21])]TJ
+0 g 0 G
+ [-500(J.)-250(Kaplan,)-250(S.)-250(McCandlish,)-250(T)74(.)-250(Henighan,)-250(T)74(.)-250(B.)-250(Bro)25(wn,)-250(B.)-250(Chess,)-250(R.)-250(Child,)-250(S.)-250(Gray)65(,)-250(A.)-250(Radford,)-250(J.)-250(W)50(u,)]TJ 21.579 -10.909 Td [(and)-250(D.)-250(Amodei,)-250(\223Scaling)-250(La)15(ws)-250(for)-250(Neural)-250(Language)-250(Models.)70(\224)-250(2020.)]TJ
+0 g 0 G
+ -21.579 -18.922 Td [([22])]TJ
+0 g 0 G
+ [-500(M.)-250(Chen,)-250(J.)-250(T)80(w)10(orek,)-250(H.)-250(Jun,)-250(Q.)-250(Y)111(uan,)-250(H.)-250(P)111(.)-250(d.)-250(O.)-250(Pinto,)-250(J.)-250(Kaplan,)-250(H.)-250(Edw)10(ards,)-250(Y)129(.)-250(Burda,)-250(N.)-250(Joseph,)]TJ 21.579 -10.909 Td [(G.)-250(Brockman,)]TJ/F50 9.9626 Tf 58.66 0 Td [(et)-250(al.)]TJ/F47 9.9626 Tf 19.925 0 Td [(,)-250(\223Ev)25(aluating)-250(lar)18(ge)-250(language)-250(models)-250(trained)-250(on)-250(code,)70(\224)]TJ/F50 9.9626 Tf 216.894 0 Td [(arXiv)-250(pr)37(eprint)]TJ -295.479 -10.909 Td [(arXiv:2107.03374)]TJ/F47 9.9626 Tf 75.267 0 Td [(\0502021\051)-250(.)]TJ
+0 g 0 G
+ -96.846 -18.922 Td [([23])]TJ
+0 g 0 G
+ [-500(K.)-250(Cobbe,)-250(V)129(.)-250(K)35(osaraju,)-250(M.)-250(Ba)20(v)25(arian,)-250(J.)-250(Hilton,)-250(R.)-250(Nakano,)-250(C.)-250(Hesse,)-250(and)-250(J.)-250(Schulman,)-250(\223T)35(raining)]TJ 21.579 -10.909 Td [(v)15(eri\002ers)-250(to)-250(solv)15(e)-250(math)-250(w)10(ord)-250(problems,)70(\224)]TJ/F50 9.9626 Tf 159.67 0 Td [(CoRR)]TJ/F44 9.9626 Tf 26.291 0 Td [(abs/2110.14168)]TJ/F47 9.9626 Tf 66.979 0 Td [(\0502021\051)-250(,)]TJ/F55 9.9626 Tf 34.032 0 Td [(2110.14168)]TJ/F47 9.9626 Tf 59.776 0 Td [(.)]TJ -346.748 -10.909 Td [(https://arxi)25(v)65(.or)18(g/abs/2110.14168.)]TJ
+0 g 0 G
+ -21.579 -18.922 Td [([24])]TJ
+0 g 0 G
+ [-500(D.)-250(Hendrycks,)-250(C.)-250(Burns,)-250(S.)-250(Basart,)-250(A.)-250(Zou,)-250(M.)-250(Mazeika,)-250(D.)-250(Song,)-250(and)-250(J.)-250(Steinhardt,)-250(\223Measuring)]TJ 21.579 -10.909 Td [(Massi)25(v)15(e)-250(Multitask)-250(Language)-250(Understanding.)70(\224)-250(2021.)]TJ
+0 g 0 G
+ -21.579 -18.922 Td [([25])]TJ
+0 g 0 G
+ [-500(R.)-250(Y)129(.)-250(P)15(ang,)-250(A.)-250(P)15(arrish,)-250(N.)-250(Joshi,)-250(N.)-250(Nangia,)-250(J.)-250(Phang,)-250(A.)-250(Chen,)-250(V)129(.)-250(P)15(admakumar)40(,)-250(J.)-250(Ma,)-250(J.)-250(Thompson,)]TJ 21.579 -10.909 Td [(H.)-250(He,)-250(and)-250(S.)-250(R.)-250(Bo)25(wman,)-250(\223QuALITY)92(:)-250(Question)-250(Answering)-250(with)-250(Long)-250(Input)-250(T)70(e)15(xts,)-250(Y)100(es!\224)-310(2021.)]TJ 0 -10.909 Td [(https://arxi)25(v)65(.or)18(g/abs/2112.08608.)]TJ
+0 g 0 G
+ -21.579 -18.922 Td [([26])]TJ
+0 g 0 G
+ [-500(P)111(.)-250(Clark,)-250(I.)-250(Co)25(whe)15(y)65(,)-250(O.)-250(Etzioni,)-250(T)74(.)-250(Khot,)-250(A.)-250(Sabharw)10(al,)-250(C.)-250(Schoenick,)-250(and)-250(O.)-250(T)80(afjord,)-250(\223Think)-250(you)-250(ha)20(v)15(e)]TJ 21.579 -10.909 Td [(Solv)15(ed)-250(Question)-250(Answering?)-310(T)35(ry)-250(ARC,)-250(the)-250(AI2)-250(Reasoning)-250(Challenge.)70(\224)-250(2018.)]TJ
+0 g 0 G
+ -21.579 -18.922 Td [([27])]TJ
+0 g 0 G
+ [-500(M.)-250(Joshi,)-250(E.)-250(Choi,)-250(D.)-250(S.)-250(W)80(eld,)-250(and)-250(L.)-250(Zettlemo)10(yer)40(,)-250(\223T)35(ri)25(viaQA:)-250(A)-250(Lar)18(ge)-250(Scale)-250(Distantly)-250(Supervised)]TJ 21.579 -10.91 Td [(Challenge)-250(Dataset)-250(for)-250(Reading)-250(Comprehension.)70(\224)-250(2017.)]TJ
+0 g 0 G
+ -21.579 -18.922 Td [([28])]TJ
+0 g 0 G
+ [-500(G.)-250(Lai,)-250(Q.)-250(Xie,)-250(H.)-250(Liu,)-250(Y)129(.)-250(Y)100(ang,)-250(and)-250(E.)-250(Ho)15(vy)65(,)-250(\223RA)40(CE:)-250(Lar)18(ge-scale)-250(ReAding)-250(comprehension)-250(dataset)]TJ 21.579 -10.909 Td [(from)-250(e)15(xaminations,)70(\224)-250(in)]TJ/F50 9.9626 Tf 93.787 0 Td [(Pr)45(oceedings)-250(of)-250(the)-250(2017)-250(Confer)37(ence)-250(on)-250(Empirical)-250(Methods)-250(in)-250(Natur)15(al)]TJ -93.787 -10.909 Td [(Langua)10(g)10(e)-250(Pr)45(ocessing)]TJ/F47 9.9626 Tf 85.967 0 Td [(,)-250(pp.)-250(785\226794.)-360(Association)-250(for)-250(Computational)-250(Linguistics,)-250(Copenhagen,)]TJ -85.967 -10.909 Td [(Denmark,)-250(Sept.,)-250(2017.)-360(https://aclanthology)65(.or)18(g/D17-)-50(1082.)]TJ
+0 g 0 G
+ -21.579 -18.922 Td [([29])]TJ
+0 g 0 G
+ [-500(ETS,)-250(\223The)-250(GRE\256)-250(General)-250(T)70(est,)70(\224)-250(https://www)65(.ets.or)18(g/gre/test-)-50(tak)10(ers/general-)-50(test/prepare/content.html.)]TJ 21.579 -10.909 Td [(Accessed:)-310(2023-07-03.)]TJ
+0 g 0 G
+ 189.44 -29.888 Td [(13)]TJ
+0 g 0 G
+ET
+
+Q

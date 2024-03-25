@@ -1,0 +1,29 @@
+q
+/TRP1 gs
+0 g 0 G
+0 g 0 G
+BT
+/F44 11.9552 Tf 90 710.037 Td [(4)-1000(Capabilities)-250(Ev)10(aluations)]TJ/F44 9.9626 Tf 0 -27.049 Td [(4.1)-1000(Multilingual)-250(T)74(ranslation)-250(Ev)10(aluations)]TJ
+0 g 0 G
+ET
+1 0 0 1 165.601 158.016 cm
+q
+.27235 0 0 .27235 0 0 cm
+q
+1 0 0 1 0 0 cm
+/Im7 Do
+Q
+Q
+0 g 0 G
+1 0 0 1 -165.601 -158.016 cm
+BT
+/F44 9.9626 Tf 90 143.406 Td [(Figur)18(e)-381(7)]TJ/F47 8.9664 Tf 46.788 0 Td [(This)-381(\002gure)-382(displays)-381(BLEU)-381(scores)-381(for)-382(Claude)-381(models)-381(on)-382(the)-381(Flores)-381(200)-382(translation)-381(benchmark.)-704(Higher)]TJ -46.788 -9.963 Td [(BLEU)-220(scores)-220(indicate)-219(better)-220(translation)-220(quality)65(.)-300(Results)-220(are)-219(sho)25(wn)-220(for)-220(43)-220(languages,)-226(demonstrat)1(ing)-220(Claude')55(s)-220(multilingual)]TJ 0 -9.962 Td [(capabilities.)]TJ
+0 g 0 G
+0 g 0 G
+/F47 9.9626 Tf 0 -29.663 Td [(W)80(e)-297(e)25(v)25(aluated)-297(Claude)-297(on)-296(a)-297(translation)-297(benchmark,)-309(Flores)-296(200)-297([17],)-309(containing)-297(o)15(v)15(er)-297(t)1(w)10(o)-297(hundred)-297(languages.)]TJ 0 -10.909 Td [(W)80(e)-293(selected)-294(this)-293(benchmark)-293(and)-293(choice)-294(of)-293(task)-293(because)-293(of)-294(the)-293(broad)-293(co)15(v)15(erage)-294(of)-293(languages,)-304(including)-293(lo)25(w-)]TJ 0 -10.909 Td [(resource)-250(languages,)-250(which)-250(are)-250(usually)-250(not)-250(included)-250(in)-250(other)-250(task)-250(benchmarks.)]TJ
+0 g 0 G
+ 213.509 -29.888 Td [(8)]TJ
+0 g 0 G
+ET
+
+Q

@@ -1,0 +1,37 @@
+q
+/TRP1 gs
+0 g 0 G
+0 g 0 G
+BT
+/F47 9.9626 Tf 90 710.037 Td [(between)-217(the)-217(helpful-only)-217(model)-218(and)-217(Claude)-217(is)-217(due)-217(to)-217(Claude)-218(m)1(odels)-218(generally)-217(refusing)-217(to)-217(answer)-217(contentious)]TJ 0 -10.909 Td [(questions)-250(w)10(orded)-250(in)-250(w)10(ays)-250(that)-250(seem)-250(potentially)-250(problematic)-250(or)-250(discriminatory)65(.)]TJ
+0 g 0 G
+ET
+1 0 0 1 165.601 432.593 cm
+q
+.24269 0 0 .24269 0 0 cm
+q
+1157 0 0 1033 0 0 cm
+/Im3 Do
+Q
+Q
+0 g 0 G
+1 0 0 1 -165.601 -432.593 cm
+BT
+/F44 9.9626 Tf 90 417.982 Td [(Figur)18(e)-305(3)]TJ/F47 8.9664 Tf 46.029 0 Td [(This)-305(\002gure)-305(sho)25(ws)-306(model)-305(accuracies)-305(on)-305(BBQ)-305(questions)-306(in)-305(the)-305(disambiguated)-305(conte)15(xt,)-319(where)-305(each)-306(quest)1(ion)]TJ -46.029 -9.962 Td [(has)-306(a)-306(correct)-306(answer)55(.)-478(Claude)-306(models)-306(lik)10(ely)-306(ha)20(v)15(e)-307(lo)25(wer)-306(accurac)15(y)-306(compared)-306(to)-306(the)-306(helpful-only)-306(model)-306(because)-306(man)15(y)-306(of)]TJ 0 -9.963 Td [(the)-250(questions)-250(in)40(v)20(olv)15(e)-250(ob)15(vious)-250(stereotypes,)-250(so)-250(the)-250(model)-250(may)-250(refuse)-250(to)-250(answer)55(.)]TJ
+0 g 0 G
+0 g 0 G
+/F44 9.9626 Tf 0 -35.43 Td [(3.3)-1000(T)74(ruthfulQA)]TJ/F47 9.9626 Tf 0 -20.751 Td [(The)-375(goal)-375(of)-374(the)-375(T)35(ruthfulQA)-375([16])-374(e)25(v)25(aluation)-375(is)-375(to)-375(determine)-374(whether)-375(models)-375(output)-375(accurate)-374(and)-375(truthful)]TJ 0 -10.909 Td [(responses)-289(in)-289(an)-289(adv)15(ersarial)-290(setting)-289(where)-289(language)-289(models)-289(might)-289(be)-290(e)15(xpected)-289(to)-289(mimic)-289(popular)-289(f)10(alsehoods.)]TJ 0 -10.909 Td [(One)-256(w)10(ay)-255(to)-256(e)25(v)25(aluate)-255(model)-256(performance)-255(\050used)-256(in)-255(the)-256(original)-255(paper\051)-256(is)-255(to)-256(use)-255(human)-256(labelers)-255(to)-256(check)-255(open-)]TJ 0 -10.909 Td [(ended)-248(model)-247(responses.)-310(Another)-247(method)-248(is)-248(to)-248(use)-247(a)-248(multiple)-248(choice)-248(format.)-309(F)15(or)-248(\003e)15(xibility)-247(and)-248(rele)25(v)25(ance,)-248(we)]TJ 0 -10.91 Td [(le)25(v)15(erage)-250(our)-250(models)-250(to)-250(e)25(v)25(aluate)-250(in)-250(the)-250(follo)25(wing)-250(w)10(ay:)]TJ
+0 g 0 G
+ 23.412 -21.235 Td [(1.)]TJ
+0 g 0 G
+ [-500(W)80(e)-217(sample)-216(open-ended)-217(responses)-216(from)-217(Claude)-216(models)-217(in)-217(a)-216(con)40(v)15(ersational)-217(format,)-223(posing)-217(each)-216(ques-)]TJ 12.453 -10.909 Td [(tion)-250(to)-250(Claude)-250(without)-250(pro)15(viding)-250(an)15(y)-250(other)-250(conte)15(xt.)]TJ
+0 g 0 G
+ -12.453 -16.619 Td [(2.)]TJ
+0 g 0 G
+ [-500(W)80(e)-375(then)-376(tak)10(e)-375(the)-376(responses,)-407(and)-375(ask)-376(the)-375(helpful-only)-375(model)-376(to)-375(determine)-376(which)-375(of)-376(the)-375(multiple)]TJ 12.453 -10.909 Td [(choice)-257(options)-258(most)-257(closely)-258(matches)-257(the)-257(open-ended)-258(response.)-332(F)15(or)-257(this)-258(e)25(v)25(aluation,)-259(the)-257(helpful-only)]TJ 0 -10.909 Td [(model)-250(cannot)-250(see)-250(the)-250(corresponding)-250(question.)]TJ -35.865 -21.236 Td [(W)80(e)-219(sho)25(w)-219(the)-219(results)-218(in)-219(Figure)-219(4.)-300(W)80(e)-219(include)-218(the)-219(base)-219(language)-219(model)-219(for)-219(Claude,)-225(the)-219(Hel)1(pful-Only)-219(1.3)-219(model)]TJ 0 -10.909 Td [(\050this)-374(model')55(s)-373(training)-374(does)-374(include)-374(some)-373(human)-374(feedback)-374(incenti)25(vizing)-374(truthfulness)-373(and)-374(self-consistenc)15(y)65(,)]TJ 0 -10.909 Td [(simply)-387(as)-387(a)-386(result)-387(of)-387(general)-387(helpfulness\051,)-421(and)-387(se)25(v)15(eral)-386(v)15(ersions)-387(of)-387(the)-387(full)-387(Claude)-386(model,)-421(which)-387(include)]TJ 0 -10.909 Td [(human)-338(feedback)-339(and)-338(other)-339(interv)15(entions)-338(for)-339(honesty)65(.)-575(Both)-338(helpfulness)-339(and)-338(honesty)-339(interv)15(entions)-338(impro)15(v)15(e)]TJ 0 -10.909 Td [(performance.)]TJ/F44 9.9626 Tf 0 -26.398 Td [(3.4)-1000(Harmfulness)-250(Scor)18(es)-250(on)-250(Held)-250(Out)-250(Pr)18(ompts)]TJ/F47 9.9626 Tf 0 -20.752 Td [(F)15(or)-240(our)-239(internal)-240(e)25(v)25(aluation)-240(of)-239(Claude)-240(models,)-242(we)-239(g)5(auge)-240(harmfulness)-240(using)-239(a)-240(held-out)-240(set)-239(of)-240(328)-240(prompts)-239(that)]TJ 0 -10.909 Td [(include)-282(representati)25(v)15(e)-281(e)15(xamples)-282(from)-281(our)-282(red-teaming)-281(w)10(ork)-282([4])-282(and)-281(v)25(arious)-282(AI)-281(model)-282(`jailbreaks')-282(that)-281(ha)20(v)15(e)]TJ 0 -10.909 Td [(been)-219(discussed)-219(online.)-300(W)80(e)-219(then)-220(compare)-219(HHH)-219(preference)-219(model)-220(scores)-219(for)-219(model)-219(responses)-220(to)-219(these)-219(prompts)]TJ 0 -10.909 Td [(to)-310(the)-310(\002x)15(ed)-310(reference)-310(response)-310(\223I)-310(can')18(t)-310(help)-311(you)-310(with)-310(that,")-310(and)-310(compute)-310(the)-310(fraction)-310(of)-310(responses)-310(that)-310(are)]TJ 0 -10.909 Td [(judged)-250(as)-250(more)-250(harmful.)-310(F)15(or)-250(each)-250(prompt)-250(we)-250(generate)-250(5)-250(responses)-250(at)]TJ/F23 9.9626 Tf 277.397 0 Td [(T)]TJ/F20 9.9626 Tf 9.973 0 Td [(=)-278(1)]TJ/F47 9.9626 Tf 17.988 0 Td [(and)-250(score)-250(each)-250(separately)65(.)]TJ
+0 g 0 G
+ -91.849 -29.888 Td [(5)]TJ
+0 g 0 G
+ET
+
+Q

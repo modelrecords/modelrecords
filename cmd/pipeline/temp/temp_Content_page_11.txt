@@ -1,0 +1,53 @@
+q
+/TRP1 gs
+0 g 0 G
+0 g 0 G
+0 g 0 G
+0 g 0 G
+q
+1 0 0 1 205.547 719.601 cm
+[]0 d 0 J 0.797 w 0 0 m 200.906 0 l S
+Q
+BT
+/F47 9.9626 Tf 225.472 702.925 Td [(USMLE)-250(Step)-250(1)-250(\0505-shot\051)-4000(68.9%)]TJ 0 -19.091 Td [(USMLE)-250(Step)-250(2)-250(\0505-shot\051)-4000(63.3%)]TJ 0 -19.09 Td [(USMLE)-250(Step)-250(3)-250(\0505-shot\051)-4000(67.2%)]TJ
+ET
+q
+1 0 0 1 205.547 656.825 cm
+[]0 d 0 J 0.797 w 0 0 m 200.906 0 l S
+Q
+BT
+/F44 9.9626 Tf 90 634.284 Td [(4.4)-1000(Use)-250(Case)-250(Speci\002c)-250(Impr)18(o)10(v)10(ements)]TJ/F47 9.9626 Tf 0 -20.268 Td [(W)80(e)-250(placed)-250(special)-250(emphasis)-250(on)-250(impro)15(ving)-250(the)-250(follo)25(wing)-250(capability)-250(areas:)]TJ
+0 g 0 G
+ 27.397 -20.7 Td [(\225)]TJ
+0 g 0 G
+ [-500(Pre)25(vious)-340(models)-339(lagged)-340(behind)-339(the)-340(state-of-the-art)-339(on)-340(coding)-339(tasks.)-579(W)80(e)-340(ha)20(v)15(e)-339(w)10(ork)10(ed)-340(to)-339(impro)15(v)15(e)]TJ 8.469 -10.909 Td [(Claude')55(s)-364(ability)-364(as)-365(a)-364(coding)-364(assistant,)-393(and)-364(Claude)-364(2)-365(demonst)1(rates)-365(substantially)-364(impro)15(v)15(ed)-364(perfor)20(-)]TJ 0 -10.909 Td [(mance)-250(on)-250(coding)-250(benchmarks)-250(and)-250(human)-250(feedback)-250(e)25(v)25(aluations.)]TJ
+0 g 0 G
+ -8.469 -15.545 Td [(\225)]TJ
+0 g 0 G
+ [-500(Long-conte)15(xt)-322(models)-322(are)-322(particularly)-322(useful)-322(for)-322(processing)-322(l)1(ong)-322(documents,)-340(for)-322(fe)25(w-shot)-322(prompt-)]TJ 8.469 -10.909 Td [(ing,)-239(and)-236(for)-236(controlling)-236(with)-236(comple)15(x)-236(instructions)-236(and)-236(speci\002cations.)-305(Earlier)-236(this)-236(year)40(,)-239(we)-236(e)15(xpanded)]TJ 0 -10.909 Td [(Claude')55(s)-325(conte)15(xt)-326(windo)25(w)-325(from)-326(9K)-325(to)-326(100K)-325(tok)10(ens)-325([37].)-537(W)80(e)-325(ha)20(v)15(e)-326(continued)-325(to)-326(impro)15(v)15(e)-325(Claude')55(s)]TJ 0 -10.909 Td [(ability)-303(to)-303(pro)15(vide)-303(useful)-303(and)-303(reliable)-303(information)-302(when)-303(answering)-303(questions)-303(or)-303(synthesizing)-303(infor)20(-)]TJ 0 -10.909 Td [(mation)-250(from)-250(long,)-250(comple)15(x)-250(documents.)]TJ
+0 g 0 G
+ -8.469 -15.546 Td [(\225)]TJ
+0 g 0 G
+ [-500(Pre)25(vious)-270(models)-271(were)-270(trained)-271(to)-270(write)-271(f)10(airly)-270(short)-270(responses,)-276(b)20(ut)-270(man)15(y)-271(users)-270(ha)20(v)15(e)-271(requested)-270(longer)]TJ 8.469 -10.909 Td [(outputs.)-595(Cl)1(aude)-345(2)-345(has)-345(been)-345(trained)-345(to)-345(generate)-344(coherent)-345(documents)-345(of)-345(up)-345(to)-345(4000)-345(tok)10(ens,)-368(corre-)]TJ 0 -10.909 Td [(sponding)-250(to)-250(roughly)-250(3000)-250(w)10(ords.)]TJ
+0 g 0 G
+ -8.469 -15.545 Td [(\225)]TJ
+0 g 0 G
+ [-500(Claude)-234(is)-234(often)-235(used)-234(to)-234(turn)-234(long,)-238(comple)15(x)-234(natural)-234(language)-234(documents)-235(into)-234(structured)-234(data)-234(formats.)]TJ 8.469 -10.909 Td [(Claude)-204(2)-203(has)-204(been)-204(trained)-204(to)-203(better)-204(produce)-204(correctly)-204(formatted)-203(output)-204(in)-204(JSON,)-204(XML,)-203(Y)120(AML,)-204(code,)]TJ 0 -10.909 Td [(and)-250(markdo)25(wn.)]TJ
+0 g 0 G
+ -8.469 -15.546 Td [(\225)]TJ
+0 g 0 G
+ [-500(While)-281(Claude')55(s)-281(training)-281(data)-281(is)-281(still)-281(predominantly)-281(English,)-288(we)-281(ha)20(v)15(e)-281(increased)-281(the)-281(fraction)-281(of)-281(non-)]TJ 8.469 -10.909 Td [(English)-287(pretraining)-286(data)-287(used)-287(to)-286(train)-287(Claude)-287(2.)-420(W)80(e)-287(ha)20(v)15(e)-286(also)-287(inte)15(grated)-287(some)-286(non-English)-287(human)]TJ 0 -10.909 Td [(feedback)-250(data)-250(into)-250(our)-250(process.)]TJ
+0 g 0 G
+ -8.469 -15.545 Td [(\225)]TJ
+0 g 0 G
+ [-500(Claude)-240(2')55(s)-241(training)-240(data)-241(includes)-240(updates)-241(from)-240(2022)-241(and)-240(early)-241(2023.)-306(This)-241(means)-240(it)-241(is)-240(a)15(w)10(are)-241(of)-240(more)]TJ 8.469 -10.909 Td [(recent)-250(e)25(v)15(ents)-250(although,)-250(as)-250(with)-250(other)-250(topics,)-250(it)-250(may)-250(still)-250(generate)-250(conf)10(ab)20(ulations.)]TJ/F44 11.9552 Tf -35.866 -29.127 Td [(5)-1000(Ar)18(eas)-250(f)25(or)-250(Impr)18(o)10(v)10(ement)]TJ/F47 9.9626 Tf 0 -23.552 Td [(Our)-320(team)-321(has)-320(w)10(ork)10(ed)-320(hard)-321(to)-320(release)-320(an)-321(im)1(pro)14(v)15(ed)-320(and)-320(well-tested)-320(model,)-338(and)-321(we)-320(are)-320(proud)-321(of)-320(the)-320(results;)]TJ 0 -10.91 Td [(we)-248(ha)20(v)15(e)-248(made)-248(meaningful)-248(progre)1(ss)-248(on)-248(harmlessness,)-248(rob)20(ustness,)-249(and)-248(honesty)65(.)-309(W)80(e)-248(are)-248(e)15(xcited)-248(to)-247(see)-248(ho)25(w)-248(our)]TJ 0 -10.909 Td [(users)-250(interact)-250(with)-250(Claude)-250(and)-250(hope)-250(Claude)-250(supports)-250(their)-250(creati)25(vity)-250(and)-250(producti)25(vity)65(.)]TJ 0 -16.388 Td [(Ho)25(we)25(v)15(er)40(,)-370(our)-346(Claude)-346(models)-347(are)-346(a)-346(w)10(ork)-346(in)-346(progress,)-370(and)-346(we)-346(welcome)-347(feedback)-346(on)-346(both)-346(our)-346(product)-346(and)]TJ 0 -10.909 Td [(approach.)-519(As)-320(with)-320(all)-319(current)-320(LLMs,)-337(Claude)-320(generates)-320(conf)10(ab)20(ulations,)-337(e)15(xhibits)-320(bias,)-337(mak)10(es)-319(f)10(actual)-320(errors,)]TJ 0 -10.909 Td [(and)-250(can)-250(be)-250(jail-brok)10(en)-250([38].)-310(W)80(e)-250(are)-250(acti)25(v)15(ely)-250(w)10(orking)-250(to)-250(impro)15(v)15(e)-250(in)-250(these)-250(areas.)]TJ 0 -16.389 Td [(Another)-290(feature)-291(of)-290(training)-290(Claude)-290(models)-291(is)-290(that)-290(adding)-291(additional)-290(capabilities)-290(can)-290(trade)-291(of)25(f)-290(in)-290(une)15(xpected)]TJ 0 -10.909 Td [(w)10(ays)-272(ag)5(ainst)-273(e)15(xisting)-272(ones.)-378(Some)-272(of)-272(Claude)-273(2')55(s)-272(ne)25(w)-273(or)-272(impro)15(v)15(ed)-273(capabilities)-272(ha)20(v)15(e)-272(had)-273(some)-272(subtle)-273(costs)-272(in)]TJ 0 -10.909 Td [(other)-303(areas.)-469(Ov)15(er)-303(time,)-316(the)-303(data)-303(and)-303(in\003uences)-303(that)-303(determine)-303(Claude')55(s)-303(\223personality\224)-303(and)-303(capabilities)-303(ha)20(v)15(e)]TJ 0 -10.909 Td [(become)-241(quite)-241(comple)15(x.)-307(It)-241(has)-241(become)-241(a)-241(ne)25(w)-241(research)-241(problem)-241(for)-241(us)-241(to)-241(balance)-241(these)-241(f)10(actors,)-242(track)-241(them)-241(in)-241(a)]TJ 0 -10.909 Td [(simple,)-250(automatable)-250(w)10(ay)65(,)-250(and)-250(generally)-250(reduce)-250(the)-250(comple)15(xity)-250(of)-250(training)-250(Claude.)]TJ 0 -16.389 Td [(These)-231(problems,)-236(and)-231(other)-231(emer)18(ging)-232(risks)-231(from)-232(models)-231(are)-232(both)-231(important)-232(and)-231(ur)18(gent.)-304(W)80(e)-231(e)15(xpect)-232(that)-231(further)]TJ 0 -10.909 Td [(progress)-227(in)-227(AI)-227(will)-226(be)-227(rapid,)-232(and)-227(that)-227(the)-226(dangers)-227(from)-227(misuse)-227(and)-227(misalignment)-227(from)-227(near)20(-future)-226(AI)-227(systems)]TJ 0 -10.909 Td [(will)-220(be)-220(v)15(ery)-219(signi\002cant,)-226(presenting)-220(an)-220(enormous)-219(challenge)-220(for)-220(AI)-220(de)25(v)15(elopers.)-299(While)-220(there)-220(is)-220(much)-219(more)-220(w)10(ork)]TJ 0 -10.909 Td [(to)-216(be)-216(done,)-223(we)-216(are)-216(grateful)-216(to)-217(all)-216(our)-216(teams)-216(for)-216(their)-216(continued)-216(ef)25(forts)-216(and)-217(to)-216(those)-216(teams)-216(w)10(orking)-216(on)-216(AI)-216(safety)]TJ 0 -10.909 Td [(at)-250(other)-250(or)18(g)5(anizations.)]TJ/F44 11.9552 Tf 0 -29.126 Td [(Refer)18(ences)]TJ
+0 g 0 G
+/F47 9.9626 Tf 4.981 -18.074 Td [([1])]TJ
+0 g 0 G
+ [-500(M.)-250(Mitchell,)-250(S.)-250(W)50(u,)-250(A.)-250(Zaldi)25(v)25(ar)40(,)-250(P)111(.)-250(Barnes,)-250(L.)-250(V)111(asserman,)-250(B.)-250(Hutchinson,)-250(E.)-250(Spitzer)40(,)-250(I.)-250(D.)-250(Raji,)-250(and)]TJ 16.598 -10.909 Td [(T)74(.)-250(Gebru,)-250(\223Model)-250(Cards)-250(for)-250(Model)-250(Reporting,)70(\224)-250(in)]TJ/F50 9.9626 Tf 200.277 0 Td [(Pr)45(oceedings)-250(of)-250(the)-250(Confer)37(ence)-250(on)-250(F)75(airness,)]TJ -200.277 -10.909 Td [(Accountability)55(,)-250(and)-250(T)55(r)15(anspar)37(ency)]TJ/F47 9.9626 Tf 134.255 0 Td [(.)-360(A)40(CM,)-250(Jan,)-250(2019.)-360(https://doi.or)18(g/10.1145%2F3287560.3287596.)]TJ
+0 g 0 G
+ 55.185 -29.888 Td [(11)]TJ
+0 g 0 G
+ET
+
+Q

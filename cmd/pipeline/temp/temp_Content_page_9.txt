@@ -1,0 +1,29 @@
+q
+/TRP1 gs
+0 g 0 G
+0 g 0 G
+BT
+/F47 9.9626 Tf 90 710.037 Td [(The)-257(source)-256(sentences)-257(in)-257(Flores)-256(200)-257(are)-257(dra)15(wn)-257(from)-256(English)-257(sources)-257(and)-256(translated)-257(by)-257(human)-257(transl)1(ators)-257(into)]TJ 0 -10.909 Td [(other)-223(languages.)-302(In)-223(this)-223(e)25(v)25(aluation,)-229(sho)25(wn)-223(in)-224(Figure)-223(7,)-229(we)-223(test)-224(ho)25(w)-223(well)-224(Claude)-223(translates)-223(each)-224(sentence)-223(from)]TJ 0 -10.909 Td [(English)-257(into)-256(other)-257(languages.)-330(W)80(e)-257(use)-256(BLEU)-257([18])-257(as)-256(our)-257(metric)-257(for)-256(translation)-257(quality:)-323(F)15(or)-257(a)-257(gi)25(v)15(en)-256(language,)]TJ 0 -10.909 Td [(we)-386(use)-385(Claude)-386(to)-386(trans)1(late)-386(each)-386(Flores)-385(200)-386(sentence)-386(from)-385(English)-386(into)-385(that)-386(language.)-717(Then,)-420(the)-385(BLEU)]TJ 0 -10.909 Td [(metric)-346(uses)-346(n-gram)-346(similarity)-346(and)-346(length)-346(similarity)-346(to)-346(report)-346(an)-346(aggre)15(g)5(ated)-346(score)-346(of)-346(ho)25(w)-346(similar)-346(Claude')55(s)]TJ 0 -10.909 Td [(translated)-319(sentences)-318(are)-319(to)-319(the)-319(tar)18(get)-319(sentences)-318(in)-319(Flores)-319(200.)-516(W)80(e)-319(sample)-319(at)-319(temperatur)1(e)]TJ/F23 9.9626 Tf 362.233 0 Td [(T)]TJ/F20 9.9626 Tf 11.242 0 Td [(=)-405(1)]TJ/F47 9.9626 Tf 19.942 0 Td [(and)-319(score)]TJ -393.417 -10.909 Td [(using)-250(SacreBLEU)-250(v2.3.0)-250([19])-250(with)-250(the)-250(Flores)-250(200)-250(tok)10(enizer)55(.)]TJ 0 -16.389 Td [(W)80(e)-224(vie)25(w)-224(this)-224(e)25(v)25(aluation)-224(as)-224(a)-224(rough)-224(indicator)-224(of)-225(which)-224(languages)-224(our)-224(model)-224(is)-224(probably)-224(better)-224(and)-224(w)10(orse)-224(at)-224(\227)]TJ 0 -10.909 Td [(small)-251(dif)25(ferences)-250(between)-251(similar)-251(scores)-250(could)-251(be)-251(due)-251(to)-250(noise.)-313(Si)1(milarly)65(,)-251([20])-251(suggests)-251(b)20(uck)10(eting)-251(t)1(he)-251(scores)]TJ 0 -10.909 Td [(as)-304(follo)25(ws:)-419(\223[s]cores)-304(o)15(v)15(er)-305(30)-304(generally)-304(re\003ect)-304(understandable)-305(translations\224)-304(and)-304(\223[s]cores)-305(o)15(v)15(er)-304(50)-304(generally)]TJ 0 -10.909 Td [(re\003ect)-250(good)-250(and)-250(\003uent)-250(translations.)70(\224)]TJ/F44 9.9626 Tf 0 -29.263 Td [(4.2)-1000(Long)-250(Contexts)]TJ/F47 9.9626 Tf 0 -21.897 Td [(Earlier)-250(this)-250(year)40(,)-250(we)-250(e)15(xpanded)-249(Claude')55(s)-250(conte)15(xt)-250(windo)25(w)-250(from)-250(9K)-250(to)-250(100K)-250(tok)10(ens.)-310(Claude)-250(2)-249(has)-250(been)-250(trained)]TJ 0 -10.909 Td [(to)-327(ha)20(v)15(e)-327(a)-328(further)-327(e)15(xpanded)-327(conte)15(xt)-327(windo)25(w)-328(of)-327(200K)-327(tok)10(ens,)-347(corresponding)-327(to)-327(roughly)-327(150,000)-327(w)10(ords.)-542(T)80(o)]TJ 0 -10.91 Td [(demonstrate)-397(that)-397(Claude)-398(is)-397(actually)-397(using)-397(the)-397(full)-398(conte)15(xt,)-434(we)-397(measure)-397(the)-397(loss)-398(for)-397(each)-397(tok)10(en)-397(position,)]TJ 0 -10.909 Td [(a)20(v)15(eraged)-260(o)15(v)15(er)-259(1000)-260(long)-259(documents,)-262(in)-260(Figure)-260(8.)-338(The)-260(per)20(-tok)10(en)-260(loss)-259(has)-260(a)-259(po)25(wer)20(-la)15(w)-260(plus)-260(constant)-259(trend,)-262(as)]TJ 0 -10.909 Td [(e)15(xpected)-250(based)-250(on)-250([21].)]TJ 0 -16.388 Td [(As)-334(we)-333(note)-334(in)-334(our)-333(launch)-334(blog)-334(post,)-354(we)-334(will)-333(support)-334(100K)-334(at)-333(launch)-334(rather)-334(than)-333(this)-334(full)-334(conte)15(xt)-333(windo)25(w)65(.)]TJ 0 -10.909 Td [(Ho)25(we)25(v)15(er)40(,)-250(we)-250(may)-250(inte)15(grate)-250(this)-250(underlying)-250(capability)-250(into)-250(our)-250(product)-250(of)25(fering)-250(at)-250(a)-250(later)-250(date.)]TJ
+0 g 0 G
+ET
+1 0 0 1 113.76 212.911 cm
+q
+.5274 0 0 .5274 0 0 cm
+q
+1 0 0 1 0 0 cm
+/Im8 Do
+Q
+Q
+0 g 0 G
+1 0 0 1 -113.76 -212.911 cm
+BT
+/F44 9.9626 Tf 90 198.301 Td [(Figur)18(e)-218(8)]TJ/F47 8.9664 Tf 45.156 0 Td [(This)-217(\002gure)-218(sho)25(ws)-217(the)-218(loss)-217(as)-218(a)-217(function)-218(of)-217(tok)10(en)-218(position)-217(for)-218(Claude)-217(2)-218(on)-217(v)15(ery)-218(long)-217(conte)15(xt)-218(data,)-224(along)-217(with)-218(a)]TJ -45.156 -9.963 Td [(\002t)-216(to)-216(a)-216(po)25(wer)20(-la)15(w)-216(plus)-216(constant)-216(function.)-299(These)-216(results)-216(demonstrate)-216(that)-216(Claude)-216(2)-216(continues)-216(to)-216(sho)25(w)-216(g)5(ains)-216(in)-216(performance)]TJ 0 -9.962 Td [(\050on)-250(the)-250(autore)15(gressi)25(v)15(e)-250(cross-entrop)10(y)-250(loss\051)-250(up)-250(to)-250(200k)-250(tok)10(ens)-250(of)-250(te)15(xt.)]TJ
+0 g 0 G
+0 g 0 G
+/F44 9.9626 Tf 0 -40.843 Td [(4.3)-1000(Standard)-250(Benchmarks)-250(and)-250(Standardized)-250(T)92(ests)]TJ/F47 9.9626 Tf 0 -21.897 Td [(W)80(e)-226(tested)-225(Claude)-226(Instant)-226(1.1,)-230(Claude)-226(1.3,)-231(and)-225(Claude)-226(2)-226(on)-226(se)25(v)15(eral)-225(standard)-226(benchmark)-226(e)25(v)25(aluations,)-230(including)]TJ 0 -10.909 Td [(Code)15(x)-271(HumanEv)25(al)-272([22])-271(for)-272(p)10(ython)-271(function)-272(synthes)1(is,)-277(GSM8k)-272([23])-271(for)-272(grade)-271(school)-271(math)-272(problem)-271(solving,)]TJ 0 -10.909 Td [(MMLU)-257([24])-257(for)-257(multidisciplinary)-258(Q&A,)-257(QuALITY)-257([25])-257(for)-257(Q&A)-257(on)-257(v)15(ery)-258(long)-257(stories)-257(\050up)-257(to)]TJ/F26 9.9626 Tf 375.025 0 Td [(\030)]TJ/F47 9.9626 Tf 7.748 0 Td [(10k)-257(tok)10(ens\051,)]TJ -382.773 -10.909 Td [(ARC-Challenge)-241([26])-241(for)-241(science)-241(questions,)-243(T)35(ri)25(viaQA)-241([27])-242(for)-241(reading)-241(comprehension,)-243(and)-241(RA)40(CE-H)-241([28])-241(for)]TJ 0 -10.909 Td [(high-school)-250(le)25(v)15(el)-250(reading)-250(comprehension)-250(and)-250(reasoning.)]TJ
+0 g 0 G
+ 213.509 -29.888 Td [(9)]TJ
+0 g 0 G
+ET
+
+Q

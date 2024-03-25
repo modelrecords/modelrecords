@@ -1,0 +1,26 @@
+q
+/TRP1 gs
+0 g 0 G
+0 g 0 G
+0 g 0 G
+1 0 0 1 176.399 397.316 cm
+q
+.29388 0 0 .29388 0 0 cm
+q
+882 0 0 1098 0 0 cm
+/Im4 Do
+Q
+Q
+0 g 0 G
+1 0 0 1 -176.399 -397.316 cm
+BT
+/F44 9.9626 Tf 90 382.706 Td [(Figur)18(e)-290(4)]TJ/F47 8.9664 Tf 45.876 0 Td [(This)-290(\002gure)-290(sho)25(ws)-289(scores)-290(on)-290(the)-290(T)35(ruthfulQA)-289(e)25(v)25(aluation,)-300(where)-290(we)-290(ha)20(v)15(e)-289(sampled)-290(answers)-290(from)-290(each)-290(model)]TJ -45.876 -9.963 Td [(\050in)-268(a)-269(zero-shot)-268(chatbot)-269(format\051)-268(to)-269(the)-268(questions,)-273(and)-269(then)-268(separately)-269(ask)10(ed)-268(the)-269(helpful-only)-268(model)-269(\050without)-268(access)-269(to)-268(the)]TJ 0 -9.963 Td [(question\051)-252(to)-253(identify)-252(which)-253(multiple)-252(choice)-253(option)-252(best)-253(represents)-252(the)-252(free-form)-253(answer)-252(sample.)-318(This)-252(process)-253(is)-252(intended)]TJ 0 -9.962 Td [(to)-250(approximate)-250(real-w)10(orld)-250(model)-250(usage)-250(and)-250(human)-250(e)25(v)25(aluation.)]TJ
+0 g 0 G
+0 g 0 G
+/F47 9.9626 Tf 0 -32.877 Td [(Among)-244(the)-244(328)-244(prompts)-244(we)-245(e)25(v)25(aluated,)-245(Claude)-244(2)-244(g)5(a)20(v)15(e)-244(a)-244(response)-244(judged)-245(more)-244(harmful)-244(than)-244(\223I)-244(can')18(t)-244(help)-244(you)]TJ 0 -10.909 Td [(with)-296(that")-296(in)-296(four)-296(cases,)-307(according)-296(to)-296(automated)-296(e)25(v)25(aluation.)-447(On)-296(manual)-296(inspection,)-308(in)-296(three)-295(of)-296(the)-296(cases)-296(its)]TJ 0 -10.909 Td [(response)-224(did)-225(not)-224(seem)-224(harmful.)-302(Ho)25(we)25(v)15(er)40(,)-229(in)-225(the)-224(other)-224(case,)-230(the)-224(model)-225(w)10(as)-224(disrupted)-224(by)-225(the)-224(jailbreak)-224(attempts)]TJ 0 -10.909 Td [(in)-250(about)-250(half)-250(of)-250(its)-250(sampled)-250(responses.)]TJ/F44 9.9626 Tf 0 -24.458 Td [(3.5)-1000(Helpful,)-250(Honest,)-250(and)-250(Harmless)-250(\050HHH\051)-250(Ev)10(aluations)]TJ/F47 9.9626 Tf 0 -19.976 Td [(Anthropic)-213(researchers)-214(wrote)-213(438)-214(binary)-213(choice)-214(questions)-213([2,)-214(3,)-213(9])-214(to)-213(e)25(v)25(aluate)-214(language)-213(models)-214(and)-213(preference)]TJ 0 -10.909 Td [(models)-320(on)-320(t)1(h)-1(e)1(ir)-320(ability)-320(to)-320(identify)-319(HHH)-320(responses.)-519(The)-320(model)-320(is)-320(presented)-319(with)-320(tw)10(o)-320(outputs)-320(and)-319(ask)10(ed)-320(to)]TJ 0 -10.909 Td [(select)-256(the)-255(more)-256(HHH)-256(output.)-327(W)80(e)-256(see)-256(in)-256(Figure)-255(6)-256(that)-256(each)-256(of)-255(our)-256(Claude)-256(models)-256(is)-255(better)-256(than)-256(the)-256(last)-255(at)-256(this)]TJ 0 -10.909 Td [(task)-250(0-shot,)-250(sho)25(wing)-250(general)-250(impro)15(v)15(ements)-250(in)-250("understanding")-250(helpfulness,)-250(honesty)65(,)-250(and)-250(harmlessness)-250([8].)]TJ
+0 g 0 G
+ 213.509 -167.941 Td [(6)]TJ
+0 g 0 G
+ET
+
+Q

@@ -1,0 +1,67 @@
+q
+/TRP1 gs
+0 g 0 G
+0 g 0 G
+BT
+/F47 9.9626 Tf 90 710.037 Td [(W)80(e)-333(e)25(v)25(aluated)-333(GSM8k)-332(and)-333(Code)15(x)-333(0-shot)-333(by)-332(sampling)-333(at)-333(temperature)]TJ/F23 9.9626 Tf 281.838 0 Td [(T)]TJ/F20 9.9626 Tf 11.501 0 Td [(=)-431(1)]TJ/F47 9.9626 Tf 17.024 0 Td [(;)-374(we)-333(e)25(v)25(aluated)-333(MMLU)-332(5-shot)]TJ -310.363 -10.909 Td [(by)-363(sampling)-364(at)-363(temperature)]TJ/F23 9.9626 Tf 115.746 0 Td [(T)]TJ/F20 9.9626 Tf 12.063 0 Td [(=)-488(1)]TJ/F47 9.9626 Tf 21.207 0 Td [(with)-363(chain-of-thought;)-420(we)-363(e)25(v)25(aluated)-364(T)35(ri)25(viaQA)-363(5-shot)-363(by)-363(sampling)-364(at)]TJ -149.016 -10.909 Td [(temperature)]TJ/F23 9.9626 Tf 50.072 0 Td [(T)]TJ/F20 9.9626 Tf 9.973 0 Td [(=)-278(0)]TJ/F47 9.9626 Tf 15.497 0 Td [(;)-250(and)-250(we)-250(e)25(v)25(aluated)-250(QuALITY)129(,)-250(ARC-Challenge,)-250(and)-250(RA)40(CE-H)-250(5-shot.)]TJ
+0 g 0 G
+0 g 0 G
+ET
+q
+1 0 0 1 148.686 669.454 cm
+[]0 d 0 J 0.797 w 0 0 m 314.628 0 l S
+Q
+BT
+/F47 9.9626 Tf 276.805 652.778 Td [(Claude)-250(Instant)-2000(Claude)-250(1.3)-2000(Claude)-250(2)]TJ
+ET
+q
+1 0 0 1 148.686 645.008 cm
+[]0 d 0 J 0.498 w 0 0 m 314.628 0 l S
+Q
+BT
+/F47 9.9626 Tf 158.649 628.482 Td [(Code)15(x)-250(P@1)-250(\0500-shot\051)-5232(52.8%)-4486(56.0%)]TJ/F44 9.9626 Tf 263.156 0 Td [(71.2%)]TJ/F47 9.9626 Tf -263.156 -19.091 Td [(GSM8k)-250(\0500-shot)-250(CoT\051)-4860(80.9%)-4486(85.2%)]TJ/F44 9.9626 Tf 263.156 0 Td [(88.0%)]TJ/F47 9.9626 Tf -263.156 -19.091 Td [(MMLU)-250(\0505-shot)-250(CoT\051)-4916(73.4%)-4486(77.0%)]TJ/F44 9.9626 Tf 263.156 0 Td [(78.5%)]TJ/F47 9.9626 Tf -263.156 -19.091 Td [(T)35(ri)25(viaQA)-250(\0505-shot\051)-6227(78.9%)-4486(86.7%)]TJ/F44 9.9626 Tf 263.156 0 Td [(87.5%)]TJ/F47 9.9626 Tf -263.156 -19.091 Td [(QuALITY)-250(\0505-shot\051)-5834(80.5%)]TJ/F44 9.9626 Tf 203.799 0 Td [(84.1%)]TJ/F47 9.9626 Tf 60.189 0 Td [(83.2%)]TJ -263.988 -19.091 Td [(ARC-Challenge)-250(\0505-shot\051)-3611(85.7%)-4486(90.0%)]TJ/F44 9.9626 Tf 263.156 0 Td [(91.0%)]TJ/F47 9.9626 Tf -263.156 -19.091 Td [(RA)40(CE-H)-250(\0505-shot\051)-6373(85.5%)]TJ/F44 9.9626 Tf 203.799 0 Td [(88.8%)]TJ/F47 9.9626 Tf 60.189 0 Td [(88.3%)]TJ
+ET
+q
+1 0 0 1 148.686 506.017 cm
+[]0 d 0 J 0.797 w 0 0 m 314.628 0 l S
+Q
+BT
+/F47 9.9626 Tf 90 482.655 Td [(W)80(e)-250(also)-250(e)25(v)25(aluated)-250(Claude)-250(2)-250(on)-250(three)-250(standardized)-250(tests:)]TJ/F44 9.9626 Tf 0 -30.243 Td [(4.3.1)-1000(The)-250(Graduate)-250(Record)-250(Exam)-250(\050GRE\051)-250(General)-250(T)92(est)-250([29])]TJ/F47 9.9626 Tf 0 -21.481 Td [(W)80(e)-254(tested)-254(Claude)-254(2)-254(on)-254(the)-253(Educational)-254(T)70(esting)-254(Service')55(s)-254(of)25(\002cial)-254(GRE)-254(Practice)-254(T)70(est)-254(2)-254([30].)-321(W)80(e)-254(e)25(v)25(aluated)-254(the)]TJ 0 -10.91 Td [(V)111(erbal)-297(Reasoning)-296(and)-297(Quantitati)25(v)15(e)-296(Reasoning)-297(sections)-296(5-shot)-297(at)-296(temperature)]TJ/F23 9.9626 Tf 311.739 0 Td [(T)]TJ/F20 9.9626 Tf 10.833 0 Td [(=)-364(1)]TJ/F47 9.9626 Tf 19.311 0 Td [(with)-297(chain-of-thought,)]TJ -341.883 -10.909 Td [(and)-314(e)25(v)25(aluated)-314(the)-313(Analytical)-314(Writing)-314(section)-314(2-shot)-313(at)-314(temperature)]TJ/F23 9.9626 Tf 272.774 0 Td [(T)]TJ/F20 9.9626 Tf 11.15 0 Td [(=)-396(1)]TJ/F47 9.9626 Tf 16.674 0 Td [(.)-501(Estimated)-314(percentiles)-314(are)-314(from)]TJ -300.598 -10.909 Td [([31].)]TJ
+0 g 0 G
+0 g 0 G
+ET
+q
+1 0 0 1 158.514 379.996 cm
+[]0 d 0 J 0.797 w 0 0 m 294.972 0 l S
+Q
+BT
+/F47 9.9626 Tf 178.439 363.32 Td [(V)111(erbal)-250(reasoning)-250(\0505-shot\051)-6405(165)-250(\050~95th)-250(percentile\051)]TJ 0 -19.091 Td [(Quantitati)25(v)15(e)-250(reasoning)-250(\0505-shot\051)-4000(154)-250(\050~42nd)-250(percentile\051)]TJ 0 -19.091 Td [(Analytical)-250(writing)-250(\0502-shot\051)-6028(5.0)-250(\050~91st)-250(percentile\051)]TJ
+ET
+q
+1 0 0 1 158.514 317.219 cm
+[]0 d 0 J 0.797 w 0 0 m 294.972 0 l S
+Q
+BT
+/F44 9.9626 Tf 90 289.627 Td [(4.3.2)-1000(Multistate)-250(Bar)-250(Examination)-250(\050MBE\051)-250([32])]TJ/F47 9.9626 Tf 0 -21.482 Td [(W)80(e)-259(tested)-259(Claude)-259(2)-258(on)-259(NCBE')55(s)-259(of)25(\002cial)-259(2021)-259(MBE)-259(practice)-259(e)15(xam)-258([33].)-337(W)80(e)-259(e)25(v)25(aluated)-259(it)-259(5-shot)-258(without)-259(using)]TJ 0 -10.909 Td [(chain)-250(of)-250(thought)-250(on)-250(these)-250(multiple)-250(choice)-250(questions.)]TJ
+0 g 0 G
+0 g 0 G
+ET
+q
+1 0 0 1 204.581 238.471 cm
+[]0 d 0 J 0.797 w 0 0 m 202.839 0 l S
+Q
+BT
+/F47 9.9626 Tf 224.506 221.795 Td [(MBE)-250(\0505-shot\051)-4000(76.5%)-250(\050153/200\051)]TJ
+ET
+q
+1 0 0 1 204.581 213.876 cm
+[]0 d 0 J 0.797 w 0 0 m 202.839 0 l S
+Q
+BT
+/F44 9.9626 Tf 90 186.284 Td [(4.3.3)-1000(United)-250(States)-250(Medical)-250(Licensing)-250(Examination)-250(\050USMLE\051)-250([34])]TJ/F47 9.9626 Tf 0 -21.482 Td [(W)80(e)-399(tested)-399(Claude)-399(2)-399(on)-399(the)-400(of)25(\002cial)-399(USMLE)-399(multiple-)1(choice)-400(practice)-399(questions)-399(from)-399([35].)-757(The)-399(USMLE)]TJ 0 -10.909 Td [(contains)-329(three)-329(Steps,)-349(which)-329(are)-329(separate)-329(e)15(xams)-329(tak)10(en)-329(at)-329(dif)25(ferent)-329(points)-329(in)-329(a)-329(medical)-329(student')55(s)-329(career)55(.)-547(W)80(e)]TJ 0 -10.909 Td [(e)25(v)25(aluated)-250(each)-250(Step)-250(5-shot)-250(without)-250(using)-250(chain)-250(of)-250(thought.)]TJ 0 -16.389 Td [(Some)-245(questions)-245(on)-245(the)-245(USMLE)-246(contain)-245(images)-245(\050such)-245(as)-245(medical)-245(X-rays\051)-245(or)-245(tables.)-309(T)80(o)-245(test)-245(Claude)-245(2)-245(on)-245(these)]TJ 0 -10.909 Td [(questions,)-250(we)-250(transcribed)-250(tables)-250(where)-250(possible)-250(and)-250(remo)15(v)15(ed)-250(the)-250(images.)]TJ 0 -16.388 Td [(Step)-250(3)-250(of)-250(the)-250(USMLE)-250(has)-250(a)-250(non-multiple-choice)-250(section,)-250(on)-250(which)-250(we)-250(did)-250(not)-250(test)-250(Claude)-250(2.)]TJ 0 -16.389 Td [(The)-297(number)-298(of)-297(correct)-298(answers)-297(required)-298(to)-297(pass)-298(the)-297(USMLE)-298(v)25(aries)-297(by)-298(Ste)1(p,)-310(b)20(ut)-297("e)15(xaminees)-298(typically)-297(must)]TJ 0 -10.909 Td [(answer)-250(approximately)-250(60)-250(percent)-250(of)-250(items)-250(correctly)-250(to)-250(achie)25(v)15(e)-250(a)-250(passing)-250(score.")-250([36])]TJ
+0 g 0 G
+ 211.019 -29.888 Td [(10)]TJ
+0 g 0 G
+ET
+
+Q

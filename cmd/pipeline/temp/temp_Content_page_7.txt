@@ -1,0 +1,43 @@
+q
+/TRP1 gs
+0 g 0 G
+0 g 0 G
+0 g 0 G
+1 0 0 1 165.601 418.876 cm
+q
+.32462 0 0 .32462 0 0 cm
+q
+1 0 0 1 0 0 cm
+/Im5 Do
+Q
+Q
+0 g 0 G
+1 0 0 1 -165.601 -418.876 cm
+BT
+/F44 9.9626 Tf 90 404.266 Td [(Figur)18(e)-281(5)]TJ/F47 8.9664 Tf 45.792 0 Td [(This)-281(\002gure)-282(sho)25(ws)-281(results)-282(from)-281(automated)-281(red-teaming)-282(on)-281(held-out)-281(prompts)-282(including)-281(harmful)-282(requests)-281(and)]TJ -45.792 -9.962 Td [("jailbreaks")-250(intended)-250(to)-250(trick)-250(the)-250(model.)]TJ
+0 g 0 G
+0 g 0 G
+0 g 0 G
+0 g 0 G
+ET
+1 0 0 1 100.801 127.584 cm
+q
+.37039 0 0 .37039 0 0 cm
+q
+1 0 0 1 0 0 cm
+/Im6 Do
+Q
+Q
+0 g 0 G
+0 g 0 G
+1 0 0 1 -100.801 -127.584 cm
+BT
+/F44 9.9626 Tf 90 112.974 Td [(Figur)18(e)-391(6)]TJ/F47 8.9664 Tf 46.88 0 Td [(This)-391(\002gure)-390(sho)25(ws)-391(performance)-390(on)-391(Anthropic')55(s)-391(helpful,)-425(honest,)-426(and)-391(harmless)-390(e)25(v)25(aluations)-391(for)-391(preference)]TJ -46.88 -9.963 Td [(models)-315(trained)-316(from)-316(human)-315(feedback)-316(\050orange\051,)-331(5-shot)-316(pretrained)-315(language)-316(models)-315(from)-316(our)-316(pr)1(ior)-316(research)-316([9])-315(\050black\051,)]TJ 0 -9.963 Td [(and)-250(Claude)-250(models)-250(\050bar)-250(chart\051.)]TJ
+0 g 0 G
+0 g 0 G
+0 g 0 G
+/F47 9.9626 Tf 213.509 -50.936 Td [(7)]TJ
+0 g 0 G
+ET
+
+Q
