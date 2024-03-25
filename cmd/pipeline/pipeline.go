@@ -67,14 +67,18 @@ func main() {
 			fmt.Printf("Error answering question: %v\n", err)
 			return
 		}
-		fmt.Println("Before:\n", answer)
 
 		match := re.FindStringSubmatch(answer)
 		if len(match) == 2 {
 			answer = match[1]
 		}
 
-		fmt.Println("After:\n", answer)
+		rawOutFile := fmt.Sprintf("./cmd/pipeline/out/raw/%s_answer.txt", strings.ToLower(dataSource.Name))
+		err = os.WriteFile(rawOutFile, []byte(answer), os.ModePerm)
+		if err != nil {
+			fmt.Printf("Error writing raw output file: %v\n", err)
+			return
+		}
 
 		// Parse the answer string into a map.
 		var answerMap map[string]any
@@ -91,7 +95,7 @@ func main() {
 			return
 		}
 
-		yamlFile := fmt.Sprintf("./cmd/pipeline/out/%s_answer.yaml", strings.ToLower(dataSource.Name))
+		yamlFile := fmt.Sprintf("./cmd/pipeline/out/yaml/%s_answer.yaml", strings.ToLower(dataSource.Name))
 		err = os.WriteFile(yamlFile, yamlData, os.ModePerm)
 		if err != nil {
 			fmt.Printf("Error writing YAML file: %v\n", err)
@@ -210,15 +214,48 @@ func answerQuestion(data string) (string, error) {
 
 	question := `Here is a YAML format. Please answer the following model-card related questions and provide the answers in valid YAML format:
 
-model_details:
-intended_use:
-factors:
-metrics:
-evaluation_data:
-training_data:
-ethical_considerations:
-caveats_recommentations:
-quantitative_analysis:
+Please provide the following information about the model in the specified format:
+Model Details:
+- Name: [Model Name]
+- Version: [Model Version]
+- Release Date: [Release Date]
+- Developed By: [Developer]
+- Model Type: [Model Type]
+
+Intended Use:
+- [Intended Use 1]
+- [Intended Use 2]
+...
+
+Factors:
+- [Factor 1]
+- [Factor 2]
+...
+
+Metrics:
+- [Metric 1]
+- [Metric 2]
+...
+
+Evaluation Data:
+- Description: [Evaluation Data Description]
+
+Training Data:
+- Description: [Training Data Description]
+
+Ethical Considerations:
+- [Ethical Consideration 1]
+- [Ethical Consideration 2]
+...
+
+Caveats and Recommendations:
+- [Caveat/Recommendation 1]
+- [Caveat/Recommendation 2]
+...
+
+Additional Information:
+- [Additional Information 1]
+- [Additional Information 2]
 `
 
 	resp, err := client.CreateChatCompletion(
@@ -228,7 +265,7 @@ quantitative_analysis:
 			Messages: []openai.ChatCompletionMessage{
 				{
 					Role:    openai.ChatMessageRoleUser,
-					Content: fmt.Sprintf("Please answer the following question given this text: <CONTENT>%s</CONTENT> %s", data, question),
+					Content: fmt.Sprintf("Please answer the following question given this text: \n\n<CONTENT>%s</CONTENT>\n\n Question: %s", data, question),
 				},
 			},
 		},
