@@ -26,18 +26,6 @@ type Config struct {
 	DataSources []DataSource `yaml:"data_sources"`
 }
 
-type Answer struct {
-	ModelDetails           string `yaml:"model_details"`
-	IntendedUse            string `yaml:"intended_use"`
-	Factors                string `yaml:"factors"`
-	Metrics                string `yaml:"metrics"`
-	EvaluationData         string `yaml:"evaluation_data"`
-	TrainingData           string `yaml:"training_data"`
-	EthicalConsiderations  string `yaml:"ethical_considerations"`
-	CaveatsRecommendations string `yaml:"caveats_recommendations"`
-	QuantitativeAnalysis   string `yaml:"quantitative_analysis"`
-}
-
 func main() {
 	// Read the configuration file
 	configData, err := os.ReadFile("./cmd/pipeline/config.yaml")
