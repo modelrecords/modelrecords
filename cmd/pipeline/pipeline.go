@@ -6,6 +6,8 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"regexp"
+	"strings"
 
 	"github.com/pdfcpu/pdfcpu/pkg/api"
 	"github.com/sashabaranov/go-openai"
@@ -49,7 +51,8 @@ func main() {
 		return
 	}
 
-	var scrapedData string
+	re := regexp.MustCompile(`(?s)^\x60{3}(?:yaml|YAML)?\n(.*)\n\x60{3}$`)
+
 	// Fetch data from each source
 	for _, dataSource := range config.DataSources {
 		data, err := fetchData(dataSource)
@@ -58,28 +61,47 @@ func main() {
 			continue
 		}
 
-		scrapedData += data
+		// Feed the scraped data into the question answering module
+		answer, err := answerQuestion(data)
+		if err != nil {
+			fmt.Printf("Error answering question: %v\n", err)
+			return
+		}
+		fmt.Println("Before:\n", answer)
+
+		match := re.FindStringSubmatch(answer)
+		if len(match) == 2 {
+			answer = match[1]
+		}
+
+		fmt.Println("After:\n", answer)
+
+		// Parse the answer string into a map.
+		var answerMap map[string]any
+		err = yaml.Unmarshal([]byte(answer), &answerMap)
+		if err != nil {
+			fmt.Printf("Error parsing answer string: %v\n", err)
+			return
+		}
+
+		// Generate the YAML file.
+		yamlData, err := yaml.Marshal(answerMap)
+		if err != nil {
+			fmt.Printf("Error generating YAML: %v\n", err)
+			return
+		}
+
+		yamlFile := fmt.Sprintf("./cmd/pipeline/out/%s_answer.yaml", strings.ToLower(dataSource.Name))
+		err = os.WriteFile(yamlFile, yamlData, os.ModePerm)
+		if err != nil {
+			fmt.Printf("Error writing YAML file: %v\n", err)
+			return
+		}
+
+		fmt.Println("YAML file generated successfully for ", dataSource.Name)
 	}
 
-	// Feed the scraped data into the question answering module
-	answer := answerQuestion(scrapedData)
-	fmt.Println("Answer:", answer)
-
-	// Generate the YAML file
-	// yamlData, err := yaml.Marshal(answer)
-	// if err != nil {
-	// 	fmt.Printf("Error generating YAML: %v\n", err)
-	// 	return
-	// }
-	//
-	// // Write the YAML data to a file
-	// err = os.WriteFile("answer.yaml", yamlData, 0644)
-	// if err != nil {
-	// 	fmt.Printf("Error writing YAML file: %v\n", err)
-	// 	return
-	// }
-	//
-	// fmt.Println("YAML file generated successfully.")
+	fmt.Println("All data sources processed successfully.")
 }
 
 func fetchData(dataSource DataSource) (string, error) {
@@ -183,14 +205,11 @@ func extractTextFromPDF(pdfPath, textOutputPath string) error {
 	return nil
 }
 
-func answerQuestion(data string) Answer {
-	// Set up the OpenAI client
+func answerQuestion(data string) (string, error) {
 	client := openai.NewClient(os.Getenv("OPENAI_API"))
 
-	// Define the question
-	question := `Here is a YAML format. Please answer the following model-card related questions:
+	question := `Here is a YAML format. Please answer the following model-card related questions and provide the answers in valid YAML format:
 
-<YAML>
 model_details:
 intended_use:
 factors:
@@ -200,10 +219,8 @@ training_data:
 ethical_considerations:
 caveats_recommentations:
 quantitative_analysis:
-</YAML>
 `
 
-	// Create the chat completion request
 	resp, err := client.CreateChatCompletion(
 		context.Background(),
 		openai.ChatCompletionRequest{
@@ -217,22 +234,8 @@ quantitative_analysis:
 		},
 	)
 	if err != nil {
-		fmt.Printf("Error calling OpenAI API: %v\n", err)
-		return Answer{}
+		return "", fmt.Errorf("error creating chat completion: %v", err)
 	}
 
-	// Extract the answer from the API response
-	answer := resp.Choices[0].Message.Content
-
-	fmt.Println("Answer:", answer)
-
-	// Parse the answer into the Answer struct
-	var parsedAnswer Answer
-	// err = yaml.Unmarshal([]byte(answer), &parsedAnswer)
-	// if err != nil {
-	// 	fmt.Printf("Error parsing answer: %v\n", err)
-	// 	return Answer{}
-	// }
-
-	return parsedAnswer
+	return resp.Choices[0].Message.Content, nil
 }

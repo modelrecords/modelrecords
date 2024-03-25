@@ -1,4 +1,4 @@
 data_sources:
-  - name: Claude2
-    type: pdf
-    source: https://www-cdn.anthropic.com/bd2a28d2535bfb0494cc8e2a3bf135d2e7523226/Model-Card-Claude-2.pdf
+  - name: Bloom
+    type: website
+    source: https://huggingface.co/bigscience/bloom/raw/main/README.md
