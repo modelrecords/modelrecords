@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"fmt"
 	"io"
@@ -9,6 +10,7 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/ledongthuc/pdf"
 	"github.com/pdfcpu/pdfcpu/pkg/api"
 	"github.com/sashabaranov/go-openai"
 	"gopkg.in/yaml.v2"
@@ -73,7 +75,9 @@ func main() {
 			answer = match[1]
 		}
 
-		rawOutFile := fmt.Sprintf("./cmd/pipeline/out/raw/%s_answer.txt", strings.ToLower(dataSource.Name))
+		modelName := strings.ToLower(dataSource.Name)
+
+		rawOutFile := fmt.Sprintf("./cmd/pipeline/out/raw/%s.txt", modelName)
 		err = os.WriteFile(rawOutFile, []byte(answer), os.ModePerm)
 		if err != nil {
 			fmt.Printf("Error writing raw output file: %v\n", err)
@@ -95,7 +99,7 @@ func main() {
 			return
 		}
 
-		yamlFile := fmt.Sprintf("./cmd/pipeline/out/yaml/%s_answer.yaml", strings.ToLower(dataSource.Name))
+		yamlFile := fmt.Sprintf("./cmd/pipeline/out/yaml/%s.yaml", modelName)
 		err = os.WriteFile(yamlFile, yamlData, os.ModePerm)
 		if err != nil {
 			fmt.Printf("Error writing YAML file: %v\n", err)
@@ -135,38 +139,48 @@ func fetchData(dataSource DataSource) (string, error) {
 		data = string(content)
 
 	case "pdf":
-		// Download the PDF file.
-		pdfPath := "./cmd/pipeline/temp.pdf"
-		if err := downloadPDF(dataSource.Source, pdfPath); err != nil {
-			return "", fmt.Errorf("error downloading PDF from %s: %v", dataSource.Source, err)
-		}
-
-		// Extract text from the PDF file.
-		textOutputPath := "./cmd/pipeline/temp"
-		if err := extractTextFromPDF(pdfPath, textOutputPath); err != nil {
-			return "", fmt.Errorf("error extracting text from PDF: %v", err)
-		}
-
-		dirs, err := os.ReadDir(textOutputPath)
+		resp, err := http.Get(dataSource.Source)
 		if err != nil {
-			return "", fmt.Errorf("error reading text file: %v", err)
+			return "", fmt.Errorf("error fetching PDF from %s: %v", dataSource.Source, err)
+		}
+		defer resp.Body.Close()
+
+		// Check the response status code
+		if resp.StatusCode != http.StatusOK {
+			return "", fmt.Errorf("unexpected status code: %d", resp.StatusCode)
 		}
 
-		var data string
-		for _, dir := range dirs {
-			if dir.IsDir() {
+		// Create a bytes.Buffer to store the PDF content
+		var pdfBuffer bytes.Buffer
+
+		// Copy the response body to the buffer
+		_, err = io.Copy(&pdfBuffer, resp.Body)
+		if err != nil {
+			return "", fmt.Errorf("error copying PDF content: %v", err)
+		}
+
+		// Create a new PDF reader from the buffer
+		pdfReader, err := pdf.NewReader(bytes.NewReader(pdfBuffer.Bytes()), int64(pdfBuffer.Len()))
+		if err != nil {
+			return "", fmt.Errorf("error creating PDF reader: %v", err)
+		}
+
+		var builder strings.Builder
+		for pageIndex := 1; pageIndex <= pdfReader.NumPage(); pageIndex++ {
+			page := pdfReader.Page(pageIndex)
+			if page.V.IsNull() {
 				continue
 			}
 
-			file, err := os.ReadFile(textOutputPath + "/" + dir.Name())
+			textContent, err := page.GetPlainText(nil)
 			if err != nil {
-				return "", fmt.Errorf("error reading text file: %v", err)
+				return "", fmt.Errorf("error extracting text from page %d: %v", pageIndex, err)
 			}
 
-			data += string(file)
+			builder.WriteString(textContent)
 		}
 
-		return data, nil
+		return builder.String(), nil
 
 	default:
 		return "", fmt.Errorf("unsupported data source type: %s", dataSource.Type)
