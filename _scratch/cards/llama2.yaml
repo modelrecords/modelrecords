@@ -1,14 +1,14 @@
 pc:
   metadata:
     name: Llama 2
-    spec_urls: 
-      - 
+    spec_urls:
+      -
     description: >
 
     developer: "Meta"
     release_date: "2023"
     model_type: "Large Language Models (LLMs)"
-    model_variants: 
+    model_variants:
       - "7 billion parameters"
       - "13 billion parameters"
       - "70 billion parameters"
@@ -17,7 +17,7 @@ pc:
     intended_use: >
       Commercial and research use in English and
       Assistant-like chat for tuned models and diverse natural language generation tasks for pretrained models
-    out_of_scope: 
+    out_of_scope:
       - "Uses that violate applicable laws or regulations"
       - "Uses prohibited by the Acceptable Use Policy and Llama 2 Community License"
       - "Use in languages other than English, unless fine-tuned in compliance with the Llama 2 Community License and Acceptable Use Policy"
@@ -25,7 +25,7 @@ pc:
     Meta\'s Research Super Cluster and production clusters; third-party cloud compute for fine-tuning, annotation, and evaluation
     539 tCO2eq, 100% offset by Meta’s sustainability program
   metrics:
-    performance_benchmarks: 
+    performance_benchmarks:
       - "Commonsense Reasoning"
       - "World Knowledge"
       - "Reading Comprehension"
@@ -33,7 +33,7 @@ pc:
       - "Multitask Maximal Likelihood Understanding"
       - "BIG-bench Hard"
       - "AGI Evaluation"
-    safety_benchmarks: 
+    safety_benchmarks:
       - "TruthfulQA (truthful and informative responses)"
       - "Toxigen (toxic generation percentage)"
   evaluation_data:
@@ -48,10 +48,10 @@ pc:
   caveats_recommendations:
     - "Not all scenarios have been covered in testing"
     - "Use cases beyond English require fine-tuning within compliance"
-    
+
   question_sets:
     - fmti2023
-  
+
   model:
     blackbox_external_model_access: 1
     capabilities_demonstration: 1

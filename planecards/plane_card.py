@@ -2,7 +2,8 @@ import datetime
 from planecards.surveys.fmti2023 import FMTI2023
 from collections.abc import MutableMapping
 
-def flatten(dictionary, parent_key='', separator='.'):
+
+def flatten(dictionary, parent_key="", separator="."):
     items = []
     for key, value in dictionary.items():
         new_key = parent_key + separator + key if parent_key else key
@@ -12,15 +13,18 @@ def flatten(dictionary, parent_key='', separator='.'):
             items.append((new_key, value))
     return dict(items)
 
+
 class DotDict(dict):
     __delattr__ = dict.__delitem__
     __getattr__ = dict.get
     __setattr__ = dict.__setitem__
+
     def __init__(self, dct):
-            for key, value in dct.items():
-                if hasattr(value, 'keys'):
-                    value = DotDict(value)
-                self[key] = value
+        for key, value in dct.items():
+            if hasattr(value, "keys"):
+                value = DotDict(value)
+            self[key] = value
+
 
 class PlaneCardModel:
     """
@@ -60,15 +64,15 @@ class PlaneCardModel:
             )
             qs.parse()
             self.question_sets_parsed.append(qs)
-    
+
     def results_as_dict(self):
         out = self.plane_card_attrs
         today = datetime.datetime.today()
         out.last_updated = today.strftime("%a %b %y")
         for qsp in self.question_sets_parsed:
-            out[f'result_{qsp.name()}'] = qsp.result()
+            out[f"result_{qsp.name()}"] = qsp.result()
         return out
-    
+
     def results(self):
         """
         Prints the parsed question sets.
