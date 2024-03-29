@@ -16,7 +16,6 @@ def get_parser():
         "--pdf_dir",
         default=None,
         type=str,
-        h
     )
     return parser
 

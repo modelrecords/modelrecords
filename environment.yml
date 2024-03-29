@@ -8,3 +8,6 @@ dependencies:
     - semantic_version
     - jinja2
     - omegaconf
+    - requests
+    - PyPDF2
+    - openai

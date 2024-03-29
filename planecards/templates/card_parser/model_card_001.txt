@@ -1,0 +1,18 @@
+Here is a textual description about a model:
+
+<TEXT>
+{all_text}
+</TEXT>
+
+Please answer the following model-card related questions and provide the answers in valid JSON format:
+<JSON>
+{
+'pc.upstream.intended_use': ["[Indended Use 1]", "[Indended Use 2]", "[Indended Use 3]", "[Indended Use 4]", "[Indended Use 5]"] ,
+'pc.upstream.factors': ["[Factors 1]", "[Factors 2]", "[Factors 3]", "[Factors 4]", "[Factors 5]"] ,
+'pc.upstream.evaluation_data': ["Description: [Evaluation Data Description 1]", "Description: [Evaluation Data Description 2]", "Description: [Evaluation Data Description 3]", "Description: [Evaluation Data Description 4]", "Description: [Evaluation Data Description 5]"] ,
+'pc.upstream.training_data': ["Description: [Training Data Description 1]", "Description: [Training Data Description 2]", "Description: [Training Data Description 3]", "Description: [Training Data Description 4]", "Description: [Training Data Description 5]"] ,
+'pc.upstream.additional_information': ["[Additional Information 1]", "[Additional Information 2]", "[Additional Information 3]", "[Additional Information 4]", "[Additional Information 5]"] ,
+'pc.upstream.recommendations': ["[Recommendations 1]", "[Recommendations 2]", "[Recommendations 3]", "[Recommendations 4]", "[Recommendations 5]"] ,
+'pc.upstream.ethical_considerations': ["[Ethical Consideration 1]", "[Ethical Consideration 2]", "[Ethical Consideration 3]", "[Ethical Consideration 4]", "[Ethical Consideration 5]"] ,
+}
+</JSON>

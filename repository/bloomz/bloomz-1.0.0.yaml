@@ -1,0 +1,187 @@
+pc:
+  metadata:
+    name: BLOOMZ & mT0
+    refs:
+    - https://huggingface.co/bigscience/bloomz/raw/main/README.md
+    - https://arxiv.org/pdf/2211.01786.pdf
+    description: ''
+    version: '1.0'
+    publisher: BigScience Workshop
+    model_type: Multitask Fine-tuned Language Model
+    release_date: '2022-11-17'
+  question_sets:
+  - fmti2023
+  model:
+    blackbox_external_model_access: 1
+    capabilities_demonstration: 1
+    capabilities_description: 1
+    centralized_model_documentation: 1
+    evaluation_of_capabilities: 1
+    external_model_access_protocol: 1
+    external_reproducibility_of_capabilities_evaluation: 1
+    external_reproducibility_of_intentional_harm_evaluation: 0
+    external_reproducibility_of_mitigations_evaluation: 0
+    external_reproducibility_of_trustworthiness_evaluation: 0
+    external_reproducibility_of_unintentional_harm_evaluation: 0
+    full_external_model_access: 1
+    inference_compute_evaluation: 0
+    inference_duration_evaluation: 1
+    input_modality: 1
+    intentional_harm_evaluation: 0
+    limitations_demonstration: 0
+    limitations_description: 1
+    mitigations_demonstration: 0
+    mitigations_description: 0
+    mitigations_evaluation: 0
+    model_architecture: 1
+    asset_license: 1
+    model_components: 1
+    model_size: 1
+    output_modality: 1
+    risks_demonstration: 0
+    risks_description: 0
+    third_party_capabilities_evaluation: 0
+    third_party_evaluation_of_limitations: 1
+    third_party_mitigations_evaluation: 0
+    third_party_risks_evaluation: 0
+    trustworthiness_evaluation: 0
+    unintentional_harm_evaluation: 0
+  downstream:
+    affected_individuals: 0
+    affected_market_sectors: 0
+    centralized_documentation_for_downstream_use: 1
+    change_log: 1
+    deprecation_policy: 1
+    distribution_channels: 1
+    documentation_for_responsible_downstream_use: 0
+    downstream_applications: 1
+    feedback_mechanism: 1
+    feedback_summary: 0
+    geographic_statistics: 0
+    government_inquiries: 0
+    interoperability_of_usage_and_model_behavior_policies: 0
+    justification_for_enforcement_action: 0
+    detection_of_machine_generated_content: 0
+    model_behavior_policy_enforcement: 0
+    monitoring_mechanism: 0
+    permitted_restricted_and_prohibited_model_behaviors: 0
+    permitted_restricted_and_prohibited_uses: 1
+    permitted_and_prohibited_use_of_user_data: 1
+    permitted_and_prohibited_users: 0
+    products_and_services: 0
+    redress_mechanism: 0
+    release_decision_making_protocol: 1
+    release_process: 1
+    terms_of_service: 1
+    usage_data_access_protocol: 0
+    usage_disclaimers: 1
+    usage_policy_enforcement: 0
+    usage_policy_violation_appeals_mechanism: 0
+    usage_reports: 0
+    user_data_protection_policy: 1
+    user_interaction_with_ai_system: 1
+    versioning_protocol: 1
+  upstream:
+    employment_of_data_laborers: 1
+    energy_usage: 0
+    additional_dependencies: 1
+    broader_environmental_impact: 0
+    carbon_emissions: 0
+    compute_hardware: 1
+    compute_usage: 0
+    core_frameworks: 1
+    data_augmentation: 1
+    copyrighted_data: 0
+    data_creators: 0
+    data_curation: 1
+    data_license_status: 0
+    data_size: 1
+    data_source_selection: 1
+    data_sources: 1
+    development_duration: 0
+    direct_external_data_access: 1
+    geographic_distribution_of_data_laborers: 1
+    hardware_owner: 0
+    harmful_data_filtration: 1
+    instructions_for_creating_data: 1
+    labor_protections: 0
+    mitigations_for_copyright: 1
+    mitigations_for_privacy: 1
+    model_objectives: 1
+    model_stages: 1
+    personal_information_in_data: 0
+    queryable_external_data_access: 1
+    third_party_partners: 1
+    use_of_human_labor: 1
+    wages: 1
+    intended_use:
+    - Natural language processing tasks, including but not limited to translation,
+      sentiment analysis, and question answering.
+    - Cross-lingual understanding and generation tasks.
+    - Instruction-based prompt generation for a wide range of languages.
+    - Zero-shot and few-shot learning applications.
+    - Exploratory data analysis and research in multilingual language model capabilities.
+    factors:
+    - Language support and proficiency across a broad spectrum of languages.
+    - The clarity and specificity of instruction prompts.
+    - Model scalability and performance across different sizes from 300M to 176B parameters.
+    - Generalization abilities to unseen tasks and languages.
+    - Accessibility and ease of use for researchers and developers with different
+      levels of resources.
+    evaluation_data:
+    - 'Description: A diverse set of evaluation tasks covering coreference resolution,
+      natural language inference, sentence completion, and program synthesis across
+      multiple languages.'
+    - 'Description: Datasets from the Winogrande, ANLI, XNLI, and HumanEval evaluations,
+      allowing for an extensive assessment of model performance in both seen and unseen
+      languages.'
+    - 'Description: Validation and test splits are utilized from the respective datasets
+      to ensure unbiased evaluation.'
+    - 'Description: Multilingual task evaluation employing prompts in both English
+      and the respective native languages to gauge cross-lingual transfer capabilities.'
+    - 'Description: Benchmarking against existing models like XGLM, T0, and GPT to
+      understand the competitive landscape.'
+    training_data:
+    - 'Description: The model utilizes the BIG-bench xP3 dataset for training, promoting
+      a wide coverage of tasks and languages.'
+    - 'Description: Incorporation of code and programming languages alongside natural
+      languages to enhance the model''s versatility.'
+    - 'Description: Utilized datasets such as BIG-bench, ROOTS, and a subset of the
+      mC4 corpus to provide rich, diverse linguistic and task coverage.'
+    - 'Description: Finetuning approach on xP3, xP3mt, and P3 datasets to enable cross-lingual
+      generalization and effective prompt-based task performance.'
+    - 'Description: Leverages both pretrained (BLOOM, mT5) and bespoke large language
+      models across various sizes for targeted task learning.'
+    additional_information:
+    - The project is conducted under the BigScience initiative, allowing for open
+      collaboration and research.
+    - Models are released under RAIL and Apache 2.0 licenses for wide accessibility
+      and use.
+    - Fine-tuned models incorporate biases towards short answers, affecting performance
+      on generative tasks.
+    - Language contamination analysis in the pretraining corpus shows unintentional
+      learning from 'unseen' languages.
+    - Recommendations include using a specific prompting format and considering model
+      size according to task requirements.
+    recommendations:
+    - Employment of early stopping, addition of long tasks, and minimum generation
+      length forcing for improved generative task performance.
+    - Fine-tuning with both English and machine-translated multilingual prompts for
+      enhanced cross-lingual abilities.
+    - Utilization of the model in research to explore and expand the boundaries of
+      zero-shot learning across languages.
+    - Adoption of ethical and fair use practices, considering the model's broad linguistic
+      capabilities.
+    - Engagement with the BigScience community for collaborative research and development
+      efforts.
+    ethical_considerations:
+    - Potential for biased or inaccurate outputs across less-supported languages,
+      requiring careful validation.
+    - Use of the model in applications with impactful consequences should be approached
+      with caution.
+    - Need for transparency regarding the training data sources and model limitations
+      to users.
+    - Ethical considerations around data privacy and consent, especially in multilingual
+      contexts.
+    - Awareness of cultural sensitivity and potential for reinforcing stereotypes
+      must be considered in model application and development.

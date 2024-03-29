@@ -3,8 +3,31 @@ import semantic_version as semver
 import re
 import os
 import operator
+import requests
+import mimetypes
+import PyPDF2
+from omegaconf import OmegaConf
+from pathlib import Path
+
 
 BASE_REPO_PATH = 'repository'
+
+def download_url(url):
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        return response.content
+    except requests.exceptions.RequestException as e:
+        print("Error:", e)
+        return None
+
+def detect_format(url, content):
+    content_type = mimetypes.guess_type(url)
+    if content_type[0]:
+        return content_type[0].split('/')[1]
+    else:
+        return url.split('.')[-1].lower()
+
 
 class Repository:
     def __init__(self, base_repo_path=BASE_REPO_PATH):
@@ -30,17 +53,68 @@ class Repository:
                 return f'{basepath}/{candidate}'
         raise f"No card found: {card_relation}"
 
-    def load_plane_card_yaml(self, card:str):
-        pkg = card.replace(card.split('-')[-1], '')[:-1]
+    def download_and_process_refs(self, pkg:str):
+        refs = self.load_plane_card_yaml(pkg).pc.metadata.refs
+
+        ref_path = f'{self.base_repo_path}/_refs/{pkg}'
+        Path(f'{ref_path}').mkdir(parents=True, exist_ok=True)
         
-        base_conf = OmegaConf.load(f'{self.base_repo_path}/{pkg}/{card}.yaml')
+        text_files = []
+        
+        for idx, url in enumerate(refs):
+            content = download_url(url)
+            if content:
+                format = detect_format(url, content)
+                file_path = None
+                if format == 'pdf':
+                    file_path = f'{ref_path}/{idx:03}.{format}'
+                
+                    with open(file_path, 'wb') as f:
+                        f.write(content)
+                    reader = PyPDF2.PdfReader(file_path)
+                    all_text = ''
+                    for page in reader.pages:
+                        all_text += page.extract_text()
+                    
+                    file_path = f'{file_path}.txt'
+                    with open(file_path, 'w') as f:
+                        f.writelines(all_text)
+                    
+                elif format in ['md', 'txt']:
+                    file_path = f'{ref_path}/{idx:03}.{format}.txt'
+                    with open(file_path, 'wb') as f:
+                        f.write(content)
+                else:
+                    print("Format could not be determined.")
+                
+                if file_path:
+                    text_files.append(file_path)
+        return text_files
+    
+    def update_card_attrs(self, pkg, attrs):
+        yml = self.load_plane_card_yaml(pkg)
+        for key, answer in attrs.items():
+            OmegaConf.update(yml, key, answer, force_add=True)
+        
+        with open(self.plane_card_yaml_path(pkg)) as fp:
+            OmegaConf.save(config=yml, f=fp.name)
+
+    def plane_card_folder(self, pkg:str):
+        return f'{self.base_repo_path}/{pkg}'
+
+    def plane_card_yaml_path(self, card:str):
+        pkg = card.replace(card.split('-')[-1], '')[:-1]
+        return f'{self.plane_card_folder(pkg)}/{card}.yaml'
+
+    def load_plane_card_yaml(self, card:str):
+        yml_path = self.plane_card_yaml_path(card)
+        base_conf = OmegaConf.load(yml_path)
 
         relation_confs = [base_conf]
 
         if base_conf.pc.get('relations'):
             if base_conf.pc.relations.get('upstream'):
                 for relation in base_conf.pc.relations.upstream:
-                    #print(parse_card_relation(relation))
                     relation_confs.append(OmegaConf.load(self.find_card_in_repo(relation)))
 
         return OmegaConf.unsafe_merge(*relation_confs[::-1])
