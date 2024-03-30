@@ -39,7 +39,7 @@ class PlaneCardModel:
     """
 
     QUESTION_SETS = {"fmti2023": FMTI2023}
-
+    
     def __init__(self, plane_card_params, locale=None):
         """
         Initializes a PlaneCard object.

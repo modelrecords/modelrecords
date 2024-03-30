@@ -1,0 +1,189 @@
+pc:
+  metadata:
+    name: PaLM 2
+    refs:
+    - https://ai.google/static/documents/palm2techreport.pdf
+    - https://ai.google/discover/palm2/
+    version: 2
+    publisher: Google
+    model_type: Large Language Model
+    release_date: 2023-05
+  question_sets:
+  - fmti2023
+  model:
+    blackbox_external_model_access: 1
+    capabilities_demonstration: 1
+    capabilities_description: 1
+    centralized_model_documentation: 1
+    evaluation_of_capabilities: 1
+    external_model_access_protocol: 0
+    external_reproducibility_of_capabilities_evaluation: 1
+    external_reproducibility_of_intentional_harm_evaluation: 0
+    external_reproducibility_of_mitigations_evaluation: 0
+    external_reproducibility_of_trustworthiness_evaluation: 0
+    external_reproducibility_of_unintentional_harm_evaluation: 1
+    full_external_model_access: 0
+    inference_compute_evaluation: 0
+    inference_duration_evaluation: 0
+    input_modality: 1
+    intentional_harm_evaluation: 0
+    limitations_demonstration: 0
+    limitations_description: 1
+    mitigations_demonstration: 0
+    mitigations_description: 1
+    mitigations_evaluation: 1
+    model_architecture: 1
+    asset_license: 1
+    model_components: 0
+    model_size: 0
+    output_modality: 1
+    risks_demonstration: 0
+    risks_description: 0
+    third_party_capabilities_evaluation: 0
+    third_party_evaluation_of_limitations: 1
+    third_party_mitigations_evaluation: 0
+    third_party_risks_evaluation: 0
+    trustworthiness_evaluation: 0
+    unintentional_harm_evaluation: 1
+  upstream:
+    additional_dependencies: 1
+    broader_environmental_impact: 0
+    carbon_emissions: 0
+    compute_hardware: 0
+    compute_usage: 0
+    core_frameworks: 1
+    data_augmentation: 1
+    copyrighted_data: 0
+    data_creators: 0
+    data_curation: 1
+    data_license_status: 0
+    data_size: 0
+    data_source_selection: 0
+    data_sources: 0
+    development_duration: 0
+    direct_external_data_access: 0
+    employment_of_data_laborers: 0
+    energy_usage: 0
+    geographic_distribution_of_data_laborers: 0
+    hardware_owner: 1
+    harmful_data_filtration: 0
+    instructions_for_creating_data: 0
+    labor_protections: 0
+    mitigations_for_copyright: 0
+    mitigations_for_privacy: 0
+    model_objectives: 0
+    model_stages: 1
+    personal_information_in_data: 0
+    queryable_external_data_access: 0
+    third_party_partners: 0
+    use_of_human_labor: 0
+    wages: 0
+    intended_use:
+    - Enhance natural language understanding and generation tasks across various industries
+      including healthcare, finance, and customer service.
+    - Support research and development in machine learning and artificial intelligence.
+    - Provide a multilingual model capable of understanding, translating, and generating
+      content in over 100 languages.
+    - Enable coding assistance across more than 20 programming languages.
+    - Facilitate the development of AI-powered applications and services by allowing
+      fine-tuning to specific domains.
+    factors:
+    - Model size and compute efficiency enabling faster response times and lower serving
+      costs.
+    - Advanced reasoning capabilities competitive with other leading LLMs like GPT-4.
+    - Improved multilingual support for understanding idiomatic, nuanced texts and
+      performing translations.
+    - Enhanced coding capabilities including code generation, context-aware suggestions,
+      and bug identification.
+    - Possibility of fine-tuning to create domain-specific models such as Med-PaLM
+      2 for medical applications.
+    evaluation_data:
+    - 'Description: Used benchmark datasets including WinoGrande for commonsense reasoning,
+      ARC-C for question answering, and various coding challenges.'
+    - 'Description: Evaluated across multilingual datasets to ensure comprehensive
+      understanding and generation capabilities in over 100 languages.'
+    - 'Description: Performance compared against leading models such as GPT-4 in reasoning,
+      translation, and coding tasks.'
+    - 'Description: Utilized datasets from high-quality code repositories to train
+      its coding proficiency in multiple programming languages.'
+    - 'Description: Engaged professional translators to evaluate multilingual translation
+      accuracy and idiomatic expressions.'
+    training_data:
+    - 'Description: Trained on a corpus of high-quality multilingual web documents
+      spanning over 100 languages.'
+    - 'Description: Utilized vast repositories of public domain source code for training
+      its coding capabilities.'
+    - 'Description: Emphasized enrichment of the training data with domain-specific
+      information for tasks such as healthcare analysis.'
+    - 'Description: Incorporated parallel multilingual texts to improve translation
+      accuracy and understanding of ambiguous meanings.'
+    - 'Description: Prioritized data diversity to enhance the model''s generalization
+      across various tasks and languages.'
+    additional_information:
+    - PaLM 2 introduces novel techniques like LoRA (Low-Rank Adaptation) and compute-optimal
+      scaling to achieve efficiency.
+    - Google plans to release multiple variants of PaLM 2 (e.g., Gecko, Otter, Bison,
+      and Unicorn) catering to different computing needs.
+    - Implemented Reinforcement Learning from Human Feedback (RLHF) for better model
+      performance.
+    - Future plans include adding multimodal capability to the next-generation Gemini
+      model.
+    - Google Bard, Duet AI, and the PaLM API are among the first products to utilize
+      PaLM 2 technology, offering enhanced AI-driven experiences.
+    recommendations:
+    - Developers are encouraged to use the PaLM API for integrating advanced AI capabilities
+      into their applications.
+    - Researchers should explore fine-tuning PaLM 2 for domain-specific tasks to leverage
+      its adaptable nature.
+    - Consider ethical implications and strive for responsible use, particularly in
+      sensitive applications like healthcare.
+    - Stay informed about the release of additional tools and plugins that may enhance
+      PaLM 2's functionality.
+    - Continuously monitor and evaluate AI performance to ensure fairness, accuracy,
+      and minimal bias in applications.
+    ethical_considerations:
+    - Ensure transparency in AI applications developed using PaLM 2 to build trust
+      with end users.
+    - Address potential biases in model output, especially in multilingual and multicultural
+      applications.
+    - Adopt privacy-preserving measures when deploying PaLM 2 in applications handling
+      sensitive personal data.
+    - Engage in continuous monitoring and updating of AI models to address ethical
+      concerns and maintain integrity.
+    - Encourage an inclusive approach in AI development and applications, striving
+      to minimize digital divide and ensure broad accessibility.
+  downstream:
+    affected_individuals: 0
+    affected_market_sectors: 0
+    centralized_documentation_for_downstream_use: 1
+    change_log: 1
+    deprecation_policy: 1
+    distribution_channels: 1
+    documentation_for_responsible_downstream_use: 1
+    downstream_applications: 0
+    feedback_mechanism: 1
+    feedback_summary: 0
+    geographic_statistics: 0
+    government_inquiries: 0
+    interoperability_of_usage_and_model_behavior_policies: 0
+    justification_for_enforcement_action: 1
+    detection_of_machine_generated_content: 0
+    model_behavior_policy_enforcement: 0
+    monitoring_mechanism: 1
+    permitted_restricted_and_prohibited_model_behaviors: 0
+    permitted_restricted_and_prohibited_uses: 1
+    permitted_and_prohibited_use_of_user_data: 1
+    permitted_and_prohibited_users: 1
+    products_and_services: 1
+    redress_mechanism: 0
+    release_decision_making_protocol: 0
+    release_process: 1
+    terms_of_service: 1
+    usage_data_access_protocol: 0
+    usage_disclaimers: 1
+    usage_policy_enforcement: 0
+    usage_policy_violation_appeals_mechanism: 0
+    usage_reports: 0
+    user_data_protection_policy: 1
+    user_interaction_with_ai_system: 1
+    versioning_protocol: 1

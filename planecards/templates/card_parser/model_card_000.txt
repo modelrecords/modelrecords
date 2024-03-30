@@ -11,6 +11,6 @@ Please answer the following model-card related questions and provide the answers
 'pc.metadata.version': "[Model Version]", 
 'pc.metadata.publisher': "[Model Developer]", 
 'pc.metadata.model_type': "[Model Type]", 
-'pc.metadata.release_date': "[Model Release Datae year-month-day]"
+'pc.metadata.release_date': "[Model Release Date year-month-day]"
 }
 </JSON>
