@@ -1,5 +1,5 @@
-# Planecards 
-The wonderful world of plane cards. 
+# Planecards
+The wonderful world of plane cards.
 
 ## Technical documentation
 1) [Techincal Design Document](https://docs.google.com/document/d/18ebXWaUiy-wSAZHtXMSESnIHMjJoV-GeW0W9i-uhlDo/edit#heading=h.n2dkl2j6xzna)
@@ -14,7 +14,9 @@ It's time to setup your environment!
 ## Playing with jupyter notebooks
 If you are enthused about using the `.ipynb` files you can set the environment to `planecards` and you should be off to the races!
 
-## PDF Rendering 
-If you want to render PDFs, and let's be honest who doesn't, you must do the following: 
+## PDF Rendering
+If you want to render PDFs, and let's be honest who doesn't, you must do the following:
 1. Install MacTex `brew install --cask mactex`
-2.
+2. If you have to interrupt the build or it crashes, you'll have to rerun the following in order to build again:
+  1. `conda env update --file environment.yml`
+  2. `conda activate planecards`

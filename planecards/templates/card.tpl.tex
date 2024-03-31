@@ -14,6 +14,12 @@
 \usepackage[breakable]{tcolorbox}
 \usepackage{float}
 \usepackage{enumitem}
+\usepackage{etoolbox}
+
+% Define a custom command for conditional rendering
+\newcommand{\conditionalRender}[2]{%
+    \ifstrempty{#1}{}{\item \textbf{#1#2}}%
+}
 
 \title{\VAR{pc.metadata.name}: Model Card}
 \author{planecards}
@@ -56,9 +62,14 @@
     \item Metrics 1....
 \end{mcsection}
 
-\begin{mcsection}{Environmenal}
-    \item \textbf{\VAR{pc.upstream.environmental.tco2e} : Carbon Emitted(tCO2eq)}
-\end{mcsection}
+% Begin the conditional statement to check if the variable is empty
+\ifstrempty{\VAR{pc.upstream.environmental.tco2e}}%
+    {}% if empty, do nothing
+    {% if not empty, render the mcsection environment
+        \begin{mcsection}{Environmental}
+            \conditionalRender{\VAR{pc.upstream.environmental.tco2e}}{ : Carbon Emitted(tCO2eq)90}
+        \end{mcsection}
+    }
 
 \begin{mcsection}{Evaluation Data}
     \item Evaluation data 1...
