@@ -18,5 +18,5 @@ If you are enthused about using the `.ipynb` files you can set the environment t
 If you want to render PDFs, and let's be honest who doesn't, you must do the following:
 1. Install MacTex `brew install --cask mactex`
 2. If you have to interrupt the build or it crashes, you'll have to rerun the following in order to build again:
-    2.1. `conda env update --file environment.yml`
-    2.2. `conda activate planecards`
+    1. `conda env update --file environment.yml`
+    2. `conda activate planecards`
