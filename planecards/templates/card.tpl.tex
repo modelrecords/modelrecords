@@ -44,40 +44,51 @@
     \item Detail 2...
 \end{mcsection}
 
-\begin{mcsection}{Intended Use}
-    \item Intended use 1...
-\end{mcsection}
+\textbf{Intended use}
+\BLOCK{ for item in pc.upstream.intended_use}
+    \item - \VAR{ item }
+\BLOCK{ endfor }
 
-\begin{mcsection}{Factors}
-    \item Factors 1...
-\end{mcsection}
+\textbf{Factors}
+\BLOCK{ for item in pc.upstream.factors}
+    \item - \VAR{ item }
+\BLOCK{ endfor }
 
-\begin{mcsection}{Metrics}
-    \item Metrics 1....
-\end{mcsection}
+\textbf{Metrics}
+TBD?
+
+\textbf{Evaluation data}
+\BLOCK{ for item in pc.upstream.evaluation_data}
+    \item - \VAR{ item }
+\BLOCK{ endfor }
+
+\textbf{Training data}
+\BLOCK{ for item in pc.upstream.training_data}
+    \item - \VAR{ item }
+\BLOCK{ endfor }
 
 \begin{mcsection}{Environmental}
     \item Environmental 1...
 \end{mcsection}
 
-\begin{mcsection}{Evaluation Data}
-    \item Evaluation data 1...
-\end{mcsection}
+\textbf{Ethical considerations}
+\BLOCK{ for item in pc.upstream.ethical_considerations}
+    \item - \VAR{ item }
+\BLOCK{ endfor }
 
-\begin{mcsection}{Training Data}
-    \item Training data 1...
-\end{mcsection}
+\textbf{Recommendations}
+\BLOCK{ for item in pc.upstream.recommendations}
+    \item - \VAR{ item }
+\BLOCK{ endfor }
 
-\begin{mcsection}{Ethical Considerations}
-    \item Ethical considerations 1....
-\end{mcsection}
-
-\begin{mcsection}{Caveats and Recommendations}
-    \item Caveats and recommendations 1...
-\end{mcsection}
+\textbf{Additional information}
+\BLOCK{ for item in pc.upstream.additional_information}
+    \item - \VAR{ item }
+\BLOCK{ endfor }
 
 \textbf{Quantitative Analyses}
 TBD
+
 \end{tcolorbox}
 \end{singlespace}
 \end{adjustwidth}
