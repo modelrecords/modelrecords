@@ -14,12 +14,6 @@
 \usepackage[breakable]{tcolorbox}
 \usepackage{float}
 \usepackage{enumitem}
-\usepackage{etoolbox}
-
-% Define a custom command for conditional rendering
-\newcommand{\conditionalRender}[2]{%
-    \ifstrempty{#1}{}{\item \textbf{#1#2}}%
-}
 
 \title{\VAR{pc.metadata.name}: Model Card}
 \author{planecards}
@@ -46,49 +40,94 @@
     breakable, sharp corners, boxrule=0.7pt]
 
 \begin{mcsection}{Model Details}
-    \item Detail 1...
-    \item Detail 2...
+    \item Blackbox external model access: \VAR{ pc.model.blackbox_external_model_access }
+    \item Capabilities demonstration: \VAR{ pc.model.capabilities_demonstration }
+    \item Capabilities description: \VAR{ pc.model.capabilities_description }
+    \item Centralized model documentation: \VAR{ pc.model.centralized_model_documentation }
+    \item Evaluation of capabilities: \VAR{ pc.model.evaluation_of_capabilities }
+    \item External model access protocol: \VAR{ pc.model.external_model_access_protocol }
+    \item External reproducibility of capabilities evaluation: \VAR{ pc.model.external_reproducibility_of_capabilities_evaluation }
+    \item External reproducibility of intentional harm evaluation: \VAR{ pc.model.external_reproducibility_of_intentional_harm_evaluation }
+    \item External reproducibility of mitigations evaluation: \VAR{ pc.model.external_reproducibility_of_mitigations_evaluation }
+    \item External reproducibility of trustworthiness evaluation: \VAR{ pc.model.external_reproducibility_of_trustworthiness_evaluation }
+    \item External reproducibility of unintentional harm evaluation: \VAR{ pc.model.external_reproducibility_of_unintentional_harm_evaluation }
+    \item Full external model access: \VAR{ pc.model.full_external_model_access }
+    \item Inference compute evaluation: \VAR{ pc.model.inference_compute_evaluation }
+    \item Inference duration evaluation: \VAR{ pc.model.inference_duration_evaluation }
+    \item Input modality: \VAR{ pc.model.input_modality }
+    \item Intentional harm evaluation: \VAR{ pc.model.intentional_harm_evaluation }
+    \item Limitations demonstration: \VAR{ pc.model.limitations_demonstration }
+    \item Limitations description: \VAR{ pc.model.limitations_description }
+    \item Mitigations demonstration: \VAR{ pc.model.mitigations_demonstration }
+    \item Mitigations description: \VAR{ pc.model.mitigations_description }
+    \item Mitigations evaluation: \VAR{ pc.model.mitigations_evaluation }
+    \item Model architecture: \VAR{ pc.model.model_architecture }
+    \item Asset license: \VAR{ pc.model.asset_license }
+    \item Model components: \VAR{ pc.model.model_components }
+    \item Model size: \VAR{ pc.model.model_size }
+    \item Output modality: \VAR{ pc.model.output_modality }
+    \item Risks demonstration: \VAR{ pc.model.risks_demonstration }
+    \item Risks description: \VAR{ pc.model.risks_description }
+    \item Third party capabilities evaluation: \VAR{ pc.model.third_party_capabilities_evaluation }
+    \item Third party evaluation of limitations: \VAR{ pc.model.third_party_evaluation_of_limitations }
+    \item Third party mitigations evaluation: \VAR{ pc.model.third_party_mitigations_evaluation }
+    \item Third party risks evaluation: \VAR{ pc.model.third_party_risks_evaluation }
+    \item Trustworthiness evaluation: \VAR{ pc.model.trustworthiness_evaluation }
+    \item Unintentional harm evaluation: \VAR{ pc.model.unintentional_harm_evaluation }
 \end{mcsection}
 
-\begin{mcsection}{Intended Use}
-    \item Intended use 1...
-\end{mcsection}
+\textbf{Intended use}
+\BLOCK{ for item in pc.upstream.intended_use}
+    \item - \VAR{ item }
+\BLOCK{ endfor }
 
-\begin{mcsection}{Factors}
-    \item Factors 1...
-\end{mcsection}
+\textbf{Factors}
+\BLOCK{ for item in pc.upstream.factors}
+    \item - \VAR{ item }
+\BLOCK{ endfor }
 
-\begin{mcsection}{Metrics}
-    \item Metrics 1....
-\end{mcsection}
+\textbf{Metrics}
 
-% Begin the conditional statement to check if the variable is empty
-\ifstrempty{\VAR{pc.upstream.environmental.tco2e}}%
-    {}% if empty, do nothing
-    {% if not empty, render the mcsection environment
-        \begin{mcsection}{Environmental}
-            \conditionalRender{\VAR{pc.upstream.environmental.tco2e}}{ : Carbon Emitted(tCO2eq)}
-        \end{mcsection}
-    }
+TBD?
 
-\begin{mcsection}{Evaluation Data}
-    \item Evaluation data 1...
-\end{mcsection}
+\textbf{Evaluation data}
+\BLOCK{ for item in pc.upstream.evaluation_data}
+    \item - \VAR{ item }
+\BLOCK{ endfor }
 
-\begin{mcsection}{Training Data}
-    \item Training data 1...
-\end{mcsection}
+\textbf{Training data}
+\BLOCK{ for item in pc.upstream.training_data}
+    \item - \VAR{ item }
+\BLOCK{ endfor }
 
-\begin{mcsection}{Ethical Considerations}
-    \item Ethical considerations 1....
-\end{mcsection}
+\textbf{Environmental}
+\BLOCK{ for item in pc.upstream.environmental.refs}
+    \item - \url{\VAR{ item }}
+\BLOCK{ endfor }
+\item - Carbon emitted(tCO2eq): \VAR{ pc.upstream.environmental.tco2e }
+\item - Energy consumption: \VAR{ pc.upstream.environmental.energy_consumption }
+\item - Energy unit: \VAR{ pc.upstream.environmental.energy_unit }
+\item - Compute hours: \VAR{ pc.upstream.environmental.compute_hours }
 
-\begin{mcsection}{Caveats and Recommendations}
-    \item Caveats and recommendations 1...
-\end{mcsection}
+\textbf{Ethical considerations}
+\BLOCK{ for item in pc.upstream.ethical_considerations}
+    \item - \VAR{ item }
+\BLOCK{ endfor }
+
+\textbf{Recommendations}
+\BLOCK{ for item in pc.upstream.recommendations}
+    \item - \VAR{ item }
+\BLOCK{ endfor }
+
+\textbf{Additional information}
+\BLOCK{ for item in pc.upstream.additional_information}
+    \item - \VAR{ item }
+\BLOCK{ endfor }
 
 \textbf{Quantitative Analyses}
-TBD
+
+TBD?
+
 \end{tcolorbox}
 \end{singlespace}
 \end{adjustwidth}
