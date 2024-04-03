@@ -101,6 +101,9 @@ TBD?
 \BLOCK{ endfor }
 
 \textbf{Environmental}
+\BLOCK{ for item in pc.upstream.environmental.refs}
+    \item - \url{\VAR{ item }}
+\BLOCK{ endfor }
 \item - Carbon emitted(tCO2eq): \VAR{ pc.upstream.environmental.tco2e }
 \item - Energy consumption: \VAR{ pc.upstream.environmental.energy_consumption }
 \item - Energy unit: \VAR{ pc.upstream.environmental.energy_unit }
