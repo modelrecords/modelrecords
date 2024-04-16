@@ -1,0 +1,13 @@
+{
+  "site": {
+    "title": "My Py Site",
+    "author": "Dojo",
+    "year": "2020"
+  },
+  "nav_links": [
+    {
+      "title": "Home",
+      "url": "index.html"
+    }
+  ]
+}
