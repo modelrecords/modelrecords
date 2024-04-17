@@ -11,8 +11,6 @@ dependencies:
     - requests
     - PyPDF2
     - openai
-    - commonmark
-    - MarkupSafe
-    - pycodestyle
-    - python-frontmatter
-    - six
+    - pelican[markdown]
+    - invoke
+    - livereload
