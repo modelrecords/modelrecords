@@ -11,3 +11,7 @@ dependencies:
     - requests
     - PyPDF2
     - openai
+    - pelican[markdown]
+    - invoke
+    - livereload
+    - pytailwindcss

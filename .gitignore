@@ -39,3 +39,5 @@ Thumbs.db
 
 # Python3 environment
 venv/
+
+/planecards/web/example.com/cache
