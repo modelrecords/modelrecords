@@ -28,9 +28,8 @@ The code for the website lives in `planecards/web` and uses Pelican + Tailwindcs
 ### Running locally
 1. Run the steps under Dev startup
 2. Navigate into `planecards/web/example.com`
-3. Run `invoke livereload`
-3. Run `tailwindcss -i input.css -o themes/planecards/static/css/output.css --watch` in one terminal
-3. Run `pelican --listen` in another terminal
+3. Run `invoke livereload` in one terminal
+4. Run `tailwindcss -i input.css -o themes/planecards/static/css/main.css --watch` in another terminal
 
 #### Editing
 1. The project uses [tailwindcss](https://tailwindcss.com/docs/installation)
