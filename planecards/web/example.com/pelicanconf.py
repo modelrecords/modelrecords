@@ -13,6 +13,8 @@ PATH = 'content'
 
 DEFAULT_LANG = 'en'
 
+DISPLAY_PAGES_ON_MENU = False
+
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
@@ -45,3 +47,6 @@ TAG_SAVE_AS = ''
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
+
+PLUGIN_PATHS = ['./plugins']
+PLUGINS = ['load_repository_yaml']
