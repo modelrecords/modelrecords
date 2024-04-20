@@ -27,7 +27,8 @@ AUTHOR_FEED_RSS = None
 
 # Menu items
 MENUITEMS = (
-    ('about', '#'),
+    ('plane cards', 'planecards.html'),
+    ('model cards', 'modelcards.html'),
 )
 
 # Social widget
