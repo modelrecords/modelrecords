@@ -13,6 +13,8 @@ PATH = 'content'
 
 DEFAULT_LANG = 'en'
 
+DISPLAY_PAGES_ON_MENU = False
+
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
@@ -21,11 +23,14 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (
-    ('Pelican', 'https://getpelican.com/'),
-    ('Python.org', 'https://www.python.org/'),
-    ('Jinja2', 'https://palletsprojects.com/p/jinja/'),
-    ('You can modify those links in your config file', '#'),
+# LINKS = (
+#     ('You can modify those links in your config file', '#'),
+# )
+
+# Menu items
+MENUITEMS = (
+    ('plane cards', 'planecards.html'),
+    ('model cards', 'modelcards.html'),
 )
 
 # Social widget
@@ -42,3 +47,6 @@ TAG_SAVE_AS = ''
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
+
+PLUGIN_PATHS = ['./plugins']
+PLUGINS = ['load_repository_yaml']
