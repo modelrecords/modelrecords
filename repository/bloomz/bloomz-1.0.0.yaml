@@ -9,6 +9,12 @@ pc:
     publisher: BigScience Workshop
     model_type: Multitask Fine-tuned Language Model
     release_date: '2022-11-17'
+
+  relations:
+    upstream:
+      - bloom>=1.0.0
+
+
   question_sets:
   - fmti2023
   model:
