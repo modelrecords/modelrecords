@@ -1,0 +1,12 @@
+pc:
+  metadata:
+    name: bloom-3b
+    version: 1.0.0
+  upstream:
+    environmental:
+      refs:
+        - https://huggingface.co/bigscience/bloom-3b
+
+  relations:
+    upstream:
+      - bloom>=1.0.0

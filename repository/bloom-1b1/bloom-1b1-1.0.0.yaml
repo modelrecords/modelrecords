@@ -1,0 +1,12 @@
+pc:
+  metadata:
+    name: bloom-1b1
+    version: 1.0.0
+  upstream:
+    environmental:
+      refs:
+        - https://huggingface.co/bigscience/bloom-1b1
+
+  relations:
+    upstream:
+      - bloom>=1.0.0
