@@ -1,0 +1,12 @@
+pc:
+  metadata:
+    name: mt0-small
+    version: 1.0.0
+  upstream:
+    environmental:
+      refs:
+        - https://huggingface.co/bigscience/mt0-small
+
+  relations:
+    upstream:
+      - mt0>=1.0.0

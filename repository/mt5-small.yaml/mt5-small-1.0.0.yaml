@@ -1,0 +1,12 @@
+pc:
+  metadata:
+    name: mt5-small
+    version: 1.0.0
+  upstream:
+    environmental:
+      refs:
+        - https://huggingface.co/google/mt5-small
+
+  relations:
+    upstream:
+      - mt5>=1.0.0
