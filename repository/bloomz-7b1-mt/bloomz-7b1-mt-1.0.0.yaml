@@ -1,0 +1,12 @@
+pc:
+  metadata:
+    name: bloomz-7b1-mt
+    version: 1.0.0
+  upstream:
+    environmental:
+      refs:
+        - https://huggingface.co/bigscience/bloomz-7b1-mt
+
+  relations:
+    upstream:
+      - bloomz>=1.0.0
