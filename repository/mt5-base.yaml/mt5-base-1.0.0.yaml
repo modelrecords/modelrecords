@@ -1,0 +1,12 @@
+pc:
+  metadata:
+    name: mt5-base
+    version: 1.0.0
+  upstream:
+    environmental:
+      refs:
+        - https://huggingface.co/google/mt5-base
+
+  relations:
+    upstream:
+      - mt5>=1.0.0

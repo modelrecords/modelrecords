@@ -1,0 +1,12 @@
+pc:
+  metadata:
+    name: mt5-xxl
+    version: 1.0.0
+  upstream:
+    environmental:
+      refs:
+        - https://huggingface.co/google/mt5-xxl
+
+  relations:
+    upstream:
+      - mt5>=1.0.0
