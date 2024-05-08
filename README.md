@@ -21,6 +21,8 @@ If you want to render PDFs, and let's be honest who doesn't, you must do the fol
 2. If you have to interrupt the build or it crashes, you'll have to rerun the following in order to build again:
     1. `conda env update --file environment.yml`
     2. `conda activate planecards`
+3. Open `scratch.ipynb`
+4. Click play on the first then the second box
 
 ## Website Rendering
 The code for the website lives in `planecards/web` and uses Pelican + Tailwindcss

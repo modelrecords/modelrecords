@@ -1,4 +1,3 @@
-
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 
@@ -14,12 +13,70 @@
 \usepackage[breakable]{tcolorbox}
 \usepackage{float}
 \usepackage{enumitem}
+\usepackage[legalpaper, portrait, margin=0.2in]{geometry}
+\usepackage[sfdefault]{roboto}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{colorPrimary}{HTML}{634CF1}
+\definecolor{colorHighlight}{HTML}{DCDDFC}
+\definecolor{colorPrimaryDark}{HTML}{27204E}
+
+% column layout
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+
+% colored boxes
+\usepackage{tcolorbox}
+\newtcolorbox{metricbar}{
+    arc=0pt,
+    outer arc=0pt,
+    colback=colorPrimary,
+    colframe=colorPrimary,
+    coltext=white,
+    halign=right,
+    top=0pt,
+    right=0pt,
+    bottom=0pt,
+    left=0pt
+}
+\newtcolorbox{sectionbox}{
+    arc=0pt,
+    outer arc=0pt,
+    top=0pt,
+    right=0pt,
+    bottom=0pt,
+    left=0pt,
+    lower separated=false,
+    colback=colorHighlight,
+    colframe=colorHighlight,
+    % before lower={\rule{\dimexpr\linewidth-0mm}{0.4pt}\vskip3mm},
+}
+
+% versioning positioning
+\usepackage[absolute,overlay]{textpos}
+\usepackage{tikz}
+
+% table layout
+\usepackage{nicematrix}
 
 \title{\VAR{pc.metadata.name}: Model Card}
 \author{planecards}
 \date{pc.metadata.last_updated}
 
 \begin{document}
+
+% builder versioning
+\begin{textblock*}{\textwidth}(0cm,0cm)
+\begin{tikzpicture}[remember picture, overlay, shift={(current page.north east)}]
+    \fill[colorPrimaryDark] (0,0) -- (-2,0) -- (0,-2) -- cycle;
+    \draw (0,0) -- (-2,0) -- (0,-2) -- cycle;
+    \node at (-0.6,-0.6) {\tiny{\textcolor{white}{v.1.0.0}}};
+\end{tikzpicture}
+\end{textblock*}
+\begin{textblock*}{\textwidth}(0cm,0cm)
+\begin{tikzpicture}[remember picture, overlay, shift={(current page.north east)}]
+    \draw[draw=colorPrimary] (-2,-0) -- (-0,-2) -- (-2,-2) -- cycle;
+\end{tikzpicture}
+\end{textblock*}
 
 \newenvironment{mcsection}[1]
     {
@@ -32,104 +89,136 @@
         \end{itemize}
     }
 
-\begin{adjustwidth}{-60pt}{-30pt}
-\begin{singlespace}
+\noindent
+\begin{NiceTabular}{lr}[cell-space-limits=3pt]
+    \hline
+    \textbf{\Huge{\VAR{pc.metadata.name}:}} & \textnormal{\small{Released: Apr 18, 2024}}\\
+    \textbf{\Large{Unified Model Record}} & \\
+\end{NiceTabular}
 
-\tcbset{colback=white!10!white}
-\begin{tcolorbox}[title=\textbf{\VAR{pc.metadata.name} : Model Card},
-    breakable, sharp corners, boxrule=0.7pt]
+\begin{multicols*}{2}
 
-\begin{mcsection}{Model Details}
-    \item Blackbox external model access: \VAR{ pc.model.blackbox_external_model_access }
-    \item Capabilities demonstration: \VAR{ pc.model.capabilities_demonstration }
-    \item Capabilities description: \VAR{ pc.model.capabilities_description }
-    \item Centralized model documentation: \VAR{ pc.model.centralized_model_documentation }
-    \item Evaluation of capabilities: \VAR{ pc.model.evaluation_of_capabilities }
-    \item External model access protocol: \VAR{ pc.model.external_model_access_protocol }
-    \item External reproducibility of capabilities evaluation: \VAR{ pc.model.external_reproducibility_of_capabilities_evaluation }
-    \item External reproducibility of intentional harm evaluation: \VAR{ pc.model.external_reproducibility_of_intentional_harm_evaluation }
-    \item External reproducibility of mitigations evaluation: \VAR{ pc.model.external_reproducibility_of_mitigations_evaluation }
-    \item External reproducibility of trustworthiness evaluation: \VAR{ pc.model.external_reproducibility_of_trustworthiness_evaluation }
-    \item External reproducibility of unintentional harm evaluation: \VAR{ pc.model.external_reproducibility_of_unintentional_harm_evaluation }
-    \item Full external model access: \VAR{ pc.model.full_external_model_access }
-    \item Inference compute evaluation: \VAR{ pc.model.inference_compute_evaluation }
-    \item Inference duration evaluation: \VAR{ pc.model.inference_duration_evaluation }
-    \item Input modality: \VAR{ pc.model.input_modality }
-    \item Intentional harm evaluation: \VAR{ pc.model.intentional_harm_evaluation }
-    \item Limitations demonstration: \VAR{ pc.model.limitations_demonstration }
-    \item Limitations description: \VAR{ pc.model.limitations_description }
-    \item Mitigations demonstration: \VAR{ pc.model.mitigations_demonstration }
-    \item Mitigations description: \VAR{ pc.model.mitigations_description }
-    \item Mitigations evaluation: \VAR{ pc.model.mitigations_evaluation }
-    \item Model architecture: \VAR{ pc.model.model_architecture }
-    \item Asset license: \VAR{ pc.model.asset_license }
-    \item Model components: \VAR{ pc.model.model_components }
-    \item Model size: \VAR{ pc.model.model_size }
-    \item Output modality: \VAR{ pc.model.output_modality }
-    \item Risks demonstration: \VAR{ pc.model.risks_demonstration }
-    \item Risks description: \VAR{ pc.model.risks_description }
-    \item Third party capabilities evaluation: \VAR{ pc.model.third_party_capabilities_evaluation }
-    \item Third party evaluation of limitations: \VAR{ pc.model.third_party_evaluation_of_limitations }
-    \item Third party mitigations evaluation: \VAR{ pc.model.third_party_mitigations_evaluation }
-    \item Third party risks evaluation: \VAR{ pc.model.third_party_risks_evaluation }
-    \item Trustworthiness evaluation: \VAR{ pc.model.trustworthiness_evaluation }
-    \item Unintentional harm evaluation: \VAR{ pc.model.unintentional_harm_evaluation }
-\end{mcsection}
+\noindent
+\text{Model Details}
+{\color{colorPrimary} \hrule}
+\noindent
+\textnormal{This is a descriptor to the sub-section, if required}
 
-\textbf{Intended use}
-\BLOCK{ for item in pc.upstream.intended_use}
-    \item - \VAR{ item }
-\BLOCK{ endfor }
+\begin{NiceTabular}{lr}[hlines,code-before = \rowcolors{1}{blue!10}{}]
+John & 12 \\
+Stephen & 8 \\
+Sarah & 18 \\
+Ashley & 20 \\
+Henry & 14 \\
+Madison & 15
+\end{NiceTabular}
 
-\textbf{Factors}
-\BLOCK{ for item in pc.upstream.factors}
-    \item - \VAR{ item }
-\BLOCK{ endfor }
+\noindent
+\text{Environmenal}
+{\color{colorPrimary} \hrule}
+\noindent
+\textnormal{This is a descriptor to the sub-section, if required}
+
+\begin{metricbar}
+\textnormal{\small{Metric name:}} \textnormal{\large{00.00}} \textnormal{\small{w}}
+\end{metricbar}
+
+\begin{sectionbox}
+title here
+\hrule
+\tcblower
+body content
+\end{sectionbox}
+
+% \begin{mcsection}{Model Details}
+%     \item Blackbox external model access: \VAR{ pc.model.blackbox_external_model_access }
+%     \item Capabilities demonstration: \VAR{ pc.model.capabilities_demonstration }
+%     \item Capabilities description: \VAR{ pc.model.capabilities_description }
+%     \item Centralized model documentation: \VAR{ pc.model.centralized_model_documentation }
+%     \item Evaluation of capabilities: \VAR{ pc.model.evaluation_of_capabilities }
+%     \item External model access protocol: \VAR{ pc.model.external_model_access_protocol }
+%     \item External reproducibility of capabilities evaluation: \VAR{ pc.model.external_reproducibility_of_capabilities_evaluation }
+%     \item External reproducibility of intentional harm evaluation: \VAR{ pc.model.external_reproducibility_of_intentional_harm_evaluation }
+%     \item External reproducibility of mitigations evaluation: \VAR{ pc.model.external_reproducibility_of_mitigations_evaluation }
+%     \item External reproducibility of trustworthiness evaluation: \VAR{ pc.model.external_reproducibility_of_trustworthiness_evaluation }
+%     \item External reproducibility of unintentional harm evaluation: \VAR{ pc.model.external_reproducibility_of_unintentional_harm_evaluation }
+%     \item Full external model access: \VAR{ pc.model.full_external_model_access }
+%     \item Inference compute evaluation: \VAR{ pc.model.inference_compute_evaluation }
+%     \item Inference duration evaluation: \VAR{ pc.model.inference_duration_evaluation }
+%     \item Input modality: \VAR{ pc.model.input_modality }
+%     \item Intentional harm evaluation: \VAR{ pc.model.intentional_harm_evaluation }
+%     \item Limitations demonstration: \VAR{ pc.model.limitations_demonstration }
+%     \item Limitations description: \VAR{ pc.model.limitations_description }
+%     \item Mitigations demonstration: \VAR{ pc.model.mitigations_demonstration }
+%     \item Mitigations description: \VAR{ pc.model.mitigations_description }
+%     \item Mitigations evaluation: \VAR{ pc.model.mitigations_evaluation }
+%     \item Model architecture: \VAR{ pc.model.model_architecture }
+%     \item Asset license: \VAR{ pc.model.asset_license }
+%     \item Model components: \VAR{ pc.model.model_components }
+%     \item Model size: \VAR{ pc.model.model_size }
+%     \item Output modality: \VAR{ pc.model.output_modality }
+%     \item Risks demonstration: \VAR{ pc.model.risks_demonstration }
+%     \item Risks description: \VAR{ pc.model.risks_description }
+%     \item Third party capabilities evaluation: \VAR{ pc.model.third_party_capabilities_evaluation }
+%     \item Third party evaluation of limitations: \VAR{ pc.model.third_party_evaluation_of_limitations }
+%     \item Third party mitigations evaluation: \VAR{ pc.model.third_party_mitigations_evaluation }
+%     \item Third party risks evaluation: \VAR{ pc.model.third_party_risks_evaluation }
+%     \item Trustworthiness evaluation: \VAR{ pc.model.trustworthiness_evaluation }
+%     \item Unintentional harm evaluation: \VAR{ pc.model.unintentional_harm_evaluation }
+% \end{mcsection}
+
+% \textbf{Intended use}
+% \BLOCK{ for item in pc.upstream.intended_use}
+%     \item - \VAR{ item }
+% \BLOCK{ endfor }
+
+% \textbf{Factors}
+% \BLOCK{ for item in pc.upstream.factors}
+%     \item - \VAR{ item }
+% \BLOCK{ endfor }
 
 \textbf{Metrics}
 
 TBD?
 
-\textbf{Evaluation data}
-\BLOCK{ for item in pc.upstream.evaluation_data}
-    \item - \VAR{ item }
-\BLOCK{ endfor }
+% \textbf{Evaluation data}
+% \BLOCK{ for item in pc.upstream.evaluation_data}
+%     \item - \VAR{ item }
+% \BLOCK{ endfor }
 
-\textbf{Training data}
-\BLOCK{ for item in pc.upstream.training_data}
-    \item - \VAR{ item }
-\BLOCK{ endfor }
+% \textbf{Training data}
+% \BLOCK{ for item in pc.upstream.training_data}
+%     \item - \VAR{ item }
+% \BLOCK{ endfor }
 
-\textbf{Environmental}
-\BLOCK{ for item in pc.upstream.environmental.refs}
-    \item - \url{\VAR{ item }}
-\BLOCK{ endfor }
-\item - Carbon emitted(tCO2eq): \VAR{ pc.upstream.environmental.tco2e }
-\item - Energy consumption: \VAR{ pc.upstream.environmental.energy_consumption }
-\item - Energy unit: \VAR{ pc.upstream.environmental.energy_unit }
-\item - Compute hours: \VAR{ pc.upstream.environmental.compute_hours }
+% \textbf{Environmental}
+% \BLOCK{ for item in pc.upstream.environmental.refs}
+%     \item - \url{\VAR{ item }}
+% \BLOCK{ endfor }
+% \item - Carbon emitted(tCO2eq): \VAR{ pc.upstream.environmental.tco2e }
+% \item - Energy consumption: \VAR{ pc.upstream.environmental.energy_consumption }
+% \item - Energy unit: \VAR{ pc.upstream.environmental.energy_unit }
+% \item - Compute hours: \VAR{ pc.upstream.environmental.compute_hours }
 
-\textbf{Ethical considerations}
-\BLOCK{ for item in pc.upstream.ethical_considerations}
-    \item - \VAR{ item }
-\BLOCK{ endfor }
+% \textbf{Ethical considerations}
+% \BLOCK{ for item in pc.upstream.ethical_considerations}
+%     \item - \VAR{ item }
+% \BLOCK{ endfor }
 
-\textbf{Recommendations}
-\BLOCK{ for item in pc.upstream.recommendations}
-    \item - \VAR{ item }
-\BLOCK{ endfor }
+% \textbf{Recommendations}
+% \BLOCK{ for item in pc.upstream.recommendations}
+%     \item - \VAR{ item }
+% \BLOCK{ endfor }
 
-\textbf{Additional information}
-\BLOCK{ for item in pc.upstream.additional_information}
-    \item - \VAR{ item }
-\BLOCK{ endfor }
+% \textbf{Additional information}
+% \BLOCK{ for item in pc.upstream.additional_information}
+%     \item - \VAR{ item }
+% \BLOCK{ endfor }
 
 \textbf{Quantitative Analyses}
 
 TBD?
 
-\end{tcolorbox}
-\end{singlespace}
-\end{adjustwidth}
+\end{multicols*}
 
 \end{document}
