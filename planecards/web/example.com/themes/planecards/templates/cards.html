@@ -7,12 +7,12 @@
 
 {% block content %}
 <section id="content" class="body">
-  <h1 class="entry-title">{{ page.title }}</h1>
+  <h1 class="font-bold">{{ page.title }}</h1>
   {{ page.content }}
   <p>card type: {{page.card_type}}</p>
   <ul>
     {% for item in repository_yaml_data %}
-      <li>{{item.pc.metadata.name}}</li>
+      <li>- <a href="#" class="text-sky-400 underline">{{item.pc.metadata.name}} (v. {{item.pc.metadata.version}})</a></li>
     {% endfor %}
   </ul>
 </section>

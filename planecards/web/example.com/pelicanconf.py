@@ -29,7 +29,7 @@ AUTHOR_FEED_RSS = None
 
 # Menu items
 MENUITEMS = (
-    ('plane cards', 'planecards.html'),
+    # ('plane cards', 'planecards.html'),
     ('model cards', 'modelcards.html'),
 )
 
@@ -48,5 +48,10 @@ TAG_SAVE_AS = ''
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-PLUGIN_PATHS = ['./plugins']
-PLUGINS = ['load_repository_yaml']
+# PLUGIN_PATHS = ['./plugins']
+# PLUGINS = ['load_repository_yaml']
+
+PLUGIN_PATHS = ['../../pelican_plugins']
+PLUGINS = ['load_pkgs']
+
+LOAD_CONTENT_CACHE = False

@@ -1,26 +1,29 @@
-import os
-import yaml
-from pelican import signals
+# import os
+# import yaml
+# # from planecards.repository import Repository
+# from pelican import signals
 
-def add_repository_yaml_data(generator):
-    # Assuming 'file_list' is your list of YAML files
-    file_list = [
-      'bloomz/bloomz-1.0.0.yaml',
-      'claude2/claude2-1.0.0.yaml',
-    ]
-    data_list = []
+# def add_repository_yaml_data(generator):
+#     repository = Repository()
+#     pkg_list = [
+#       'bloomz-1.0.0',
+#       'claude2-1.0.0',
+#       'llama2-1.0.0',
+#     ]
+#     data_list = []
 
-    for file_name in file_list:
-        with open('../../../repository/' + file_name, 'r') as stream:
-            try:
-                # Load the YAML file
-                data = yaml.safe_load(stream)
-                data_list.append(data)
-            except yaml.YAMLError as exc:
-                print(exc)
+#     for pkg in pkg_list:
+#         data_list.append(repository.load_plane_card_yaml(pkg))
+#         # with open('../../../repository/' + file_name, 'r') as stream:
+#         #     try:
+#         #         # Load the YAML file
+#         #         data = yaml.safe_load(stream)
+#         #         data_list.append(data)
+#         #     except yaml.YAMLError as exc:
+#         #         print(exc)
 
-    # Add the data list to the context
-    generator.context['repository_yaml_data'] = data_list
+#     # Add the data list to the context
+#     generator.context['repository_yaml_data'] = data_list
 
-def register():
-    signals.generator_init.connect(add_repository_yaml_data)
+# def register():
+#     signals.generator_init.connect(add_repository_yaml_data)
