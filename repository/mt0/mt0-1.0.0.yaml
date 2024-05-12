@@ -11,4 +11,6 @@ pc:
 
   relations:
     upstream:
-      - mt5>=1.0.0
+    - mC4
+    - bigscience/xP3all
+    - bigscience/xP3

@@ -12,7 +12,8 @@ pc:
 
   relations:
     upstream:
-      - bloom>=1.0.0
+      - bigscience/xP3all
+      - bigscience/xP3
 
 
   question_sets:

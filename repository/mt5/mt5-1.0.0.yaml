@@ -9,3 +9,8 @@ pc:
     publisher: Google
     model_type: Text-to-text Transformer-based Language Model
     release_date: '2021-06'
+
+
+  relations:
+    upstream:
+    - mC4
