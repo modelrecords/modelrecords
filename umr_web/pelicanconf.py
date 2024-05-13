@@ -2,8 +2,8 @@
 # example: https://docs.getpelican.com/en/latest/settings.html#example-settings
 
 AUTHOR = 'planecards'
-SITENAME = 'Plane cards'
-SITESUBTITLE = "site subtitle"
+SITENAME = 'Unified Model Record'
+SITESUBTITLE = ''
 SITEURL = 'https://example.com'
 TIMEZONE = 'America/Regina'
 
@@ -29,8 +29,7 @@ AUTHOR_FEED_RSS = None
 
 # Menu items
 MENUITEMS = (
-    # ('plane cards', 'planecards.html'),
-    ('model cards', 'modelcards.html'),
+    ('All Cards', 'cards.html'),
 )
 
 # Social widget
@@ -47,9 +46,6 @@ TAG_SAVE_AS = ''
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
-
-# PLUGIN_PATHS = ['./plugins']
-# PLUGINS = ['load_repository_yaml']
 
 PLUGIN_PATHS = ['../planecards/pelican_plugins']
 PLUGINS = ['load_pkgs']
