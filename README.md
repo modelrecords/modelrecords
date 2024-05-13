@@ -27,14 +27,15 @@ The code for the website lives in `planecards/web` and uses Pelican + Tailwindcs
 
 ### Running locally
 1. Run the steps under Dev startup
-2. Navigate into `planecards/web/example.com`
-3. Run `invoke livereload` in one terminal
+2. Navigate into `cd umr_web`
+3. Run `pip install -e ../ && invoke livereload ` in one terminal
 4. Run `tailwindcss -i input.css -o themes/planecards/static/css/main.css --watch` in another terminal
 
 #### Editing
 1. The project uses [tailwindcss](https://tailwindcss.com/docs/installation)
 2. Editing of template html is done in `themes/planecards/templates`
 3. Editing of page html is done in `themes/planecards/content/pages`
+
 
 ### Running in production
 ...
