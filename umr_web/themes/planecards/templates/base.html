@@ -12,14 +12,14 @@
   {% endblock head %}
 </head>
 
-<body id="index" class="home bg-yellow-600">
+<body id="index" class="home">
   <header id="banner" class="body">
     <h1><a href="{{ SITEURL }}/">{{ SITENAME }}{% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a>
     </h1>
     <nav>
-      <ul>
+      <ul class="flex gap-5">
         {% for title, link in MENUITEMS %}
-        <li><a href="{{ link }}">{{ title }}</a></li>
+        <li><a href="{{ link }}" class="text-sky-400">{{ title }}</a></li>
         {% endfor %}
       </ul>
     </nav>
@@ -27,7 +27,7 @@
 
   {% block content %}{% endblock %}
 
-  <section id="extras" class="body">
+  <section id="extras" class="hidden">
     {% if SOCIAL %}
     <div class="social">
       <h2>{{ SOCIAL_WIDGET_NAME | default('social') }}</h2>

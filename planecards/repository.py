@@ -8,9 +8,11 @@ import mimetypes
 import PyPDF2
 from omegaconf import OmegaConf
 from pathlib import Path
+from packaging import version as packaging_version
 
 
 BASE_REPO_PATH = 'repository'
+RESERVED_FOLDERS = ['_refs']
 
 def download_url(url):
     try:
@@ -91,6 +93,10 @@ class Repository:
                     text_files.append(file_path)
         return text_files
     
+    def all_packages(self):
+        pkgs = [d for d in os.listdir(self.base_repo_path) if d not in RESERVED_FOLDERS]
+        return pkgs
+
     def update_card_attrs(self, pkg, attrs):
         yml = self.load_plane_card_yaml(pkg)
         for key, answer in attrs.items():
@@ -103,10 +109,21 @@ class Repository:
         return f'{self.base_repo_path}/{pkg}'
 
     def plane_card_yaml_path(self, card:str):
-        pkg = card.replace(card.split('-')[-1], '')[:-1]
+        card_split = card.rsplit('-', 1)
+        if len(card_split) == 2:
+            pkg, version = card_split
+            if not is_semver(version):
+                version = get_latest_semver(self.plane_card_folder(pkg))
+                pkg = f'{card}'
+                card = f'{pkg}-{version}'
+        else:
+            pkg = card_split[0]
+            version = get_latest_semver(self.plane_card_folder(pkg))
+            card = f'{pkg}-{version}'
         return f'{self.plane_card_folder(pkg)}/{card}.yaml'
 
     def load_plane_card_yaml(self, card:str):
+        
         yml_path = self.plane_card_yaml_path(card)
         base_conf = OmegaConf.load(yml_path)
 
@@ -118,3 +135,29 @@ class Repository:
                     relation_confs.append(OmegaConf.load(self.find_card_in_repo(relation)))
 
         return OmegaConf.unsafe_merge(*relation_confs[::-1])
+
+
+def is_semver(version):
+    # Regex to validate Semantic Versioning
+    semver_regex = r'^(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$'
+    
+    # Match the version string against the regex
+    return bool(re.match(semver_regex, version))
+
+def get_latest_semver(folder_path):
+    
+    semver_regex = r'^(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$'
+    max_version = None
+
+    # Iterate over all files in the given folder
+    for filename in os.listdir(folder_path):
+        file_version = filename.rsplit('-', 1)[-1].split('.yaml')[0]
+        match = re.match(semver_regex, file_version)
+        if match:
+            # Extract the semver part and parse it
+            current_version = semver.Version(file_version)
+            if max_version is None or current_version > max_version:
+                max_version = current_version
+
+    # Return the maximum version found, or None if no valid semver files were found
+    return str(max_version) if max_version else None
