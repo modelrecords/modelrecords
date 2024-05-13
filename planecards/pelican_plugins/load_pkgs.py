@@ -4,12 +4,9 @@ from planecards.repository import Repository
 from pelican import signals
 
 def add_repository_yaml_data(generator):
-    repository = Repository()
-    pkg_list = [
-      'bloomz-1.0.0',
-      'claude2-1.0.0',
-      'llama2-1.0.0',
-    ]
+    repository = Repository(base_repo_path='../repository')
+
+    pkg_list = repository.all_packages()
     data_list = []
 
     for pkg in pkg_list:
