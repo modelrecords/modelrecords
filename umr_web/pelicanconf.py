@@ -29,7 +29,7 @@ AUTHOR_FEED_RSS = None
 
 # Menu items
 MENUITEMS = (
-    ('All Cards', 'cards.html'),
+    ('All Cards', '/cards.html'),
 )
 
 # Social widget

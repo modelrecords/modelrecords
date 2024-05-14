@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block html_lang %}{{ page.lang }}{% endblock %}
+{% block title %}{{ page.title|striptags }} - Model Card{% endblock %}
+
+{% block extra_head %}
+{% endblock %}
+
+{% block content %}
+<section id="content" class="body">
+  <h1 class="font-bold">{{ page.title }} - Model Card</h1>
+  {{ page.content }}
+</section>
+{% endblock %}
