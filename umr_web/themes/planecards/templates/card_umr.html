@@ -5,12 +5,12 @@
 {% block extra_head %}
 {% endblock %}
 
+{% set cardType='umr' %}
+
 {% block content %}
 <section id="content" class="body">
-  <h1 class="font-bold">{{ page.title }} - UMR Card</h1><ul>
-    <li><a href="model.html" class="text-sky-400 underline">Model</a></li>
-    <li>UMR</li>
-  </ul>
+  <h1 class="font-bold">{{ page.title }} - UMR Card</h1>
+  {% include "includes/model_nav.html" %}
   {{ page.content }}
 </section>
 {% endblock %}
