@@ -11,6 +11,14 @@
 <section id="content" class="body">
   <h1 class="font-bold">{{ page.title }} - UMR Card</h1>
   {% include "includes/model_nav.html" %}
-  {{ page.content }}
+  <!-- {{ page.content }} -->
+  {{ page.model_name }}
+  {{ page.model_version }}
+
+  {% for item in repository_yaml_data %}
+    {% if item['pc']['metadata']['name'] == page.model_name %}
+      {{ item }}
+    {% endif %}
+  {% endfor %}
 </section>
 {% endblock %}
