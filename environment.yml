@@ -1,4 +1,4 @@
-name: planecards
+name: modelrecords
 channels:
   - conda-forge
   - defaults
