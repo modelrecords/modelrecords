@@ -37,7 +37,12 @@ class Repository:
 
     def parse_card_relation(self, card:str):
         operand = None
-        package, version = re.split('>=|==|<=|-', card)
+        try:
+            package, version = re.split('>=|==|<=|-', card)
+        except:
+            package = card
+            version = get_latest_semver(self.modelrecord_folder(package))
+            return package, semver.Version(version), operand
         if '>=' in card:
             operand = operator.ge
         if '<=' in card:
@@ -47,8 +52,13 @@ class Repository:
         return package, semver.Version(version), operand
 
     def find_card_in_repo(self, card_relation:str):
+        
         pkg, version, operand = self.parse_card_relation(card_relation)
         basepath = f'{self.base_repo_path}/{pkg}'
+        # if the operand is None, then we have nothing to compare, so just grab the package
+        if operand is None:
+            return f'{basepath}/{pkg}-{version}.yaml'
+        
         for candidate in sorted(os.listdir(basepath))[::-1]:
             _, candidate_version, _ = self.parse_card_relation(candidate.replace('.yaml',''))
             if operand(version , candidate_version):
@@ -81,7 +91,10 @@ class Repository:
                     file_path = f'{file_path}.txt'
                     with open(file_path, 'w') as f:
                         f.writelines(all_text)
-                    
+                elif format in ['html', 'htm']:    
+                    file_path = f'{ref_path}/{idx:03}.{format}.txt'
+                    with open(file_path, 'wb') as f:
+                        f.write(content)
                 elif format in ['md', 'txt']:
                     file_path = f'{ref_path}/{idx:03}.{format}.txt'
                     with open(file_path, 'wb') as f:

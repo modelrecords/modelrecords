@@ -1,0 +1,12 @@
+mr:
+  metadata:
+    name: Llama 2 13B
+    version: 1.0.0
+  upstream: 
+    environmental:
+      refs:
+        - https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md#hardware-and-software
+      
+  relations:
+    upstream:
+      - llama2>=1.0.0
