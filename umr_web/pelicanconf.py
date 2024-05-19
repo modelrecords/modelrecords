@@ -7,7 +7,7 @@ SITESUBTITLE = ''
 SITEURL = 'https://example.com'
 TIMEZONE = 'America/Regina'
 
-THEME = 'themes/ModelRecords'
+THEME = 'themes/modelrecord'
 
 PATH = 'content'
 
@@ -29,7 +29,7 @@ AUTHOR_FEED_RSS = None
 
 # Menu items
 MENUITEMS = (
-    ('All Cards', 'cards.html'),
+    ('All Cards', '/cards.html'),
 )
 
 # Social widget
@@ -47,7 +47,7 @@ TAG_SAVE_AS = ''
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-PLUGIN_PATHS = ['../ModelRecords/pelican_plugins']
+PLUGIN_PATHS = ['../modelrecord/pelican_plugins']
 PLUGINS = ['load_pkgs']
 
 LOAD_CONTENT_CACHE = False

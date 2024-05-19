@@ -40,4 +40,4 @@ Thumbs.db
 # Python3 environment
 venv/
 
-/modelrecord/web/example.com/cache
+/umr_web/cache

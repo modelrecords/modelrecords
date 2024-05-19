@@ -13,9 +13,8 @@
 </head>
 
 <body id="index" class="home">
-  <header id="banner" class="body">
-    <h1><a href="{{ SITEURL }}/">{{ SITENAME }}{% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a>
-    </h1>
+  <header id="banner" class="bg-primarylight">
+    <h1><a href="{{ SITEURL }}/">{{ SITENAME }}{% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
     <nav>
       <ul class="flex gap-5">
         {% for title, link in MENUITEMS %}

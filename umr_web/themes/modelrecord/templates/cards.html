@@ -9,9 +9,10 @@
 <section id="content" class="body">
   <h1 class="font-bold">{{ page.title }}</h1>
   {{ page.content }}
+
   <ul>
-    {% for item in repository_yaml_data %}
-      <li>- <a href="#" class="text-sky-400 underline">{{item.mr.metadata.name}} (v. {{item.mr.metadata.version}})</a></li>
+    {% for key, value in repository_data_dict.items() %}
+      <li>- <a href="{{ key }}/model.html" class="text-sky-400 underline">{{ value.mr.metadata.name}} (v{{ value.mr.metadata.version }})</a></li>
     {% endfor %}
   </ul>
 </section>

@@ -20,22 +20,21 @@ If you want to render PDFs, and let's be honest who doesn't, you must do the fol
 1. Install MacTex `brew install --cask mactex`
 2. If you have to interrupt the build or it crashes, you'll have to rerun the following in order to build again:
     1. `conda env update --file environment.yml`
-    2. `conda activate ModelRecords`
+    2. `conda activate modelrecords`
 
 ## Website Rendering
-The code for the website lives in `ModelRecords/web` and uses Pelican + Tailwindcss
+The code for the website lives in `umr_web` and uses Pelican + Tailwindcss
 
 ### Running locally
 1. Run the steps under Dev startup
 2. Navigate into `cd umr_web`
 3. Run `pip install -e ../ && invoke livereload` in one terminal
-4. Run `tailwindcss -i input.css -o themes/ModelRecords/static/css/main.css --watch` in another terminal
+4. Run `tailwindcss -i input.css -o themes/modelrecord/static/css/main.css --watch` in another terminal
 
 #### Editing
 1. The project uses [tailwindcss](https://tailwindcss.com/docs/installation)
-2. Editing of template html is done in `themes/ModelRecords/templates`
-3. Editing of page html is done in `themes/ModelRecords/content/pages`
-
+2. Editing of template html is done in `themes/modelrecord/templates`
+3. Editing of page html is done in `themes/modelrecord/content/pages`
 
 ### Running in production
 ...
