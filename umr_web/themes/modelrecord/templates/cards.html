@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block html_lang %}{{ page.lang }}{% endblock %}
+{% block title %}{{ page.title|striptags }}{% endblock %}
+
+{% block extra_head %}
+{% endblock %}
+
+{% block content %}
+<section id="content" class="body">
+  <h1 class="font-bold">{{ page.title }}</h1>
+  {{ page.content }}
+
+  {{repository_data_dict}}
+
+  <ul>
+    {% for key, value in repository_data_dict.items() %}
+      <li>- <a href="{{ value.mr.metadata.name.lower() | replace(' ', '') }}-{{ value.mr.metadata.version }}/model.html" class="text-sky-400 underline">{{ value.mr.metadata.name}} (v{{ value.mr.metadata.version }})</a></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}
