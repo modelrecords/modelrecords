@@ -1,6 +1,6 @@
 import unittest
 
-from planecards import repository
+from modelrecord import repository
 
 class TestRepository(unittest.TestCase):
     def test_list_all_packages(self):

@@ -11,7 +11,7 @@
   {{ page.content }}
   <ul>
     {% for item in repository_yaml_data %}
-      <li>- <a href="{{item.pc.metadata.name.lower()}}_v{{item.pc.metadata.version}}/model.html" class="text-sky-400 underline">{{item.pc.metadata.name}} (v{{item.pc.metadata.version}})</a></li>
+      <li>- <a href="{{item.mr.metadata.name.lower()}}_v{{item.mr.metadata.version}}/model.html" class="text-sky-400 underline">{{item.mr.metadata.name}} (v{{item.mr.metadata.version}})</a></li>
     {% endfor %}
   </ul>
 </section>

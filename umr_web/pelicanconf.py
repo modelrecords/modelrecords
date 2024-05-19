@@ -1,13 +1,13 @@
 # https://docs.getpelican.com/en/latest/settings.html
 # example: https://docs.getpelican.com/en/latest/settings.html#example-settings
 
-AUTHOR = 'planecards'
+AUTHOR = 'ModelRecords'
 SITENAME = 'Unified Model Record'
 SITESUBTITLE = ''
 SITEURL = 'https://example.com'
 TIMEZONE = 'America/Regina'
 
-THEME = 'themes/planecards'
+THEME = 'themes/ModelRecords'
 
 PATH = 'content'
 
@@ -47,7 +47,7 @@ TAG_SAVE_AS = ''
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-PLUGIN_PATHS = ['../planecards/pelican_plugins']
+PLUGIN_PATHS = ['../ModelRecords/pelican_plugins']
 PLUGINS = ['load_pkgs']
 
 LOAD_CONTENT_CACHE = False

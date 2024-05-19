@@ -1,0 +1,16 @@
+Here is a textual description about a model:
+
+<TEXT>
+{all_text}
+</TEXT>
+
+Please answer the following model-card related questions and provide the answers in valid JSON format:
+<JSON>
+{
+'mr.metadata.name': "[Model Name]",
+'mr.metadata.version': "[Model Version]", 
+'mr.metadata.publisher': "[Model Developer]", 
+'mr.metadata.model_type': "[Model Type]", 
+'mr.metadata.release_date': "[Model Release Date year-month-day]"
+}
+</JSON>

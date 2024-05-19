@@ -1,0 +1,182 @@
+mr:
+  metadata:
+    name: Vicuna-13B
+    version: 1.0.0
+    refs:
+    - https://lmsys.org/blog/2023-03-30-vicuna/index.html
+    publisher: LMSYS Org
+    model_type: Chatbot
+    release_date: '2023-03-30'
+  upstream:
+    environmental:
+      refs:
+      - https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md#hardware-and-software
+    additional_dependencies: 1
+    broader_environmental_impact: 0
+    carbon_emissions: 1
+    compute_hardware: 0
+    compute_usage: 0
+    core_frameworks: 0
+    data_augmentation: 1
+    copyrighted_data: 0
+    data_creators: 0
+    data_curation: 1
+    data_license_status: 0
+    data_size: 1
+    data_source_selection: 0
+    data_sources: 0
+    development_duration: 1
+    direct_external_data_access: 0
+    employment_of_data_laborers: 0
+    energy_usage: 1
+    geographic_distribution_of_data_laborers: 0
+    hardware_owner: 1
+    harmful_data_filtration: 1
+    instructions_for_creating_data: 1
+    labor_protections: 0
+    mitigations_for_copyright: 0
+    mitigations_for_privacy: 1
+    model_objectives: 1
+    model_stages: 1
+    personal_information_in_data: 0
+    queryable_external_data_access: 0
+    third_party_partners: 0
+    use_of_human_labor: 1
+    wages: 0
+    intended_use:
+    - Research and academic purposes to advance the field of natural language processing
+      and chatbot design.
+    - Developers and enthusiasts to explore chatbot technologies and implement in
+      non-commercial projects.
+    - Educational institutions for teaching concepts related to AI and chatbots.
+    - Non-profit organizations to enhance their customer support or engagement through
+      chatbots.
+    - Open-source community contribution and improvement.
+    factors:
+    - Performance comparison with other models like ChatGPT and Google Bard.
+    - Cost-effectiveness of training the model.
+    - Accessibility of the model for non-commercial use.
+    - Potential for the community to contribute to model improvement.
+    - Ease of integration into existing systems for developers.
+    evaluation_data:
+    - 70K user-shared ChatGPT conversations were used for fine-tuning.
+    - GPT-4 used for preliminary evaluation to benchmark against ChatGPT and Google
+      Bard.
+    - Responses compared for detailed and well-structured answers.
+    - Eight question categories devised to assess various aspects of chatbot performance.
+    - Comparison based on helpfulness, relevance, accuracy, and detail of responses.
+    training_data:
+    - Approximately 70K user-shared conversations gathered from ShareGPT.com.
+    - HTML content converted back to markdown to filter and maintain data quality.
+    - Lengthy conversations divided into smaller segments to fit model's maximum context
+      length.
+    - Dataset expanded to ensure Vicuna understands long context.
+    - Innovations such as gradient checkpointing and flash attention applied to manage
+      GPU memory requirements efficiently.
+    additional_information:
+    - Vicuna is an open-source project with its code and weights available on GitHub.
+    - The model is designed for non-commercial use, adhering to LLaMA model license
+      and OpenAI's data usage policies.
+    - The cost of training Vicuna-13B was around $300.
+    - The team acknowledges the need for further rigorous evaluation of the model.
+    - Community engagement and contributions are encouraged for continued improvement
+      of Vicuna.
+    recommendations:
+    - Use Vicuna-13B for experimental and research purposes to explore limitations
+      and potential improvements.
+    - Consider the ethical implications of deploying chatbots and adhere to fair use
+      policies.
+    - Because Vicuna is open-source, contributions such as bug fixes, feature enhancements,
+      and training on diverse datasets are recommended.
+    - Engage with the development community through discussions, sharing use cases,
+      and providing feedback.
+    - Stay informed about future updates and versions by following the project's official
+      communication channels.
+    ethical_considerations:
+    - Ensure the model does not generate harmful or biased content by incorporating
+      adequate safety measures.
+    - Be transparent about the model's capabilities and limitations to users and stakeholders.
+    - Consider the environmental impact of training large models and strive for more
+      energy-efficient methodologies.
+    - Respect user privacy and data protection laws, especially when dealing with
+      conversation data.
+    - Regularly review and update the model and its usage policies to address evolving
+      ethical standards and societal expectations.
+  relations:
+    upstream:
+    - vicuna
+    - llama2_13b
+  tags:
+  - opensource
+  question_sets:
+  - fmti2023
+  model:
+    blackbox_external_model_access: 1
+    capabilities_demonstration: 1
+    capabilities_description: 0
+    centralized_model_documentation: 1
+    evaluation_of_capabilities: 1
+    external_model_access_protocol: 1
+    external_reproducibility_of_capabilities_evaluation: 1
+    external_reproducibility_of_intentional_harm_evaluation: 0
+    external_reproducibility_of_mitigations_evaluation: 0
+    external_reproducibility_of_trustworthiness_evaluation: 0
+    external_reproducibility_of_unintentional_harm_evaluation: 1
+    full_external_model_access: 1
+    inference_compute_evaluation: 0
+    inference_duration_evaluation: 1
+    input_modality: 1
+    intentional_harm_evaluation: 0
+    limitations_demonstration: 0
+    limitations_description: 1
+    mitigations_demonstration: 1
+    mitigations_description: 1
+    mitigations_evaluation: 1
+    model_architecture: 1
+    asset_license: 1
+    model_components: 1
+    model_size: 1
+    output_modality: 1
+    risks_demonstration: 1
+    risks_description: 1
+    third_party_capabilities_evaluation: 0
+    third_party_evaluation_of_limitations: 1
+    third_party_mitigations_evaluation: 0
+    third_party_risks_evaluation: 0
+    trustworthiness_evaluation: 0
+    unintentional_harm_evaluation: 1
+  downstream:
+    affected_individuals: 0
+    affected_market_sectors: 0
+    centralized_documentation_for_downstream_use: 1
+    change_log: 1
+    deprecation_policy: 1
+    distribution_channels: 1
+    documentation_for_responsible_downstream_use: 1
+    downstream_applications: 1
+    feedback_mechanism: 1
+    feedback_summary: 0
+    geographic_statistics: 0
+    government_inquiries: 0
+    interoperability_of_usage_and_model_behavior_policies: 0
+    justification_for_enforcement_action: 0
+    detection_of_machine_generated_content: 0
+    model_behavior_policy_enforcement: 0
+    monitoring_mechanism: 0
+    permitted_restricted_and_prohibited_model_behaviors: 0
+    permitted_restricted_and_prohibited_uses: 1
+    permitted_and_prohibited_use_of_user_data: 1
+    permitted_and_prohibited_users: 1
+    products_and_services: 1
+    redress_mechanism: 0
+    release_decision_making_protocol: 0
+    release_process: 1
+    terms_of_service: 1
+    usage_data_access_protocol: 0
+    usage_disclaimers: 1
+    usage_policy_enforcement: 0
+    usage_policy_violation_appeals_mechanism: 0
+    usage_reports: 0
+    user_data_protection_policy: 1
+    user_interaction_with_ai_system: 1
+    versioning_protocol: 1
