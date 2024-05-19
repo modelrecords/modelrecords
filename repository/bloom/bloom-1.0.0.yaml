@@ -11,5 +11,5 @@ mr:
     release_date: '2022-07-11'
 
   relations:
-  upstream:
-  - ROOTS corpus
+    upstream:
+      - roots>=1.0.0

@@ -1,0 +1,10 @@
+mr:
+  metadata:
+    name: mC4
+    refs:
+    - https://huggingface.co/datasets/mc4
+    - https://arxiv.org/pdf/1910.10683
+    description: ''
+    version: '1.0'
+    publisher: Google
+    release_date: '2023-09-19'

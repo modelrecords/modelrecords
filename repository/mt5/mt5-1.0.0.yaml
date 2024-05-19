@@ -13,4 +13,4 @@ mr:
 
   relations:
     upstream:
-    - mC4
+    - mc4>=1.0.0
