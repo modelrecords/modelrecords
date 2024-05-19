@@ -1,6 +1,3 @@
-from planecards.types import PCBoolean, PCString, PCEnum
-
-
 class Survey:
     """
     A base class representing a survey.

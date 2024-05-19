@@ -1,11 +1,11 @@
 
-class PlaneCardType:
+class ModelRecordType:
     """
     A base class representing a plane card type.
     """
     pass
 
-class PCEnum(PlaneCardType):
+class MREnum(ModelRecordType):
     """
     A class representing an enumerated plane card type.
 
@@ -15,14 +15,14 @@ class PCEnum(PlaneCardType):
 
     def __init__(self, options):
         """
-        Initializes a PCEnum object.
+        Initializes a MREnum object.
 
         Args:
             options (list): A list of options for the enumerated type.
         """
         self.options = options
 
-class PCString(PlaneCardType):
+class MRString(ModelRecordType):
     """
     A class representing a string plane card type.
 
@@ -32,14 +32,14 @@ class PCString(PlaneCardType):
 
     def __init__(self, options):
         """
-        Initializes a PCString object.
+        Initializes a MRString object.
 
         Args:
             options (list): A list of options for the string type.
         """
         self.options = options
 
-class PCBoolean(PlaneCardType):
+class MRBoolean(ModelRecordType):
     """
     A class representing a boolean plane card type.
 
@@ -49,7 +49,7 @@ class PCBoolean(PlaneCardType):
 
     def __init__(self, options):
         """
-        Initializes a PCBoolean object.
+        Initializes a MRBoolean object.
 
         Args:
             options (list): A list of options for the boolean type.

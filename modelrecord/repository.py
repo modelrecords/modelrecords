@@ -37,7 +37,12 @@ class Repository:
 
     def parse_card_relation(self, card:str):
         operand = None
-        package, version = re.split('>=|==|<=|-', card)
+        try:
+            package, version = re.split('>=|==|<=|-', card)
+        except:
+            package = card
+            version = get_latest_semver(self.modelrecord_folder(package))
+            return package, semver.Version(version), operand
         if '>=' in card:
             operand = operator.ge
         if '<=' in card:
@@ -47,8 +52,13 @@ class Repository:
         return package, semver.Version(version), operand
 
     def find_card_in_repo(self, card_relation:str):
+        
         pkg, version, operand = self.parse_card_relation(card_relation)
         basepath = f'{self.base_repo_path}/{pkg}'
+        # if the operand is None, then we have nothing to compare, so just grab the package
+        if operand is None:
+            return f'{basepath}/{pkg}-{version}.yaml'
+        
         for candidate in sorted(os.listdir(basepath))[::-1]:
             _, candidate_version, _ = self.parse_card_relation(candidate.replace('.yaml',''))
             if operand(version , candidate_version):
@@ -56,7 +66,7 @@ class Repository:
         raise f"No card found: {card_relation}"
 
     def download_and_process_refs(self, pkg:str):
-        refs = self.load_plane_card_yaml(pkg).pc.metadata.refs
+        refs = self.load_modelrecord_yaml(pkg).mr.metadata.refs
 
         ref_path = f'{self.base_repo_path}/_refs/{pkg}'
         Path(f'{ref_path}').mkdir(parents=True, exist_ok=True)
@@ -81,7 +91,10 @@ class Repository:
                     file_path = f'{file_path}.txt'
                     with open(file_path, 'w') as f:
                         f.writelines(all_text)
-                    
+                elif format in ['html', 'htm']:    
+                    file_path = f'{ref_path}/{idx:03}.{format}.txt'
+                    with open(file_path, 'wb') as f:
+                        f.write(content)
                 elif format in ['md', 'txt']:
                     file_path = f'{ref_path}/{idx:03}.{format}.txt'
                     with open(file_path, 'wb') as f:
@@ -98,40 +111,40 @@ class Repository:
         return pkgs
 
     def update_card_attrs(self, pkg, attrs):
-        yml = self.load_plane_card_yaml(pkg)
+        yml = self.load_modelrecord_yaml(pkg)
         for key, answer in attrs.items():
             OmegaConf.update(yml, key, answer, force_add=True)
         
-        with open(self.plane_card_yaml_path(pkg)) as fp:
+        with open(self.modelrecord_yaml_path(pkg)) as fp:
             OmegaConf.save(config=yml, f=fp.name)
 
-    def plane_card_folder(self, pkg:str):
+    def modelrecord_folder(self, pkg:str):
         return f'{self.base_repo_path}/{pkg}'
 
-    def plane_card_yaml_path(self, card:str):
+    def modelrecord_yaml_path(self, card:str):
         card_split = card.rsplit('-', 1)
         if len(card_split) == 2:
             pkg, version = card_split
             if not is_semver(version):
-                version = get_latest_semver(self.plane_card_folder(pkg))
+                version = get_latest_semver(self.modelrecord_folder(pkg))
                 pkg = f'{card}'
                 card = f'{pkg}-{version}'
         else:
             pkg = card_split[0]
-            version = get_latest_semver(self.plane_card_folder(pkg))
+            version = get_latest_semver(self.modelrecord_folder(pkg))
             card = f'{pkg}-{version}'
-        return f'{self.plane_card_folder(pkg)}/{card}.yaml'
+        return f'{self.modelrecord_folder(pkg)}/{card}.yaml'
 
-    def load_plane_card_yaml(self, card:str):
+    def load_modelrecord_yaml(self, card:str):
         
-        yml_path = self.plane_card_yaml_path(card)
+        yml_path = self.modelrecord_yaml_path(card)
         base_conf = OmegaConf.load(yml_path)
 
         relation_confs = [base_conf]
 
-        if base_conf.pc.get('relations'):
-            if base_conf.pc.relations.get('upstream'):
-                for relation in base_conf.pc.relations.upstream:
+        if base_conf.mr.get('relations'):
+            if base_conf.mr.relations.get('upstream'):
+                for relation in base_conf.mr.relations.upstream:
                     relation_confs.append(OmegaConf.load(self.find_card_in_repo(relation)))
 
         return OmegaConf.unsafe_merge(*relation_confs[::-1])

@@ -1,6 +1,6 @@
 import os
 import yaml
-from planecards.repository import Repository
+from modelrecord.repository import Repository
 from pelican import signals
 
 def add_repository_yaml_data(generator):
@@ -10,7 +10,7 @@ def add_repository_yaml_data(generator):
     data_list = []
 
     for pkg in pkg_list:
-        data_list.append(repository.load_plane_card_yaml(pkg))
+        data_list.append(repository.load_modelrecord_yaml(pkg))
 
     # Add the data list to the context
     generator.context['repository_yaml_data'] = data_list

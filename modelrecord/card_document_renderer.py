@@ -1,6 +1,6 @@
 import os
 from jinja2 import Environment, PackageLoader, select_autoescape
-from planecards.plane_card import PlaneCardModel
+from modelrecord.modelrecord import ModelRecord
 from pathlib import Path
 
 
@@ -8,18 +8,18 @@ class CardDocumentRenderer:
 
     def __init__(
         self,
-        plane_card_model: PlaneCardModel,
+        modelrecord_model: ModelRecord,
         output_dir="output",
-        output_filename="planecard.tex",
+        output_filename="modelrecord.tex",
         pdf_cmd="pdflatex",
     ):
         self.pdf_cmd = pdf_cmd
         self.output_dir = output_dir
         self.output_filename = output_filename
-        self.plane_card_model = plane_card_model
+        self.modelrecord_model = modelrecord_model
 
         env = Environment(
-            loader=PackageLoader("planecards"),
+            loader=PackageLoader("modelrecord"),
             autoescape=select_autoescape(),
             block_start_string="\BLOCK{",
             block_end_string="}",
@@ -34,7 +34,7 @@ class CardDocumentRenderer:
         self.template = env.get_template("card.tpl.tex")
 
     def render_tex(self):
-        return self.template.render(self.plane_card_model.results_as_dict())
+        return self.template.render(self.modelrecord_model.results_as_dict())
 
     def save_pdf(self):
         Path(self.output_dir).mkdir(parents=True, exist_ok=True)

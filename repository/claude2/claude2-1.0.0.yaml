@@ -1,4 +1,4 @@
-pc:
+mr:
   metadata:
     name: Claude 2
     refs:
@@ -113,49 +113,49 @@ pc:
     use_of_human_labor: 0
     wages: 1
     intended_use:
-    - General, open-ended conversation
-    - Search, writing, editing, outlining, and summarizing text
-    - Coding
-    - Providing helpful advice about a broad range of subjects
-    - Support creative or literary use cases
+    - general, open-ended conversation
+    - search, writing, editing, outlining, and summarizing text
+    - coding
+    - providing helpful advice about a broad range of subjects
+    - support creative or literary use cases
     factors:
-    - Confabulating – getting facts wrong, hallucinating details, and filling in gaps
-      in knowledge with fabrication
-    - Not searching the web or using data after early 2023
-    - Performance on low-resource languages is weaker
-    - Should not be used in high stakes situations without human review
-    - Not designed to replace professionals (like lawyers) in decision-making processes
+    - Claude models may confabulate, getting facts wrong or fabricating details
+    - Not to be used in high stakes situations on their own
+    - Do not currently search the web, operating with data from before early 2023
+    - Cannot be assumed to have updated information or web search capabilities unless
+      specifically indicated
+    - Multilingual capabilities vary, lower performance on low-resource languages
     evaluation_data:
-    - 'Description: Human preference data used to calculate per-task Elo scores across
-      different versions of Claude'
-    - 'Description: Data from red-teaming task, asking crowdworkers to roleplay adversarial
-      scenarios'
-    - 'Description: Bias Benchmark for QA (BBQ) evaluations measuring stereotype biases'
-    - 'Description: TruthfulQA evaluation to determine if models output accurate and
-      truthful responses'
-    - 'Description: Held out prompts from red-teaming work and AI model ‘jailbreaks’'
+    - Suite of evaluations including capabilities, safety, and alignment evaluations
+    - Human preference data to calculate per-task Elo scores
+    - BBQ bias evaluations using a multiple choice Q&A format designed for a U.S.
+      English-speaking context
+    - TruthfulQA evaluation for determining accurate and truthful responses in adversarial
+      settings
+    - Held-out set of prompts including harmful requests and 'jailbreaks' for harmlessness
+      evaluation
     training_data:
-    - 'Description: Proprietary mix of publicly available information from the Internet'
-    - 'Description: Datasets licensed from third-party businesses'
-    - 'Description: Data affirmatively shared by users or provided by crowd workers'
-    - 'Description: Roughly 10 percent of the data included was non-English'
-    - 'Description: Training data cutoff in early 2023'
+    - Proprietary mix of publicly available internet data, licensed datasets, and
+      data shared by users or crowd workers
+    - Some human feedback data used for fine-tuning made public
+    - Training data cutoff in early 2023
+    - Around 10 percent of the data included was non-English
+    - Includes data on recent events up to early 2023, but may generate confabulations
     additional_information:
-    - Continuous evolution from earlier models
-    - Use of RLHF and Constitutional AI for training
-    - Does not represent a transformative change but continuous improvement
-    - Developed by Anthropic and released in July 2023
-    - Model data cuts off in early 2023
+    - Continuous evolution from early 'helpful and harmless' language assistants
+    - Use of a Constitution - a set of ethical and behavioral principles
+    - Engagement in red teaming and safety audits with external organizations
+    - Focus on improving helpfulness, honesty, and harmlessness
+    - Ongoing efforts to mitigate bias and ensure ethical use
     recommendations:
-    - Use in conjunction with human review, especially in high stakes scenarios
-    - Consider augmenting with web search for more current information
-    - Ensure appropriateness for the intended audience, especially in multilingual
-      contexts
-    - Avoid relying on the model for legal, medical, or other professional advice
-    - Leverage the model's steering capabilities for creative and literary uses
+    - Should be supplemented by human review in high-stakes use cases
+    - Not recommended for uses requiring up-to-date web searching
+    - Use caution in applications involving low-resource languages
+    - Follow the Acceptable Use Policy to avoid misuse
+    - Stay informed about updates and improvements for best application practices
     ethical_considerations:
-    - Training models to avoid sexist, racist, and toxic outputs
-    - Avoid helping humans engage in illegal or unethical activities
-    - Models can still make mistakes and be jailbroken
-    - Ethical considerations shape Acceptable Use Policy and Trust and Safety processes
-    - Continuous effort to improve helpfulness, honesty, and harmlessness of the models
+    - Trained to avoid sexist, racist, and toxic outputs
+    - Designed to prevent aiding in illegal or unethical activities
+    - Models can still make mistakes and may be jailbroken
+    - Training involves principles to guide model outputs ethically
+    - Continuous work to minimize bias and harmful outputs
