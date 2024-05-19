@@ -570,6 +570,11 @@ video {
   gap: 1.25rem;
 }
 
+.bg-primarylight {
+  --tw-bg-opacity: 1;
+  background-color: rgb(110 112 170 / var(--tw-bg-opacity));
+}
+
 .font-bold {
   font-weight: 700;
 }
