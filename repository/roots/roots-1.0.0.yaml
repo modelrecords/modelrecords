@@ -1,0 +1,10 @@
+mr:
+  metadata:
+    name: The BigScience ROOTS Corpus
+    refs:
+    - https://huggingface.co/papers/2303.03915
+    - https://arxiv.org/pdf/2303.03915
+    description: ''
+    version: '1.0'
+    publisher: BigScience Workshop
+    release_date: '2023-03-07'

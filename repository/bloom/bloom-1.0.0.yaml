@@ -9,3 +9,7 @@ mr:
     publisher: BigScience Workshop
     model_type: Transformer-based Language Model
     release_date: '2022-07-11'
+
+  relations:
+    upstream:
+      - roots>=1.0.0

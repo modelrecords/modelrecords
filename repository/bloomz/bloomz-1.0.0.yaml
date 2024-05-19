@@ -12,7 +12,8 @@ mr:
 
   relations:
     upstream:
-      - bloom>=1.0.0
+      - xp3-all>=1.0.0
+      - xp3>=1.0.0
 
 
   question_sets:
