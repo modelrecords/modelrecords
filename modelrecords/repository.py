@@ -8,6 +8,7 @@ import mimetypes
 import PyPDF2
 from pathlib import Path
 from importlib import resources
+from modelrecords.modelrecord import ModelRecord 
 
 #BASE_REPO_PATH = 'repository'
 BASE_REPO_PATH = f'{resources.files('modelrecords')}/repository'
@@ -150,6 +151,15 @@ class Repository:
 
         return OmegaConf.unsafe_merge(*relation_confs[::-1])
 
+    def load_model_record_from_path(self, path):
+        yml = self.merge_yml_modelrecords(path)
+    
+        return ModelRecord(yml)
+    
+    def load_model_record_from_repository(self, pkg):
+        yml_path = self.modelrecord_yaml_path(pkg)
+        
+        return self.load_model_record_from_path(yml_path)
 
 def is_semver(version):
     # Regex to validate Semantic Versioning

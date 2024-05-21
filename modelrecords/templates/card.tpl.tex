@@ -76,53 +76,59 @@ breakable, sharp corners, boxrule=0.7pt]
     \item Unintentional harm evaluation: \VAR{ mr.model.unintentional_harm_evaluation }
 \end{mcsection}
 
-\textbf{Intended use}
-\BLOCK{ for item in mr.upstream.intended_use}
-    \item - \VAR{ item }
-\BLOCK{ endfor }
 
-\textbf{Factors}
-\BLOCK{ for item in mr.upstream.factors}
-    \item - \VAR{ item }
-\BLOCK{ endfor }
+\BLOCK{ if mr.upstream } 
 
-\textbf{Metrics}
+    \textbf{Intended use}
+    \BLOCK{ for item in mr.upstream.intended_use}
+        \item - \VAR{ item }
+    \BLOCK{ endfor }
 
-TBD?
+    \textbf{Factors}
+    \BLOCK{ for item in mr.upstream.factors}
+        \item - \VAR{ item }
+    \BLOCK{ endfor }
 
-\textbf{Evaluation data}
-\BLOCK{ for item in mr.upstream.evaluation_data}
-    \item - \VAR{ item }
-\BLOCK{ endfor }
+    \textbf{Metrics}
 
-\textbf{Training data}
-\BLOCK{ for item in mr.upstream.training_data}
-    \item - \VAR{ item }
-\BLOCK{ endfor }
+    TBD?
 
-\textbf{Environmental}
-\BLOCK{ for item in mr.upstream.environmental.refs}
-    \item - \url{\VAR{ item }}
-\BLOCK{ endfor }
-\item - Carbon emitted(tCO2eq): \VAR{ mr.upstream.environmental.tco2e }
-\item - Energy consumption: \VAR{ mr.upstream.environmental.energy_consumption }
-\item - Energy unit: \VAR{ mr.upstream.environmental.energy_unit }
-\item - Compute hours: \VAR{ mr.upstream.environmental.compute_hours }
+    \textbf{Evaluation data}
+    \BLOCK{ for item in mr.upstream.evaluation_data}
+        \item - \VAR{ item }
+    \BLOCK{ endfor }
 
-\textbf{Ethical considerations}
-\BLOCK{ for item in mr.upstream.ethical_considerations}
-    \item - \VAR{ item }
-\BLOCK{ endfor }
+    \textbf{Training data}
+    \BLOCK{ for item in mr.upstream.training_data}
+        \item - \VAR{ item }
+    \BLOCK{ endfor }
 
-\textbf{Recommendations}
-\BLOCK{ for item in mr.upstream.recommendations}
-    \item - \VAR{ item }
-\BLOCK{ endfor }
+    \textbf{Environmental}
+    \BLOCK{ for item in mr.upstream.environmental.refs}
+        \item - \url{\VAR{ item }}
+    \BLOCK{ endfor }
+    \item - Carbon emitted(tCO2eq): \VAR{ mr.upstream.environmental.tco2e }
+    \item - Energy consumption: \VAR{ mr.upstream.environmental.energy_consumption }
+    \item - Energy unit: \VAR{ mr.upstream.environmental.energy_unit }
+    \item - Compute hours: \VAR{ mr.upstream.environmental.compute_hours }
 
-\textbf{Additional information}
-\BLOCK{ for item in mr.upstream.additional_information}
-    \item - \VAR{ item }
-\BLOCK{ endfor }
+    \textbf{Ethical considerations}
+    \BLOCK{ for item in mr.upstream.ethical_considerations}
+        \item - \VAR{ item }
+    \BLOCK{ endfor }
+
+    \textbf{Recommendations}
+    \BLOCK{ for item in mr.upstream.recommendations}
+        \item - \VAR{ item }
+    \BLOCK{ endfor }
+
+    \textbf{Additional information}
+    \BLOCK{ for item in mr.upstream.additional_information}
+        \item - \VAR{ item }
+    \BLOCK{ endfor }
+
+\BLOCK{ endif } 
+
 
 \textbf{Quantitative Analyses}
 

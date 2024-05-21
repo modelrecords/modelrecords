@@ -1,7 +1,7 @@
 import argparse
 import os
 import yaml
-from modelrecord.modelrecord import ModelRecord
+from modelrecords.modelrecord import ModelRecord
 
 
 def get_parser():

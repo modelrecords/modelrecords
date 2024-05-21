@@ -51,19 +51,21 @@ class ModelRecord:
         self.modelrecord_attrs = DotDict(modelrecord_params)
         self.model_name = self.modelrecord_attrs.mr.metadata.name
         self.locale = locale
+        self.parse()
 
     def parse(self):
         """
         Parses the plane card attributes and stores the parsed question sets.
         """
         self.question_sets_parsed = []
-        for question_set in self.modelrecord_attrs["mr"].question_sets:
-            qs = self.QUESTION_SETS[question_set](
-                flatten(self.modelrecord_attrs["mr"]),
-                self.model_name,
-            )
-            qs.parse()
-            self.question_sets_parsed.append(qs)
+        if self.modelrecord_attrs["mr"].question_sets:
+            for question_set in self.modelrecord_attrs["mr"].question_sets:
+                qs = self.QUESTION_SETS[question_set](
+                    flatten(self.modelrecord_attrs["mr"]),
+                    self.model_name,
+                )
+                qs.parse()
+                self.question_sets_parsed.append(qs)
 
     def results_as_dict(self):
         out = self.modelrecord_attrs
