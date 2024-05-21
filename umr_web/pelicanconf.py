@@ -47,7 +47,7 @@ TAG_SAVE_AS = ''
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-PLUGIN_PATHS = ['../modelrecord/pelican_plugins']
+PLUGIN_PATHS = ['../modelrecords/pelican_plugins']
 PLUGINS = ['load_pkgs']
 
 LOAD_CONTENT_CACHE = False

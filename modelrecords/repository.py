@@ -6,12 +6,11 @@ import operator
 import requests
 import mimetypes
 import PyPDF2
-from omegaconf import OmegaConf
 from pathlib import Path
-from packaging import version as packaging_version
+from importlib import resources
 
-
-BASE_REPO_PATH = 'repository'
+#BASE_REPO_PATH = 'repository'
+BASE_REPO_PATH = f'{resources.files('modelrecords')}/repository'
 RESERVED_FOLDERS = ['_refs']
 
 def download_url(url):
@@ -136,8 +135,10 @@ class Repository:
         return f'{self.modelrecord_folder(pkg)}/{card}.yaml'
 
     def load_modelrecord_yaml(self, card:str):
-        
         yml_path = self.modelrecord_yaml_path(card)
+        return self.merge_yml_modelrecords(yml_path)
+    
+    def merge_yml_modelrecords(self, yml_path:str):
         base_conf = OmegaConf.load(yml_path)
 
         relation_confs = [base_conf]

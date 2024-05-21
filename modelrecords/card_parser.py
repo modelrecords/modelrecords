@@ -4,7 +4,7 @@ import json
 
 class Parser():
     def __init__(self):
-        self.templates = 'modelrecord/templates/card_parser'
+        self.templates = 'modelrecords/templates/card_parser'
         self.answers = {}
         self.all_texts = {}
         self._load_gpt()
