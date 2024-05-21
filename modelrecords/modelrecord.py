@@ -50,6 +50,7 @@ class ModelRecord:
         """
         self.modelrecord_attrs = DotDict(modelrecord_params)
         self.model_name = self.modelrecord_attrs.mr.metadata.name
+        # self.pkg_name = self.modelrecord_attrs.mr.metadata.pkg_name
         self.locale = locale
         self.parse()
 
@@ -80,3 +81,7 @@ class ModelRecord:
         Prints the parsed question sets.
         """
         return [(qsp.name(), qsp.result()) for qsp in self.question_sets_parsed]
+
+
+    def upstream_relations(self):
+        return self.results_as_dict().mr.relations.upstream
