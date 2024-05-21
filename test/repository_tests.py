@@ -1,6 +1,6 @@
 import unittest
 
-from modelrecord import repository
+from modelrecords import repository
 
 class TestRepository(unittest.TestCase):
     def test_list_all_packages(self):

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.28)  17 MAY 2024 20:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.28)  17 MAY 2024 21:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -371,8 +371,7 @@ Package: enumitem 2019/06/20 v3.9 Customized lists
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count294
 \l__pdf_internal_box=\box73
-)
-No file card.tpl.aux.
+) (./card.tpl.aux)
 \openout1 = `card.tpl.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
@@ -397,7 +396,7 @@ Package hyperref Info: Link coloring ON on input line 22.
 \@outlinefile=\write4
 \openout4 = `card.tpl.out'.
 
-(/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count295
 \scratchdimen=\dimen188
@@ -419,8 +418,8 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 /Users/jon/Projects/planecards-cli/modelrecord/templates/card.tpl.tex:40: Undefined control sequence.
 <recently read> \VAR 
                      
-l.40     breakable, sharp corners, boxrule=0.7pt]
-                                                 
+l.40 breakable, sharp corners, boxrule=0.7pt]
+                                             
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -2966,10 +2965,10 @@ Package rerunfilecheck Info: Checksums for `card.tpl.out':
 (rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 19130 strings out of 474116
- 367593 string characters out of 5743682
+ 19133 strings out of 474116
+ 367644 string characters out of 5743682
  1951187 words of memory out of 5000000
- 41215 multiletter control sequences out of 15000+600000
+ 41216 multiletter control sequences out of 15000+600000
  558880 words of font info for 39 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  101i,5n,107p,496b,869s stack positions out of 10000i,1000n,20000p,200000b,200000s

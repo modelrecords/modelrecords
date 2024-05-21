@@ -1,5 +1,5 @@
 import datetime
-from modelrecord.surveys.fmti2023 import FMTI2023
+from modelrecords.surveys.fmti2023 import FMTI2023
 from collections.abc import MutableMapping
 
 

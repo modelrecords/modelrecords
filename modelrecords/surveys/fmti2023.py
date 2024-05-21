@@ -1,5 +1,5 @@
-from modelrecord.types import MRBoolean
-from modelrecord.survey import Survey
+from modelrecords.types import MRBoolean
+from modelrecords.survey import Survey
 
 class FMTI2023(Survey):
     """

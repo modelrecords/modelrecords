@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1715992984.32349 "/Users/jon/Projects/planecards-cli/modelrecord/templates/card.tpl.tex" "card.tpl.pdf" "card.tpl" 1715992984.87636 2
-  "/Users/jon/Projects/planecards-cli/modelrecord/templates/card.tpl.tex" 1715992984.06138 5201 8dce4cd5c20503d82dd7f566c842ad0b ""
+["pdflatex"] 1715995787.67207 "/Users/jon/Projects/planecards-cli/modelrecord/templates/card.tpl.tex" "card.tpl.pdf" "card.tpl" 1715995788.23618 2
+  "/Users/jon/Projects/planecards-cli/modelrecord/templates/card.tpl.tex" 1715995786.85737 5197 0cfced2f64fe5d6ccb724687e13a253e ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -125,9 +125,9 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1714354486.25938 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1714354433 8221417 60caae1f48299ab42271c2e1e8df80f3 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "card.tpl.aux" 1715992984.75572 162 87159b23cce7c2b923b11c85495bbd6d "pdflatex"
-  "card.tpl.out" 1715992984.62916 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "card.tpl.tex" 1715992984.06138 5201 8dce4cd5c20503d82dd7f566c842ad0b ""
+  "card.tpl.aux" 1715995788.11656 162 87159b23cce7c2b923b11c85495bbd6d "pdflatex"
+  "card.tpl.out" 1715995787.98647 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "card.tpl.tex" 1715995786.85737 5197 0cfced2f64fe5d6ccb724687e13a253e ""
   (generated)
   "card.tpl.aux"
   "card.tpl.log"

@@ -1,10 +1,10 @@
 import os
 import yaml
-from modelrecord.repository import Repository
+from modelrecords.repository import Repository
 from pelican import signals
 
 def load_repository_data(generator):
-    repository = Repository(base_repo_path='../repository')
+    repository = Repository(base_repo_path='repository')
 
     pkg_list = repository.all_packages()
     data_dict = {}

@@ -183,6 +183,9 @@ INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/local/texlive/2024/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+INPUT ./card.tpl.aux
+INPUT ./card.tpl.aux
+INPUT card.tpl.aux
 OUTPUT card.tpl.aux
 OUTPUT card.tpl.out
 OUTPUT card.tpl.pdf

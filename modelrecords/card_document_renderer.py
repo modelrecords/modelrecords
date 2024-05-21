@@ -1,6 +1,6 @@
 import os
 from jinja2 import Environment, PackageLoader, select_autoescape
-from modelrecord.modelrecord import ModelRecord
+from modelrecords.modelrecord import ModelRecord
 from pathlib import Path
 
 
@@ -19,7 +19,7 @@ class CardDocumentRenderer:
         self.modelrecord_model = modelrecord_model
 
         env = Environment(
-            loader=PackageLoader("modelrecord"),
+            loader=PackageLoader("modelrecords"),
             autoescape=select_autoescape(),
             block_start_string="\BLOCK{",
             block_end_string="}",
