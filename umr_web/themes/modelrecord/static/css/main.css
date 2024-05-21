@@ -574,6 +574,15 @@ html {
   gap: 1.25rem;
 }
 
+.border-b {
+  border-bottom-width: 1px;
+}
+
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
 .bg-highlight {
   --tw-bg-opacity: 1;
   background-color: rgb(220 221 252 / var(--tw-bg-opacity));
