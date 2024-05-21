@@ -446,6 +446,10 @@ video {
   display: none;
 }
 
+html {
+  font-family: "Roboto", system-ui, sans-serif;
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -570,13 +574,36 @@ video {
   gap: 1.25rem;
 }
 
+.bg-highlight {
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 221 252 / var(--tw-bg-opacity));
+}
+
 .bg-primarylight {
   --tw-bg-opacity: 1;
   background-color: rgb(110 112 170 / var(--tw-bg-opacity));
 }
 
+.p-8 {
+  padding: 2rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
 .font-bold {
   font-weight: 700;
+}
+
+.font-medium {
+  font-weight: 500;
 }
 
 .text-sky-400 {

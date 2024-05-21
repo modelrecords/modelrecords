@@ -1,5 +1,4 @@
 import os
-import yaml
 from modelrecord.repository import Repository
 from pelican import signals
 
