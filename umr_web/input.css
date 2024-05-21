@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 @layer base {
+  .roboto-condensed-bold {
+    font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
   html {
     font-family: "Roboto", system-ui, sans-serif;
   }
