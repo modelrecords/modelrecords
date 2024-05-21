@@ -22,6 +22,15 @@ If you want to render PDFs, and let's be honest who doesn't, you must do the fol
     1. `conda env update --file environment.yml`
     2. `conda activate modelrecords`
 
+## Graphing
+```
+brew install graphviz
+pip install --config-settings="--global-option=build_ext" \
+            --config-settings="--global-option=-I$(brew --prefix graphviz)/include/" \
+            --config-settings="--global-option=-L$(brew --prefix graphviz)/lib/" \
+            pygraphviz
+```
+
 ## Website Rendering
 The code for the website lives in `umr_web` and uses Pelican + Tailwindcss
 
