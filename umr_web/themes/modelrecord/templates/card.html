@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main>
+  {% include "includes/card_header.html" %}
+  {% include "includes/card_nav.html" %}
+
+  {% block card_content %}{% endblock %}
+</main>
+{% endblock %}

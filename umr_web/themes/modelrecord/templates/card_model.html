@@ -1,18 +1,11 @@
 {% set cardType='model' %}
 {% set model_data=repository_data_dict[page.model_pkg_name] %}
 
-{% extends "base.html" %}
-{% block html_lang %}{{ page.lang }}{% endblock %}
-{% block title %}{{ page.title | striptags }}- Model Card{% endblock %}
+{% extends "card.html" %}
+{% block title %}{{ page.title | striptags }} - Model Card{% endblock %}
 
-{% block extra_head %}
-{% endblock %}
-
-{% block content %}
-<section id="content" class="body">
-  {% include "includes/card_header.html" %}
-  {% include "includes/card_nav.html" %}
-
-  {{ model_data }}
-</section>
+{% block card_content %}
+  <section>
+    {{ model_data }}
+  </section>
 {% endblock %}
