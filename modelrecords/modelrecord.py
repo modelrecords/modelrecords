@@ -82,6 +82,10 @@ class ModelRecord:
         """
         return [(qsp.name(), qsp.result()) for qsp in self.question_sets_parsed]
 
-
+    def package_name(self):
+        return self.modelrecord_attrs.mr.pkg.name
     def upstream_relations(self):
-        return self.results_as_dict().mr.relations.upstream
+        if self.results_as_dict().mr.relations:
+            if self.results_as_dict().mr.relations.upstream:
+                return self.results_as_dict().mr.relations.upstream
+        return []

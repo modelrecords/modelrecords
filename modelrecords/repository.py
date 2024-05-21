@@ -32,6 +32,20 @@ class Repository:
         pkgs = [d for d in os.listdir(self.base_repo_path) if d not in RESERVED_FOLDERS]
         return pkgs
 
+    def find_parent_packages(self, model_record:ModelRecord):
+        edges = []
+        def find_parents(mr, indent=' '):
+            for rel in mr.upstream_relations():
+                parent = self.load_model_record_from_repository(rel)
+                edges.append((mr.package_name(), parent.package_name()))
+                find_parents(parent, indent = f'{indent}  ')
+        find_parents(model_record)
+        nodes = set([model_record.package_name()])
+        for A,B in edges:
+            nodes.add(A)
+            nodes.add(B)
+        return nodes, edges
+
     def load_modelrecord_yaml(self, pkg_query:str):
         yml_path = self.find_in_repo(pkg_query)        
         return self.merge_yml_modelrecords(yml_path)
@@ -49,13 +63,19 @@ class Repository:
         yml = OmegaConf.unsafe_merge(*relation_confs[::-1])
         return yml
 
-    def load_model_record_from_path(self, path):
+    def _load_model_record_from_path(self, path, pkg_name=None, version=None):
         yml = self.merge_yml_modelrecords(path)
+        yml.mr.pkg = dict(
+            name = pkg_name,
+            version = str(version),
+            path = path,
+        )
         return ModelRecord(yml)
     
     def load_model_record_from_repository(self, pkg_query):
-        yml_path = self.find_in_repo(pkg_query)        
-        return self.load_model_record_from_path(yml_path)
+        parsed = self.pkg_parser.parse_pkg_version_query(pkg_query)
+        yml_path = self.find_in_repo(pkg_query)
+        return self._load_model_record_from_path(yml_path, pkg_name=parsed['pkg'], version=parsed['version'])
 
     # Download and update 
     def update_card_attrs(self, pkg, attrs):
