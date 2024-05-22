@@ -4,8 +4,14 @@
 {% extends "card.html" %}
 {% block title %}{{ page.title | striptags }} - Model Card{% endblock %}
 
-{% block card_content %}
-  <section>
+{% block card_content_left %}
+  <div>
     {{ model_data }}
-  </section>
+  </div>
+{% endblock %}
+
+{% block card_content_right %}
+  <div>
+    right
+  </div>
 {% endblock %}

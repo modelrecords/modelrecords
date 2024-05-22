@@ -9,6 +9,9 @@ module.exports = {
         primarylight: "#6E70AA",
         primarydark: "#27204E"
       },
+      width: {
+        '4xl': '56rem'
+      },
     },
   },
   plugins: [],

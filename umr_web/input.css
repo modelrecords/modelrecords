@@ -3,13 +3,17 @@
 @tailwind utilities;
 
 @layer base {
-  .roboto-condensed-bold {
+  .roboto-condensed {
     font-family: "Roboto Condensed", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 700;
     font-style: normal;
   }
   html {
     font-family: "Roboto", system-ui, sans-serif;
+  }
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 }
