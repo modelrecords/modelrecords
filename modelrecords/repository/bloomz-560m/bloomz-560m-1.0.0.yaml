@@ -16,3 +16,4 @@ mr:
     environmental:
       refs:
       - https://huggingface.co/bigscience/bloom-560m
+  type: model

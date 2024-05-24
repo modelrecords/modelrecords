@@ -12,3 +12,4 @@ mr:
   relations:
     upstream:
     - bloom>=1.0.0
+  type: model

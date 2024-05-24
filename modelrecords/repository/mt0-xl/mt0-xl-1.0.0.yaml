@@ -6,8 +6,8 @@ mr:
     description: ''
     version: 1.0.0
     publisher: BigScience Workshop
-    model_type: Transformer-based Language Model
     release_date: '2022-07-11'
+    model_type: Transformer-based Language Model
   relations:
     upstream:
     - mt0>=1.0.0
@@ -15,3 +15,4 @@ mr:
     environmental:
       refs:
       - https://huggingface.co/bigscience/mt0-xl
+  type: model

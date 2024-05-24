@@ -159,3 +159,4 @@ mr:
     - Models can still make mistakes and may be jailbroken
     - Training involves principles to guide model outputs ethically
     - Continuous work to minimize bias and harmful outputs
+  type: model
