@@ -9,6 +9,9 @@ from modelrecords.package_parser import PackageParser
 BASE_REPO_PATH = f'{resources.files('modelrecords')}/repository'
 RESERVED_FOLDERS = ['_refs']
 
+# fields we are ignoring when we merge:
+RESERVED_FIELDS = ['type']
+
 class Repository:
     def __init__(self, base_repo_path=BASE_REPO_PATH):
         self.base_repo_path = os.path.normpath(base_repo_path)
@@ -59,7 +62,11 @@ class Repository:
         if base_conf.mr.get('relations'):
             if base_conf.mr.relations.get('upstream'):
                 for relation in base_conf.mr.relations.upstream:
-                    relation_confs.append(OmegaConf.load(self.find_in_repo(relation)))
+                    found_relation_yml = OmegaConf.load(self.find_in_repo(relation))
+                    for key in RESERVED_FIELDS:
+                        if key in found_relation_yml.mr.keys():
+                            del found_relation_yml.mr[key] 
+                    relation_confs.append(found_relation_yml)
 
         yml = OmegaConf.unsafe_merge(*relation_confs[::-1])
         return yml
@@ -91,4 +98,4 @@ class Repository:
         ref_path = f'{self.base_repo_path}/_refs/{pkg}'
         Path(f'{ref_path}').mkdir(parents=True, exist_ok=True)
         text_files = content_extract_text(refs, ref_path)
-        return text_files
+        return text_files#

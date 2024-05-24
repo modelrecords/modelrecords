@@ -12,3 +12,4 @@ mr:
   relations:
     upstream:
     - roots>=1.0.0
+  type: model

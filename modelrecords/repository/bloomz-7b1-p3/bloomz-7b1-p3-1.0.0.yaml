@@ -191,3 +191,4 @@ mr:
     environmental:
       refs:
       - https://huggingface.co/bigscience/bloomz-7b1-p3
+  type: model
