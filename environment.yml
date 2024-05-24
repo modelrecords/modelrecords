@@ -16,3 +16,4 @@ dependencies:
     - livereload
     - pytailwindcss
     - pelican-redirect
+    - matplotlib

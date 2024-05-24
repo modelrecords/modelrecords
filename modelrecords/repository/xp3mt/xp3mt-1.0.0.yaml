@@ -1,0 +1,10 @@
+mr:
+  metadata:
+    name: xP3mt
+    refs:
+    - https://huggingface.co/datasets/bigscience/xP3mt
+    - https://arxiv.org/pdf/2211.01786
+    description: ''
+    version: '1.0'
+    publisher: BigScience Workshop
+    release_date: '2023-05-29'

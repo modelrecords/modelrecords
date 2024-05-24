@@ -1,4 +1,11 @@
-repository/_refs
+modelrecords/repository/_refs
+modelrecords/templates/*.aux
+modelrecords/templates/*.fdb_latexmk
+modelrecords/templates/*.log
+modelrecords/templates/*.out
+modelrecords/templates/*.pdf
+modelrecords/templates/*.fls
+modelrecords/templates/*.synctex.gz
 output/
 .env
 # Byte-compiled / optimized / DLL files
