@@ -3,7 +3,7 @@ from modelrecords.repository import Repository
 from pelican import signals
 
 def load_repository_data(generator):
-    repository = Repository(base_repo_path='repository')
+    repository = Repository()
 
     pkg_list = repository.all_packages()
     data_dict = {}
