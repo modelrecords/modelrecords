@@ -37,7 +37,7 @@ class Repository:
         edges = []
         def find_parents(mr, indent=' '):
             for rel in mr.upstream_relations():
-                parent = self.load_model_record_from_repository(rel)
+                parent = self.find(rel)
                 edges.append((mr.package_name(), parent.package_name()))
                 find_parents(parent, indent = f'{indent}  ')
         find_parents(model_record)
@@ -73,7 +73,7 @@ class Repository:
         )
         return ModelRecord(yml)
     
-    def load_model_record_from_repository(self, pkg_query):
+    def find(self, pkg_query):
         parsed = self.pkg_parser.parse_pkg_version_query(pkg_query)
         yml_path = self.find_in_repo(pkg_query)
         return self.load_model_record_from_path(yml_path, pkg_name=parsed['pkg'], version=parsed['version'])

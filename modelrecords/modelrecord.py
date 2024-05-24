@@ -67,6 +67,8 @@ class ModelRecord:
                 )
                 qs.parse()
                 self.question_sets_parsed.append(qs)
+        for k, v in self.modelrecord_attrs.mr.items():
+            setattr(self, k, v)
 
     def results_as_dict(self):
         out = self.modelrecord_attrs

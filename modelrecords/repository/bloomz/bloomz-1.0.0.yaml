@@ -1,4 +1,5 @@
 mr:
+  type: family
   metadata:
     name: BLOOMZ
     refs:
