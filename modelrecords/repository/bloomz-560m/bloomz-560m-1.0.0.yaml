@@ -1,12 +1,18 @@
 mr:
   metadata:
     name: bloomz-560m
+    refs:
+    - https://huggingface.co/bigscience/bloomz/raw/main/README.md
+    - https://arxiv.org/pdf/2211.01786.pdf
+    description: ''
     version: 1.0.0
+    publisher: BigScience Workshop
+    release_date: '2022-07-11'
+    model_type: Transformer-based Language Model
+  relations:
+    upstream:
+    - bloom>=1.0.0
   upstream:
     environmental:
       refs:
-        - https://huggingface.co/bigscience/bloom-560m
-
-  relations:
-    upstream:
-      - bloom>=1.0.0
+      - https://huggingface.co/bigscience/bloom-560m

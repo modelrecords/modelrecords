@@ -1,0 +1,187 @@
+mr:
+  metadata:
+    name: Llama 2 13B
+    version: 1.0.0
+    refs:
+    - https://raw.githubusercontent.com/meta-llama/llama/main/MODEL_CARD.md
+    - https://arxiv.org/pdf/2307.09288.pdf
+    publisher: Meta
+    model_type: Large Language Model
+    release_date: '2023-07-19'
+  tags:
+  - opensource
+  question_sets:
+  - fmti2023
+  relations:
+    upstream:
+    - llama2>=1.0.0
+  model:
+    blackbox_external_model_access: 1
+    capabilities_demonstration: 1
+    capabilities_description: 0
+    centralized_model_documentation: 1
+    evaluation_of_capabilities: 1
+    external_model_access_protocol: 1
+    external_reproducibility_of_capabilities_evaluation: 1
+    external_reproducibility_of_intentional_harm_evaluation: 0
+    external_reproducibility_of_mitigations_evaluation: 0
+    external_reproducibility_of_trustworthiness_evaluation: 0
+    external_reproducibility_of_unintentional_harm_evaluation: 1
+    full_external_model_access: 1
+    inference_compute_evaluation: 0
+    inference_duration_evaluation: 1
+    input_modality: 1
+    intentional_harm_evaluation: 0
+    limitations_demonstration: 0
+    limitations_description: 1
+    mitigations_demonstration: 1
+    mitigations_description: 1
+    mitigations_evaluation: 1
+    model_architecture: 1
+    asset_license: 1
+    model_components: 1
+    model_size: 1
+    output_modality: 1
+    risks_demonstration: 1
+    risks_description: 1
+    third_party_capabilities_evaluation: 0
+    third_party_evaluation_of_limitations: 1
+    third_party_mitigations_evaluation: 0
+    third_party_risks_evaluation: 0
+    trustworthiness_evaluation: 0
+    unintentional_harm_evaluation: 1
+  upstream:
+    additional_dependencies: 1
+    broader_environmental_impact: 0
+    carbon_emissions: 1
+    compute_hardware: 0
+    compute_usage: 0
+    core_frameworks: 0
+    data_augmentation: 1
+    copyrighted_data: 0
+    data_creators: 0
+    data_curation: 1
+    data_license_status: 0
+    data_size: 1
+    data_source_selection: 0
+    data_sources: 0
+    development_duration: 1
+    direct_external_data_access: 0
+    employment_of_data_laborers: 0
+    energy_usage: 1
+    geographic_distribution_of_data_laborers: 0
+    hardware_owner: 1
+    harmful_data_filtration: 1
+    instructions_for_creating_data: 1
+    labor_protections: 0
+    mitigations_for_copyright: 0
+    mitigations_for_privacy: 1
+    model_objectives: 1
+    model_stages: 1
+    personal_information_in_data: 0
+    queryable_external_data_access: 0
+    third_party_partners: 0
+    use_of_human_labor: 1
+    wages: 0
+    intended_use:
+    - Llama 2 is intended for commercial and research use in English.
+    - Tuned models are intended for assistant-like chat.
+    - Pretrained models can be adapted for a variety of natural language generation
+      tasks.
+    - Developers may fine-tune Llama 2 models for languages beyond English provided
+      they comply with the Llama 2 Community License and the Acceptable Use Policy.
+    - Use in any manner that violates applicable laws or regulations is out-of-scope.
+    factors:
+    - Range of parameter sizes — 7B, 13B, and 70B — as well as pretrained and fine-tuned
+      variations.
+    - Input text only.
+    - Output text only.
+    - Model architecture uses an optimized transformer architecture.
+    - Models are trained with a global batch-size of 4M tokens.
+    evaluation_data:
+    - 'Description: Evaluation data includes standard academic benchmarks across commonsense
+      reasoning, world knowledge, reading comprehension, and math.'
+    - 'Description: Automatic safety benchmarks such as TruthfulQA and ToxiGen for
+      evaluating truthfulness and toxicity.'
+    - 'Description: The BOLD dataset for measuring biases in open-ended language generation.'
+    - 'Description: Use of internal evaluations library for consistency across evaluations.'
+    - 'Description: Both pretrained Llama 2 and fine-tuned Llama 2-Chat models are
+      evaluated on these benchmarks.'
+    training_data:
+    - 'Description: 2 trillion tokens of data from publicly available sources were
+      used for pretraining.'
+    - 'Description: Fine-tuning data includes publicly available instruction datasets,
+      as well as over one million new human-annotated examples.'
+    - 'Description: The pretraining data has a cutoff of September 2022, but some
+      tuning data is more recent, up to July 2023.'
+    - 'Description: Neither the pretraining nor the fine-tuning datasets include Meta
+      user data.'
+    - 'Description: A new mix of publicly available online data was curated for the
+      training process.'
+    additional_information:
+    - The 70B version uses Grouped-Query Attention (GQA) for improved inference scalability.
+    - Token counts refer to pretraining data only.
+    - The models were trained between January 2023 and July 2023.
+    - A custom commercial license is available for use.
+    - 'More detailed information can be found in the research paper "Llama-2: Open
+      Foundation and Fine-tuned Chat Models".'
+    recommendations:
+    - Before deploying any applications of Llama 2, developers should perform safety
+      testing and tuning tailored to specific applications.
+    - Consult the Responsible Use Guide available on Meta AI's website.
+    - Regular updating and fine-tuning with newer data and community feedback is recommended
+      to improve model safety and effectiveness.
+    - Consider language variations and cultural contexts when adapting Llama 2 models
+      for languages beyond English.
+    - Stay informed about updates to model versions and licenses.
+    ethical_considerations:
+    - Llama 2's potential outputs cannot be predicted in advance, and it may sometimes
+      produce inaccurate, biased or other objectionable responses.
+    - Pretraining utilized a cumulative 3.3M GPU hours of computation on hardware
+      of type A100-80GB; estimated total emissions were offset by Meta’s sustainability
+      program.
+    - Pretraining data includes a mix of publicly available online sources without
+      user data from Meta's products or services.
+    - Mitigation efforts such as supervised fine-tuning (SFT) and reinforcement learning
+      with human feedback (RLHF) were utilized to align the models with human preferences
+      for helpfulness and safety.
+    - Red teaming and further analyses are conducted to continuously improve and understand
+      model limitations and safety.
+    environmental:
+      refs:
+      - https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md#hardware-and-software
+  downstream:
+    affected_individuals: 0
+    affected_market_sectors: 0
+    centralized_documentation_for_downstream_use: 1
+    change_log: 1
+    deprecation_policy: 1
+    distribution_channels: 1
+    documentation_for_responsible_downstream_use: 1
+    downstream_applications: 1
+    feedback_mechanism: 1
+    feedback_summary: 0
+    geographic_statistics: 0
+    government_inquiries: 0
+    interoperability_of_usage_and_model_behavior_policies: 0
+    justification_for_enforcement_action: 0
+    detection_of_machine_generated_content: 0
+    model_behavior_policy_enforcement: 0
+    monitoring_mechanism: 0
+    permitted_restricted_and_prohibited_model_behaviors: 0
+    permitted_restricted_and_prohibited_uses: 1
+    permitted_and_prohibited_use_of_user_data: 1
+    permitted_and_prohibited_users: 1
+    products_and_services: 1
+    redress_mechanism: 0
+    release_decision_making_protocol: 0
+    release_process: 1
+    terms_of_service: 1
+    usage_data_access_protocol: 0
+    usage_disclaimers: 1
+    usage_policy_enforcement: 0
+    usage_policy_violation_appeals_mechanism: 0
+    usage_reports: 0
+    user_data_protection_policy: 1
+    user_interaction_with_ai_system: 1
+    versioning_protocol: 1

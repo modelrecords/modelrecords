@@ -1,16 +1,15 @@
 mr:
+  type: model
   metadata:
     name: Vicuna-13B
     version: 1.0.0
     refs:
     - https://lmsys.org/blog/2023-03-30-vicuna/index.html
+    - https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md
     publisher: LMSYS Org
     model_type: Chatbot
     release_date: '2023-03-30'
   upstream:
-    environmental:
-      refs:
-      - https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md
     additional_dependencies: 1
     broader_environmental_impact: 0
     carbon_emissions: 1
@@ -105,7 +104,7 @@ mr:
   relations:
     upstream:
     - vicuna
-    - llama2_13b
+    - llama2-13b
   tags:
   - opensource
   question_sets:
