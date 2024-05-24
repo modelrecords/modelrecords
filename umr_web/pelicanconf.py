@@ -48,6 +48,6 @@ TAG_SAVE_AS = ''
 RELATIVE_URLS = True
 
 PLUGIN_PATHS = ['../modelrecords/pelican_plugins']
-PLUGINS = ['load_pkgs']
+PLUGINS = ['load_pkgs', 'pelican_redirect']
 
 LOAD_CONTENT_CACHE = False

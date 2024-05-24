@@ -1,7 +1,9 @@
-{% set className="text-sky-400 underline" %}
-{% set classNameActive="" %}
+{% set headingClassName="roboto-condensed font-bold text-xs uppercase py-2 pr-2 pl-4" %}
+{% set linkClassName="block roboto-condensed font-bold text-lg uppercase py-2 pr-2 pl-4" %}
+{% set linkClassNameActive="bg-highlight" %}
 
+<h3 class="{{ headingClassName }}">The Cards</h3>
 <ul>
-  <li><a href="model.html" class="{{ classNameActive if cardType == 'model' else className }}">Model</a></li>
-  <li><a href="umr.html" class="{{ classNameActive if cardType == 'umr' else className }}">UMR</a></li>
+  <li><a href="umr.html" class="{{ linkClassName }} {{ linkClassNameActive if cardType == 'umr' }}">UMR Card</a></li>
+  <li><a href="model.html" class="{{ linkClassName }} {{ linkClassNameActive if cardType == 'model' }}">Model Card</a></li>
 </ul>
