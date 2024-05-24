@@ -1,8 +1,7 @@
 mr:
-  type: family
   metadata:
-    name: Llama 2
-    version: '1.0'
+    name: Llama 2 13B
+    version: 1.0.0
     refs:
     - https://raw.githubusercontent.com/meta-llama/llama/main/MODEL_CARD.md
     - https://arxiv.org/pdf/2307.09288.pdf
@@ -13,7 +12,9 @@ mr:
   - opensource
   question_sets:
   - fmti2023
-  relations: null
+  relations:
+    upstream:
+    - llama2>=1.0.0
   model:
     blackbox_external_model_access: 1
     capabilities_demonstration: 1
@@ -146,6 +147,9 @@ mr:
       for helpfulness and safety.
     - Red teaming and further analyses are conducted to continuously improve and understand
       model limitations and safety.
+    environmental:
+      refs:
+      - https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md#hardware-and-software
   downstream:
     affected_individuals: 0
     affected_market_sectors: 0

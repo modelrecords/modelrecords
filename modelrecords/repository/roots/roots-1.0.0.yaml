@@ -1,4 +1,5 @@
 mr:
+  type: dataset
   metadata:
     name: The BigScience ROOTS Corpus
     refs:

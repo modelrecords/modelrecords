@@ -1,4 +1,5 @@
 mr:
+  type: dataset
   metadata:
     name: xP3megds
     refs:

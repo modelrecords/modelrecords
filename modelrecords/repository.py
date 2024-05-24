@@ -26,17 +26,18 @@ class Repository:
             can_parsed = self.pkg_parser.parse_pkg_version_query(candidate.replace('.yaml',''))
             if operand(version , can_parsed['version']):
                 return f'{self.modelrecord_folder(pkg)}/{candidate}'
-        raise f"No card found: {pkg_query}"
+        raise Exception(f"No card found: {pkg_query}")
        
     def all_packages(self):
         pkgs = [d for d in os.listdir(self.base_repo_path) if d not in RESERVED_FOLDERS]
         return pkgs
 
     def find_parent_packages(self, model_record:ModelRecord):
+        # TODO: include dictionary of included packages
         edges = []
         def find_parents(mr, indent=' '):
             for rel in mr.upstream_relations():
-                parent = self.load_model_record_from_repository(rel)
+                parent = self.find(rel)
                 edges.append((mr.package_name(), parent.package_name()))
                 find_parents(parent, indent = f'{indent}  ')
         find_parents(model_record)
@@ -63,7 +64,7 @@ class Repository:
         yml = OmegaConf.unsafe_merge(*relation_confs[::-1])
         return yml
 
-    def _load_model_record_from_path(self, path, pkg_name=None, version=None):
+    def load_model_record_from_path(self, path, pkg_name=None, version=None):
         yml = self.merge_yml_modelrecords(path)
         yml.mr.pkg = dict(
             name = pkg_name,
@@ -72,12 +73,11 @@ class Repository:
         )
         return ModelRecord(yml)
     
-    def load_model_record_from_repository(self, pkg_query):
+    def find(self, pkg_query):
         parsed = self.pkg_parser.parse_pkg_version_query(pkg_query)
         yml_path = self.find_in_repo(pkg_query)
-        return self._load_model_record_from_path(yml_path, pkg_name=parsed['pkg'], version=parsed['version'])
+        return self.load_model_record_from_path(yml_path, pkg_name=parsed['pkg'], version=parsed['version'])
 
-    # Download and update 
     def update_card_attrs(self, pkg, attrs):
         yml = self.load_modelrecord_yaml(pkg)
         for key, answer in attrs.items():
@@ -88,9 +88,7 @@ class Repository:
 
     def download_and_process_refs(self, pkg:str):
         refs = self.load_modelrecord_yaml(pkg).mr.metadata.refs
-
         ref_path = f'{self.base_repo_path}/_refs/{pkg}'
         Path(f'{ref_path}').mkdir(parents=True, exist_ok=True)
-        
         text_files = content_extract_text(refs, ref_path)
         return text_files

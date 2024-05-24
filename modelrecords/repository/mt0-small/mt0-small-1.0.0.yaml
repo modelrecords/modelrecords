@@ -1,12 +1,18 @@
 mr:
   metadata:
     name: mt0-small
+    refs:
+    - https://huggingface.co/bigscience/bloomz/raw/main/README.md
+    description: ''
     version: 1.0.0
+    publisher: BigScience Workshop
+    release_date: '2022-07-11'
+    model_type: Transformer-based Language Model
+  relations:
+    upstream:
+    - mt0>=1.0.0
   upstream:
     environmental:
       refs:
-        - https://huggingface.co/bigscience/mt0-small
-
-  relations:
-    upstream:
-      - mt0>=1.0.0
+      - https://huggingface.co/bigscience/mt0-small
+  type: model

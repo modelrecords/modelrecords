@@ -60,11 +60,11 @@ class TestRepository(unittest.TestCase):
     def test_parse_repo_requirement(self):
         repo = repository.Repository()
 
-        mr = repo.load_model_record_from_repository('llama2>=1.0.0')
-        a = repo.load_model_record_from_repository('llama2==1.0.0')
-        b = repo.load_model_record_from_repository('llama2-1.0.0')
-        c = repo.load_model_record_from_repository('llama2<=1.0.0')
-        d = repo.load_model_record_from_repository('llama2')
+        mr = repo.find('llama2>=1.0.0')
+        a = repo.find('llama2==1.0.0')
+        b = repo.find('llama2-1.0.0')
+        c = repo.find('llama2<=1.0.0')
+        d = repo.find('llama2')
         assert mr.model_name == a.model_name
         assert mr.model_name == b.model_name
         assert mr.model_name == c.model_name

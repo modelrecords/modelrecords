@@ -1,12 +1,19 @@
 mr:
   metadata:
     name: mt5-large
+    refs:
+    - https://github.com/google-research/multilingual-t5
+    - https://aclanthology.org/2021.naacl-main.41.pdf
+    description: ''
     version: 1.0.0
+    publisher: Google
+    release_date: 2021-06
+    model_type: Text-to-text Transformer-based Language Model
+  relations:
+    upstream:
+    - mt5>=1.0.0
   upstream:
     environmental:
       refs:
-        - https://huggingface.co/google/mt5-large
-
-  relations:
-    upstream:
-      - mt5>=1.0.0
+      - https://huggingface.co/google/mt5-large
+  type: model

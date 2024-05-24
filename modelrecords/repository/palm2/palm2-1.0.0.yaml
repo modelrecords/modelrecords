@@ -187,3 +187,4 @@ mr:
     user_data_protection_policy: 1
     user_interaction_with_ai_system: 1
     versioning_protocol: 1
+  type: model

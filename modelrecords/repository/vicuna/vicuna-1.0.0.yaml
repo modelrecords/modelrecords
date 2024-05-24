@@ -1,6 +1,7 @@
 mr:
+  type: family
   metadata:
-    name: Vicuna-13B
+    name: Vicuna
     version: 1.0.0
     refs:
     - https://lmsys.org/blog/2023-03-30-vicuna/index.html
@@ -11,9 +12,6 @@ mr:
   - opensource
   question_sets:
   - fmti2023
-  relations:
-    upstream:
-    - llama2
   model:
     blackbox_external_model_access: 1
     capabilities_demonstration: 1
