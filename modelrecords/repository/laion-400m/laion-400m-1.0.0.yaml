@@ -1,0 +1,10 @@
+mr:
+  type: dataset
+  metadata:
+    name: LAION 400m
+    refs:
+    description: 'The LAION-400M dataset is an open dataset consisting of 400 million image-text pairs. Filtering of NSFW content based on CLIP embeddings.'
+  relations:
+    upstream:
+      - laion
+      - CommonCrawl

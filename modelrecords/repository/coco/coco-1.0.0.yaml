@@ -1,0 +1,8 @@
+mr:
+  type: dataset
+  metadata:
+    name: COCO
+    refs:
+    description: 'The COCO (Common Objects in Context) dataset is a large-scale object detection, segmentation, and captioning dataset. '
+  relations:
+    upstream:

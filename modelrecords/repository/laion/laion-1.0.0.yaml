@@ -1,0 +1,8 @@
+mr:
+  type: family
+  metadata:
+    name: LAION
+    refs:
+    description: 'Large-scale Artificial Intelligence Open Network (LAION) organization'
+  relations:
+    upstream:

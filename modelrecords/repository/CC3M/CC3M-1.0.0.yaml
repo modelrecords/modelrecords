@@ -1,0 +1,8 @@
+mr:
+  type: dataset
+  metadata:
+    name: CC3M
+    refs:
+    description: 'CC3M, short for Conceptual Captions 3 Million, is a large-scale image-caption dataset designed for training and evaluating image captioning models. '
+  relations:
+    upstream:

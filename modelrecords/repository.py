@@ -38,17 +38,20 @@ class Repository:
     def find_parent_packages(self, model_record:ModelRecord):
         # TODO: include dictionary of included packages
         edges = []
+        records = {}
         def find_parents(mr, indent=' '):
             for rel in mr.upstream_relations():
                 parent = self.find(rel)
                 edges.append((mr.package_name(), parent.package_name()))
+                records[parent.package_name()] = parent
                 find_parents(parent, indent = f'{indent}  ')
         find_parents(model_record)
         nodes = set([model_record.package_name()])
+        records[model_record.package_name()] = model_record
         for A,B in edges:
             nodes.add(A)
             nodes.add(B)
-        return nodes, edges
+        return nodes, edges, records
 
     def load_modelrecord_yaml(self, pkg_query:str):
         yml_path = self.find_in_repo(pkg_query)        
@@ -63,13 +66,16 @@ class Repository:
             if base_conf.mr.relations.get('upstream'):
                 for relation in base_conf.mr.relations.upstream:
                     found_relation_yml = OmegaConf.load(self.find_in_repo(relation))
-                    for key in RESERVED_FIELDS:
-                        if key in found_relation_yml.mr.keys():
-                            del found_relation_yml.mr[key] 
+                    self.remove_reserved_fields(found_relation_yml) 
                     relation_confs.append(found_relation_yml)
 
         yml = OmegaConf.unsafe_merge(*relation_confs[::-1])
         return yml
+
+    def remove_reserved_fields(self, found_relation_yml):
+        for key in RESERVED_FIELDS:
+            if key in found_relation_yml.mr.keys():
+                del found_relation_yml.mr[key]
 
     def load_model_record_from_path(self, path, pkg_name=None, version=None):
         yml = self.merge_yml_modelrecords(path)

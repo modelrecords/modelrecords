@@ -1,0 +1,8 @@
+mr:
+  type: dataset
+  metadata:
+    name: Web Image Text
+    refs:
+    description: '400 million image-text pairs collected from various sources on the internet used to train CLIP.'
+  relations:
+    upstream:

@@ -1,0 +1,8 @@
+mr:
+  type: family
+  metadata:
+    name: OpenAI GPT
+    refs:
+    description: ''
+  relations:
+    upstream:

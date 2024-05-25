@@ -1,0 +1,13 @@
+mr:
+  type: model
+  metadata:
+    name: LLaVA-1.6 Vicuna 13B
+    refs:
+  relations:
+    upstream:
+      - LLaVA
+      - vicuna-13b
+      - science-qa
+      - coco
+      - CC3M
+      - mm-instruct-data

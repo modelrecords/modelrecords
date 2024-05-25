@@ -1,0 +1,8 @@
+mr:
+  type: dataset
+  metadata:
+    name: Science QA
+    refs:
+    description: 'Science QA is a dataset designed for evaluating and training models in the task of answering science-related questions. '
+  relations:
+    upstream:

@@ -1,0 +1,9 @@
+mr:
+  type: dataset
+  metadata:
+    name: LAION 5B
+    refs:
+    description: ''
+  relations:
+    upstream:
+      - laion

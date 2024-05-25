@@ -1,0 +1,9 @@
+mr:
+  type: dataset
+  metadata:
+    name: LLaVa MM-Instruct
+    refs:
+    description: 'LLaVA utilized GPT-4 to generate multimodal instruction-following data, resulting in 158,000 unique samples. This dataset includes 58,000 conversational samples, 23,000 detailed descriptions, and 77,000 complex reasoning samples.'
+  relations:
+    upstream:
+      - gpt4

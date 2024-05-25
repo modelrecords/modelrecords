@@ -1,0 +1,8 @@
+mr:
+  type: dataset
+  metadata:
+    name: COYO-700M
+    refs:
+    description: 'COYO-700M is a large-scale dataset consisting of 747 million image-text pairs. It was developed by Kakao Brain.'
+  relations:
+    upstream:

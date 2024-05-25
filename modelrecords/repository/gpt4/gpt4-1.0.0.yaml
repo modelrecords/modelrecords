@@ -1,0 +1,12 @@
+mr:
+  type: model
+  metadata:
+    name: GPT 4
+    version: 1.0.0
+    refs:
+    publisher: OpenAI
+    model_type: Multi-Modal LLM
+  tags:
+  relations:
+    upstream:
+      - openai-gpt

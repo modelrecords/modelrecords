@@ -1,0 +1,9 @@
+mr:
+  type: dataset
+  metadata:
+    name: Vicuna 70k ChatGPT
+    refs:
+    description: '70K user-shared ChatGPT conversations were used for fine-tuning. GPT-4 used for preliminary evaluation to benchmark against ChatGPT and Google Bard.'
+  relations:
+    upstream:
+      - gpt4

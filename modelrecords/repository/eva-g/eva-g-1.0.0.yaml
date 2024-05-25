@@ -1,0 +1,15 @@
+mr:
+  type: model
+  metadata:
+    name: EVA-G
+    version: 1.0.0
+    refs:
+    publisher: Beijing Academy of Artificial Intelligence (BAAI)
+    model_type: Contrastive Model
+  tags:
+  relations:
+    upstream:
+      - clip
+      - laion-2b
+      - laion-400m
+      - coyo-700m

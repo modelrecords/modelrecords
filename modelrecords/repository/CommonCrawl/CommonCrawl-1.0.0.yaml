@@ -1,0 +1,8 @@
+mr:
+  type: dataset
+  metadata:
+    name: Common Crawl
+    refs:
+    description: 'Over 250 billion pages spanning 17 years. Free and open corpus since 2007.'
+  relations:
+    upstream:
