@@ -12,6 +12,6 @@ setup(
         "jinja2",
         "semantic_version",
         "requests",
-        "PyPDF2",
+        "pypdf",
     ]   
 )

@@ -3,25 +3,22 @@ import re
 import os
 import requests
 import mimetypes
-import PyPDF2
+import pypdf
 
+# Regex to validate Semantic Versioning
+SEMVER_REGEX = r'^(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$'
 
 def is_semver(version):
-    # Regex to validate Semantic Versioning
-    semver_regex = r'^(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$'
-    
     # Match the version string against the regex
-    return bool(re.match(semver_regex, version))
+    return bool(re.match(SEMVER_REGEX, version))
 
 def get_latest_semver(folder_path):
-    
-    semver_regex = r'^(\d+)\.(\d+)\.(\d+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$'
     max_version = None
 
     # Iterate over all files in the given folder
     for filename in os.listdir(folder_path):
         file_version = filename.rsplit('-', 1)[-1].split('.yaml')[0]
-        match = re.match(semver_regex, file_version)
+        match = re.match(SEMVER_REGEX, file_version)
         if match:
             # Extract the semver part and parse it
             current_version = semver.Version(file_version)
@@ -62,7 +59,7 @@ def content_extract_text(self, refs, ref_path):
                 
                     with open(file_path, 'wb') as f:
                         f.write(content)
-                    reader = PyPDF2.PdfReader(file_path)
+                    reader = pypdf.PdfReader(file_path)
                     all_text = ''
                     for page in reader.pages:
                         all_text += page.extract_text()

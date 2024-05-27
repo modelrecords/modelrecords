@@ -27,7 +27,8 @@ class Repository:
         operand = parsed['operand']
         for candidate in sorted(os.listdir(self.modelrecord_folder(pkg)))[::-1]:
             can_parsed = self.pkg_parser.parse_pkg_version_query(candidate.replace('.yaml',''))
-            if operand(version , can_parsed['version']):
+            print(version, can_parsed['version'], operand)
+            if operand(can_parsed['version'], version):
                 return f'{self.modelrecord_folder(pkg)}/{candidate}'
         raise Exception(f"No card found: {pkg_query}")
        
