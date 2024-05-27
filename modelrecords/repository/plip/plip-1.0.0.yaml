@@ -1,0 +1,10 @@
+mr:
+  type: model
+  metadata:
+    name: PLIP
+    refs:
+    description: ''
+    model_type: Contrastive Model
+  relations:
+    upstream:
+      - laion-5b

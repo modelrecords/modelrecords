@@ -34,6 +34,11 @@ class Repository:
     def all_packages(self):
         pkgs = [d for d in os.listdir(self.base_repo_path) if d not in RESERVED_FOLDERS]
         return pkgs
+    
+    def find(self, pkg_query):
+        parsed = self.pkg_parser.parse_pkg_version_query(pkg_query)
+        yml_path = self.find_in_repo(pkg_query)
+        return self.load_model_record_from_path(yml_path, pkg_name=parsed['pkg'], version=parsed['version'])
 
     def find_parent_packages(self, model_record:ModelRecord):
         # TODO: include dictionary of included packages
@@ -66,7 +71,7 @@ class Repository:
             if base_conf.mr.relations.get('upstream'):
                 for relation in base_conf.mr.relations.upstream:
                     found_relation_yml = OmegaConf.load(self.find_in_repo(relation))
-                    self.remove_reserved_fields(found_relation_yml) 
+                    self.remove_reserved_fields(found_relation_yml)
                     relation_confs.append(found_relation_yml)
 
         yml = OmegaConf.unsafe_merge(*relation_confs[::-1])
@@ -85,11 +90,6 @@ class Repository:
             path = path,
         )
         return ModelRecord(yml)
-    
-    def find(self, pkg_query):
-        parsed = self.pkg_parser.parse_pkg_version_query(pkg_query)
-        yml_path = self.find_in_repo(pkg_query)
-        return self.load_model_record_from_path(yml_path, pkg_name=parsed['pkg'], version=parsed['version'])
 
     def update_card_attrs(self, pkg, attrs):
         yml = self.load_modelrecord_yaml(pkg)

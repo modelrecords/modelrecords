@@ -8,6 +8,7 @@ The wonderful world of Unified Model Records.
 ## Dev startup
 It's time to setup your environment!
 1. Install `brew install --cask anaconda`
+1a. If this is your first time setting up the repo you will need to run `conda env create -f environment.yml`
 2. Activate the conda environment via `conda activate modelrecords`
 3. Update your dependencies! `conda env update --file environment.yml`
 4. You might have to reactivate the conda environment via `conda activate modelrecords`

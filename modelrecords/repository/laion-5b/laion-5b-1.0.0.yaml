@@ -4,6 +4,10 @@ mr:
     name: LAION 5B
     refs:
     description: ''
+  safety:
+    nsfw: true
+    csam: true
+    violence: true
   relations:
     upstream:
       - laion

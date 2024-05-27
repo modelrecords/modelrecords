@@ -50,7 +50,8 @@ class ModelRecord:
         """
         self.modelrecord_attrs = DotDict(modelrecord_params)
         self.model_name = self.modelrecord_attrs.mr.metadata.name
-        # self.pkg_name = self.modelrecord_attrs.mr.metadata.pkg_name
+        # TODO(someone): re-add the MR package name at some point.
+        # self.pkg_name = self.modelrecord_attrs.mr.metadata.pkg_name 
         self.locale = locale
         self.parse()
 
