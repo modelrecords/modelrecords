@@ -27,7 +27,6 @@ class Repository:
         operand = parsed['operand']
         for candidate in sorted(os.listdir(self.modelrecord_folder(pkg)))[::-1]:
             can_parsed = self.pkg_parser.parse_pkg_version_query(candidate.replace('.yaml',''))
-            print(version, can_parsed['version'], operand)
             if operand(can_parsed['version'], version):
                 return f'{self.modelrecord_folder(pkg)}/{candidate}'
         raise Exception(f"No card found: {pkg_query}")
@@ -39,7 +38,7 @@ class Repository:
     def find(self, pkg_query):
         parsed = self.pkg_parser.parse_pkg_version_query(pkg_query)
         yml_path = self.find_in_repo(pkg_query)
-        return self.load_model_record_from_path(yml_path, pkg_name=parsed['pkg'], version=parsed['version'])
+        return self.load_model_record_from_path(yml_path, pkg_name=parsed['pkg'])
 
     def find_parent_packages(self, model_record:ModelRecord):
         # TODO: include dictionary of included packages
@@ -85,6 +84,7 @@ class Repository:
 
     def load_model_record_from_path(self, path, pkg_name=None, version=None):
         yml = self.merge_yml_modelrecords(path)
+        version = self.pkg_parser.parse_version_yml_path(path)
         yml.mr.pkg = dict(
             name = pkg_name,
             version = str(version),

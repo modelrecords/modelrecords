@@ -79,5 +79,11 @@ class TestRepository(unittest.TestCase):
         a = repo.find('test==1.2.0')
         b = repo.find('test>=1.1.0')
         assert a.model_name == b.model_name
+
+        a = repo.find('test==1.0.0')
+        b = repo.find('test<=1.1.0')
+        assert a.pkg.path == b.pkg.path
+        assert a.pkg.version == b.pkg.version
+        assert '1.0.0' == b.pkg.version
 if __name__ == '__main__':
     unittest.main()
