@@ -1,4 +1,4 @@
-Title: Vicuna-13B
+Title: Vicuna
 URL: vicuna/model
 save_as: vicuna/model.html
 template: card_model
