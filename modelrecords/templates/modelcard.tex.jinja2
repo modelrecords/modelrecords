@@ -1,0 +1,190 @@
+
+\documentclass{article}
+
+% required packages
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks = true,
+    citecolor = {blue},
+    urlcolor = {blue},
+}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage[sfdefault]{roboto}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{colorPrimary}{HTML}{634CF1}
+\definecolor{colorHighlight}{HTML}{DCDDFC}
+\definecolor{colorPrimaryDark}{HTML}{27204E}
+
+% page layout
+\geometry{
+    letterpaper,
+    top=66pt,
+    right=31pt,
+    bottom=66pt,
+    left=31pt,
+}
+
+% page numbering
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+% hide the default rule in the header
+\fancyhead{}\renewcommand{\headrule}{}
+\fancyfoot[C]{\textcolor{colorPrimary}{\textnormal{\textbf{Page \thepage \hspace{0pt} of \pageref*{LastPage}}}}}
+
+% column layout
+\usepackage{multicol}
+\setlength{\columnsep}{31pt}
+
+% colored boxes
+\usepackage{tcolorbox}
+\newtcolorbox{metricbar}{
+    arc=0pt,
+    outer arc=0pt,
+    colback=colorPrimary,
+    colframe=colorPrimary,
+    coltext=white,
+    halign=right,
+    top=0pt,
+    right=0pt,
+    bottom=0pt,
+    left=0pt
+}
+\newtcolorbox{sectionbox}{
+    arc=0pt,
+    outer arc=0pt,
+    top=0pt,
+    right=0pt,
+    bottom=0pt,
+    left=0pt,
+    lower separated=false,
+    colback=colorHighlight,
+    colframe=colorHighlight,
+    % before lower={\rule{\dimexpr\linewidth-0mm}{0.4pt}\vskip3mm},
+}
+
+% versioning positioning
+\usepackage[absolute,overlay]{textpos}
+\usepackage{tikz}
+
+% table layout
+\usepackage{nicematrix}
+
+\title{\VAR{mr.metadata.name}: Model Card}
+\author{planecards}
+\date{mr.metadata.last_updated}
+
+\begin{document}
+% builder versioning
+\begin{textblock*}{\textwidth}(0cm,0cm)
+\begin{tikzpicture}[remember picture, overlay, shift={(current page.north east)}]
+    \fill[colorPrimaryDark] (0,0) -- (-2,0) -- (0,-2) -- cycle;
+    \draw (0,0) -- (-2,0) -- (0,-2) -- cycle;
+    \node at (-0.6,-0.6) {\tiny{\textcolor{white}{v.\VAR{mr.pkg.version}}}};
+\end{tikzpicture}
+\end{textblock*}
+\begin{textblock*}{\textwidth}(0cm,0cm)
+\begin{tikzpicture}[remember picture, overlay, shift={(current page.north east)}]
+    \draw[draw=colorPrimary] (-2,-0) -- (-0,-2) -- (-2,-2) -- cycle;
+\end{tikzpicture}
+\end{textblock*}
+
+\newenvironment{sectiontitle}[2]{
+    \noindent
+    \textcolor{colorPrimary}{\textbf{\MakeUppercase{#1}}}
+    \vspace{5pt}
+    {\color{colorPrimary} \hrule}
+    \vspace{5pt}
+    \noindent
+    \textnormal{#2}
+}
+
+
+\newenvironment{sectionlist}[1]
+    {
+        \begin{sectiontitle}{{#1}}{}
+        \end{sectiontitle}
+        \begin{itemize}[leftmargin=*,topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,after=\vspace{\medskipamount}]
+    }
+    {
+        \end{itemize}
+    }
+
+\noindent
+\begin{NiceTabular}{lr}[cell-space-limits=0pt]
+    \noalign{
+        \color{colorPrimary}
+        \hrule height 3pt
+    }
+    \textcolor{colorPrimaryDark}{\textbf{\Huge{ \VAR{ mr.metadata.name } }}} & \textcolor{colorPrimaryDark}{\textnormal{\small{Released: \VAR{ mr.metadata.release_date } }}}\\
+    \textcolor{colorPrimaryDark}{\textbf{\Large{Unified Model Record}}} & \\
+\end{NiceTabular}
+
+\begin{multicols*}{2}
+
+\begin{sectiontitle}{Model Details}{General information about the model} \end{sectiontitle}
+\VAR{ mr.metadata.description } 
+
+\BLOCK{ if mr.metadata.architecture }
+\paragraph{Architecture.} \VAR{ mr.metadata.architecture }
+\BLOCK{ endif }
+
+ \begin{sectionlist}{Packages}
+    \BLOCK{ for item in mr.upstream_relations}
+        \item \VAR{ item }
+    \BLOCK{ endfor }
+    \end{sectionlist}
+
+\subsection*{Model Card}
+% INTENDED USE
+\BLOCK{ if mr.upstream } 
+
+    \begin{sectionlist}{Intended use}
+    \BLOCK{ for item in mr.upstream.intended_use}
+        \item \VAR{ item }
+    \BLOCK{ endfor }
+    \end{sectionlist}
+
+    \begin{sectionlist}{Factors}
+    \BLOCK{ for item in mr.upstream.factors}
+        \item \VAR{ item }
+    \BLOCK{ endfor }
+    \end{sectionlist}
+
+    \begin{sectionlist}{Evaluation data}
+    \BLOCK{ for item in mr.upstream.evaluation_data}
+        \item \VAR{ item }
+    \BLOCK{ endfor }
+    \end{sectionlist}
+
+    \begin{sectionlist}{Training data}
+    \BLOCK{ for item in mr.upstream.training_data}
+        \item \VAR{ item }
+    \BLOCK{ endfor }
+    \end{sectionlist}
+
+    \begin{sectionlist}{Ethical considerations}
+    \BLOCK{ for item in mr.upstream.ethical_considerations}
+        \item \VAR{ item }
+    \BLOCK{ endfor }
+    \end{sectionlist}
+
+    \begin{sectionlist}{Recommendations}
+    \BLOCK{ for item in mr.upstream.recommendations}
+        \item \VAR{ item }
+    \BLOCK{ endfor }
+    \end{sectionlist}
+
+    \begin{sectionlist}{Additional information}
+    \BLOCK{ for item in mr.upstream.additional_information}
+        \item \VAR{ item }
+    \BLOCK{ endfor }
+    \end{sectionlist}
+
+\BLOCK{ endif } 
+
+\end{multicols*}
+\end{document}

@@ -31,7 +31,7 @@ class CardDocumentRenderer:
             line_comment_prefix="%#",
             trim_blocks=True,
         )
-        self.template = env.get_template("card.tpl.tex")
+        self.template = env.get_template("modelcard.tex.jinja2")
 
     def render_tex(self):
         return self.template.render(self.modelrecord_model.results_as_dict())

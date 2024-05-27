@@ -90,7 +90,11 @@ class Repository:
             version = str(version),
             path = path,
         )
-        return ModelRecord(yml)
+        mr = ModelRecord(yml) 
+        nodes, _, _ = self.find_parent_packages(mr)
+        mr.modelrecord_attrs.mr.upstream_relations = nodes
+        
+        return mr
 
     def update_card_attrs(self, pkg, attrs):
         yml = self.load_modelrecord_yaml(pkg)

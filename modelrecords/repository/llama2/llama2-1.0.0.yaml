@@ -9,6 +9,8 @@ mr:
     publisher: Meta
     model_type: Large Language Model
     release_date: '2023-07-19'
+    description: 'Meta developed and released the Llama 2 family of large language models (LLMs), a collection of pretrained and fine-tuned generative text models ranging in scale from 7 billion to 70 billion parameters. Our fine-tuned LLMs, called Llama-2-Chat, are optimized for dialogue use cases. Llama-2-Chat models outperform open-source chat models on most benchmarks we tested, and in our human evaluations for helpfulness and safety, are on par with some popular closed-source models like ChatGPT and PaLM.'
+    architecture: ' Llama 2 is an auto-regressive language model that uses an optimized transformer architecture. The tuned versions use supervised fine-tuning (SFT) and reinforcement learning with human feedback (RLHF) to align with human preferences for helpfulness and safety.'
   tags:
   - opensource
   question_sets:
@@ -98,24 +100,24 @@ mr:
     - Model architecture uses an optimized transformer architecture.
     - Models are trained with a global batch-size of 4M tokens.
     evaluation_data:
-    - 'Description: Evaluation data includes standard academic benchmarks across commonsense
+    - 'Evaluation data includes standard academic benchmarks across commonsense
       reasoning, world knowledge, reading comprehension, and math.'
-    - 'Description: Automatic safety benchmarks such as TruthfulQA and ToxiGen for
+    - 'Automatic safety benchmarks such as TruthfulQA and ToxiGen for
       evaluating truthfulness and toxicity.'
-    - 'Description: The BOLD dataset for measuring biases in open-ended language generation.'
-    - 'Description: Use of internal evaluations library for consistency across evaluations.'
-    - 'Description: Both pretrained Llama 2 and fine-tuned Llama 2-Chat models are
+    - 'The BOLD dataset for measuring biases in open-ended language generation.'
+    - 'Use of internal evaluations library for consistency across evaluations.'
+    - 'Both pretrained Llama 2 and fine-tuned Llama 2-Chat models are
       evaluated on these benchmarks.'
     training_data:
-    - 'Description: 2 trillion tokens of data from publicly available sources were
+    - '2 trillion tokens of data from publicly available sources were
       used for pretraining.'
-    - 'Description: Fine-tuning data includes publicly available instruction datasets,
+    - 'Fine-tuning data includes publicly available instruction datasets,
       as well as over one million new human-annotated examples.'
-    - 'Description: The pretraining data has a cutoff of September 2022, but some
+    - 'The pretraining data has a cutoff of September 2022, but some
       tuning data is more recent, up to July 2023.'
-    - 'Description: Neither the pretraining nor the fine-tuning datasets include Meta
+    - 'Neither the pretraining nor the fine-tuning datasets include Meta
       user data.'
-    - 'Description: A new mix of publicly available online data was curated for the
+    - 'A new mix of publicly available online data was curated for the
       training process.'
     additional_information:
     - The 70B version uses Grouped-Query Attention (GQA) for improved inference scalability.

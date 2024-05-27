@@ -87,6 +87,7 @@ class ModelRecord:
 
     def package_name(self):
         return self.modelrecord_attrs.mr.pkg.name
+    
     def upstream_relations(self):
         if self.results_as_dict().mr.relations:
             if self.results_as_dict().mr.relations.upstream:
