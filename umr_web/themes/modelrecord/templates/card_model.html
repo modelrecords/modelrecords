@@ -2,6 +2,7 @@
 {% set model_data=repository_data_dict[page.model_pkg_name] %}
 {% set model_details = model_data.mr.get('model', {}) %}
 {% set model_upstream = model_data.mr.get('upstream', {}) %}
+{% set model_relations = model_data.mr.get('relations', {}) %}
 
 {% extends "card.html" %}
 {% block title %}{{ page.title | striptags }} - Model Card{% endblock %}
@@ -163,6 +164,16 @@
       {% include "includes/section_heading.html" %}
     {% endwith %}
     <div class="section-content">
+      {% set intended_use = model_upstream.get('intended_use', []) %}
+      {% if intended_use %}
+        <ul>
+          {% for item in intended_use %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No intended use specified.</p>
+      {% endif %}
     </div>
   </section>
   <section class="mb-3.5">
@@ -170,6 +181,20 @@
       {% include "includes/section_heading.html" %}
     {% endwith %}
     <div class="section-content">
+      {% if model_relations %}
+        {% set dependencies = model_relations.get('upstream', []) %}
+        {% if dependencies %}
+          <ul>
+            {% for item in dependencies %}
+              <li><a href="/{{ item }}/umr.html">{{ item }}</a></li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p>No dependencies specified.</p>
+        {% endif %}
+      {% else %}
+        <p>No dependencies specified.</p>
+      {% endif %}
     </div>
   </section>
   <section class="mb-3.5">
@@ -218,13 +243,13 @@
     {% endwith %}
     <div class="section-content">
       <p class="source">SOURCE: <a href="SOURCE: https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md#hardware-and-software">https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md#hardware-and-software</a></p>
-      {% with label="Carbon emitted (tCO2eq)", value=model_upstream.get('carbon_emissions') | default("n/a") %}
+      {% with label="Carbon emitted (tCO2eq)", value=model_upstream.get('carbon_emissions') %}
         {% include "includes/section_metric.html" %}
       {% endwith %}
-      {% with label="Energy usage", value=model_upstream.get('energy_usage') | default("n/a"), unit="w" %}
+      {% with label="Energy usage", value=model_upstream.get('energy_usage'), unit="w" %}
         {% include "includes/section_metric.html" %}
       {% endwith %}
-      {% with label="Compute usage", value=model_upstream.get('compute_usage') | default("n/a") %}
+      {% with label="Compute usage", value=model_upstream.get('compute_usage') %}
         {% include "includes/section_metric.html" %}
       {% endwith %}
     </div>
@@ -234,6 +259,16 @@
       {% include "includes/section_heading.html" %}
     {% endwith %}
     <div class="section-content">
+      {% set ethical_considerations = model_upstream.get('ethical_considerations', []) %}
+      {% if ethical_considerations %}
+        <ul>
+          {% for item in ethical_considerations %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No ethical considerations specified.</p>
+      {% endif %}
     </div>
   </section>
   <section class="mb-3.5 bg-highlight py-1 px-2.5">
@@ -241,7 +276,16 @@
       {% include "includes/section_heading.html" %}
     {% endwith %}
     <div class="section-content">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quidem saepe illum nisi cupiditate nam unde inventore! Numquam consequuntur dolorem in saepe atque labore aspernatur libero tenetur inventore? Mollitia, iusto.</p>
+      {% set recommendations = model_upstream.get('recommendations', []) %}
+      {% if recommendations %}
+        <ul>
+          {% for item in recommendations %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No recommendations specified.</p>
+      {% endif %}
     </div>
   </section>
 {% endblock %}
