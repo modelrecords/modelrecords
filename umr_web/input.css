@@ -17,3 +17,18 @@
     flex-direction: column;
   }
 }
+
+@layer components {
+  .section-content {
+    @apply flex gap-x-4 pt-3;
+  }
+  .section-content table {
+    @apply w-1/2 text-sm leading-4 border-collapse border-spacing-0;
+  }
+  .section-content tr:nth-child(even) {
+    @apply bg-highlight;
+  }
+  .section-content td {
+    @apply align-top text-left p-1;
+  }
+}
