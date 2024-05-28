@@ -60,6 +60,6 @@
   }
   .section-content .source,
   .section-content .source a {
-    @apply roboto-condensed text-xs text-highlight;
+    @apply roboto-condensed text-xs text-primarylight;
   }
 }
