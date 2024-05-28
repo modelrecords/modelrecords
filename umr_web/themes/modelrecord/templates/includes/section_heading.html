@@ -1,4 +1,6 @@
-<h2 class="uppercase text-primary roboto-condensed font-bold text-lg border-b-2 border-primary mb-1.5">{{ heading }}</h2>
-{% if descriptor %}
-    <p class="text-xs">{{ descriptor }}</p>
-{% endif %}
+<header class="mb-3">
+    <h2 class="uppercase text-primary roboto-condensed font-bold text-lg border-b-2 border-primary mb-1.5">{{ heading }}</h2>
+    {% if descriptor %}
+        <p>{{ descriptor }}</p>
+    {% endif %}
+</header>

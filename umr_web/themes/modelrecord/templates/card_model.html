@@ -1,5 +1,7 @@
 {% set cardType='model' %}
 {% set model_data=repository_data_dict[page.model_pkg_name] %}
+{% set model_details = model_data.mr.get('model', {}) %}
+{% set model_upstream = model_data.mr.get('upstream', {}) %}
 
 {% extends "card.html" %}
 {% block title %}{{ page.title | striptags }} - Model Card{% endblock %}
@@ -9,73 +11,72 @@
     {% with heading="Model details", descriptor="This is a descriptor of the sub-section, if required" %}
       {% include "includes/section_heading.html" %}
     {% endwith %}
-    {% set modelDetails = model_data.mr.get('model', {}) %}
-    <div class="section-content">
+    <div class="section-content table-wrap">
       <table>
         <tbody>
           <tr>
             <td>Blackbox External Model Access</td>
-            <td>{{ '&#10003;' if modelDetails.get('blackbox_external_model_access') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('blackbox_external_model_access') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Capabilities demonstration</td>
-            <td>{{ model_data.mr.capabilities_demonstration }}</td>
+            <td>{{ '&#10003;' if model_details.get('capabilities_demonstration') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Capabilities description</td>
-            <td>{{ '&#10003;' if modelDetails.get('capabilities_description') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('capabilities_description') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Centralized model documentation</td>
-            <td>{{ '&#10003;' if modelDetails.get('centralized_model_documentation') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('centralized_model_documentation') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Evaluation of capabilities</td>
-            <td>{{ '&#10003;' if modelDetails.get('evaluation_of_capabilities') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('evaluation_of_capabilities') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>External model access protocol</td>
-            <td>{{ '&#10003;' if modelDetails.get('external_model_access_protocol') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('external_model_access_protocol') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>External reproducibility of capabilities evaluation</td>
-            <td>{{ '&#10003;' if modelDetails.get('external_reproducibility_of_capabilities_evaluation') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('external_reproducibility_of_capabilities_evaluation') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>External reproducibility of intentional harm evaluation</td>
-            <td>{{ '&#10003;' if modelDetails.get('external_reproducibility_of_intentional_harm_evaluation') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('external_reproducibility_of_intentional_harm_evaluation') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>External reproducibility of mitigations evaluation</td>
-            <td>{{ '&#10003;' if modelDetails.get('external_reproducibility_of_mitigations_evaluation') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('external_reproducibility_of_mitigations_evaluation') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>External reproducibility of trustworthiness evaluation</td>
-            <td>{{ '&#10003;' if modelDetails.get('external_reproducibility_of_trustworthiness_evaluation') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('external_reproducibility_of_trustworthiness_evaluation') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>External reproducibility of unintentional harm evaluation</td>
-            <td>{{ '&#10003;' if modelDetails.get('external_reproducibility_of_unintentional_harm_evaluation') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('external_reproducibility_of_unintentional_harm_evaluation') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Full external model access</td>
-            <td>{{ '&#10003;' if modelDetails.get('full_external_model_access') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('full_external_model_access') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Inference compute evaluation</td>
-            <td>{{ '&#10003;' if modelDetails.get('inference_compute_evaluation') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('inference_compute_evaluation') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Inference duration evaluation</td>
-            <td>{{ '&#10003;' if modelDetails.get('inference_duration_evaluation') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('inference_duration_evaluation') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Input modality</td>
-            <td>{{ '&#10003;' if modelDetails.get('input_modality') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('input_modality') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Intentional harm evaluation</td>
-            <td>{{ '&#10003;' if modelDetails.get('intentional_harm_evaluation') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('intentional_harm_evaluation') == 1 else '' }}</td>
           </tr>
         </tbody>
       </table>
@@ -83,75 +84,75 @@
         <tbody>
           <tr>
             <td>Limitations demonstration</td>
-            <td>{{ '&#10003;' if modelDetails.get('limitations_demonstration') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('limitations_demonstration') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Limitations description</td>
-            <td>{{ '&#10003;' if modelDetails.get('limitations_description') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('limitations_description') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Mitigations demonstration</td>
-            <td>{{ '&#10003;' if modelDetails.get('mitigations_demonstration') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('mitigations_demonstration') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Mitigations description</td>
-            <td>{{ '&#10003;' if modelDetails.get('mitigations_description') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('mitigations_description') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Mitigations evaluation</td>
-            <td>{{ '&#10003;' if modelDetails.get('mitigations_evaluation') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('mitigations_evaluation') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Model architecture</td>
-            <td>{{ '&#10003;' if modelDetails.get('model_architecture') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('model_architecture') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Asset license</td>
-            <td>{{ '&#10003;' if modelDetails.get('asset_license') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('asset_license') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Model components</td>
-            <td>{{ '&#10003;' if modelDetails.get('model_components') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('model_components') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Model size</td>
-            <td>{{ '&#10003;' if modelDetails.get('model_size') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('model_size') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Output modality</td>
-            <td>{{ '&#10003;' if modelDetails.get('output_modality') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('output_modality') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Risks demonstration</td>
-            <td>{{ '&#10003;' if modelDetails.get('risks_demonstration') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('risks_demonstration') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Risks description</td>
-            <td>{{ '&#10003;' if modelDetails.get('risks_description') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('risks_description') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Third party capabilities evaluation</td>
-            <td>{{ '&#10003;' if modelDetails.get('third_party_capabilities_evaluation') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('third_party_capabilities_evaluation') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Third party evaluation of limitations</td>
-            <td>{{ '&#10003;' if modelDetails.get('third_party_evaluation_of_limitations') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('third_party_evaluation_of_limitations') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Third party mitigations evaluation</td>
-            <td>{{ '&#10003;' if modelDetails.get('third_party_mitigations_evaluation') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('third_party_mitigations_evaluation') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Third party risks evaluation</td>
-            <td>{{ '&#10003;' if modelDetails.get('third_party_risks_evaluation') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('third_party_risks_evaluation') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Trustworthiness evaluation</td>
-            <td>{{ '&#10003;' if modelDetails.get('trustworthiness_evaluation') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('trustworthiness_evaluation') == 1 else '' }}</td>
           </tr>
           <tr>
             <td>Unintentional harm evaluation</td>
-            <td>{{ '&#10003;' if modelDetails.get('unintentional_harm_evaluation') == 1 else '' }}</td>
+            <td>{{ '&#10003;' if model_details.get('unintentional_harm_evaluation') == 1 else '' }}</td>
           </tr>
         </tbody>
       </table>
@@ -161,16 +162,52 @@
     {% with heading="Intended use" %}
       {% include "includes/section_heading.html" %}
     {% endwith %}
+    <div class="section-content">
+    </div>
   </section>
   <section class="mb-3.5">
     {% with heading="Dependencies", descriptor="This is a descriptor of the sub-section, if required" %}
       {% include "includes/section_heading.html" %}
     {% endwith %}
+    <div class="section-content">
+    </div>
   </section>
   <section class="mb-3.5">
     {% with heading="Metrics", descriptor="TBD" %}
       {% include "includes/section_heading.html" %}
     {% endwith %}
+    <div class="section-content">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quidem saepe illum nisi cupiditate nam unde inventore! Numquam consequuntur dolorem in saepe atque labore aspernatur libero tenetur inventore? Mollitia, iusto.</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quidem saepe illum nisi cupiditate nam unde inventore! Numquam consequuntur dolorem in saepe atque labore aspernatur libero tenetur inventore? Mollitia, iusto.</p>
+      <ul>
+        <li>Lorem ipsum dolor sit amet</li>
+        <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+        <li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</li>
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Lorem ipsum dolor sit amet</li>
+      </ul>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quidem saepe illum nisi cupiditate nam unde inventore! Numquam consequuntur dolorem in saepe atque labore aspernatur libero tenetur inventore? Mollitia, iusto.</p>
+      <ol>
+        <li>Lorem ipsum dolor sit amet</li>
+        <li><a href="#">Lorem ipsum dolor sit amet</a></li>
+        <li>Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</li>
+        <li>Lorem ipsum dolor sit amet</li>
+        <li>Lorem ipsum dolor sit amet</li>
+      </ol>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quidem saepe illum nisi cupiditate nam unde inventore! Numquam consequuntur dolorem in saepe atque labore aspernatur libero tenetur inventore? Mollitia, iusto.</p>
+      <h1>heading 1</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quidem saepe illum nisi cupiditate nam unde inventore! Numquam consequuntur dolorem in saepe atque labore aspernatur libero tenetur inventore? Mollitia, iusto.</p>
+      <h2>heading 2</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quidem saepe illum nisi cupiditate nam unde inventore! Numquam consequuntur dolorem in saepe atque labore aspernatur libero tenetur inventore? Mollitia, iusto.</p>
+      <h3>heading 3</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quidem saepe illum nisi cupiditate nam unde inventore! Numquam consequuntur dolorem in saepe atque labore aspernatur libero tenetur inventore? Mollitia, iusto.</p>
+      <h4>heading 4</h4>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quidem saepe illum nisi cupiditate nam unde inventore! Numquam consequuntur dolorem in saepe atque labore aspernatur libero tenetur inventore? Mollitia, iusto.</p>
+      <h5>heading 5</h5>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quidem saepe illum nisi cupiditate nam unde inventore! Numquam consequuntur dolorem in saepe atque labore aspernatur libero tenetur inventore? Mollitia, iusto.</p>
+      <h6>heading 6</h6>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quidem saepe illum nisi cupiditate nam unde inventore! Numquam consequuntur dolorem in saepe atque labore aspernatur libero tenetur inventore? Mollitia, iusto.</p>
+    </div>
   </section>
 {% endblock %}
 
@@ -179,15 +216,31 @@
     {% with heading="Environmental" %}
       {% include "includes/section_heading.html" %}
     {% endwith %}
+    <div class="section-content">
+      <p class="source">SOURCE: <a href="SOURCE: https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md#hardware-and-software">https://github.com/meta-llama/llama/blob/main/MODEL_CARD.md#hardware-and-software</a></p>
+      {% with label="Carbon emitted (tCO2eq)", value=model_upstream.get('carbon_emissions') | default("n/a") %}
+        {% include "includes/section_metric.html" %}
+      {% endwith %}
+      {% with label="Energy usage", value=model_upstream.get('energy_usage') | default("n/a"), unit="w" %}
+        {% include "includes/section_metric.html" %}
+      {% endwith %}
+      {% with label="Compute usage", value=model_upstream.get('compute_usage') | default("n/a") %}
+        {% include "includes/section_metric.html" %}
+      {% endwith %}
+    </div>
   </section>
   <section class="mb-3.5">
     {% with heading="Ethical considerations" %}
       {% include "includes/section_heading.html" %}
     {% endwith %}
+    <div class="section-content">
+    </div>
   </section>
   <section class="mb-3.5">
     {% with heading="Recommendations" %}
       {% include "includes/section_heading.html" %}
     {% endwith %}
+    <div class="section-content">
+    </div>
   </section>
 {% endblock %}
