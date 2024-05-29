@@ -1,4 +1,4 @@
-Title: Vicuna 70k ChatGPT
+Title: Untitled
 URL: vicuna-70k-gpt4/umr
 save_as: vicuna-70k-gpt4/umr.html
 template: card_umr

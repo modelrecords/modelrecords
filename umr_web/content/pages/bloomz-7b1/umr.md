@@ -1,4 +1,4 @@
-Title: bloomz-7b1
+Title: Untitled
 URL: bloomz-7b1/umr
 save_as: bloomz-7b1/umr.html
 template: card_umr

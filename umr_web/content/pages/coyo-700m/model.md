@@ -1,4 +1,4 @@
-Title: COYO-700M
+Title: Untitled
 URL: coyo-700m/model
 save_as: coyo-700m/model.html
 template: card_model

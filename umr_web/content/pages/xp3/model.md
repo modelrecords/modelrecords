@@ -1,4 +1,4 @@
-Title: xP3
+Title: Untitled
 URL: xp3/model
 save_as: xp3/model.html
 template: card_model

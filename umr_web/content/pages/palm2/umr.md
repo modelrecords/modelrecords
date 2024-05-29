@@ -1,4 +1,4 @@
-Title: PaLM 2
+Title: Untitled
 URL: palm2/umr
 save_as: palm2/umr.html
 template: card_umr

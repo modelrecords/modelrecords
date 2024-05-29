@@ -1,4 +1,4 @@
-Title: mt0-small
+Title: Untitled
 URL: mt0-small/model
 save_as: mt0-small/model.html
 template: card_model

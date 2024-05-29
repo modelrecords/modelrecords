@@ -1,4 +1,4 @@
-Title: Vicuna-13B
+Title: Untitled
 URL: vicuna-13b/umr
 save_as: vicuna-13b/umr.html
 template: card_umr

@@ -1,4 +1,4 @@
-Title: CC3M
+Title: Untitled
 URL: CC3M/model
 save_as: CC3M/model.html
 template: card_model

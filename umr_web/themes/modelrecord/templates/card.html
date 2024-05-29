@@ -10,9 +10,12 @@
     </nav>
     <div class="w-4xl px-8 border-l border-black">
       <div class="flex justify-end items-center roboto-condensed text-xs pb-6">
-        <span class="px-2">Publisher: {{ model_data.mr.metadata.publisher }}</span>
-        <span class="px-2">Released: {{ model_data.mr.metadata.release_date }}</span>
-        <span class="font-extrabold bg-primarydark p-2 pt-1.5 ml-2 text-white">v.{{ model_data.mr.metadata.version }}</span>
+        {% if mr.params.mr.tags: %}
+          <span class="px-2">Tags: {{ mr.params.mr.tags | join(' , ')  }}</span>
+        {% endif %}
+        <span class="px-2">Publisher: {{ mr.params.mr.metadata.publisher }}</span>
+        <span class="px-2">Released: {{ mr.params.mr.metadata.release_date }}</span>
+        <span class="font-extrabold bg-primarydark p-2 pt-1.5 ml-2 text-white">v.{{ mr.pkg.version }}</span>
       </div>
       <div class="flex gap-x-8">
         <div class="w-2/3">

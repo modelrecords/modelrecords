@@ -84,6 +84,10 @@ class Repository:
 
     def load_model_record_from_path(self, path, pkg_name=None, version=None):
         yml = self.merge_yml_modelrecords(path)
+        mr = self._post_process_yml(path, pkg_name, yml)
+        return mr
+
+    def _post_process_yml(self, path, pkg_name, yml):
         version = self.pkg_parser.parse_version_yml_path(path)
         yml.mr.pkg = dict(
             name = pkg_name,
@@ -92,8 +96,7 @@ class Repository:
         )
         mr = ModelRecord(yml) 
         nodes, _, _ = self.find_parent_packages(mr)
-        mr.modelrecord_attrs.mr.upstream_relations = nodes
-        
+        mr.params.mr.upstream_relations = nodes
         return mr
 
     def update_card_attrs(self, pkg, attrs):

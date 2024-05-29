@@ -1,4 +1,4 @@
-Title: Web Image Text
+Title: Untitled
 URL: WebImageText/umr
 save_as: WebImageText/umr.html
 template: card_umr

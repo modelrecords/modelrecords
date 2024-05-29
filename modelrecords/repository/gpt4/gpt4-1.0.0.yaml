@@ -7,6 +7,7 @@ mr:
     publisher: OpenAI
     model_type: Multi-Modal LLM
   tags:
+    - api
   relations:
     upstream:
       - openai-gpt
