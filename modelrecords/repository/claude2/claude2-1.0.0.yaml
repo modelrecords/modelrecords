@@ -128,7 +128,7 @@ mr:
     evaluation_data:
     - Suite of evaluations including capabilities, safety, and alignment evaluations
     - Human preference data to calculate per-task Elo scores
-    - BBQ bias evaluations using a multiple choice Q&A format designed for a U.S.
+    - BBQ bias evaluations using a multiple choice Q and A format designed for a U.S.
       English-speaking context
     - TruthfulQA evaluation for determining accurate and truthful responses in adversarial
       settings
@@ -142,7 +142,7 @@ mr:
     - Around 10 percent of the data included was non-English
     - Includes data on recent events up to early 2023, but may generate confabulations
     additional_information:
-    - Continuous evolution from early 'helpful and harmless' language assistants
+    - Continuous evolution from early helpful and harmless language assistants
     - Use of a Constitution - a set of ethical and behavioral principles
     - Engagement in red teaming and safety audits with external organizations
     - Focus on improving helpfulness, honesty, and harmlessness
