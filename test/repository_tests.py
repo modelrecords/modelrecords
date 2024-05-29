@@ -53,6 +53,10 @@ class TestRepository(unittest.TestCase):
             'bloomz-7b1>=1.0.0': {'pkg': 'bloomz-7b1', 'version': v1, 'operand': operator.ge },
             'bloomz-7b1==1.0.0': {'pkg': 'bloomz-7b1', 'version': v1, 'operand': operator.eq },
             'bloomz-7b1<=1.0.0': {'pkg': 'bloomz-7b1', 'version': v1, 'operand': operator.le },
+            'test==1.2.0': {'pkg': 'test', 'version': semver.Version('1.2.0'), 'operand': operator.eq },
+            'test==1.0.0': {'pkg': 'test', 'version': semver.Version('1.0.0'), 'operand': operator.eq },
+            'test<=1.0.0': {'pkg': 'test', 'version': semver.Version('1.0.0'), 'operand': operator.le },
+            'test>=1.1.0': {'pkg': 'test', 'version': semver.Version('1.1.0'), 'operand': operator.ge },
         }
         fun = lambda x : pkg_parser.parse_pkg_version_query(x)
         run_assertions(fun, cases)
@@ -70,5 +74,15 @@ class TestRepository(unittest.TestCase):
         assert mr.model_name == c.model_name
         assert mr.model_name == d.model_name
 
+    def test_parse_repo_with_operand(self):
+        repo = repository.Repository()
+        a = repo.find('test==1.2.0')
+        b = repo.find('test>=1.1.0')
+        assert a.model_name == b.model_name
+
+        a = repo.find('test==1.0.0')
+        b = repo.find('test<=1.1.0')
+        assert a.pkg.version == b.pkg.version
+        assert '1.0.0' == b.pkg.version
 if __name__ == '__main__':
     unittest.main()

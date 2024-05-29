@@ -1,0 +1,8 @@
+mr:
+  type: model
+  metadata:
+    name: Test Model - 1.2.0
+    refs:
+    description: 
+  relations:
+    upstream:

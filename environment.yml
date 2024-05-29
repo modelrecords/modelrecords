@@ -9,7 +9,7 @@ dependencies:
     - jinja2
     - omegaconf
     - requests
-    - PyPDF2
+    - pypdf
     - openai
     - pelican[markdown]
     - invoke

@@ -12,12 +12,16 @@ class PackageParser:
 
     def __init__(self, base_repo_path: str):
         self.base_repo_path = os.path.normpath(base_repo_path)
-
+    
     def modelrecord_folder(self, pkg: str) -> str:
         """
         Returns the full path to the model record folder for a given package.
         """
         return os.path.join(self.base_repo_path, pkg)
+    
+    def parse_version_yml_path(self, yml_path:str) -> semver.Version:
+        return semver.Version(yml_path.rsplit(self.CHAR_DIVIDER, 1)[1].rsplit('.', 1)[0])
+
 
     def parse_pkg_folder(self, pkg_version: str) -> str:
         """

@@ -1,7 +1,8 @@
 import argparse
 import os
-import yaml
 from modelrecords.modelrecord import ModelRecord
+from modelrecords.repository import Repository
+from modelrecords.card_document_renderer import CardDocumentRenderer
 
 
 def get_parser():
@@ -21,14 +22,17 @@ def get_parser():
 
 
 if __name__ == "__main__":
-    parser = get_parser()
-    args = parser.parse_args()
 
-    for filename in os.listdir(args.mr_dir):
-        if filename.endswith(".yaml"):
-            file_path = os.path.join(args.mr_dir, filename)
-            modelrecord = yaml.safe_load(open(file_path, "rb"))
-            model_name = os.path.splitext(filename)[0]
-            mr = ModelRecord(modelrecord, model_name)
-            mr.parse()
-            print(mr.results())
+    repo = Repository()
+    CardDocumentRenderer(repo.find('llama2-7b')).save_pdf()
+    # parser = get_parser()
+    # args = parser.parse_args()
+
+    # for filename in os.listdir(args.mr_dir):
+    #     if filename.endswith(".yaml"):
+    #         file_path = os.path.join(args.mr_dir, filename)
+    #         modelrecord = yaml.safe_load(open(file_path, "rb"))
+    #         model_name = os.path.splitext(filename)[0]
+    #         mr = ModelRecord(modelrecord, model_name)
+    #         mr.parse()
+    #         print(mr.results())
