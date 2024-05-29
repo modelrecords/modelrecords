@@ -1,4 +1,4 @@
-Title: LLaVa MM-Instruct
+Title: Untitled
 URL: mm-instruct-data/umr
 save_as: mm-instruct-data/umr.html
 template: card_umr

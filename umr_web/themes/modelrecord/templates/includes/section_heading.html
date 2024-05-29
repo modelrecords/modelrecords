@@ -1,0 +1,6 @@
+<header class="mb-3">
+    <h2 class="uppercase {{ color | default('text-primary') }} roboto-condensed font-bold text-lg border-b-2 {{ border | default('border-primary') }} mb-1.5">{{ heading }}</h2>
+    {% if descriptor %}
+        <p>{{ descriptor }}</p>
+    {% endif %}
+</header>

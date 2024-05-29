@@ -22,6 +22,8 @@ class PackageParser:
     def parse_version_yml_path(self, yml_path:str) -> semver.Version:
         return semver.Version(yml_path.rsplit(self.CHAR_DIVIDER, 1)[1].rsplit('.', 1)[0])
 
+    def parse_pkg_name_yml_path(self, yml_path:str) -> str:
+        return yml_path.replace(self.base_repo_path, '').rsplit(self.CHAR_DIVIDER)[0] 
 
     def parse_pkg_folder(self, pkg_version: str) -> str:
         """

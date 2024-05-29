@@ -1,4 +1,4 @@
-Title: BLOOMZ
+Title: Untitled
 URL: bloomz/model
 save_as: bloomz/model.html
 template: card_model

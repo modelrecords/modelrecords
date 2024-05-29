@@ -4,16 +4,13 @@ from pelican import signals
 
 def load_repository_data(generator):
     repository = Repository()
+    generator.context['repo'] = repository
 
     pkg_list = repository.all_packages()
-    data_dict = {}
-
-    for pkg in pkg_list:
-        data_dict[pkg] = repository.load_modelrecord_yaml(pkg)
 
     # Iterate through the dictionary items
-    for key, item in data_dict.items():
-        item_name = item['mr']['metadata']['name']
+    for key in pkg_list:
+        item_name = 'Untitled'
         item_pkg_name = key
 
         content_dir = os.path.join('content/pages', item_pkg_name)
@@ -37,7 +34,7 @@ def load_repository_data(generator):
             f.write(f"model_pkg_name: {item_pkg_name}\n\n")
 
     # Add the data dict to the context
-    generator.context['repository_data_dict'] = data_dict
+    generator.context['mr'] = {}
 
 def register():
     signals.generator_init.connect(load_repository_data)

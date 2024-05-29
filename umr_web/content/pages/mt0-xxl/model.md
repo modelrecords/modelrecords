@@ -1,4 +1,4 @@
-Title: mt0-xxl
+Title: Untitled
 URL: mt0-xxl/model
 save_as: mt0-xxl/model.html
 template: card_model

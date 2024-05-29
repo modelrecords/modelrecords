@@ -1,4 +1,4 @@
-Title: OpenAI GPT
+Title: Untitled
 URL: openai-gpt/umr
 save_as: openai-gpt/umr.html
 template: card_umr

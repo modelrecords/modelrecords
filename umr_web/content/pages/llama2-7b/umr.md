@@ -1,4 +1,4 @@
-Title: Llama 2 7B
+Title: Untitled
 URL: llama2-7b/umr
 save_as: llama2-7b/umr.html
 template: card_umr

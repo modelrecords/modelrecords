@@ -1,4 +1,4 @@
-Title: Llama 2 7B
+Title: Untitled
 URL: llama2-7b/model
 save_as: llama2-7b/model.html
 template: card_model

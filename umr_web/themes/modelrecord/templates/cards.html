@@ -11,8 +11,8 @@
   {{ page.content }}
 
   <ul>
-    {% for key, value in repository_data_dict.items() %}
-      <li>- <a href="{{ key }}/umr.html" class="text-sky-400 underline">{{ value.mr.metadata.name}} (v{{ value.mr.metadata.version }})</a></li>
+    {% for key in repo.all_packages() %}
+      <li>- <a href="{{ key }}/umr.html" class="text-sky-400 underline">{{ key }}</a></li>
     {% endfor %}
   </ul>
 </section>

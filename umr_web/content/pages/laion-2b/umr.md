@@ -1,4 +1,4 @@
-Title: LAION 2B
+Title: Untitled
 URL: laion-2b/umr
 save_as: laion-2b/umr.html
 template: card_umr

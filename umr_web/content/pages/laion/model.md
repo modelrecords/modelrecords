@@ -1,4 +1,4 @@
-Title: LAION
+Title: Untitled
 URL: laion/model
 save_as: laion/model.html
 template: card_model

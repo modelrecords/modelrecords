@@ -1,4 +1,4 @@
-Title: bloom-3b
+Title: Untitled
 URL: bloom-3b/model
 save_as: bloom-3b/model.html
 template: card_model

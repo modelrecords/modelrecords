@@ -1,4 +1,4 @@
-Title: LLaVa MM-Instruct
+Title: Untitled
 URL: mm-instruct-data/model
 save_as: mm-instruct-data/model.html
 template: card_model

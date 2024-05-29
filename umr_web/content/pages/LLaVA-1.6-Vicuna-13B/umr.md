@@ -1,4 +1,4 @@
-Title: LLaVA-1.6 Vicuna 13B
+Title: Untitled
 URL: LLaVA-1.6-Vicuna-13B/umr
 save_as: LLaVA-1.6-Vicuna-13B/umr.html
 template: card_umr

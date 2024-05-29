@@ -1,4 +1,4 @@
-Title: COYO-700M
+Title: Untitled
 URL: coyo-700m/umr
 save_as: coyo-700m/umr.html
 template: card_umr
