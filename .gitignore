@@ -6,7 +6,6 @@ modelrecords/templates/*.out
 modelrecords/templates/*.pdf
 modelrecords/templates/*.fls
 modelrecords/templates/*.synctex.gz
-output/
 .env
 # Byte-compiled / optimized / DLL files
 __pycache__/
