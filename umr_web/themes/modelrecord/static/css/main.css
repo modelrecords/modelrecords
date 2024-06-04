@@ -652,6 +652,18 @@ body {
   color: rgb(110 112 170 / var(--tw-text-opacity));
 }
 
+.section-content dt {
+  font-weight: 700;
+}
+
+.section-content dt::first-letter {
+  text-transform: capitalize;
+}
+
+.section-content dd {
+  margin-bottom: 0.25rem;
+}
+
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -904,6 +916,10 @@ body {
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
 
 .text-black {

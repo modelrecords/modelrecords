@@ -2,99 +2,115 @@
 {% set mr=repo.find(page.model_pkg_name) %}
 
 {% extends "card.html" %}
-{% block title %}{{ page.title | striptags }} - UMR Card ({{ mr.params.type }}) {% endblock %}
+{% block title %}{{ mr.model_name | striptags }} - UMR Card ({{ mr.params.type }}) {% endblock %}
+
 {% block card_content_left %}
-<section class="mb-3.5">
-  {% with heading="Metadata", descriptor="General information." %}
-    {% include "includes/section_heading.html" %}
-  {% endwith %}
-  <dl>
-  {% for k, v in mr.params.mr.metadata.items(): %}
-    {% if v is string: %}
-      <dt class="font-uppercase font-bold">{{k}}</dt>
-      <dd>{{v}}</dd>
-    {% endif %}
-  {% endfor %}
-  </dl>  
-</section>
-<section class="mb-3.5">
-  {% with heading="Relations" %}
-    {% include "includes/section_heading.html" %}
-  {% endwith %}
-  <ul>
-  {% for (pkg, rel) in mr.upstream_relations_package(): %}
-      <li class="font-uppercase font-bold"><a href="/{{pkg}}/umr.html">{{rel}}</a></li>
-  {% endfor %}
-  </ul>
-</section>
+  <section class="mb-3.5">
+    {% with heading="Metadata", descriptor="General information." %}
+      {% include "includes/section_heading.html" %}
+    {% endwith %}
+    <div class="section-content">
+      <dl>
+        {% for k, v in mr.params.mr.metadata.items(): %}
+          {% if v is string and v | length > 0 %}
+            <dt>{{ k | replace("_", " ")}}</dt>
+            <dd>{{v}}</dd>
+          {% endif %}
+        {% endfor %}
+      </dl>
+    </div>
+  </section>
 
+  <section class="mb-3.5">
+    {% with heading="Relations" %}
+      {% include "includes/section_heading.html" %}
+    {% endwith %}
+    <div class="section-content">
+      <ul>
+        {% for (pkg, rel) in mr.upstream_relations_package(): %}
+          <li><a href="/{{pkg}}/umr.html">{{rel}}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
 
-<section class="mb-3.5">
-  {% with heading="Intended Use" %}
-    {% include "includes/section_heading.html" %}
-  {% endwith %}
-  <ul>
-  {% for item in mr.params.mr.get('upstream', {}).get('intended_use', []): %}
-      <li>{{item}}</li>
-  {% endfor %}
-  </ul>
-</section>
+  <section class="mb-3.5">
+    {% with heading="Intended Use" %}
+      {% include "includes/section_heading.html" %}
+    {% endwith %}
+    <div class="section-content">
+      <ul>
+        {% for item in mr.params.mr.get('upstream', {}).get('intended_use', []): %}
+          <li>{{item}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
 
-<section class="mb-3.5">
-  {% with heading="Factors" %}
-    {% include "includes/section_heading.html" %}
-  {% endwith %}
-  <ul>
-  {% for item in mr.params.mr.get('upstream', {}).get('factors', []): %}
-      <li>{{item}}</li>
-  {% endfor %}
-  </ul>
-</section>
+  <section class="mb-3.5">
+    {% with heading="Factors" %}
+      {% include "includes/section_heading.html" %}
+    {% endwith %}
+    <div class="section-content">
+      <ul>
+        {% for item in mr.params.mr.get('upstream', {}).get('factors', []): %}
+          <li>{{item}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
 
-<section class="mb-3.5">
-  {% with heading="Evaluation Data" %}
-    {% include "includes/section_heading.html" %}
-  {% endwith %}
-  <ul>
-  {% for item in mr.params.mr.get('upstream', {}).get('evaluation_data', []): %}
-      <li>{{item}}</li>
-  {% endfor %}
-  </ul>
-</section>
+  <section class="mb-3.5">
+    {% with heading="Evaluation Data" %}
+      {% include "includes/section_heading.html" %}
+    {% endwith %}
+    <div class="section-content">
+      <ul>
+      {% for item in mr.params.mr.get('upstream', {}).get('evaluation_data', []): %}
+          <li>{{item}}</li>
+      {% endfor %}
+      </ul>
+    </div>
+  </section>
 
-<section class="mb-3.5">
-  {% with heading="Training Data" %}
-    {% include "includes/section_heading.html" %}
-  {% endwith %}
-  <ul>
-  {% for item in mr.params.mr.get('upstream', {}).get('training_data', []): %}
-      <li>{{item}}</li>
-  {% endfor %}
-  </ul>
-</section>
+  <section class="mb-3.5">
+    {% with heading="Training Data" %}
+      {% include "includes/section_heading.html" %}
+    {% endwith %}
+    <div class="section-content">
+      <ul>
+      {% for item in mr.params.mr.get('upstream', {}).get('training_data', []): %}
+          <li>{{item}}</li>
+      {% endfor %}
+      </ul>
+    </div>
+  </section>
 
-<section class="mb-3.5">
-  {% with heading="Additional Information" %}
-    {% include "includes/section_heading.html" %}
-  {% endwith %}
-  <ul>
-  {% for item in mr.params.mr.get('upstream', {}).get('additional_information', []): %}
-      <li>{{item}}</li>
-  {% endfor %}
-  </ul>
-</section>
+  <section class="mb-3.5">
+    {% with heading="Additional Information" %}
+      {% include "includes/section_heading.html" %}
+    {% endwith %}
+    <div class="section-content">
+      <ul>
+        {% for item in mr.params.mr.get('upstream', {}).get('additional_information', []): %}
+          <li>{{item}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
 
-<section class="mb-3.5">
-  {% with heading="Recommendations" %}
-    {% include "includes/section_heading.html" %}
-  {% endwith %}
-  <ul>
-  {% for item in mr.params.mr.get('upstream', {}).get('recommendations', []): %}
-      <li>{{item}}</li>
-  {% endfor %}
-  </ul>
-</section>
-
+  <section class="mb-3.5">
+    {% with heading="Recommendations" %}
+      {% include "includes/section_heading.html" %}
+    {% endwith %}
+    <div class="section-content">
+      <ul>
+        {% for item in mr.params.mr.get('upstream', {}).get('recommendations', []): %}
+          <li>{{item}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
 {% endblock %}
 
 {% block card_content_right %}

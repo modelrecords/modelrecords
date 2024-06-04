@@ -62,4 +62,10 @@
   .section-content .source a {
     @apply roboto-condensed text-xs text-primarylight;
   }
+  .section-content dt {
+    @apply font-bold first-letter:capitalize;
+  }
+  .section-content dd {
+    @apply mb-1;
+  }
 }
