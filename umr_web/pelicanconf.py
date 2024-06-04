@@ -4,7 +4,7 @@
 AUTHOR = 'ModelRecords'
 SITENAME = 'Unified Model Record'
 SITESUBTITLE = ''
-SITEURL = 'https://example.com'
+SITEURL = 'https://modelrecord.com'
 TIMEZONE = 'America/Regina'
 
 THEME = 'themes/modelrecord'
