@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Pelican" />
+    <title>Llama 2 7B - UMR Card (None) </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet" href="https://modelrecord.com/theme/css/main.css" />
+</head>
+
+<body>
+  <header id="banner" class="bg-primarylight">
+    <h1><a href="https://modelrecord.com/">Unified Model Record</a></h1>
+    <nav>
+      <ul class="flex gap-5">
+        <li><a href="/cards.html" class="text-sky-400">All Cards</a></li>
+      </ul>
+    </nav>
+  </header><!-- /#banner -->
+
+<main class="flex grow flex-col">
+<header class="bg-highlight p-8 border-b border-black">
+  <h1 class="text-4xl font-bold">Llama 2 7B</h1>
+  <p class="text-2xl font-medium capitalize">Type: model</p>
+</header>
+  <div class="flex grow">
+    <nav class="flex-none w-48 py-4">
+
+<h3 class="roboto-condensed font-bold text-xs uppercase py-2 pr-2 pl-4">The Cards</h3>
+<ul>
+  <li><a href="umr.html" class="block roboto-condensed font-bold text-lg uppercase py-2 pr-2 pl-4 bg-highlight">UMR Card</a></li>
+  <li><a href="model.html" class="block roboto-condensed font-bold text-lg uppercase py-2 pr-2 pl-4 ">Model Card</a></li>
+</ul>    </nav>
+    <div class="w-4xl px-8 border-l border-black">
+      <div class="flex justify-end items-center roboto-condensed text-xs pb-6">
+          <span class="px-2">Tags: opensource</span>
+        <span class="px-2">Publisher: Meta</span>
+        <span class="px-2">Released: 2023-07-19</span>
+        <span class="font-extrabold bg-primarydark p-2 pt-1.5 ml-2 text-white">v.1.0.0</span>
+      </div>
+      <div class="flex gap-x-8">
+        <div class="w-2/3">
+  <section class="mb-3.5">
+<header class="mb-3">
+    <h2 class="uppercase text-primary roboto-condensed font-bold text-lg border-b-2 border-primary mb-1.5">Metadata</h2>
+        <p>General information.</p>
+</header>    <div class="section-content">
+      <dl>
+            <dt>name</dt>
+            <dd>Llama 2 7B</dd>
+            <dt>version</dt>
+            <dd>1.0.0</dd>
+            <dt>publisher</dt>
+            <dd>Meta</dd>
+            <dt>model type</dt>
+            <dd>Large Language Model</dd>
+            <dt>release date</dt>
+            <dd>2023-07-19</dd>
+            <dt>description</dt>
+            <dd>This is the 7B variant.</dd>
+            <dt>architecture</dt>
+            <dd> Llama 2 is an auto-regressive language model that uses an optimized transformer architecture. The tuned versions use supervised fine-tuning (SFT) and reinforcement learning with human feedback (RLHF) to align with human preferences for helpfulness and safety.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="mb-3.5">
+<header class="mb-3">
+    <h2 class="uppercase text-primary roboto-condensed font-bold text-lg border-b-2 border-primary mb-1.5">Relations</h2>
+</header>    <div class="section-content">
+      <ul>
+          <li><a href="/llama2/umr.html">llama2>=1.0.0</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="mb-3.5">
+<header class="mb-3">
+    <h2 class="uppercase text-primary roboto-condensed font-bold text-lg border-b-2 border-primary mb-1.5">Intended Use</h2>
+</header>    <div class="section-content">
+      <ul>
+          <li>Llama 2 is intended for commercial and research use in English.</li>
+          <li>Tuned models are intended for assistant-like chat.</li>
+          <li>Pretrained models can be adapted for a variety of natural language generation tasks.</li>
+          <li>Developers may fine-tune Llama 2 models for languages beyond English provided they comply with the Llama 2 Community License and the Acceptable Use Policy.</li>
+          <li>Use in any manner that violates applicable laws or regulations is out-of-scope.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="mb-3.5">
+<header class="mb-3">
+    <h2 class="uppercase text-primary roboto-condensed font-bold text-lg border-b-2 border-primary mb-1.5">Factors</h2>
+</header>    <div class="section-content">
+      <ul>
+          <li>Range of parameter sizes — 7B, 13B, and 70B — as well as pretrained and fine-tuned variations.</li>
+          <li>Input text only.</li>
+          <li>Output text only.</li>
+          <li>Model architecture uses an optimized transformer architecture.</li>
+          <li>Models are trained with a global batch-size of 4M tokens.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="mb-3.5">
+<header class="mb-3">
+    <h2 class="uppercase text-primary roboto-condensed font-bold text-lg border-b-2 border-primary mb-1.5">Evaluation Data</h2>
+</header>    <div class="section-content">
+      <ul>
+          <li>Evaluation data includes standard academic benchmarks across commonsense reasoning, world knowledge, reading comprehension, and math.</li>
+          <li>Automatic safety benchmarks such as TruthfulQA and ToxiGen for evaluating truthfulness and toxicity.</li>
+          <li>The BOLD dataset for measuring biases in open-ended language generation.</li>
+          <li>Use of internal evaluations library for consistency across evaluations.</li>
+          <li>Both pretrained Llama 2 and fine-tuned Llama 2-Chat models are evaluated on these benchmarks.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="mb-3.5">
+<header class="mb-3">
+    <h2 class="uppercase text-primary roboto-condensed font-bold text-lg border-b-2 border-primary mb-1.5">Training Data</h2>
+</header>    <div class="section-content">
+      <ul>
+          <li>2 trillion tokens of data from publicly available sources were used for pretraining.</li>
+          <li>Fine-tuning data includes publicly available instruction datasets, as well as over one million new human-annotated examples.</li>
+          <li>The pretraining data has a cutoff of September 2022, but some tuning data is more recent, up to July 2023.</li>
+          <li>Neither the pretraining nor the fine-tuning datasets include Meta user data.</li>
+          <li>A new mix of publicly available online data was curated for the training process.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="mb-3.5">
+<header class="mb-3">
+    <h2 class="uppercase text-primary roboto-condensed font-bold text-lg border-b-2 border-primary mb-1.5">Additional Information</h2>
+</header>    <div class="section-content">
+      <ul>
+          <li>The 70B version uses Grouped-Query Attention (GQA) for improved inference scalability.</li>
+          <li>Token counts refer to pretraining data only.</li>
+          <li>The models were trained between January 2023 and July 2023.</li>
+          <li>A custom commercial license is available for use.</li>
+          <li>More detailed information can be found in the research paper "Llama-2: Open Foundation and Fine-tuned Chat Models".</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="mb-3.5">
+<header class="mb-3">
+    <h2 class="uppercase text-primary roboto-condensed font-bold text-lg border-b-2 border-primary mb-1.5">Recommendations</h2>
+</header>    <div class="section-content">
+      <ul>
+          <li>Before deploying any applications of Llama 2, developers should perform safety testing and tuning tailored to specific applications.</li>
+          <li>Consult the Responsible Use Guide available on Meta AI's website.</li>
+          <li>Regular updating and fine-tuning with newer data and community feedback is recommended to improve model safety and effectiveness.</li>
+          <li>Consider language variations and cultural contexts when adapting Llama 2 models for languages beyond English.</li>
+          <li>Stay informed about updates to model versions and licenses.</li>
+      </ul>
+    </div>
+  </section>
+        </div>
+        <div class="w-1/3">
+  <div>
+    right
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+  <section id="extras" class="hidden">
+    <div class="social">
+      <h2>social</h2>
+      <ul>
+        <li><a href="#">You can add links in your config file</a></li>
+        <li><a href="#">Another social link</a></li>
+      </ul>
+    </div><!-- /.social -->
+  </section><!-- /#extras -->
+
+  <footer id="contentinfo" class="body">
+  </footer><!-- /#contentinfo -->
+</body>
+</html>
