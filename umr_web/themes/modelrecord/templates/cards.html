@@ -1,19 +1,59 @@
 {% extends "base.html" %}
 {% block html_lang %}{{ page.lang }}{% endblock %}
-{% block title %}{{ page.title|striptags }}{% endblock %}
+{% block title %}{{ page.title | striptags }}{% endblock %}
 
 {% block extra_head %}
 {% endblock %}
 
 {% block content %}
-<section id="content" class="body">
+<section id="content">
   <h1 class="font-bold">{{ page.title }}</h1>
   {{ page.content }}
 
-  <ul>
+  <div class="max-w-screen-lg mx-auto grid grid-cols-3 gap-2">
     {% for key in repo.all_packages() %}
-      <li>- <a href="{{ key }}/umr.html" class="text-sky-400 underline">{{ key }}</a></li>
+      {% set mr=repo.find(key) %}
+      <article class="">
+        <a href="{{ key }}/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-[8px] before:bg-highlight before:opacity-60 hover:before:opacity-100">
+          <div class="relative pb-2">
+            <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+              {% if mr.params.mr.metadata.release_date and mr.params.mr.metadata.release_date | length > 0 %}
+                <time>{{ mr.params.mr.metadata.release_date }}</time>
+              {% else %}
+                <span>No date provided.</span>
+              {% endif %}
+              {% if mr.params.mr.metadata.version %}
+                <span>v.{{ mr.params.mr.metadata.version }}</span>
+              {% else %}
+                <span>No version provided.</span>
+              {% endif %}
+            </div>
+            <div class="text-sm text-gray-600">
+              <h3 class="text-lg font-semibold text-gray-900">{{ mr.model_name }}</h3>
+              <p class="line-clamp-3">
+                {% if mr.params.mr.metadata.description and mr.params.mr.metadata.description | length > 0 %}
+                  {{ mr.params.mr.metadata.description }}
+                {% else %}
+                  No description provided.
+                {% endif %}
+              </p>
+            </div>
+          </div>
+          <div class="relative text-sm text-gray-600">
+            {% if mr.params.mr.metadata.publisher %}
+              <p class="font-semibold text-gray-900">{{ mr.params.mr.metadata.publisher }}</p>
+            {% else %}
+              <p class="font-semibold text-gray-900">No publisher provided</p>
+            {% endif %}
+            {% if mr.params.mr.metadata.model_type %}
+              <p>{{ mr.params.mr.metadata.model_type }}</p>
+            {% else %}
+              <p>No model type provided</p>
+            {% endif %}
+          </div>
+        </a>
+      </article>
     {% endfor %}
-  </ul>
+  </div>
 </section>
 {% endblock %}
