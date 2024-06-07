@@ -6,11 +6,12 @@
 {% endblock %}
 
 {% block content %}
-<section id="content">
-  <h1 class="font-bold">{{ page.title }}</h1>
-  {{ page.content }}
+<main>
+  {% with heading=page.title %}
+    {% include "includes/page_header.html" %}
+  {% endwith %}
 
-  <div class="max-w-screen-lg mx-auto" x-data="{
+  <div class="max-w-screen-lg mx-auto py-4" x-data="{
     search: '',
     show_item(el){
       return this.search === '' || el.textContent.toLowerCase().includes(this.search.toLowerCase());
@@ -69,5 +70,5 @@
       {% endfor %}
     </div>
   </div>
-</section>
+</main>
 {% endblock %}

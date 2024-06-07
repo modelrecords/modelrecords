@@ -25,11 +25,11 @@
     </nav>
   </header><!-- /#banner -->
 
-<section id="content">
-  <h1 class="font-bold">All cards</h1>
-  
-
-  <div class="max-w-screen-lg mx-auto" x-data="{
+<main>
+<header class="bg-highlight p-8 border-b border-black">
+  <h1 class="text-4xl font-bold">All cards</h1>
+</header>
+  <div class="max-w-screen-lg mx-auto py-4" x-data="{
     search: '',
     show_item(el){
       return this.search === '' || el.textContent.toLowerCase().includes(this.search.toLowerCase());
@@ -1265,7 +1265,7 @@
         </article>
     </div>
   </div>
-</section>
+</main>
 
   <section id="extras" class="hidden">
     <div class="social">
