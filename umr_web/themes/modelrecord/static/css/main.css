@@ -1060,6 +1060,16 @@ body {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-primarydark {
+  --tw-text-opacity: 1;
+  color: rgb(39 32 78 / var(--tw-text-opacity));
+}
+
+.text-highlight {
+  --tw-text-opacity: 1;
+  color: rgb(220 221 252 / var(--tw-text-opacity));
+}
+
 .before\:absolute::before {
   content: var(--tw-content);
   position: absolute;
@@ -1089,6 +1099,11 @@ body {
 .before\:opacity-60::before {
   content: var(--tw-content);
   opacity: 0.6;
+}
+
+.hover\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .hover\:before\:opacity-100:hover::before {

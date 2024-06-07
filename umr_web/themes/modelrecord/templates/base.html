@@ -19,12 +19,12 @@
 </head>
 
 <body>
-  <header id="banner" class="bg-primarylight">
-    <h1><a href="{{ SITEURL }}/">{{ SITENAME }}{% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
-    <nav>
+  <header class="bg-primarylight flex px-8 py-4 items-baseline">
+    <h1><a href="{{ SITEURL }}/" class="text-white text-2xl font-bold">{{ SITENAME }}</a></h1>
+    <nav class="px-8">
       <ul class="flex gap-5">
         {% for title, link in MENUITEMS %}
-        <li><a href="{{ link }}" class="text-sky-400">{{ title }}</a></li>
+        <li><a href="{{ link }}" class="text-highlight hover:text-white">{{ title }}</a></li>
         {% endfor %}
       </ul>
     </nav>
