@@ -1,6 +1,3 @@
-Title: Welcome to My Site
+Title: Homepage
 URL:
 save_as: index.html
-
-Thank you for visiting. Welcome!
-<p>something in a p tag?</p>
