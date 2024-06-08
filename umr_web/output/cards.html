@@ -11,87 +11,1261 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
       rel="stylesheet">
-    <link rel="stylesheet" href="https://modelrecord.com/theme/css/main.css" />
+    <link rel="stylesheet" href="./theme/css/main.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body>
-  <header id="banner" class="bg-primarylight">
-    <h1><a href="https://modelrecord.com/">Unified Model Record</a></h1>
-    <nav>
+  <header class="bg-primarylight flex px-8 py-4 items-baseline">
+    <h1><a href="./" class="text-white text-2xl font-bold">Unified Model Record</a></h1>
+    <nav class="px-8">
       <ul class="flex gap-5">
-        <li><a href="/cards.html" class="text-sky-400">All Cards</a></li>
+        <li><a href="/cards.html" class="text-highlight hover:text-white">All cards</a></li>
       </ul>
     </nav>
   </header><!-- /#banner -->
 
-<section id="content" class="body">
-  <h1 class="font-bold">All cards</h1>
-  
+<main>
+<header class="text-primarydark bg-highlight p-8 border-b border-black">
+  <h1 class="text-4xl font-bold">All cards</h1>
+</header>
+  <div class="max-w-screen-lg mx-auto py-4" x-data="{
+    search: '',
+    show_item(el){
+      return this.search === '' || el.textContent.toLowerCase().includes(this.search.toLowerCase());
+    }
+  }">
+    <input
+      class="block w-full border border-gray-200 focus:outline-none text-gray-700 rounded-lg px-4 py-3 mb-4"
+      type="search"
+      placeholder="Filter by model name"
+      x-model="search"
+    >
 
-  <ul>
-      <li>- <a href="bloomz/umr.html" class="text-sky-400 underline">bloomz</a></li>
-      <li>- <a href="coyo-700m/umr.html" class="text-sky-400 underline">coyo-700m</a></li>
-      <li>- <a href="p3/umr.html" class="text-sky-400 underline">p3</a></li>
-      <li>- <a href="roots/umr.html" class="text-sky-400 underline">roots</a></li>
-      <li>- <a href="mt5-base/umr.html" class="text-sky-400 underline">mt5-base</a></li>
-      <li>- <a href="bloom-7b1/umr.html" class="text-sky-400 underline">bloom-7b1</a></li>
-      <li>- <a href="bloomz-3b/umr.html" class="text-sky-400 underline">bloomz-3b</a></li>
-      <li>- <a href="llama2/umr.html" class="text-sky-400 underline">llama2</a></li>
-      <li>- <a href="laion-5b/umr.html" class="text-sky-400 underline">laion-5b</a></li>
-      <li>- <a href="mt0-large/umr.html" class="text-sky-400 underline">mt0-large</a></li>
-      <li>- <a href="mt5-small/umr.html" class="text-sky-400 underline">mt5-small</a></li>
-      <li>- <a href="LLaVA-1.6-Vicuna-13B/umr.html" class="text-sky-400 underline">LLaVA-1.6-Vicuna-13B</a></li>
-      <li>- <a href="test/umr.html" class="text-sky-400 underline">test</a></li>
-      <li>- <a href="CommonCrawl/umr.html" class="text-sky-400 underline">CommonCrawl</a></li>
-      <li>- <a href="plip/umr.html" class="text-sky-400 underline">plip</a></li>
-      <li>- <a href="laion/umr.html" class="text-sky-400 underline">laion</a></li>
-      <li>- <a href="mm-instruct-data/umr.html" class="text-sky-400 underline">mm-instruct-data</a></li>
-      <li>- <a href="vicuna/umr.html" class="text-sky-400 underline">vicuna</a></li>
-      <li>- <a href="palm2/umr.html" class="text-sky-400 underline">palm2</a></li>
-      <li>- <a href="WebImageText/umr.html" class="text-sky-400 underline">WebImageText</a></li>
-      <li>- <a href="bloomz-1b7/umr.html" class="text-sky-400 underline">bloomz-1b7</a></li>
-      <li>- <a href="clip/umr.html" class="text-sky-400 underline">clip</a></li>
-      <li>- <a href="mt0-small/umr.html" class="text-sky-400 underline">mt0-small</a></li>
-      <li>- <a href="xp3mt/umr.html" class="text-sky-400 underline">xp3mt</a></li>
-      <li>- <a href="mt0-xl/umr.html" class="text-sky-400 underline">mt0-xl</a></li>
-      <li>- <a href="xp3x/umr.html" class="text-sky-400 underline">xp3x</a></li>
-      <li>- <a href="bloomz-1b1/umr.html" class="text-sky-400 underline">bloomz-1b1</a></li>
-      <li>- <a href="mt0/umr.html" class="text-sky-400 underline">mt0</a></li>
-      <li>- <a href="CC3M/umr.html" class="text-sky-400 underline">CC3M</a></li>
-      <li>- <a href="mc4/umr.html" class="text-sky-400 underline">mc4</a></li>
-      <li>- <a href="mt5-xl/umr.html" class="text-sky-400 underline">mt5-xl</a></li>
-      <li>- <a href="bloom/umr.html" class="text-sky-400 underline">bloom</a></li>
-      <li>- <a href="laion-2b/umr.html" class="text-sky-400 underline">laion-2b</a></li>
-      <li>- <a href="mt5-large/umr.html" class="text-sky-400 underline">mt5-large</a></li>
-      <li>- <a href="vicuna-13b/umr.html" class="text-sky-400 underline">vicuna-13b</a></li>
-      <li>- <a href="bloom-1b1/umr.html" class="text-sky-400 underline">bloom-1b1</a></li>
-      <li>- <a href="openai-gpt/umr.html" class="text-sky-400 underline">openai-gpt</a></li>
-      <li>- <a href="science-qa/umr.html" class="text-sky-400 underline">science-qa</a></li>
-      <li>- <a href="coco/umr.html" class="text-sky-400 underline">coco</a></li>
-      <li>- <a href="bloomz-7b1-p3/umr.html" class="text-sky-400 underline">bloomz-7b1-p3</a></li>
-      <li>- <a href="bloom-1b7/umr.html" class="text-sky-400 underline">bloom-1b7</a></li>
-      <li>- <a href="xp3megds/umr.html" class="text-sky-400 underline">xp3megds</a></li>
-      <li>- <a href="mt0-base/umr.html" class="text-sky-400 underline">mt0-base</a></li>
-      <li>- <a href="bloom-3b/umr.html" class="text-sky-400 underline">bloom-3b</a></li>
-      <li>- <a href="bloom-560m/umr.html" class="text-sky-400 underline">bloom-560m</a></li>
-      <li>- <a href="bloomz-7b1-mt/umr.html" class="text-sky-400 underline">bloomz-7b1-mt</a></li>
-      <li>- <a href="laion-400m/umr.html" class="text-sky-400 underline">laion-400m</a></li>
-      <li>- <a href="vicuna-70k-gpt4/umr.html" class="text-sky-400 underline">vicuna-70k-gpt4</a></li>
-      <li>- <a href="bloomz-7b1/umr.html" class="text-sky-400 underline">bloomz-7b1</a></li>
-      <li>- <a href="mt5-xxl/umr.html" class="text-sky-400 underline">mt5-xxl</a></li>
-      <li>- <a href="llama2-13b/umr.html" class="text-sky-400 underline">llama2-13b</a></li>
-      <li>- <a href="llama2-7b/umr.html" class="text-sky-400 underline">llama2-7b</a></li>
-      <li>- <a href="mt5/umr.html" class="text-sky-400 underline">mt5</a></li>
-      <li>- <a href="gpt4/umr.html" class="text-sky-400 underline">gpt4</a></li>
-      <li>- <a href="xp3/umr.html" class="text-sky-400 underline">xp3</a></li>
-      <li>- <a href="bloomz-560m/umr.html" class="text-sky-400 underline">bloomz-560m</a></li>
-      <li>- <a href="xp3-all/umr.html" class="text-sky-400 underline">xp3-all</a></li>
-      <li>- <a href="LLaVA/umr.html" class="text-sky-400 underline">LLaVA</a></li>
-      <li>- <a href="mt0-xxl/umr.html" class="text-sky-400 underline">mt0-xxl</a></li>
-      <li>- <a href="eva-g/umr.html" class="text-sky-400 underline">eva-g</a></li>
-      <li>- <a href="claude2/umr.html" class="text-sky-400 underline">claude2</a></li>
-  </ul>
-</section>
+    <div class="grid grid-cols-3 gap-2">
+        <article class="" x-show="show_item($el)">
+          <a href="bloomz/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2022-11-17</time>
+                  <span>v.1.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">BLOOMZ</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>Multitask Fine-tuned Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="coyo-700m/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <span>No date provided.</span>
+                  <span>No version provided.</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">COYO-700M</h3>
+                <p class="line-clamp-3">
+                    COYO-700M is a large-scale dataset consisting of 747 million image-text pairs. It was developed by Kakao Brain.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">No publisher provided</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="p3/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2023-05-29</time>
+                  <span>v.1.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">P3</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="roots/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2023-03-07</time>
+                  <span>v.1.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">The BigScience ROOTS Corpus</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="mt5-base/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2021-06</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">mt5-base</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">Google</p>
+                <p>Text-to-text Transformer-based Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="bloom-7b1/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2022-07-11</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">bloom-7b1</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>Transformer-based Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="bloomz-3b/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2022-11-17</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">bloomz-3b</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>Multitask Fine-tuned Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="llama2/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2023-07-19</time>
+                  <span>v.1.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">Llama 2</h3>
+                <p class="line-clamp-3">
+                    Meta developed and released the Llama 2 family of large language models (LLMs), a collection of pretrained and fine-tuned generative text models ranging in scale from 7 billion to 70 billion parameters. Our fine-tuned LLMs, called Llama-2-Chat, are optimized for dialogue use cases. Llama-2-Chat models outperform open-source chat models on most benchmarks we tested, and in our human evaluations for helpfulness and safety, are on par with some popular closed-source models like ChatGPT and PaLM.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">Meta</p>
+                <p>Large Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="laion-5b/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <span>No date provided.</span>
+                  <span>No version provided.</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">LAION 5B</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">No publisher provided</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="mt0-large/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2022-07-11</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">mt0-large</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>Transformer-based Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="mt5-small/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2021-06</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">mt5-small</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">Google</p>
+                <p>Text-to-text Transformer-based Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="LLaVA-1.6-Vicuna-13B/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2023-03-30</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">LLaVA-1.6 Vicuna 13B</h3>
+                <p class="line-clamp-3">
+                    Science QA is a dataset designed for evaluating and training models in the task of answering science-related questions. 
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">LMSYS Org</p>
+                <p>Chatbot</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="test/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <span>No date provided.</span>
+                  <span>No version provided.</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">Test Model - 1.2.0</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">No publisher provided</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="CommonCrawl/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <span>No date provided.</span>
+                  <span>No version provided.</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">Common Crawl</h3>
+                <p class="line-clamp-3">
+                    Over 250 billion pages spanning 17 years. Free and open corpus since 2007.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">No publisher provided</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="plip/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <span>No date provided.</span>
+                  <span>No version provided.</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">PLIP</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">No publisher provided</p>
+                <p>Contrastive Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="laion/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <span>No date provided.</span>
+                  <span>No version provided.</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">LAION</h3>
+                <p class="line-clamp-3">
+                    Large-scale Artificial Intelligence Open Network (LAION) organization
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">No publisher provided</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="mm-instruct-data/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <span>No date provided.</span>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">LLaVa MM-Instruct</h3>
+                <p class="line-clamp-3">
+                    LLaVA utilized GPT-4 to generate multimodal instruction-following data, resulting in 158,000 unique samples. This dataset includes 58,000 conversational samples, 23,000 detailed descriptions, and 77,000 complex reasoning samples.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">OpenAI</p>
+                <p>Multi-Modal LLM</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="vicuna/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2023-03-30</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">Vicuna</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">LMSYS ORG</p>
+                <p>Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="palm2/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2023-05</time>
+                  <span>v.2</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">PaLM 2</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">Google</p>
+                <p>Large Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="WebImageText/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <span>No date provided.</span>
+                  <span>No version provided.</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">Web Image Text</h3>
+                <p class="line-clamp-3">
+                    400 million image-text pairs collected from various sources on the internet used to train CLIP.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">No publisher provided</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="bloomz-1b7/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2022-11-17</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">bloomz-1b7</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>Multitask Fine-tuned Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="clip/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <span>No date provided.</span>
+                  <span>No version provided.</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">CLIP</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">No publisher provided</p>
+                <p>Contrastive Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="mt0-small/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2022-07-11</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">mt0-small</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>Transformer-based Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="xp3mt/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2023-05-29</time>
+                  <span>v.1.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">xP3mt</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="mt0-xl/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2022-07-11</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">mt0-xl</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>Transformer-based Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="xp3x/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2023-05-29</time>
+                  <span>v.1.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">xP3x</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="bloomz-1b1/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2022-11-17</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">bloomz-1b1</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>Multitask Fine-tuned Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="mt0/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2022-07-11</time>
+                  <span>v.1.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">mt0</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>Transformer-based Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="CC3M/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <span>No date provided.</span>
+                  <span>No version provided.</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">CC3M</h3>
+                <p class="line-clamp-3">
+                    CC3M, short for Conceptual Captions 3 Million, is a large-scale image-caption dataset designed for training and evaluating image captioning models. 
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">No publisher provided</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="mc4/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2023-09-19</time>
+                  <span>v.1.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">mC4</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">Google</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="mt5-xl/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2021-06</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">mt5-xl</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">Google</p>
+                <p>Text-to-text Transformer-based Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="bloom/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2022-07-11</time>
+                  <span>v.1.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">BLOOM</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>Transformer-based Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="laion-2b/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <span>No date provided.</span>
+                  <span>No version provided.</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">LAION 2B</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">No publisher provided</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="mt5-large/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2021-06</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">mt5-large</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">Google</p>
+                <p>Text-to-text Transformer-based Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="vicuna-13b/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2023-03-30</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">Vicuna-13B</h3>
+                <p class="line-clamp-3">
+                    70K user-shared ChatGPT conversations were used for fine-tuning. GPT-4 used for preliminary evaluation to benchmark against ChatGPT and Google Bard.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">LMSYS Org</p>
+                <p>Chatbot</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="bloom-1b1/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2022-07-11</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">bloom-1b1</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>Transformer-based Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="openai-gpt/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <span>No date provided.</span>
+                  <span>No version provided.</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">OpenAI GPT</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">No publisher provided</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="science-qa/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <span>No date provided.</span>
+                  <span>No version provided.</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">Science QA</h3>
+                <p class="line-clamp-3">
+                    Science QA is a dataset designed for evaluating and training models in the task of answering science-related questions. 
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">No publisher provided</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="coco/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <span>No date provided.</span>
+                  <span>No version provided.</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">COCO</h3>
+                <p class="line-clamp-3">
+                    The COCO (Common Objects in Context) dataset is a large-scale object detection, segmentation, and captioning dataset. 
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">No publisher provided</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="bloomz-7b1-p3/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2022-11-17</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">bloomz-7b1-p3</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>Multitask Fine-tuned Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="bloom-1b7/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2022-07-11</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">bloom-1b7</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>Transformer-based Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="xp3megds/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2023-05-29</time>
+                  <span>v.1.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">xP3megds</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="mt0-base/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2022-07-11</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">mt0-base</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>Transformer-based Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="bloom-3b/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2022-07-11</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">bloom-3b</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>Transformer-based Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="bloom-560m/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2022-11-17</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">bloomz-560m</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>Multitask Fine-tuned Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="bloomz-7b1-mt/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2022-11-17</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">bloomz-7b1-mt</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>Multitask Fine-tuned Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="laion-400m/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <span>No date provided.</span>
+                  <span>No version provided.</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">LAION 400m</h3>
+                <p class="line-clamp-3">
+                    The LAION-400M dataset is an open dataset consisting of 400 million image-text pairs. Filtering of NSFW content based on CLIP embeddings.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">No publisher provided</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="vicuna-70k-gpt4/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <span>No date provided.</span>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">Vicuna 70k ChatGPT</h3>
+                <p class="line-clamp-3">
+                    70K user-shared ChatGPT conversations were used for fine-tuning. GPT-4 used for preliminary evaluation to benchmark against ChatGPT and Google Bard.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">OpenAI</p>
+                <p>Multi-Modal LLM</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="bloomz-7b1/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2022-11-17</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">bloomz-7b1</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>Multitask Fine-tuned Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="mt5-xxl/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2021-06</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">mt5-xxl</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">Google</p>
+                <p>Text-to-text Transformer-based Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="llama2-13b/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2023-07-19</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">Llama 2 13B</h3>
+                <p class="line-clamp-3">
+                    Meta developed and released the Llama 2 family of large language models (LLMs), a collection of pretrained and fine-tuned generative text models ranging in scale from 7 billion to 70 billion parameters. Our fine-tuned LLMs, called Llama-2-Chat, are optimized for dialogue use cases. Llama-2-Chat models outperform open-source chat models on most benchmarks we tested, and in our human evaluations for helpfulness and safety, are on par with some popular closed-source models like ChatGPT and PaLM.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">Meta</p>
+                <p>Large Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="llama2-7b/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2023-07-19</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">Llama 2 7B</h3>
+                <p class="line-clamp-3">
+                    This is the 7B variant.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">Meta</p>
+                <p>Large Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="mt5/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2021-06</time>
+                  <span>v.1.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">mT5</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">Google</p>
+                <p>Text-to-text Transformer-based Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="gpt4/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <span>No date provided.</span>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">GPT 4</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">OpenAI</p>
+                <p>Multi-Modal LLM</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="xp3/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2023-05-29</time>
+                  <span>v.1.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">xP3</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="bloomz-560m/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2022-07-11</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">bloomz-560m</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>Transformer-based Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="xp3-all/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2023-05-29</time>
+                  <span>v.1.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">xP3all</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="LLaVA/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <span>No date provided.</span>
+                  <span>No version provided.</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">LLaVA</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">No publisher provided</p>
+                <p>No model type provided</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="mt0-xxl/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2022-07-11</time>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">mt0-xxl</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">BigScience Workshop</p>
+                <p>Transformer-based Language Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="eva-g/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <span>No date provided.</span>
+                  <span>v.1.0.0</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">EVA-G</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">Beijing Academy of Artificial Intelligence (BAAI)</p>
+                <p>Contrastive Model</p>
+            </div>
+          </a>
+        </article>
+        <article class="" x-show="show_item($el)">
+          <a href="claude2/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+            <div class="relative pb-2">
+              <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                  <time>2023-07-01</time>
+                  <span>v.2</span>
+              </div>
+              <div class="text-sm text-gray-600">
+                <h3 class="text-lg font-semibold text-gray-900">Claude 2</h3>
+                <p class="line-clamp-3">
+                    No description provided.
+                </p>
+              </div>
+            </div>
+            <div class="relative text-sm text-gray-600">
+                <p class="font-semibold text-gray-900">Anthropic</p>
+                <p>Large Language Model</p>
+            </div>
+          </a>
+        </article>
+    </div>
+  </div>
+</main>
 
   <section id="extras" class="hidden">
     <div class="social">

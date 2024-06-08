@@ -2,7 +2,9 @@
 
 {% block content %}
 <main class="flex grow flex-col">
-  {% include "includes/card_header.html" %}
+  {% with heading=mr.model_name, tagline="Type: "+mr.type %}
+    {% include "includes/page_header.html" %}
+  {% endwith %}
 
   <div class="flex grow">
     <nav class="flex-none w-48 py-4">

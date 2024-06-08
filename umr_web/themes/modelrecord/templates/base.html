@@ -13,17 +13,18 @@
       href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
       rel="stylesheet">
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/{{ CSS_FILE }}" />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     {% block extra_head %}{% endblock extra_head %}
   {% endblock head %}
 </head>
 
 <body>
-  <header id="banner" class="bg-primarylight">
-    <h1><a href="{{ SITEURL }}/">{{ SITENAME }}{% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
-    <nav>
+  <header class="bg-primarylight flex px-8 py-4 items-baseline">
+    <h1><a href="{{ SITEURL }}/" class="text-white text-2xl font-bold">{{ SITENAME }}</a></h1>
+    <nav class="px-8">
       <ul class="flex gap-5">
         {% for title, link in MENUITEMS %}
-        <li><a href="{{ link }}" class="text-sky-400">{{ title }}</a></li>
+        <li><a href="{{ link }}" class="text-highlight hover:text-white">{{ title }}</a></li>
         {% endfor %}
       </ul>
     </nav>
