@@ -21,6 +21,7 @@ import (
 	"golang.org/x/sync/errgroup"
 	"gonum.org/v1/gonum/floats"
 	"gonum.org/v1/gonum/mat"
+	"gopkg.in/yaml.v3"
 )
 
 func main() {
@@ -78,12 +79,29 @@ func main() {
 	}
 
 	uniqueResponses := filterSimilarResponses(responses, *threshold)
-	fmt.Println("Unique Responses:")
-	for i, response := range uniqueResponses {
-		fmt.Println("Analysis for Chunk:")
-		fmt.Printf("Response %d: %s\n", i+1, response)
-		fmt.Println("--------------------------------------------------")
+	fmt.Println("Filtered Responses; Size:", len(uniqueResponses))
+
+	consolidatedResponse, err := consolidateDependencies(client, uniqueResponses, *modelName)
+	if err != nil {
+		log.Fatalf("Failed to consolidate dependencies: %v", err)
 	}
+
+	fmt.Println("Consolidated Dependencies:")
+	fmt.Println(consolidatedResponse)
+
+	// Parse the consolidated response.
+	upstreamDeps := parseConsolidatedResponse(consolidatedResponse)
+
+	// Build the YAML structure.
+	yamlStructure := buildYAMLStructure(upstreamDeps)
+
+	// Write the YAML to a file.
+	err = writeYAML(yamlStructure, "dependencies.yaml")
+	if err != nil {
+		log.Fatalf("Failed to write YAML: %v", err)
+	}
+
+	fmt.Println("YAML file generated successfully")
 }
 
 func readPDF(filePath string) (string, error) {
@@ -159,9 +177,9 @@ func preprocessText(text string) string {
 }
 
 const (
-	tokenLimit     = 2048
-	maxScanBufSize = 10 * 1024 * 1024 // 10 MB
-	defaultBufSize = 64 * 1024        // 64 KB
+	tokenLimit     = 1 << 11 // 2048 tokens
+	maxScanBufSize = 1 << 20 // 1 MB
+	defaultBufSize = 1 << 16 // 64 KB
 )
 
 type Chunk struct {
@@ -224,6 +242,8 @@ func ChunkReader(r io.Reader) ([]Chunk, error) {
 	return chunks, scanner.Err()
 }
 
+const temperature = 0.5
+
 func analyzeChunk(client *openai.Client, chunk, modelName string) (string, error) {
 	systemMessage := openai.ChatCompletionMessage{
 		Role:    openai.ChatMessageRoleSystem,
@@ -240,8 +260,7 @@ func analyzeChunk(client *openai.Client, chunk, modelName string) (string, error
 	resp, err := client.CreateChatCompletion(context.Background(), openai.ChatCompletionRequest{
 		Model:       modelName,
 		Messages:    messages,
-		MaxTokens:   4096,
-		Temperature: 0.5,
+		Temperature: temperature,
 	})
 	if err != nil {
 		return "", err
@@ -252,11 +271,15 @@ func analyzeChunk(client *openai.Client, chunk, modelName string) (string, error
 
 func constructPrompt(chunk string) string {
 	prompt := fmt.Sprintf(`
-I have a research paper text chunk below.
-Please extract and list all the dataset dependencies and model dependencies mentioned in the text.
-Provide detailed names and any relevant details.
-Be concise. If available, include links to resources or references.
-        
+I have a research paper text chunk below. Please extract and list all dataset dependencies and model dependencies mentioned in the text.
+
+- Provide detailed names of the specific datasets and models.
+- Only include dependencies that are explicitly mentioned in the text; do not infer any dependencies from the context.
+- Exclude general concepts, libraries, and tools (e.g., Scikit-learn, Logistic Regression, Variational Autoencoder).
+- Only include specific datasets and models.
+- Be concise.
+- If available, include links to references directly within each item in the format: [Name](https://link-to-reference).
+
         Text chunk:
         %s
         
@@ -329,4 +352,141 @@ func cosineSimilarity(a, b []float64) float64 {
 		return 0
 	}
 	return dotProduct / (normA * normB)
+}
+
+func consolidateDependencies(client *openai.Client, responses []string, modelName string) (string, error) {
+	prompt := constructConsolidationPrompt(responses)
+	systemMessage := openai.ChatCompletionMessage{
+		Role:    openai.ChatMessageRoleSystem,
+		Content: "You are an expert in analyzing and consolidating research paper dependencies.",
+	}
+	userMessage := openai.ChatCompletionMessage{
+		Role:    openai.ChatMessageRoleUser,
+		Content: prompt,
+	}
+
+	messages := []openai.ChatCompletionMessage{
+		systemMessage,
+		userMessage,
+	}
+
+	resp, err := client.CreateChatCompletion(context.Background(), openai.ChatCompletionRequest{
+		Model:       modelName,
+		Messages:    messages,
+		Temperature: temperature,
+	})
+	if err != nil {
+		return "", err
+	}
+
+	return resp.Choices[0].Message.Content, nil
+}
+
+func constructConsolidationPrompt(responses []string) string {
+	combinedResponses := strings.Join(responses, "\n---\n")
+	fmt.Println("Size of combined responses:", len(combinedResponses))
+	prompt := fmt.Sprintf(`
+I have multiple responses containing dataset dependencies and model dependencies from various chunks of a research paper.
+Please consolidate these responses into a unique list of dataset dependencies and model dependencies, removing any duplicates.
+Provide links to references directly within each item in the format: [Name](https://link-to-reference).
+
+        Responses:
+        %s
+
+        Please provide:
+        1. Consolidated list of dataset dependencies:
+        2. Consolidated list of model dependencies:
+    `, combinedResponses)
+	return prompt
+}
+
+// Dependency represents a dependency with references
+type Dependency struct {
+	Type      string    `yaml:"type"`
+	Metadata  Metadata  `yaml:"metadata"`
+	Safety    Safety    `yaml:"safety"`
+	Relations Relations `yaml:"relations"`
+}
+
+type Metadata struct {
+	Name        string   `yaml:"name"`
+	Refs        []string `yaml:"refs"`
+	Description string   `yaml:"description"`
+}
+
+type Safety struct {
+	NSFW     string `yaml:"nsfw"`
+	CSAM     string `yaml:"csam"`
+	Violence string `yaml:"violence"`
+}
+
+type Relations struct {
+	Upstream []string `yaml:"upstream"`
+}
+
+var referenceRE = regexp.MustCompile(`\[(.*)]\((https://.*\))`)
+
+// Parse the consolidated response to extract dependencies
+func parseConsolidatedResponse(consolidatedResponse string) []string {
+	matches := referenceRE.FindAllStringSubmatch(consolidatedResponse, -1)
+
+	// If multiple references have the same link, they are likely from the header,
+	// therefore do not include them as dependencies.
+	links := make(map[string]struct{}, len(matches))
+	names := make(map[string]struct{}, len(matches))
+
+	for _, match := range matches {
+		name := match[1]
+		link := match[2]
+		if _, ok := links[link]; ok {
+			delete(names, name)
+			continue
+		}
+		links[link] = struct{}{}
+		names[name] = struct{}{}
+	}
+
+	upstreamDeps := make([]string, 0, len(names))
+	for name := range names {
+		upstreamDeps = append(upstreamDeps, name)
+	}
+
+	return upstreamDeps
+}
+
+// Build the YAML structure with the upstream dependencies
+func buildYAMLStructure(upstreamDeps []string) Dependency {
+	return Dependency{
+		Type: "",
+		Metadata: Metadata{
+			Name:        "",
+			Refs:        []string{},
+			Description: "",
+		},
+		Safety: Safety{
+			NSFW:     "",
+			CSAM:     "",
+			Violence: "",
+		},
+		Relations: Relations{
+			Upstream: upstreamDeps,
+		},
+	}
+}
+
+// Write the YAML structure to a file
+func writeYAML(dependency Dependency, _ string) error {
+	data, err := yaml.Marshal(dependency)
+	if err != nil {
+		return err
+	}
+
+	fmt.Println(string(data))
+
+	// err = os.WriteFile(filename, data, 0644)
+	// if err != nil {
+	// 	return err
+	// }
+
+	return nil
 }
