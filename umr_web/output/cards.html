@@ -48,7 +48,7 @@
 <header class="text-primarydark bg-highlight p-8 border-b border-black">
   <h1 class="text-4xl font-bold">All cards</h1>
 </header>
-  <div class="max-w-screen-lg mx-auto py-4" x-data="{
+  <div class="max-w-screen-lg mx-auto p-4 lg:px-0" x-data="{
     search: '',
     show_item(el){
       return this.search === '' || el.textContent.toLowerCase().includes(this.search.toLowerCase());
@@ -61,9 +61,9 @@
       x-model="search"
     >
 
-    <div class="grid grid-cols-3 gap-2">
-        <article class="" x-show="show_item($el)">
-          <a href="bloomz/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+    <div class="grid md:grid-cols-2 gap-2">
+        <article x-show="show_item($el)">
+          <a href="bloomz/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2022-11-17</time>
@@ -82,8 +82,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="coyo-700m/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="coyo-700m/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <span>No date provided.</span>
@@ -102,8 +102,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="p3/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="p3/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2023-05-29</time>
@@ -122,8 +122,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="roots/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="roots/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2023-03-07</time>
@@ -142,8 +142,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="mt5-base/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="mt5-base/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2021-06</time>
@@ -162,8 +162,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="bloom-7b1/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="bloom-7b1/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2022-07-11</time>
@@ -182,8 +182,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="bloomz-3b/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="bloomz-3b/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2022-11-17</time>
@@ -202,8 +202,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="llama2/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="llama2/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2023-07-19</time>
@@ -222,8 +222,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="laion-5b/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="laion-5b/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <span>No date provided.</span>
@@ -242,8 +242,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="mt0-large/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="mt0-large/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2022-07-11</time>
@@ -262,8 +262,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="mt5-small/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="mt5-small/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2021-06</time>
@@ -282,8 +282,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="LLaVA-1.6-Vicuna-13B/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="LLaVA-1.6-Vicuna-13B/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2023-03-30</time>
@@ -302,8 +302,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="test/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="test/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <span>No date provided.</span>
@@ -322,8 +322,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="CommonCrawl/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="CommonCrawl/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <span>No date provided.</span>
@@ -342,8 +342,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="plip/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="plip/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <span>No date provided.</span>
@@ -362,8 +362,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="laion/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="laion/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <span>No date provided.</span>
@@ -382,8 +382,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="mm-instruct-data/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="mm-instruct-data/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <span>No date provided.</span>
@@ -402,8 +402,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="vicuna/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="vicuna/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2023-03-30</time>
@@ -422,8 +422,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="palm2/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="palm2/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2023-05</time>
@@ -442,8 +442,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="WebImageText/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="WebImageText/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <span>No date provided.</span>
@@ -462,8 +462,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="bloomz-1b7/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="bloomz-1b7/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2022-11-17</time>
@@ -482,8 +482,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="clip/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="clip/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <span>No date provided.</span>
@@ -502,8 +502,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="mt0-small/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="mt0-small/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2022-07-11</time>
@@ -522,8 +522,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="xp3mt/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="xp3mt/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2023-05-29</time>
@@ -542,8 +542,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="mt0-xl/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="mt0-xl/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2022-07-11</time>
@@ -562,8 +562,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="xp3x/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="xp3x/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2023-05-29</time>
@@ -582,8 +582,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="bloomz-1b1/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="bloomz-1b1/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2022-11-17</time>
@@ -602,8 +602,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="mt0/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="mt0/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2022-07-11</time>
@@ -622,8 +622,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="CC3M/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="CC3M/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <span>No date provided.</span>
@@ -642,8 +642,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="mc4/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="mc4/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2023-09-19</time>
@@ -662,8 +662,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="mt5-xl/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="mt5-xl/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2021-06</time>
@@ -682,8 +682,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="bloom/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="bloom/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2022-07-11</time>
@@ -702,8 +702,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="laion-2b/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="laion-2b/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <span>No date provided.</span>
@@ -722,8 +722,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="mt5-large/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="mt5-large/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2021-06</time>
@@ -742,8 +742,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="vicuna-13b/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="vicuna-13b/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2023-03-30</time>
@@ -762,8 +762,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="bloom-1b1/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="bloom-1b1/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2022-07-11</time>
@@ -782,8 +782,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="openai-gpt/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="openai-gpt/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <span>No date provided.</span>
@@ -802,8 +802,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="science-qa/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="science-qa/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <span>No date provided.</span>
@@ -822,8 +822,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="coco/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="coco/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <span>No date provided.</span>
@@ -842,8 +842,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="bloomz-7b1-p3/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="bloomz-7b1-p3/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2022-11-17</time>
@@ -862,8 +862,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="bloom-1b7/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="bloom-1b7/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2022-07-11</time>
@@ -882,8 +882,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="xp3megds/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="xp3megds/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2023-05-29</time>
@@ -902,8 +902,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="mt0-base/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="mt0-base/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2022-07-11</time>
@@ -922,8 +922,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="bloom-3b/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="bloom-3b/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2022-07-11</time>
@@ -942,8 +942,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="bloom-560m/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="bloom-560m/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2022-11-17</time>
@@ -962,8 +962,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="bloomz-7b1-mt/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="bloomz-7b1-mt/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2022-11-17</time>
@@ -982,8 +982,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="laion-400m/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="laion-400m/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <span>No date provided.</span>
@@ -1002,8 +1002,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="vicuna-70k-gpt4/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="vicuna-70k-gpt4/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <span>No date provided.</span>
@@ -1022,8 +1022,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="bloomz-7b1/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="bloomz-7b1/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2022-11-17</time>
@@ -1042,8 +1042,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="mt5-xxl/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="mt5-xxl/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2021-06</time>
@@ -1062,8 +1062,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="llama2-13b/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="llama2-13b/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2023-07-19</time>
@@ -1082,8 +1082,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="llama2-7b/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="llama2-7b/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2023-07-19</time>
@@ -1102,8 +1102,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="mt5/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="mt5/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2021-06</time>
@@ -1122,8 +1122,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="gpt4/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="gpt4/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <span>No date provided.</span>
@@ -1142,8 +1142,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="xp3/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="xp3/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2023-05-29</time>
@@ -1162,8 +1162,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="bloomz-560m/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="bloomz-560m/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2022-07-11</time>
@@ -1182,8 +1182,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="xp3-all/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="xp3-all/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2023-05-29</time>
@@ -1202,8 +1202,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="LLaVA/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="LLaVA/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <span>No date provided.</span>
@@ -1222,8 +1222,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="mt0-xxl/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="mt0-xxl/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2022-07-11</time>
@@ -1242,8 +1242,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="eva-g/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="eva-g/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <span>No date provided.</span>
@@ -1262,8 +1262,8 @@
             </div>
           </a>
         </article>
-        <article class="" x-show="show_item($el)">
-          <a href="claude2/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="claude2/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                   <time>2023-07-01</time>
