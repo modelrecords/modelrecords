@@ -107,10 +107,11 @@ def livereload(c):
         f"{theme_path}/templates/**/*.html",
     ]
 
-    content_file_extensions = [".md", ".rst"]
-    for extension in content_file_extensions:
-        content_glob = "{}/**/*{}".format(SETTINGS["PATH"], extension)
-        watched_globs.append(content_glob)
+    # Don't watch md files as they are generated and shouldn't be manually edited
+    # content_file_extensions = [".md", ".rst"]
+    # for extension in content_file_extensions:
+    #     content_glob = "{}/**/*{}".format(SETTINGS["PATH"], extension)
+    #     watched_globs.append(content_glob)
 
     static_file_extensions = [".css", ".js"]
     for extension in static_file_extensions:
