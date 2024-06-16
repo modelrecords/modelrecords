@@ -1,3 +1,12 @@
 {% extends "base.html" %}
 {% block content_title %}{% endblock %}
-{% block content %}{% endblock content %}
+{% block content %}
+<main>
+    {% include "includes/home_section_banner.html" %}
+    {% include "includes/home_section_cite.html" %}
+    {% include "includes/home_section_cli.html" %}
+    {% include "includes/home_section_notable.html" %}
+    {% include "includes/home_section_summary.html" %}
+    {% include "includes/home_section_tldr.html" %}
+</main>
+{% endblock content %}
