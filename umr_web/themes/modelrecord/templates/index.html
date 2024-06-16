@@ -2,11 +2,13 @@
 {% block content_title %}{% endblock %}
 {% block content %}
 <main>
-    {% include "includes/home_section_banner.html" %}
-    {% include "includes/home_section_cite.html" %}
-    {% include "includes/home_section_cli.html" %}
-    {% include "includes/home_section_notable.html" %}
-    {% include "includes/home_section_summary.html" %}
-    {% include "includes/home_section_tldr.html" %}
+    <div class="flex flex-col gap-y-8 text-base">
+        {% include "includes/home_section_banner.html" %}
+        {% include "includes/home_section_tldr.html" %}
+        {% include "includes/home_section_summary.html" %}
+        {% include "includes/home_section_cli.html" %}
+        {% include "includes/home_section_notable.html" %}
+        {% include "includes/home_section_cite.html" %}
+    </div>
 </main>
 {% endblock content %}
