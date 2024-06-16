@@ -29,7 +29,8 @@ AUTHOR_FEED_RSS = None
 
 # Menu items
 MENUITEMS = (
-    ('All cards', '/cards.html'),
+    ('All cards', '/cards.html', 'false'),
+    ('GitHub', 'https://github.com/modelrecords/exampleusage', 'true'),
 )
 
 # Social widget

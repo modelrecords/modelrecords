@@ -1082,6 +1082,10 @@ body {
   opacity: 0.6;
 }
 
+.hover\:stroke-white:hover {
+  stroke: #fff;
+}
+
 .hover\:text-white:hover {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
