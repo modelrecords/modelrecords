@@ -11,7 +11,7 @@
     {% include "includes/page_header.html" %}
   {% endwith %}
 
-  <div class="max-w-screen-lg mx-auto py-4" x-data="{
+  <div class="max-w-screen-lg mx-auto p-4 lg:px-0" x-data="{
     search: '',
     show_item(el){
       return this.search === '' || el.textContent.toLowerCase().includes(this.search.toLowerCase());
@@ -24,11 +24,11 @@
       x-model="search"
     >
 
-    <div class="grid grid-cols-3 gap-2">
+    <div class="grid md:grid-cols-2 gap-2">
       {% for key in repo.all_packages() %}
         {% set mr=repo.find(key) %}
-        <article class="" x-show="show_item($el)">
-          <a href="{{ key }}/umr.html" class="flex flex-col h-full justify-between p-2 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+        <article x-show="show_item($el)">
+          <a href="{{ key }}/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
             <div class="relative pb-2">
               <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
                 {% if mr.params.mr.metadata.release_date and mr.params.mr.metadata.release_date | length > 0 %}
