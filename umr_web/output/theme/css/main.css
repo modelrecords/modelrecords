@@ -697,10 +697,6 @@ body {
   margin-bottom: 1rem;
 }
 
-.mb-5 {
-  margin-bottom: 1.25rem;
-}
-
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -736,18 +732,6 @@ body {
   height: 100%;
 }
 
-.min-h-screen {
-  min-height: 100vh;
-}
-
-.min-h-48 {
-  min-height: 12rem;
-}
-
-.min-h-96 {
-  min-height: 24rem;
-}
-
 .min-h-\[36rem\] {
   min-height: 36rem;
 }
@@ -772,24 +756,12 @@ body {
   width: 100%;
 }
 
-.max-w-md {
-  max-width: 28rem;
+.max-w-2xl {
+  max-width: 42rem;
 }
 
 .max-w-screen-lg {
   max-width: 1024px;
-}
-
-.max-w-lg {
-  max-width: 32rem;
-}
-
-.max-w-xl {
-  max-width: 36rem;
-}
-
-.max-w-2xl {
-  max-width: 42rem;
 }
 
 .flex-none {
@@ -895,6 +867,11 @@ body {
   border-color: rgb(99 76 241 / var(--tw-border-opacity));
 }
 
+.bg-black {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
 .bg-highlight {
   --tw-bg-opacity: 1;
   background-color: rgb(220 221 252 / var(--tw-bg-opacity));
@@ -913,24 +890,6 @@ body {
 .bg-primarylight {
   --tw-bg-opacity: 1;
   background-color: rgb(110 112 170 / var(--tw-bg-opacity));
-}
-
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-black {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-}
-
-.bg-opacity-60 {
-  --tw-bg-opacity: 0.6;
-}
-
-.bg-opacity-50 {
-  --tw-bg-opacity: 0.5;
 }
 
 .bg-opacity-70 {
@@ -1041,8 +1000,8 @@ body {
   line-height: 2.5rem;
 }
 
-.text-5xl {
-  font-size: 3rem;
+.text-6xl {
+  font-size: 3.75rem;
   line-height: 1;
 }
 
@@ -1064,16 +1023,6 @@ body {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
-.text-6xl {
-  font-size: 3.75rem;
-  line-height: 1;
 }
 
 .font-bold {
@@ -1143,16 +1092,6 @@ body {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-primarylight {
-  --tw-text-opacity: 1;
-  color: rgb(110 112 170 / var(--tw-text-opacity));
-}
-
-.drop-shadow-lg {
-  --tw-drop-shadow: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
 .drop-shadow-xl {
