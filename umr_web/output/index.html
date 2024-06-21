@@ -15,6 +15,7 @@
     <link rel="icon" type="image/svg+xml" href="./theme/images/favicon.svg">
     <link rel="icon" type="image/png" href="./theme/images/favicon.png">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script>
 </head>
 
 <body>
@@ -45,7 +46,7 @@
   </header><!-- /#banner -->
 
 <main>
-    <div class="flex flex-col gap-y-8 text-base">
+    <div class="flex flex-col gap-y-20 text-base">
 <section class="bg-center" style="background-image: url(/theme/images/xavier-l-_3xRXB_CF5w-unsplash.jpg);">
     <div class="bg-black bg-opacity-70 w-full flex flex-col justify-center items-center min-h-[36rem]">
         <div class="max-w-2xl flex flex-col gap-y-8 text-center">
@@ -68,7 +69,77 @@
             <p>Et vitae blandit facilisi magna lacus commodo. Vitae sapien duis odio id et. Id blandit molestie auctor fermentum dignissim. Lacus diam tincidunt ac cursus in vel. Mauris varius vulputate et ultrices hac adipiscing egestas. Iaculis convallis ac tempor et ut. Ac lorem vel integer orci.</p>
         </div>
     </div>
-</section><h1>cli</h1><h1>Notable</h1><h1>Cite</h1>    </div>
+</section><section class="max-w-screen-lg w-full mx-auto">
+    <h1 class="text-3xl mb-2">Create your own Unifed Model Record</h1>
+    <div class="flex flex-col md:flex-row gap-x-8">
+        <div class="flex flex-col gap-y-4 md:w-1/2">
+            <p>The tool can be used to generate the following outputs: LaTeX, PDF, HTML and GraphViz</p>
+            <ol class="flex flex-col gap-y-3 list-decimal list-inside">
+                <li>Clone the <a href="https://github.com/modelrecords/exampleusage" class="text-primary">example repo</a>
+                    <code
+                        class="text-sm flex items-center justify-between space-x-3 bg-gray-800 text-white rounded-lg p-3 pl-4 mt-1"
+                    >
+                        <span class="flex gap-3">
+                            <span class="shrink-0 text-gray-500">$</span>
+                            <span>
+                                git clone git@github.com:modelrecords/exampleusage.git
+                            </span>
+                        </span>
+                        
+                        <button
+                            class="shrink-0 text-gray-500 hover:text-white"
+                            @click="$clipboard(xdatavalue).then(() => { console.log('Copied1!') })"
+                        >
+                            <svg class="h-5 w-5 transition" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"/></svg>
+                        </button>
+                    </code>
+                </li>
+                <li>Create a conda env
+                    <code
+                        class="text-sm flex items-center justify-between space-x-3 bg-gray-800 text-white rounded-lg p-3 pl-4 mt-1"
+                    >
+                        <span class="flex gap-3">
+                            <span class="shrink-0 text-gray-500">$</span>
+                            <span>
+                                conda env create -f environment.yml
+                            </span>
+                        </span>
+                        
+                        <button
+                            class="shrink-0 text-gray-500 hover:text-white"
+                            @click="$clipboard(xdatavalue).then(() => { console.log('Copied2!') })"
+                        >
+                            <svg class="h-5 w-5 transition" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"/></svg>
+                        </button>
+                    </code>
+                </li>
+                <li>Activate conda env
+                    <code
+                        class="text-sm flex items-center justify-between space-x-3 bg-gray-800 text-white rounded-lg p-3 pl-4 mt-1"
+                    >
+                        <span class="flex gap-3">
+                            <span class="shrink-0 text-gray-500">$</span>
+                            <span>
+                                conda activate modelrecords_exampleusage
+                            </span>
+                        </span>
+                        
+                        <button
+                            class="shrink-0 text-gray-500 hover:text-white"
+                            @click="$clipboard(xdatavalue).then(() => { console.log('Copied3!') })"
+                        >
+                            <svg class="h-5 w-5 transition" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentColor"><path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"/></svg>
+                        </button>
+                    </code>
+                </li>
+                <li>Profit</li>
+            </ol>
+        </div>
+        <div class="md:w-1/2 pt-3">
+            <img src="./theme/images/cli.jpg" alt="Screenshot of code from the example repo" class="drop-shadow-2xl">
+        </div>
+    </div>
+</section><h1>Notable</h1><h1>Cite</h1>    </div>
 </main>
 
   <section id="extras" class="hidden">
