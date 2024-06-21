@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="./theme/css/main.css" />
     <link rel="icon" type="image/svg+xml" href="./theme/images/favicon.svg">
     <link rel="icon" type="image/png" href="./theme/images/favicon.png">
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body>
@@ -78,7 +78,7 @@
                 <li>Clone the <a href="https://github.com/modelrecords/exampleusage" class="text-primary">example repo</a>
                     <code
                         class="text-sm flex items-center justify-between space-x-3 bg-gray-800 text-white rounded-lg p-3 pl-4 mt-1"
-                        x-data="{ codeToCopy: 'git clone git@github.com:modelrecords/exampleusage.git' }"
+                         x-data="{ codeToCopy: 'git clone git@github.com:modelrecords/exampleusage.git' }"
                     >
                         <span class="flex gap-3">
                             <span class="shrink-0 text-gray-500">$</span>
@@ -98,7 +98,7 @@
                 <li>Create a conda env
                     <code
                         class="text-sm flex items-center justify-between space-x-3 bg-gray-800 text-white rounded-lg p-3 pl-4 mt-1"
-                        x-data="{ codeToCopy: 'conda env create -f environment.yml' }"
+                         x-data="{ codeToCopy: 'conda env create -f environment.yml' }"
                     >
                         <span class="flex gap-3">
                             <span class="shrink-0 text-gray-500">$</span>
@@ -118,7 +118,7 @@
                 <li>Activate conda env
                     <code
                         class="text-sm flex items-center justify-between space-x-3 bg-gray-800 text-white rounded-lg p-3 pl-4 mt-1"
-                        x-data="{ codeToCopy: 'conda activate modelrecords_exampleusage' }"
+                         x-data="{ codeToCopy: 'conda activate modelrecords_exampleusage' }"
                     >
                         <span class="flex gap-3">
                             <span class="shrink-0 text-gray-500">$</span>
@@ -140,11 +140,6 @@
         </div>
         <div class="md:w-1/2 pt-3">
             <img src="./theme/images/cli.jpg" alt="Screenshot of code from the example repo" class="drop-shadow-2xl">
-            <div x-data="{ input: 'Foo!' }">
-                <button x-clipboard="input">
-                    Copy to Clipboard
-                </button>
-            </div>
         </div>
     </div>
 </section><h1>Notable</h1><h1>Cite</h1>    </div>
