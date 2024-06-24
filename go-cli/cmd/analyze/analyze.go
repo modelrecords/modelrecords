@@ -39,7 +39,7 @@ Please extract and list all dataset dependencies and model dependencies mentione
 - Concise Formatting: Present the information in a concise list format.
 - Include References (If Available): If references are available within the paper, include links to them directly within each item in the format: [Name](https://link-to-reference).
 
-For each listed dependency, provide a sufficient context from the paper that confirms its use in training or fine-tuning the model.
+For each listed dependency, provide sufficient context from the paper that confirms its use in training or fine-tuning the model.
 
 Please ONLY list:
 1. Dataset dependencies:
@@ -75,6 +75,9 @@ Confirmed dependencies:
 
 If no dependencies are confirmed for training/fine-tuning, state "None confirmed" under the respective category.
 DO NOT include any other information in your response.
+`
+	secondFilterPrompt = `
+I have a list of dependencies, and I need to filter out any generic, non-specific terms that are not proper nouns or named models. Here is the list of dependencies:
 `
 )
 
@@ -234,7 +237,16 @@ func main() {
 
 	fmt.Println(msgs)
 
-	res, err := analyzeChunk(client, msgs)
+	data := constructFirstFilterPrompt(msgs)
+	res, err := analyzeChunk(ctx, client, data, instructions)
+	if err != nil {
+		log.Fatalf("Failed to analyze chunk: %v", err)
+	}
+
+	fmt.Println(res)
+
+	data = constructSecondFilterPrompt(res)
+	res, err = analyzeChunk(ctx, client, data, instructions)
 	if err != nil {
 		log.Fatalf("Failed to analyze chunk: %v", err)
 	}
@@ -244,6 +256,8 @@ func main() {
 
 	deps := parseConsolidatedResponse(res)
 	yamlStructure := buildYAMLStructure(deps)
+
+	fmt.Println("UMR...")
 	err = writeYAML(yamlStructure, "dependencies.yaml")
 	if err != nil {
 		log.Fatalf("Failed to write YAML: %v", err)
@@ -717,22 +731,22 @@ func listMessages(ctx context.Context, client *openai.Client, threadID string) (
 	return builder.String(), nil
 }
 
-func analyzeChunk(client *openai.Client, chunk string) (string, error) {
+func analyzeChunk(ctx context.Context, client *openai.Client, chunk, instruction string) (string, error) {
 	const temperature = 0.2
 
 	systemMessage := openai.ChatCompletionMessage{
 		Role:    openai.ChatMessageRoleSystem,
-		Content: "You are an expert in analyzing research papers to identify dataset and model dependencies.",
+		Content: instruction,
 	}
 
 	userMessage := openai.ChatCompletionMessage{
 		Role:    openai.ChatMessageRoleUser,
-		Content: constructPrompt(chunk),
+		Content: chunk,
 	}
 
 	messages := []openai.ChatCompletionMessage{systemMessage, userMessage}
 
-	resp, err := client.CreateChatCompletion(context.Background(), openai.ChatCompletionRequest{
+	resp, err := client.CreateChatCompletion(ctx, openai.ChatCompletionRequest{
 		Model:       modelName,
 		Messages:    messages,
 		Temperature: temperature,
@@ -744,8 +758,15 @@ func analyzeChunk(client *openai.Client, chunk string) (string, error) {
 	return resp.Choices[0].Message.Content, nil
 }
 
-func constructPrompt(chunk string) string {
+func constructFirstFilterPrompt(chunk string) string {
 	prompt := fmt.Sprintf(`%s\nText chunk:%s`, filterPrompt, chunk)
+	return prompt
+}
+
+func constructSecondFilterPrompt(chunk string) string {
+	prompt := fmt.Sprintf(`%s\n %s\n 
+Please return only the specific, named models or proper nouns, removing any generic terms
+`, secondFilterPrompt, chunk)
 	return prompt
 }
 
