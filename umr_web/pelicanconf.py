@@ -52,3 +52,6 @@ PLUGIN_PATHS = ['../modelrecords/pelican_plugins']
 PLUGINS = ['load_pkgs', 'pelican_redirect']
 
 LOAD_CONTENT_CACHE = False
+
+# Ensure static files are copied to the output directory
+STATIC_PATHS = ['static']

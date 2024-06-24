@@ -34,6 +34,16 @@
     </div>
   </section>
 
+  <!-- New RELATIONSHIP GRAPH section -->
+  <section class="mb-3.5">
+    {% with heading="RELATIONSHIP GRAPH" %}
+      {% include "includes/section_heading.html" %}
+    {% endwith %}
+    <div class="section-content">
+      <img src="{{ SITEURL }}/static/svg/{{ page.model_pkg_name }}.svg" alt="Relationship Graph for {{ page.model_pkg_name }}">
+    </div>
+  </section>
+
   <section class="mb-3.5">
     {% with heading="Intended Use" %}
       {% include "includes/section_heading.html" %}
