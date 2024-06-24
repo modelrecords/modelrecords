@@ -1,7 +1,7 @@
 # ModelRecords
 The wonderful world of Unified Model Records.
 
-![LLaVA-1.6-Vicuna-13B](umr_web/output/static/svg/LLaVA-1.6-Vicuna-13B.svg)
+![LLaVA-1.6-Vicuna-13B](LLaVA-1.6-Vicuna-13B.svg)
 
 ## Technical documentation
 1) [Techincal Design Document](https://docs.google.com/document/d/18ebXWaUiy-wSAZHtXMSESnIHMjJoV-GeW0W9i-uhlDo/edit#heading=h.n2dkl2j6xzna)
