@@ -13,8 +13,6 @@ def render_modelgraph(nodes, edges, records):
     G = pgv.AGraph(directed=True, rankdir="L", strict=False, nodesep=0.2, style='rounded', overlap=True, splines='ortho')
     for node in nodes:
         node_style = styles[records[node].type]
-        if hasattr(records[node], 'safety') and records[node].safety.csam:
-            node_style['fillcolor'] = 'red'
         G.add_node(node, **node_style, label=records[node].model_name)
     for A, B in edges:
         G.add_edge(B, A, color="#545454", penwidth=0.75, shape='rect', arrowsize=0.75)
