@@ -30,6 +30,7 @@ const (
 	prompt        = `
 Please extract and list all dataset dependencies and model dependencies mentioned in the research paper.
 
+- Focus on specific datasets and models used for training or fine-tuning the main model. Generally proper nouns.
 - Only include dependencies that are explicitly mentioned as being used to create or fine-tune the model.
 - Do not include datasets or models used solely for validation, testing, or evaluation.
 - Exclude datasets that were created as part of the research study. Only list datasets and models that existed prior to this research.
@@ -40,6 +41,7 @@ Please extract and list all dataset dependencies and model dependencies mentione
 - Include References (If Available): If references are available within the paper, include links to them directly within each item in the format: [Name](https://link-to-reference).
 
 For each listed dependency, provide sufficient context from the paper that confirms its use in training or fine-tuning the model.
+This should include sentences around where the dependency is mentioned, the context of its use, and any relevant details that confirm its role in the model development process.
 
 Please ONLY list:
 1. Dataset dependencies:
@@ -62,6 +64,7 @@ Exclude:
 - Datasets created specifically for this study
 - Models used only for comparison or baseline results
 - Datasets used only for evaluation or testing
+- General concepts, libraries, tools, and architectures (e.g., Scikit-learn, Logistic Regression, Variational Autoencoder, Text Transformer, etc).
 
 For each retained dependency, provide:
 1. ONLY, the name of the dataset or model.
@@ -77,7 +80,18 @@ If no dependencies are confirmed for training/fine-tuning, state "None confirmed
 DO NOT include any other information in your response.
 `
 	secondFilterPrompt = `
-I have a list of dependencies, and I need to filter out any generic, non-specific terms that are not proper nouns or named models. Here is the list of dependencies:
+I have a list of dependencies, and I need to extract only the specific models, datasets, or proper nouns.
+Generic terms or non-specific descriptions should be removed.
+Please provide ONLY the names of the specific models, datasets, or technologies. For example, given:
+
+Confirmed dependencies:
+- LAION
+- Pre-trained CLIP model
+
+The result should be:
+- LAION
+- CLIP
+DO NOT include any other information in your response.
 `
 )
 
@@ -219,7 +233,12 @@ func main() {
 		log.Fatalf("Failed to create assistant: %v", err)
 	}
 
-	_, vectorStoreID, err := getOrCreateVectorStoreAndUploadFiles(ctx, client, storeName, apiKey, []string{*filePath})
+	filename := strings.Split(*filePath, "/")
+	filename = strings.Split(filename[len(filename)-1], ".")
+
+	store := fmt.Sprintf("%s-%s", storeName, filename)
+
+	_, vectorStoreID, err := getOrCreateVectorStoreAndUploadFiles(ctx, client, store, apiKey, []string{*filePath})
 	if err != nil {
 		log.Fatalf("Failed to create vector store and upload files: %v", err)
 	}
@@ -230,91 +249,76 @@ func main() {
 	}
 
 	const temperature = 0.1
-	msgs, err := createAndRunThread(ctx, client, assistant, prompt, temperature)
-	if err != nil {
-		log.Fatalf("Failed to create and run thread: %v", err)
+	const numRuns = 5
+
+	var wg sync.WaitGroup
+	var mu sync.Mutex
+	results := make([][]string, 0, numRuns)
+	errChan := make(chan error, numRuns)
+
+	for i := 0; i < numRuns; i++ {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+
+			msgs, err := createAndRunThread(ctx, client, assistant, prompt, temperature)
+			if err != nil {
+				errChan <- fmt.Errorf("failed to create and run thread: %w", err)
+				return
+			}
+
+			data := constructFirstFilterPrompt(msgs)
+			res, err := analyzeChunk(ctx, client, data, instructions)
+			if err != nil {
+				errChan <- fmt.Errorf("failed to analyze chunk: %w", err)
+				return
+			}
+
+			data = constructSecondFilterPrompt(res)
+			res, err = analyzeChunk(ctx, client, data, instructions)
+			if err != nil {
+				errChan <- fmt.Errorf("failed to analyze chunk: %w", err)
+				return
+			}
+
+			lines := strings.Split(res, "\n")
+			var dependencies []string
+			for _, line := range lines {
+				line = strings.TrimSpace(line)
+				if strings.HasPrefix(line, "- ") {
+					dependency := strings.TrimSpace(line[2:])
+					dependencies = append(dependencies, dependency)
+				}
+			}
+
+			mu.Lock()
+			results = append(results, dependencies)
+			mu.Unlock()
+		}()
 	}
 
-	fmt.Println(msgs)
+	wg.Wait()
+	close(errChan)
 
-	data := constructFirstFilterPrompt(msgs)
-	res, err := analyzeChunk(ctx, client, data, instructions)
-	if err != nil {
-		log.Fatalf("Failed to analyze chunk: %v", err)
+	if len(errChan) > 0 {
+		for err := range errChan {
+			log.Println(err)
+		}
+		log.Fatalf("One or more runs failed")
 	}
-
-	fmt.Println(res)
-
-	data = constructSecondFilterPrompt(res)
-	res, err = analyzeChunk(ctx, client, data, instructions)
-	if err != nil {
-		log.Fatalf("Failed to analyze chunk: %v", err)
-	}
-
-	fmt.Println(res)
 	fmt.Println("Dependencies extracted successfully")
 
-	deps := parseConsolidatedResponse(res)
-	yamlStructure := buildYAMLStructure(deps)
+	finalDependencies := consolidateResults(results)
+	fmt.Printf("Consolidated dependencies\n\n")
 
-	fmt.Println("UMR...")
+	yamlStructure := buildYAMLStructure(finalDependencies)
+
+	fmt.Println("BUILDING UMR...")
 	err = writeYAML(yamlStructure, "dependencies.yaml")
 	if err != nil {
 		log.Fatalf("Failed to write YAML: %v", err)
 	}
 
-	// assistant, err := createAssistant(ctx, client, *modelName, assistantName, instructions)
-	// if err != nil {
-	// 	log.Fatalf("Failed to create assistant: %v", err)
-	// }
-	//
-	// _, vectorStoreID, err := createVectorStoreAndUploadFiles(ctx, client, "Model Papers", apiKey, []string{*filePath})
-	// if err != nil {
-	// 	log.Fatalf("Failed to create vector store and upload files: %v", err)
-	// }
-
-	// vectorStoreID, err := createVectorStore(ctx, client)
-	// if err != nil {
-	// 	log.Fatalf("Failed to create vector store: %v", err)
-	// }
-	//
-	// fileID, err := createFile(ctx, client, *filePath, vectorStoreID)
-	// if err != nil {
-	// 	log.Fatalf("Failed to create file: %v", err)
-	// }
-
-	// err = updateAssistant(ctx, client, assistant, vectorStoreID)
-	// if err != nil {
-	// 	log.Fatalf("Failed to update assistant: %v", err)
-	// }
-	//
-	// const temperature = 0.2
-	// msgs, err := createAndRunThread(ctx, client, assistant, prompt, temperature)
-	// if err != nil {
-	// 	log.Fatalf("Failed to create and run thread: %v", err)
-	// }
-	//
-	// fmt.Println(msgs)
-	//
-	// res, err := analyzeChunk(client, msgs, *modelName)
-	// if err != nil {
-	// 	log.Fatalf("Failed to analyze chunk: %v", err)
-	// }
-	//
-	// fmt.Println(res)
-
-	// // Parse the consolidated response.
-	// upstreamDeps := parseConsolidatedResponse(consolidatedResponse)
-	//
-	// // Build the YAML structure.
-	// yamlStructure := buildYAMLStructure(upstreamDeps)
-	//
-	// // Write the YAML to a file.
-	// err = writeYAML(yamlStructure, "dependencies.yaml")
-	// if err != nil {
-	// 	log.Fatalf("Failed to write YAML: %v", err)
-	// }
-	//
 	// fmt.Println("YAML file generated successfully")
 }
 
@@ -463,6 +467,7 @@ func uploadAndPollFile(ctx context.Context, client *openai.Client, vectorStoreID
 	if err != nil {
 		return "", err
 	}
+	fmt.Printf("File uploaded successfully: %s\n", filepath)
 
 	fileID := resp.ID
 	if status, exists := getVectorFile(fileID, vectorStoreID); exists && status == "completed" {
@@ -768,6 +773,32 @@ func constructSecondFilterPrompt(chunk string) string {
 Please return only the specific, named models or proper nouns, removing any generic terms
 `, secondFilterPrompt, chunk)
 	return prompt
+}
+
+func consolidateResults(results [][]string) []string {
+	depCount := make(map[string]int)
+	totalResults := 0
+
+	for _, dependencies := range results {
+		depSet := make(map[string]struct{})
+		for _, dep := range dependencies {
+			depSet[dep] = struct{}{}
+		}
+		for dep := range depSet {
+			depCount[dep]++
+		}
+		totalResults++
+	}
+
+	finalDependencies := make([]string, 0)
+	majorityThreshold := totalResults / 2
+	for dep, count := range depCount {
+		if count > majorityThreshold {
+			finalDependencies = append(finalDependencies, dep)
+		}
+	}
+
+	return finalDependencies
 }
 
 // Dependency represents a dependency with references
