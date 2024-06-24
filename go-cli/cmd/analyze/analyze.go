@@ -1,250 +1,725 @@
 package main
 
 import (
-	"bufio"
+	"bytes"
 	"context"
+	"database/sql"
+	"encoding/json"
+	"errors"
 	"flag"
 	"fmt"
 	"io"
 	"log"
+	"net/http"
 	"os"
 	"regexp"
-	"runtime"
 	"strings"
 	"sync"
+	"time"
 
-	"github.com/james-bowman/nlp"
-	"github.com/jdkato/prose/v2"
-	"github.com/ledongthuc/pdf"
-	"github.com/pkoukk/tiktoken-go"
+	_ "github.com/mattn/go-sqlite3"
 	"github.com/sashabaranov/go-openai"
-	"golang.org/x/sync/errgroup"
-	"gonum.org/v1/gonum/floats"
-	"gonum.org/v1/gonum/mat"
 	"gopkg.in/yaml.v3"
 )
 
+const (
+	assistantName = "Research Paper Analyzer"
+	storeName     = "Model Papers"
+	instructions  = "You are an expert in analyzing research papers, and you have access to these papers to identify dataset and model dependencies."
+	modelName     = "gpt-4o"
+	prompt        = `
+Please extract and list all dataset dependencies and model dependencies mentioned in the research paper.
+
+- Only include dependencies that are explicitly mentioned as being used to create or fine-tune the model.
+- Do not include datasets or models used solely for validation, testing, or evaluation.
+- Exclude datasets that were created as part of the research study. Only list datasets and models that existed prior to this research.
+- Provide detailed names of the specific datasets and models.
+- Exclude general concepts, libraries, tools, and architectures (e.g., Scikit-learn, Logistic Regression, Variational Autoencoder, Text Transformer, etc).
+- Ensure the dependencies are directly involved in the creation or fine-tuning of the model, not just used as benchmarks or comparisons.
+- Concise Formatting: Present the information in a concise list format.
+- Include References (If Available): If references are available within the paper, include links to them directly within each item in the format: [Name](https://link-to-reference).
+
+For each listed dependency, provide a sufficient context from the paper that confirms its use in training or fine-tuning the model.
+
+Please ONLY list:
+1. Dataset dependencies:
+2. Model dependencies:
+
+If no relevant datasets or models are identified, state "None identified" under the respective category.
+DO NOT include any other information in your response.
+`
+	filterPrompt = `
+Review the list of dependencies and their contexts carefully.
+Identify and list only the datasets and models that meet ALL of the following criteria:
+1. Were definitively used for training or fine-tuning the main model described in the paper.
+2. Existed prior to this research and were not created solely as part of this study. Note: Datasets curated from existing public sources are considered pre-existing if not uniquely created for this study.
+3. Are not used solely for validation, testing, evaluation, or comparison.
+
+For datasets, focus on large-scale datasets used for pre-training or fine-tuning.
+For models, include only those that were directly used as a base for further training or adaptation.
+
+Exclude:
+- Datasets created specifically for this study
+- Models used only for comparison or baseline results
+- Datasets used only for evaluation or testing
+
+For each retained dependency, provide:
+1. ONLY, the name of the dataset or model.
+
+Please list using the following format, providing ONLY the name of the dataset or model:
+Confirmed dependencies:
+- [Dataset 1]
+- [Dataset 2]
+- [Model 1]
+- [Model 2]
+
+If no dependencies are confirmed for training/fine-tuning, state "None confirmed" under the respective category.
+DO NOT include any other information in your response.
+`
+)
+
+var db *sql.DB
+var dbOnce sync.Once
+
+func initDB() {
+	dbOnce.Do(func() {
+		var err error
+		db, err = sql.Open("sqlite3", "./cache.db")
+		if err != nil {
+			log.Fatalf("Failed to open database: %v", err)
+		}
+
+		_, err = db.Exec(`
+			CREATE TABLE IF NOT EXISTS assistants (
+				model_name TEXT,
+				assistant_name TEXT,
+				id TEXT,
+				PRIMARY KEY (model_name, assistant_name)
+			);
+			CREATE TABLE IF NOT EXISTS vector_stores (
+				store_name TEXT PRIMARY KEY,
+				id TEXT
+			);
+			CREATE TABLE IF NOT EXISTS files (
+				file_path TEXT PRIMARY KEY,
+				id TEXT
+			);
+			CREATE TABLE IF NOT EXISTS vector_files (
+				file_id TEXT PRIMARY KEY,
+				vector_store_id TEXT,
+				status TEXT
+			);
+
+			CREATE INDEX IF NOT EXISTS idx_assistants ON assistants (model_name, assistant_name);
+			CREATE INDEX IF NOT EXISTS idx_vector_stores ON vector_stores (store_name);
+			CREATE INDEX IF NOT EXISTS idx_files ON files (file_path);
+			CREATE INDEX IF NOT EXISTS idx_vector_files ON vector_files (file_id, vector_store_id);
+		`)
+		if err != nil {
+			log.Fatalf("Failed to create tables and indexes: %v", err)
+		}
+	})
+}
+
+func getAssistant(modelName, assistantName string) (string, bool) {
+	var id string
+	err := db.QueryRow("SELECT id FROM assistants WHERE model_name = ? AND assistant_name = ?", modelName, assistantName).Scan(&id)
+	if errors.Is(err, sql.ErrNoRows) {
+		return "", false
+	}
+	if err != nil {
+		log.Fatalf("Failed to query assistant: %v", err)
+	}
+	return id, true
+}
+
+func setAssistant(modelName, assistantName, id string) {
+	_, err := db.Exec("INSERT OR REPLACE INTO assistants (model_name, assistant_name, id) VALUES (?, ?, ?)", modelName, assistantName, id)
+	if err != nil {
+		log.Fatalf("Failed to insert assistant: %v", err)
+	}
+}
+
+func getVectorStore(storeName string) (string, bool) {
+	var id string
+	err := db.QueryRow("SELECT id FROM vector_stores WHERE store_name = ?", storeName).Scan(&id)
+	if errors.Is(err, sql.ErrNoRows) {
+		return "", false
+	}
+	if err != nil {
+		log.Fatalf("Failed to query vector store: %v", err)
+	}
+	return id, true
+}
+
+func setVectorStore(storeName, id string) {
+	_, err := db.Exec("INSERT OR REPLACE INTO vector_stores (store_name, id) VALUES (?, ?)", storeName, id)
+	if err != nil {
+		log.Fatalf("Failed to insert vector store: %v", err)
+	}
+}
+
+func getFile(filePath string) (string, bool) {
+	var id string
+	err := db.QueryRow("SELECT id FROM files WHERE file_path = ?", filePath).Scan(&id)
+	if errors.Is(err, sql.ErrNoRows) {
+		return "", false
+	}
+	if err != nil {
+		log.Fatalf("Failed to query file: %v", err)
+	}
+	return id, true
+}
+
+func setFile(filePath, id string) {
+	_, err := db.Exec("INSERT OR REPLACE INTO files (file_path, id) VALUES (?, ?)", filePath, id)
+	if err != nil {
+		log.Fatalf("Failed to insert file: %v", err)
+	}
+}
+
+func getVectorFile(fileID, vectorStoreID string) (string, bool) {
+	var status string
+	err := db.QueryRow("SELECT status FROM vector_files WHERE file_id = ? AND vector_store_id = ?", fileID, vectorStoreID).Scan(&status)
+	if errors.Is(err, sql.ErrNoRows) {
+		return "", false
+	}
+	if err != nil {
+		log.Fatalf("Failed to query vector file: %v", err)
+	}
+	return status, true
+}
+
+func setVectorFile(fileID, vectorStoreID, status string) {
+	_, err := db.Exec("INSERT OR REPLACE INTO vector_files (file_id, vector_store_id, status) VALUES (?, ?, ?)", fileID, vectorStoreID, status)
+	if err != nil {
+		log.Fatalf("Failed to insert vector file: %v", err)
+	}
+}
+
 func main() {
 	filePath := flag.String("input", "", "Path to the input PDF file")
-	modelName := flag.String("model", "gpt-4o", "The model to use for reviewing.")
-	threshold := flag.Float64("threshold", 0.8, "Similarity threshold for filtering responses")
 	flag.Parse()
 
 	if *filePath == "" {
 		log.Fatalf("Input file path is required. Use -input flag to specify the PDF file.")
 	}
 
-	text, err := readPDF(*filePath)
+	initDB()
+
+	ctx := context.Background()
+	apiKey := os.Getenv("OPENAI_API_KEY")
+	client := openai.NewClient(apiKey)
+
+	assistant, err := getOrCreateAssistant(ctx, client, modelName, assistantName, instructions)
 	if err != nil {
-		log.Fatalf("Failed to read PDF: %v", err)
+		log.Fatalf("Failed to create assistant: %v", err)
 	}
 
-	cleanedText := preprocessText(text)
-	fmt.Printf("Cleaned Text; Size: %d\n", len(cleanedText))
-
-	chunks, err := ChunkReader(strings.NewReader(cleanedText))
+	_, vectorStoreID, err := getOrCreateVectorStoreAndUploadFiles(ctx, client, storeName, apiKey, []string{*filePath})
 	if err != nil {
-		log.Fatalf("Failed to chunk text: %v", err)
+		log.Fatalf("Failed to create vector store and upload files: %v", err)
 	}
 
-	fmt.Println("Number of Chunks:", len(chunks))
-
-	client := openai.NewClient(os.Getenv("OPENAI_API_KEY"))
-
-	var mu sync.Mutex
-	var responses []string
-	var g errgroup.Group
-	g.SetLimit(runtime.NumCPU())
-
-	for i, chunk := range chunks {
-		i, chunk := i, chunk
-		g.Go(func() error {
-			response, err := analyzeChunk(client, chunk.Content, *modelName)
-			if err != nil {
-				return fmt.Errorf("failed to analyze chunk %d: %w", i+1, err)
-			}
-
-			if !strings.Contains(response, "No dependencies found") {
-				mu.Lock()
-				responses = append(responses, response)
-				mu.Unlock()
-			}
-			fmt.Println("Analyzed Chunk:", i+1)
-			return nil
-		})
-	}
-
-	if err := g.Wait(); err != nil {
-		log.Fatalf("Failed to analyze chunks: %v", err)
-	}
-
-	uniqueResponses := filterSimilarResponses(responses, *threshold)
-	fmt.Println("Filtered Responses; Size:", len(uniqueResponses))
-
-	consolidatedResponse, err := consolidateDependencies(client, uniqueResponses, *modelName)
+	err = updateAssistant(ctx, client, assistant, vectorStoreID)
 	if err != nil {
-		log.Fatalf("Failed to consolidate dependencies: %v", err)
+		log.Fatalf("Failed to update assistant: %v", err)
 	}
 
-	fmt.Println("Consolidated Dependencies:")
-	fmt.Println(consolidatedResponse)
+	const temperature = 0.1
+	msgs, err := createAndRunThread(ctx, client, assistant, prompt, temperature)
+	if err != nil {
+		log.Fatalf("Failed to create and run thread: %v", err)
+	}
 
-	// Parse the consolidated response.
-	upstreamDeps := parseConsolidatedResponse(consolidatedResponse)
+	fmt.Println(msgs)
 
-	// Build the YAML structure.
-	yamlStructure := buildYAMLStructure(upstreamDeps)
+	res, err := analyzeChunk(client, msgs)
+	if err != nil {
+		log.Fatalf("Failed to analyze chunk: %v", err)
+	}
 
-	// Write the YAML to a file.
+	fmt.Println(res)
+	fmt.Println("Dependencies extracted successfully")
+
+	deps := parseConsolidatedResponse(res)
+	yamlStructure := buildYAMLStructure(deps)
 	err = writeYAML(yamlStructure, "dependencies.yaml")
 	if err != nil {
 		log.Fatalf("Failed to write YAML: %v", err)
 	}
 
-	fmt.Println("YAML file generated successfully")
+	// assistant, err := createAssistant(ctx, client, *modelName, assistantName, instructions)
+	// if err != nil {
+	// 	log.Fatalf("Failed to create assistant: %v", err)
+	// }
+	//
+	// _, vectorStoreID, err := createVectorStoreAndUploadFiles(ctx, client, "Model Papers", apiKey, []string{*filePath})
+	// if err != nil {
+	// 	log.Fatalf("Failed to create vector store and upload files: %v", err)
+	// }
+
+	// vectorStoreID, err := createVectorStore(ctx, client)
+	// if err != nil {
+	// 	log.Fatalf("Failed to create vector store: %v", err)
+	// }
+	//
+	// fileID, err := createFile(ctx, client, *filePath, vectorStoreID)
+	// if err != nil {
+	// 	log.Fatalf("Failed to create file: %v", err)
+	// }
+
+	// err = updateAssistant(ctx, client, assistant, vectorStoreID)
+	// if err != nil {
+	// 	log.Fatalf("Failed to update assistant: %v", err)
+	// }
+	//
+	// const temperature = 0.2
+	// msgs, err := createAndRunThread(ctx, client, assistant, prompt, temperature)
+	// if err != nil {
+	// 	log.Fatalf("Failed to create and run thread: %v", err)
+	// }
+	//
+	// fmt.Println(msgs)
+	//
+	// res, err := analyzeChunk(client, msgs, *modelName)
+	// if err != nil {
+	// 	log.Fatalf("Failed to analyze chunk: %v", err)
+	// }
+	//
+	// fmt.Println(res)
+
+	// // Parse the consolidated response.
+	// upstreamDeps := parseConsolidatedResponse(consolidatedResponse)
+	//
+	// // Build the YAML structure.
+	// yamlStructure := buildYAMLStructure(upstreamDeps)
+	//
+	// // Write the YAML to a file.
+	// err = writeYAML(yamlStructure, "dependencies.yaml")
+	// if err != nil {
+	// 	log.Fatalf("Failed to write YAML: %v", err)
+	// }
+	//
+	// fmt.Println("YAML file generated successfully")
 }
 
-func readPDF(filePath string) (string, error) {
-	file, err := os.Open(filePath)
-	if err != nil {
-		return "", fmt.Errorf("error opening PDF file: %v", err)
+func getOrCreateAssistant(ctx context.Context, client *openai.Client, modelName, assistantName, instructions string) (string, error) {
+	if id, exists := getAssistant(modelName, assistantName); exists {
+		return id, nil
 	}
 
-	stat, err := os.Stat(filePath)
+	id, err := createAssistant(ctx, client, modelName, assistantName, instructions)
 	if err != nil {
-		return "", fmt.Errorf("error getting file info: %v", err)
+		return "", err
 	}
 
-	pdfReader, err := pdf.NewReader(file, stat.Size())
-	if err != nil {
-		return "", fmt.Errorf("error creating PDF reader: %v", err)
-	}
+	setAssistant(modelName, assistantName, id)
+	return id, nil
+}
 
-	var (
-		builder  strings.Builder
-		previous string
-	)
-	for pageIndex := 1; pageIndex <= pdfReader.NumPage(); pageIndex++ {
-		page := pdfReader.Page(pageIndex)
-		if page.V.IsNull() {
-			continue
+func getOrCreateVectorStoreAndUploadFiles(ctx context.Context, client *openai.Client, storeName, apiKey string, filepaths []string) ([]string, string, error) {
+	if id, exists := getVectorStore(storeName); exists {
+		var fileIDs []string
+		for _, filepath := range filepaths {
+			if fileID, exists := getFile(filepath); exists {
+				fileIDs = append(fileIDs, fileID)
+			} else {
+				uploadedFileIDs, err := uploadAndPollFiles(ctx, client, id, apiKey, []string{filepath})
+				if err != nil {
+					return nil, "", err
+				}
+				fileIDs = append(fileIDs, uploadedFileIDs...)
+				setFile(filepath, uploadedFileIDs[0])
+			}
 		}
+		return fileIDs, id, nil
+	}
 
-		textContent, err := page.GetPlainText(nil)
+	uploadedFileIDs, vectorStoreID, err := createVectorStoreAndUploadFiles(ctx, client, storeName, apiKey, filepaths)
+	if err != nil {
+		return nil, "", err
+	}
+
+	setVectorStore(storeName, vectorStoreID)
+	for i, filepath := range filepaths {
+		setFile(filepath, uploadedFileIDs[i])
+	}
+
+	return uploadedFileIDs, vectorStoreID, nil
+}
+
+func createAssistant(ctx context.Context, client *openai.Client, modelName, assistantName, instructions string) (string, error) {
+	resp, err := client.CreateAssistant(ctx, openai.AssistantRequest{
+		Instructions: &instructions,
+		Model:        modelName,
+		Name:         &assistantName,
+		Tools:        []openai.AssistantTool{{Type: "file_search"}},
+	})
+	if err != nil {
+		return "", err
+	}
+
+	return resp.ID, nil
+}
+
+func createVectorStoreAndUploadFiles(ctx context.Context, client *openai.Client, storeName, apiKey string, filepaths []string) ([]string, string, error) {
+	vectorStoreID, err := createAndPollVectorStore(ctx, client, storeName)
+	if err != nil {
+		return nil, "", err
+	}
+
+	uploadedFileIDs, err := uploadAndPollFiles(ctx, client, vectorStoreID, apiKey, filepaths)
+	if err != nil {
+		return nil, "", err
+	}
+
+	return uploadedFileIDs, vectorStoreID, nil
+}
+
+func createAndPollVectorStore(ctx context.Context, client *openai.Client, storeName string) (string, error) {
+	resp, err := client.CreateVectorStore(ctx, openai.VectorStoreRequest{Name: storeName})
+	if err != nil {
+		return "", err
+	}
+
+	resultChan, errorChan, doneChan := pollVectorStoreCreation(ctx, client, resp.ID)
+
+	for {
+		select {
+		case result, ok := <-resultChan:
+			if !ok {
+				return "", nil
+			}
+			fmt.Println("Vector Store Creation Status:", result)
+		case err := <-errorChan:
+			return "", err
+		case <-doneChan:
+			return resp.ID, nil
+		}
+	}
+}
+
+func pollVectorStoreCreation(ctx context.Context, client *openai.Client, vectorStoreID string) (<-chan string, <-chan error, <-chan struct{}) {
+	resultChan := make(chan string)
+	errorChan := make(chan error)
+	doneChan := make(chan struct{})
+
+	go func() {
+		defer close(resultChan)
+		defer close(errorChan)
+		defer close(doneChan)
+
+		for {
+			resp, err := client.RetrieveVectorStore(ctx, vectorStoreID)
+			if err != nil {
+				errorChan <- err
+				return
+			}
+
+			resultChan <- string(resp.Status)
+
+			if resp.Status == "completed" {
+				resultChan <- "Vector Store creation completed successfully"
+				doneChan <- struct{}{}
+				return
+			}
+
+			time.Sleep(1 * time.Second)
+		}
+	}()
+
+	return resultChan, errorChan, doneChan
+}
+
+func uploadAndPollFiles(ctx context.Context, client *openai.Client, vectorStoreID, apiKey string, filepaths []string) ([]string, error) {
+	var uploadedFileIDs []string
+	for _, filepath := range filepaths {
+		fileID, err := uploadAndPollFile(ctx, client, vectorStoreID, filepath, apiKey)
 		if err != nil {
-			return "", fmt.Errorf("error extracting text from page %d: %v", pageIndex, err)
+			return nil, err
 		}
+		uploadedFileIDs = append(uploadedFileIDs, fileID)
+	}
+	return uploadedFileIDs, nil
+}
 
-		if previous != "" && strings.HasPrefix(textContent, previous) {
-			textContent = strings.TrimPrefix(textContent, previous)
+func uploadAndPollFile(ctx context.Context, client *openai.Client, vectorStoreID, filepath, apiKey string) (string, error) {
+	resp, err := client.CreateFile(ctx, openai.FileRequest{FilePath: filepath, Purpose: "assistants"})
+	if err != nil {
+		return "", err
+	}
+
+	fileID := resp.ID
+	if status, exists := getVectorFile(fileID, vectorStoreID); exists && status == "completed" {
+		return fileID, nil
+	}
+
+	vectorFileID, err := createVectorStoreFile(ctx, apiKey, vectorStoreID, fileID)
+	if err != nil {
+		return "", err
+	}
+
+	resultChan, errorChan, doneChan := pollVectorFileUpload(ctx, apiKey, vectorStoreID, vectorFileID)
+
+	for {
+		select {
+		case result, ok := <-resultChan:
+			if !ok {
+				return "", nil
+			}
+			fmt.Println("Vector File Upload Status:", result)
+		case err := <-errorChan:
+			return "", err
+		case <-doneChan:
+			setVectorFile(fileID, vectorStoreID, "completed")
+			return fileID, nil
 		}
-		previous = textContent
+	}
+}
 
-		if textContent == "" {
-			continue
+type VectorStoreFileResponse struct {
+	ID               string  `json:"id"`
+	Object           string  `json:"object"`
+	UsageBytes       int64   `json:"usage_bytes"`
+	CreatedAt        int64   `json:"created_at"`
+	VectorStoreID    string  `json:"vector_store_id"`
+	Status           string  `json:"status"`
+	LastError        *string `json:"last_error"`
+	ChunkingStrategy struct {
+		Type   string `json:"type"`
+		Static struct {
+			MaxChunkSizeTokens int `json:"max_chunk_size_tokens"`
+			ChunkOverlapTokens int `json:"chunk_overlap_tokens"`
+		} `json:"static"`
+	} `json:"chunking_strategy"`
+}
+
+func createVectorStoreFile(ctx context.Context, apiKey, vectorStoreID, fileID string) (string, error) {
+	url := fmt.Sprintf("https://api.openai.com/v1/vector_stores/%s/files", vectorStoreID)
+
+	const (
+		maxChunkSizeTokens = 2048
+		chunkOverlapTokens = 256
+	)
+	chunkingStrategy := map[string]any{
+		"type": "static",
+		"static": map[string]interface{}{
+			"max_chunk_size_tokens": maxChunkSizeTokens,
+			"chunk_overlap_tokens":  chunkOverlapTokens,
+		},
+	}
+
+	requestBody, err := json.Marshal(map[string]any{
+		"file_id":           fileID,
+		"chunking_strategy": chunkingStrategy,
+	})
+	if err != nil {
+		return "", err
+	}
+
+	req, err := http.NewRequestWithContext(ctx, http.MethodPost, url, bytes.NewBuffer(requestBody))
+	if err != nil {
+		return "", err
+	}
+
+	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", apiKey))
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("OpenAI-Beta", "assistants=v2")
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return "", err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		bodyBytes, _ := io.ReadAll(resp.Body)
+		return "", fmt.Errorf("failed to create vector store file: %s", string(bodyBytes))
+	}
+
+	var res VectorStoreFileResponse
+	err = json.NewDecoder(resp.Body).Decode(&res)
+	if err != nil {
+		return "", err
+	}
+
+	return res.ID, nil
+}
+
+func pollVectorFileUpload(ctx context.Context, apiKey, vectorStoreID, fileID string) (<-chan string, <-chan error, <-chan struct{}) {
+	resultChan := make(chan string)
+	errorChan := make(chan error)
+	doneChan := make(chan struct{})
+
+	go func() {
+		defer close(resultChan)
+		defer close(errorChan)
+		defer close(doneChan)
+
+		for {
+			status, err := getVectorFileStatus(ctx, apiKey, vectorStoreID, fileID)
+			if err != nil {
+				errorChan <- err
+				return
+			}
+
+			resultChan <- status
+
+			if status == "completed" {
+				resultChan <- "Vector File upload completed successfully"
+				doneChan <- struct{}{}
+				return
+			}
+
+			time.Sleep(1 * time.Second)
 		}
+	}()
 
-		builder.WriteString(textContent)
+	return resultChan, errorChan, doneChan
+}
+
+func getVectorFileStatus(ctx context.Context, apiKey, vectorStoreID, fileID string) (string, error) {
+	url := fmt.Sprintf("https://api.openai.com/v1/vector_stores/%s/files/%s", vectorStoreID, fileID)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
+	if err != nil {
+		return "", err
+	}
+
+	req.Header.Set("Authorization", fmt.Sprintf("Bearer %s", apiKey))
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("OpenAI-Beta", "assistants=v2")
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return "", err
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		bodyBytes, _ := io.ReadAll(resp.Body)
+		return "", fmt.Errorf("failed to retrieve vector file status: %s", string(bodyBytes))
+	}
+
+	var res VectorStoreFileResponse
+	if err = json.NewDecoder(resp.Body).Decode(&res); err != nil {
+		return "", err
+	}
+
+	return res.Status, nil
+}
+
+func updateAssistant(ctx context.Context, client *openai.Client, assistantID, vectorStoreID string) error {
+	_, err := client.ModifyAssistant(ctx, assistantID, openai.AssistantRequest{
+		ToolResources: &openai.AssistantToolResource{
+			FileSearch: &openai.AssistantToolFileSearch{
+				VectorStoreIDs: []string{vectorStoreID},
+			},
+		},
+	})
+	return err
+}
+
+// createAndRunThread creates and runs a thread, streaming the results.
+func createAndRunThread(ctx context.Context, client *openai.Client, assistantID, content string, temp float32) (string, error) {
+	resp, err := client.CreateThreadAndRun(ctx, openai.CreateThreadAndRunRequest{
+		RunRequest: openai.RunRequest{
+			AssistantID:  assistantID,
+			Model:        modelName,
+			Instructions: instructions,
+			Temperature:  &temp,
+		},
+		Thread: openai.ThreadRequest{
+			Messages: []openai.ThreadMessage{{
+				Role:    openai.ChatMessageRoleUser,
+				Content: content,
+			}},
+		},
+	})
+	if err != nil {
+		return "", err
+	}
+
+	resultChan, errorChan, doneChan := StreamRunResult(ctx, client, resp.ThreadID, resp.ID)
+
+	for {
+		select {
+		case result, ok := <-resultChan:
+			if !ok {
+				return "", nil
+			}
+			fmt.Println("Run Result:", result)
+		case err := <-errorChan:
+			return "", err
+		case <-doneChan:
+			// When done, list messages in the thread.
+			return listMessages(ctx, client, resp.ThreadID)
+		}
+	}
+}
+
+// StreamRunResult retrieves the run result and streams it back to the caller via a channel.
+func StreamRunResult(ctx context.Context, client *openai.Client, threadID, runID string) (<-chan string, <-chan error, <-chan struct{}) {
+	resultChan := make(chan string)
+	errorChan := make(chan error)
+	doneChan := make(chan struct{})
+
+	go func() {
+		defer close(resultChan)
+		defer close(errorChan)
+		defer close(doneChan)
+
+		for {
+			resp, err := client.RetrieveRun(ctx, threadID, runID)
+			if err != nil {
+				errorChan <- err
+				return
+			}
+
+			// Stream intermediate result
+			resultChan <- string(resp.Status)
+
+			// Check if the run is finished
+			if resp.Status == openai.RunStatusCompleted {
+				resultChan <- "Run completed successfully"
+				doneChan <- struct{}{}
+				return
+			}
+
+			// Sleep for a while before polling again
+			time.Sleep(1 * time.Second)
+		}
+	}()
+
+	return resultChan, errorChan, doneChan
+}
+
+// listMessages lists and prints messages in the thread.
+func listMessages(ctx context.Context, client *openai.Client, threadID string) (string, error) {
+	msgResp, err := client.ListMessage(ctx, threadID, nil, nil, nil, nil)
+	if err != nil {
+		return "", err
+	}
+
+	var builder strings.Builder
+	// Print the messages.
+	for _, msg := range msgResp.Messages {
+		if msg.Role != openai.ChatMessageRoleUser {
+			for _, content := range msg.Content {
+				builder.WriteString(content.Text.Value)
+				builder.WriteString("\n")
+			}
+		}
 	}
 
 	return builder.String(), nil
 }
 
-var re = regexp.MustCompile(`[^a-z0-9\s]+`)
+func analyzeChunk(client *openai.Client, chunk string) (string, error) {
+	const temperature = 0.2
 
-func preprocessText(text string) string {
-	// Normalize and clean the text.
-	doc, err := prose.NewDocument(text)
-	if err != nil {
-		log.Fatalf("Failed to create document: %v", err)
-	}
-
-	// Extract the cleaned text.
-	var builder strings.Builder
-	for _, tok := range doc.Tokens() {
-		if tok.Tag != "PUNCT" { // Remove punctuation
-			builder.WriteString(tok.Text + " ")
-		}
-	}
-
-	cleanedText := builder.String()
-	cleanedText = strings.ToLower(cleanedText)
-	cleanedText = re.ReplaceAllString(cleanedText, " ")
-	cleanedText = strings.TrimSpace(cleanedText)
-	cleanedText = regexp.MustCompile(`\s+`).ReplaceAllString(cleanedText, " ")
-
-	return cleanedText
-}
-
-const (
-	tokenLimit     = 1 << 11 // 2048 tokens
-	maxScanBufSize = 1 << 20 // 1 MB
-	defaultBufSize = 1 << 16 // 64 KB
-)
-
-type Chunk struct {
-	NChunk  int
-	Content string
-}
-
-func ChunkReader(r io.Reader) ([]Chunk, error) {
-	var chunks []Chunk
-	scanner := bufio.NewScanner(r)
-	scanner.Buffer(make([]byte, defaultBufSize), maxScanBufSize) // Increase buffer size for
-	var currentChunk string
-
-	tokenEncoder, err := tiktoken.GetEncoding(tiktoken.MODEL_CL100K_BASE)
-	if err != nil {
-		return nil, fmt.Errorf("failed to get token encoder: %w", err)
-	}
-
-	nChunk := 1
-
-	for scanner.Scan() {
-		line := scanner.Text()
-		currentChunk += line + "\n"
-
-		toks := tokenEncoder.Encode(currentChunk, nil, nil)
-		if len(toks) > tokenLimit {
-			start := 0
-			for start < len(toks) {
-				end := start + tokenLimit
-				if end > len(toks) {
-					end = len(toks)
-				}
-
-				chunkTokens := toks[start:end]
-				chunkContent := tokenEncoder.Decode(chunkTokens)
-				fmt.Printf("Creating chunk %d with %d tokens, data size %d\n", nChunk, len(chunkTokens), len(chunkContent)) // Debug statement
-				chunks = append(chunks, Chunk{
-					NChunk:  nChunk,
-					Content: chunkContent,
-				})
-				nChunk++
-
-				start = end
-			}
-
-			// Reset currentChunk after processing.
-			currentChunk = ""
-		}
-	}
-
-	if currentChunk != "" {
-		toks := tokenEncoder.Encode(currentChunk, nil, nil)
-		fmt.Printf("Final chunk %d with %d tokens\n", nChunk, len(toks)) // Debug statement
-		chunks = append(chunks, Chunk{
-			NChunk:  nChunk,
-			Content: currentChunk,
-		})
-	}
-
-	return chunks, scanner.Err()
-}
-
-const temperature = 0.5
-
-func analyzeChunk(client *openai.Client, chunk, modelName string) (string, error) {
 	systemMessage := openai.ChatCompletionMessage{
 		Role:    openai.ChatMessageRoleSystem,
 		Content: "You are an expert in analyzing research papers to identify dataset and model dependencies.",
@@ -270,133 +745,7 @@ func analyzeChunk(client *openai.Client, chunk, modelName string) (string, error
 }
 
 func constructPrompt(chunk string) string {
-	prompt := fmt.Sprintf(`
-I have a research paper text chunk below. Please extract and list all dataset dependencies and model dependencies mentioned in the text.
-
-- Provide detailed names of the specific datasets and models.
-- Only include dependencies that are explicitly mentioned in the text; do not infer any dependencies from the context.
-- Exclude general concepts, libraries, and tools (e.g., Scikit-learn, Logistic Regression, Variational Autoencoder).
-- Only include specific datasets and models.
-- Be concise.
-- If available, include links to references directly within each item in the format: [Name](https://link-to-reference).
-
-        Text chunk:
-        %s
-        
-        Please list:
-        1. Dataset dependencies:
-        2. Model dependencies:
-        
-        If no dependencies are found, reply with "No dependencies found".
-    `, chunk)
-	return prompt
-}
-
-// Filter similar responses using TF-IDF vectors and cosine similarity
-func filterSimilarResponses(responses []string, threshold float64) []string {
-	if len(responses) == 0 {
-		return responses
-	}
-
-	// Create a new TF-IDF vectorizer
-	vectorizer := nlp.NewCountVectoriser()
-	transformer := nlp.NewTfidfTransformer()
-
-	// Fit and transform the responses into TF-IDF matrix
-	X, _ := vectorizer.FitTransform(responses...)
-	tfidfMatrix, _ := transformer.FitTransform(X)
-
-	filteredResponses := []string{responses[0]}
-	for i := 1; i < len(responses); i++ {
-		unique := true
-		vectorA := extractRow(tfidfMatrix, i)
-		for _, existingResponse := range filteredResponses {
-			vectorB := extractRow(tfidfMatrix, indexOf(responses, existingResponse))
-			if cosineSimilarity(vectorA, vectorB) > threshold {
-				unique = false
-				break
-			}
-		}
-		if unique {
-			filteredResponses = append(filteredResponses, responses[i])
-		}
-	}
-	return filteredResponses
-}
-
-// Extract a row from a sparse matrix as a dense vector.
-func extractRow(matrix mat.Matrix, row int) []float64 {
-	_, cols := matrix.Dims()
-	vector := make([]float64, cols)
-	for i := 0; i < cols; i++ {
-		vector[i] = matrix.At(row, i)
-	}
-	return vector
-}
-
-// Find the index of a response in the slice.
-func indexOf(slice []string, item string) int {
-	for i, v := range slice {
-		if v == item {
-			return i
-		}
-	}
-	return -1
-}
-
-func cosineSimilarity(a, b []float64) float64 {
-	dotProduct := floats.Dot(a, b)
-	normA := floats.Norm(a, 2)
-	normB := floats.Norm(b, 2)
-	if normA == 0 || normB == 0 {
-		return 0
-	}
-	return dotProduct / (normA * normB)
-}
-
-func consolidateDependencies(client *openai.Client, responses []string, modelName string) (string, error) {
-	prompt := constructConsolidationPrompt(responses)
-	systemMessage := openai.ChatCompletionMessage{
-		Role:    openai.ChatMessageRoleSystem,
-		Content: "You are an expert in analyzing and consolidating research paper dependencies.",
-	}
-	userMessage := openai.ChatCompletionMessage{
-		Role:    openai.ChatMessageRoleUser,
-		Content: prompt,
-	}
-
-	messages := []openai.ChatCompletionMessage{
-		systemMessage,
-		userMessage,
-	}
-
-	resp, err := client.CreateChatCompletion(context.Background(), openai.ChatCompletionRequest{
-		Model:       modelName,
-		Messages:    messages,
-		Temperature: temperature,
-	})
-	if err != nil {
-		return "", err
-	}
-
-	return resp.Choices[0].Message.Content, nil
-}
-
-func constructConsolidationPrompt(responses []string) string {
-	combinedResponses := strings.Join(responses, "\n---\n")
-	fmt.Println("Size of combined responses:", len(combinedResponses))
-	prompt := fmt.Sprintf(`
-I have multiple responses containing dataset dependencies and model dependencies from various chunks of a research paper.
-Please consolidate these responses into a unique list of dataset dependencies and model dependencies, removing any duplicates.
-Provide links to references directly within each item in the format: [Name](https://link-to-reference).
-
-        Responses:
-        %s
-
-        Please provide:
-        1. Consolidated list of dataset dependencies:
-        2. Consolidated list of model dependencies:
-    `, combinedResponses)
+	prompt := fmt.Sprintf(`%s\nText chunk:%s`, filterPrompt, chunk)
 	return prompt
 }
 
@@ -424,34 +773,20 @@ type Relations struct {
 	Upstream []string `yaml:"upstream"`
 }
 
-var referenceRE = regexp.MustCompile(`\[(.*)]\((https://.*\))`)
+var dependencyRE = regexp.MustCompile(`(?m)^\s*-\s*(\w+.*?)\s*(?i:(dataset|model))?\s*$`)
 
-// Parse the consolidated response to extract dependencies
 func parseConsolidatedResponse(consolidatedResponse string) []string {
-	matches := referenceRE.FindAllStringSubmatch(consolidatedResponse, -1)
+	var dependencies []string
 
-	// If multiple references have the same link, they are likely from the header,
-	// therefore do not include them as dependencies.
-	links := make(map[string]struct{}, len(matches))
-	names := make(map[string]struct{}, len(matches))
+	matches := dependencyRE.FindAllStringSubmatch(consolidatedResponse, -1)
 
 	for _, match := range matches {
-		name := match[1]
-		link := match[2]
-		if _, ok := links[link]; ok {
-			delete(names, name)
-			continue
+		if len(match) > 1 {
+			dependencies = append(dependencies, strings.TrimSpace(match[1]))
 		}
-		links[link] = struct{}{}
-		names[name] = struct{}{}
 	}
 
-	upstreamDeps := make([]string, 0, len(names))
-	for name := range names {
-		upstreamDeps = append(upstreamDeps, name)
-	}
-
-	return upstreamDeps
+	return dependencies
 }
 
 // Build the YAML structure with the upstream dependencies
