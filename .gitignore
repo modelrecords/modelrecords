@@ -50,3 +50,4 @@ venv/
 
 go-cli/model-papers/
 output/
+*.db
