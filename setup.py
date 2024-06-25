@@ -13,5 +13,11 @@ setup(
         "semantic_version",
         "requests",
         "pypdf",
-    ]   
+    ],
+    entry_points={
+        "console_scripts": [
+            "main-cli=modelrecords.main:main",
+            "analyze-cli=analyzer.main:main",
+        ],
+    },
 )

@@ -38,7 +38,6 @@ Please extract and list all dataset dependencies and model dependencies mentione
 - Exclude general concepts, libraries, tools, and architectures (e.g., Scikit-learn, Logistic Regression, Variational Autoencoder, Text Transformer, etc).
 - Ensure the dependencies are directly involved in the creation or fine-tuning of the model, not just used as benchmarks or comparisons.
 - Concise Formatting: Present the information in a concise list format.
-- Include References (If Available): If references are available within the paper, include links to them directly within each item in the format: [Name](https://link-to-reference).
 
 For each listed dependency, provide sufficient context from the paper that confirms its use in training or fine-tuning the model.
 This should include sentences around where the dependency is mentioned, the context of its use, and any relevant details that confirm its role in the model development process.
@@ -140,7 +139,11 @@ func initDB() {
 
 func getAssistant(modelName, assistantName string) (string, bool) {
 	var id string
-	err := db.QueryRow("SELECT id FROM assistants WHERE model_name = ? AND assistant_name = ?", modelName, assistantName).Scan(&id)
+	err := db.QueryRow(
+		"SELECT id FROM assistants WHERE model_name = ? AND assistant_name = ?",
+		modelName,
+		assistantName,
+	).Scan(&id)
 	if errors.Is(err, sql.ErrNoRows) {
 		return "", false
 	}
@@ -151,7 +154,12 @@ func getAssistant(modelName, assistantName string) (string, bool) {
 }
 
 func setAssistant(modelName, assistantName, id string) {
-	_, err := db.Exec("INSERT OR REPLACE INTO assistants (model_name, assistant_name, id) VALUES (?, ?, ?)", modelName, assistantName, id)
+	_, err := db.Exec(
+		"INSERT OR REPLACE INTO assistants (model_name, assistant_name, id) VALUES (?, ?, ?)",
+		modelName,
+		assistantName,
+		id,
+	)
 	if err != nil {
 		log.Fatalf("Failed to insert assistant: %v", err)
 	}
@@ -159,7 +167,10 @@ func setAssistant(modelName, assistantName, id string) {
 
 func getVectorStore(storeName string) (string, bool) {
 	var id string
-	err := db.QueryRow("SELECT id FROM vector_stores WHERE store_name = ?", storeName).Scan(&id)
+	err := db.QueryRow(
+		"SELECT id FROM vector_stores WHERE store_name = ?",
+		storeName,
+	).Scan(&id)
 	if errors.Is(err, sql.ErrNoRows) {
 		return "", false
 	}
@@ -170,7 +181,11 @@ func getVectorStore(storeName string) (string, bool) {
 }
 
 func setVectorStore(storeName, id string) {
-	_, err := db.Exec("INSERT OR REPLACE INTO vector_stores (store_name, id) VALUES (?, ?)", storeName, id)
+	_, err := db.Exec(
+		"INSERT OR REPLACE INTO vector_stores (store_name, id) VALUES (?, ?)",
+		storeName,
+		id,
+	)
 	if err != nil {
 		log.Fatalf("Failed to insert vector store: %v", err)
 	}
@@ -178,7 +193,10 @@ func setVectorStore(storeName, id string) {
 
 func getFile(filePath string) (string, bool) {
 	var id string
-	err := db.QueryRow("SELECT id FROM files WHERE file_path = ?", filePath).Scan(&id)
+	err := db.QueryRow(
+		"SELECT id FROM files WHERE file_path = ?",
+		filePath,
+	).Scan(&id)
 	if errors.Is(err, sql.ErrNoRows) {
 		return "", false
 	}
@@ -189,7 +207,11 @@ func getFile(filePath string) (string, bool) {
 }
 
 func setFile(filePath, id string) {
-	_, err := db.Exec("INSERT OR REPLACE INTO files (file_path, id) VALUES (?, ?)", filePath, id)
+	_, err := db.Exec(
+		"INSERT OR REPLACE INTO files (file_path, id) VALUES (?, ?)",
+		filePath,
+		id,
+	)
 	if err != nil {
 		log.Fatalf("Failed to insert file: %v", err)
 	}
@@ -197,7 +219,11 @@ func setFile(filePath, id string) {
 
 func getVectorFile(fileID, vectorStoreID string) (string, bool) {
 	var status string
-	err := db.QueryRow("SELECT status FROM vector_files WHERE file_id = ? AND vector_store_id = ?", fileID, vectorStoreID).Scan(&status)
+	err := db.QueryRow(
+		"SELECT status FROM vector_files WHERE file_id = ? AND vector_store_id = ?",
+		fileID,
+		vectorStoreID,
+	).Scan(&status)
 	if errors.Is(err, sql.ErrNoRows) {
 		return "", false
 	}
@@ -208,7 +234,12 @@ func getVectorFile(fileID, vectorStoreID string) (string, bool) {
 }
 
 func setVectorFile(fileID, vectorStoreID, status string) {
-	_, err := db.Exec("INSERT OR REPLACE INTO vector_files (file_id, vector_store_id, status) VALUES (?, ?, ?)", fileID, vectorStoreID, status)
+	_, err := db.Exec(
+		"INSERT OR REPLACE INTO vector_files (file_id, vector_store_id, status) VALUES (?, ?, ?)",
+		fileID,
+		vectorStoreID,
+		status,
+	)
 	if err != nil {
 		log.Fatalf("Failed to insert vector file: %v", err)
 	}
@@ -238,14 +269,15 @@ func main() {
 
 	store := fmt.Sprintf("%s-%s", storeName, filename)
 
-	_, vectorStoreID, err := getOrCreateVectorStoreAndUploadFiles(ctx, client, store, apiKey, []string{*filePath})
+	shouldUpdateAssistant, vectorStoreID, err := getOrCreateVectorStoreAndUploadFiles(ctx, client, store, apiKey, []string{*filePath})
 	if err != nil {
 		log.Fatalf("Failed to create vector store and upload files: %v", err)
 	}
 
-	err = updateAssistant(ctx, client, assistant, vectorStoreID)
-	if err != nil {
-		log.Fatalf("Failed to update assistant: %v", err)
+	if shouldUpdateAssistant {
+		if err = updateAssistant(ctx, client, assistant, vectorStoreID); err != nil {
+			log.Fatalf("Failed to update assistant: %v", err)
+		}
 	}
 
 	const temperature = 0.1
@@ -318,8 +350,6 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to write YAML: %v", err)
 	}
-
-	// fmt.Println("YAML file generated successfully")
 }
 
 func getOrCreateAssistant(ctx context.Context, client *openai.Client, modelName, assistantName, instructions string) (string, error) {
@@ -336,7 +366,7 @@ func getOrCreateAssistant(ctx context.Context, client *openai.Client, modelName,
 	return id, nil
 }
 
-func getOrCreateVectorStoreAndUploadFiles(ctx context.Context, client *openai.Client, storeName, apiKey string, filepaths []string) ([]string, string, error) {
+func getOrCreateVectorStoreAndUploadFiles(ctx context.Context, client *openai.Client, storeName, apiKey string, filepaths []string) (bool, string, error) {
 	if id, exists := getVectorStore(storeName); exists {
 		var fileIDs []string
 		for _, filepath := range filepaths {
@@ -345,18 +375,18 @@ func getOrCreateVectorStoreAndUploadFiles(ctx context.Context, client *openai.Cl
 			} else {
 				uploadedFileIDs, err := uploadAndPollFiles(ctx, client, id, apiKey, []string{filepath})
 				if err != nil {
-					return nil, "", err
+					return false, "", err
 				}
 				fileIDs = append(fileIDs, uploadedFileIDs...)
 				setFile(filepath, uploadedFileIDs[0])
 			}
 		}
-		return fileIDs, id, nil
+		return true, id, nil
 	}
 
 	uploadedFileIDs, vectorStoreID, err := createVectorStoreAndUploadFiles(ctx, client, storeName, apiKey, filepaths)
 	if err != nil {
-		return nil, "", err
+		return false, "", err
 	}
 
 	setVectorStore(storeName, vectorStoreID)
@@ -364,7 +394,7 @@ func getOrCreateVectorStoreAndUploadFiles(ctx context.Context, client *openai.Cl
 		setFile(filepath, uploadedFileIDs[i])
 	}
 
-	return uploadedFileIDs, vectorStoreID, nil
+	return false, vectorStoreID, nil
 }
 
 func createAssistant(ctx context.Context, client *openai.Client, modelName, assistantName, instructions string) (string, error) {
@@ -826,20 +856,6 @@ type Relations struct {
 }
 
 var dependencyRE = regexp.MustCompile(`(?m)^\s*-\s*(\w+.*?)\s*(?i:(dataset|model))?\s*$`)
-
-func parseConsolidatedResponse(consolidatedResponse string) []string {
-	var dependencies []string
-
-	matches := dependencyRE.FindAllStringSubmatch(consolidatedResponse, -1)
-
-	for _, match := range matches {
-		if len(match) > 1 {
-			dependencies = append(dependencies, strings.TrimSpace(match[1]))
-		}
-	}
-
-	return dependencies
-}
 
 // Build the YAML structure with the upstream dependencies
 func buildYAMLStructure(upstreamDeps []string) Dependency {
