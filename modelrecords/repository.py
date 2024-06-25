@@ -13,22 +13,34 @@ RESERVED_FOLDERS = ['_refs']
 RESERVED_FIELDS = ['type']
 
 class Repository:
+
     def __init__(self, base_repo_path=BASE_REPO_PATH):
         self.base_repo_path = os.path.normpath(base_repo_path)
         self.pkg_parser = PackageParser(self.base_repo_path)
-
-    def modelrecord_folder(self, pkg:str):
-        return f'{self.base_repo_path}/{pkg}'
+        self.auxiliary_parsers = []
+    
+    def add_repository(self, repo_path):
+        self.auxiliary_parsers.append(PackageParser(repo_path))
 
     def find_in_repo(self, pkg_query:str):
-        parsed = self.pkg_parser.parse_pkg_version_query(pkg_query)
+        current_parser = self.pkg_parser
+        if not os.path.exists(self.pkg_parser.parse_pkg_folder(pkg_query)):
+            for parser in self.auxiliary_parsers:
+                if os.path.exists(parser.parse_pkg_folder(pkg_query)):
+                    current_parser = parser
+                    print("FOUND", current_parser)
+                    break
+        
+
+
+        parsed = current_parser.parse_pkg_version_query(pkg_query)
         pkg = parsed['pkg']
         version = parsed['version']
         operand = parsed['operand']
-        for candidate in sorted(os.listdir(self.modelrecord_folder(pkg)))[::-1]:
-            can_parsed = self.pkg_parser.parse_pkg_version_query(candidate.replace('.yaml',''))
+        for candidate in sorted(os.listdir(current_parser.modelrecord_folder(pkg)))[::-1]:
+            can_parsed = current_parser.parse_pkg_version_query(candidate.replace('.yaml',''))
             if operand(can_parsed['version'], version):
-                return f'{self.modelrecord_folder(pkg)}/{candidate}'
+                return f'{current_parser.modelrecord_folder(pkg)}/{candidate}'
         raise Exception(f"No card found: {pkg_query}")
        
     def all_packages(self):
