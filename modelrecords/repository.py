@@ -28,10 +28,7 @@ class Repository:
             for parser in self.auxiliary_parsers:
                 if os.path.exists(parser.parse_pkg_folder(pkg_query)):
                     current_parser = parser
-                    print("FOUND", current_parser)
-                    break
-        
-
+                    break       
 
         parsed = current_parser.parse_pkg_version_query(pkg_query)
         pkg = parsed['pkg']
