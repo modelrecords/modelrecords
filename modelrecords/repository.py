@@ -22,14 +22,9 @@ class Repository:
     def add_repository(self, repo_path):
         self.auxiliary_parsers.append(PackageParser(repo_path))
 
-    def find_in_repo(self, pkg_query:str):
-        current_parser = self.pkg_parser
-        if not os.path.exists(self.pkg_parser.parse_pkg_folder(pkg_query)):
-            for parser in self.auxiliary_parsers:
-                if os.path.exists(parser.parse_pkg_folder(pkg_query)):
-                    current_parser = parser
-                    break       
-
+    def find_in_repo(self, pkg_query:str, current_parser=None):
+        if current_parser is None:
+            current_parser = self.select_parser(pkg_query)
         parsed = current_parser.parse_pkg_version_query(pkg_query)
         pkg = parsed['pkg']
         version = parsed['version']
@@ -39,14 +34,24 @@ class Repository:
             if operand(can_parsed['version'], version):
                 return f'{current_parser.modelrecord_folder(pkg)}/{candidate}'
         raise Exception(f"No card found: {pkg_query}")
+
+    def select_parser(self, pkg_query):
+        current_parser = self.pkg_parser
+        if not os.path.exists(self.pkg_parser.parse_pkg_folder(pkg_query)):
+            for parser in self.auxiliary_parsers:
+                if os.path.exists(parser.parse_pkg_folder(pkg_query)):
+                    current_parser = parser
+                    break
+        return current_parser
        
     def all_packages(self):
         pkgs = [d for d in os.listdir(self.base_repo_path) if d not in RESERVED_FOLDERS]
         return pkgs
     
     def find(self, pkg_query):
-        parsed = self.pkg_parser.parse_pkg_version_query(pkg_query)
-        yml_path = self.find_in_repo(pkg_query)
+        current_parser = self.select_parser(pkg_query)
+        parsed = current_parser.parse_pkg_version_query(pkg_query)
+        yml_path = self.find_in_repo(pkg_query, current_parser=current_parser)
         return self.load_model_record_from_path(yml_path, pkg_name=parsed['pkg'])
 
     def find_parent_packages(self, model_record:ModelRecord):
