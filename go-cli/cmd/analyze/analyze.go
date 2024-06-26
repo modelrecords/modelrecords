@@ -28,23 +28,21 @@ const (
 	instructions  = "You are an expert in analyzing research papers, and you have access to these papers to identify dataset and model dependencies."
 	modelName     = "gpt-4o"
 	prompt        = `
-Please extract and list all dataset dependencies and model dependencies mentioned in the research paper.
+Please extract and list all dataset dependencies and model dependencies mentioned in the research paper that were used for training or fine-tuning the main model
 
-- Focus on specific datasets and models used for training or fine-tuning the main model. Generally proper nouns.
-- Only include dependencies that are explicitly mentioned as being used to create or fine-tune the model.
-- Do not include datasets or models used solely for validation, testing, or evaluation.
-- Exclude datasets that were created as part of the research study. Only list datasets and models that existed prior to this research.
-- Provide detailed names of the specific datasets and models.
+- Include pre-trained models that were fine-tuned or further trained as part of the model development process.
+- Exclude all datasets and models used solely for validation, testing, evaluation, baseline comparisons or benchmarking.
+- For datasets, if a subset was used, list the original, larger dataset as the dependency.
+- Provide a brief explanation for each dependency, showing how it was used in the model development.
 - Exclude general concepts, libraries, tools, and architectures (e.g., Scikit-learn, Logistic Regression, Variational Autoencoder, Text Transformer, etc).
-- Ensure the dependencies are directly involved in the creation or fine-tuning of the model, not just used as benchmarks or comparisons.
-- Concise Formatting: Present the information in a concise list format.
 
-For each listed dependency, provide sufficient context from the paper that confirms its use in training or fine-tuning the model.
-This should include sentences around where the dependency is mentioned, the context of its use, and any relevant details that confirm its role in the model development process.
+For instance, if a paper states 'we fine-tuned a pre-trained Model X', then Model X should be listed as a dependency.
 
-Please ONLY list:
-1. Dataset dependencies:
-2. Model dependencies:
+Present the information in this format:
+Dataset dependencies:
+ - [Dataset name]: [Brief explanation of its use in training/fine-tuning]
+Model dependencies:
+ - [Model name]: [Brief explanation of its use in training/fine-tuning]
 
 If no relevant datasets or models are identified, state "None identified" under the respective category.
 DO NOT include any other information in your response.
@@ -68,12 +66,12 @@ Exclude:
 For each retained dependency, provide:
 1. ONLY, the name of the dataset or model.
 
-Please list using the following format, providing ONLY the name of the dataset or model:
+Present the information in this format:
 Confirmed dependencies:
-- [Dataset 1]
-- [Dataset 2]
-- [Model 1]
-- [Model 2]
+- [Dataset 1 name]
+- [Dataset 2 name]
+- [Model 1 name]
+- [Model 2 name]
 
 If no dependencies are confirmed for training/fine-tuning, state "None confirmed" under the respective category.
 DO NOT include any other information in your response.
@@ -87,7 +85,7 @@ Confirmed dependencies:
 - LAION
 - Pre-trained CLIP model
 
-The result should be:
+Present the information in this format:
 - LAION
 - CLIP
 DO NOT include any other information in your response.
@@ -281,7 +279,7 @@ func main() {
 	}
 
 	const temperature = 0.1
-	const numRuns = 5
+	const numRuns = 2
 
 	var wg sync.WaitGroup
 	var mu sync.Mutex
@@ -298,6 +296,8 @@ func main() {
 				errChan <- fmt.Errorf("failed to create and run thread: %w", err)
 				return
 			}
+
+			fmt.Println(msgs)
 
 			data := constructFirstFilterPrompt(msgs)
 			res, err := analyzeChunk(ctx, client, data, instructions)
@@ -361,6 +361,7 @@ func getOrCreateAssistant(ctx context.Context, client *openai.Client, modelName,
 	if err != nil {
 		return "", err
 	}
+	fmt.Println("Assistant created successfully")
 
 	setAssistant(modelName, assistantName, id)
 	return id, nil
@@ -394,7 +395,7 @@ func getOrCreateVectorStoreAndUploadFiles(ctx context.Context, client *openai.Cl
 		setFile(filepath, uploadedFileIDs[i])
 	}
 
-	return false, vectorStoreID, nil
+	return true, vectorStoreID, nil
 }
 
 func createAssistant(ctx context.Context, client *openai.Client, modelName, assistantName, instructions string) (string, error) {
@@ -548,7 +549,7 @@ func createVectorStoreFile(ctx context.Context, apiKey, vectorStoreID, fileID st
 	url := fmt.Sprintf("https://api.openai.com/v1/vector_stores/%s/files", vectorStoreID)
 
 	const (
-		maxChunkSizeTokens = 2048
+		maxChunkSizeTokens = 4096
 		chunkOverlapTokens = 256
 	)
 	chunkingStrategy := map[string]any{
