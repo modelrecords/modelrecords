@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dependency Graph</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+</head>
+<body>
+    <div id="graph"></div>
+    <script>
+        // Function to fetch and parse the YAML file
+        async function fetchYaml(url) {
+            const response = await fetch(url);
+            const text = await response.text();
+            return jsyaml.load(text);
+        }
+
+        // Function to render the graph using D3.js
+        function renderGraph(graphData) {
+            const width = 960;
+            const height = 600;
+
+            const svg = d3.select('#graph').append('svg')
+                .attr('width', width)
+                .attr('height', height)
+                .append('g')
+                .attr('transform', 'translate(40,0)');
+
+            // Identify root nodes
+            const rootNodes = new Set(graphData.nodes.map(node => node.id));
+            graphData.links.forEach(link => rootNodes.delete(link.target));
+
+            // Create a single root node that connects to all identified root nodes
+            const rootNode = { id: 'root', label: 'Root', style: { fillcolor: 'white' } };
+            graphData.nodes.push(rootNode);
+            rootNodes.forEach(nodeId => {
+                graphData.links.push({ source: 'root', target: nodeId, style: { color: '#545454', penwidth: 0.75 } });
+            });
+
+            const root = d3.stratify()
+                .id(d => d.id)
+                .parentId(d => d.parent)(graphData.nodes);
+
+            const treeLayout = d3.tree().size([height, width - 160]);
+            treeLayout(root);
+
+            // Links
+            svg.selectAll('.link')
+                .data(root.links())
+                .enter().append('path')
+                .attr('class', 'link')
+                .attr('d', d3.linkHorizontal()
+                    .x(d => d.y)
+                    .y(d => d.x));
+
+            // Nodes
+            const node = svg.selectAll('.node')
+                .data(root.descendants())
+                .enter().append('g')
+                .attr('class', d => 'node' + (d.children ? ' node--internal' : ' node--leaf'))
+                .attr('transform', d => `translate(${d.y},${d.x})`);
+
+            node.append('circle')
+                .attr('r', 10)
+                .attr('fill', d => d.data.style.fillcolor);
+
+            node.append('text')
+                .attr('dy', 3)
+                .attr('x', d => d.children ? -12 : 12)
+                .style('text-anchor', d => d.children ? 'end' : 'start')
+                .text(d => d.data.label);
+        }
+
+        // Fetch and render the graph
+        fetchYaml('LLaVA-1.6-Vicuna-13B.yaml').then(renderGraph);
+    </script>
+</body>
+</html>
