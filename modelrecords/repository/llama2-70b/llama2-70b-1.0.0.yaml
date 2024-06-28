@@ -1,0 +1,19 @@
+mr:
+  type: model
+  metadata:
+    name: Llama 2 70B
+    version: 1.0.0
+    refs:
+    - https://raw.githubusercontent.com/meta-llama/llama/main/MODEL_CARD.md
+    - https://arxiv.org/pdf/2307.09288.pdf
+    publisher: Meta
+    model_type: Large Language Model
+    release_date: '2023-07-19'
+    description: This is the 70B variant.
+  tags:
+  - opensource
+  question_sets:
+  - fmti2023
+  relations:
+    upstream:
+    - llama2>=1.0.0
