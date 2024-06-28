@@ -47,4 +47,4 @@ The code for the website lives in `umr_web` and uses Pelican + Tailwindcss
 3. Editing of page html is done in `themes/modelrecord/content/pages`
 
 ### Running in production
-...
+1. Netlify will deploy whatever is in `umr_web/output` when the `main` branch is updated.
