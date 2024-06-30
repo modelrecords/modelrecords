@@ -3,17 +3,25 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  - pip
+  - setuptools
+  - wheel
+  - pyyaml
+  - semantic_version
+  - jinja2
+  - omegaconf
+  - requests
+  - pypdf
+  - openai
+  - invoke
+  - livereload
+  - matplotlib
   - pip:
-    - pyyaml
-    - semantic_version
-    - jinja2
-    - omegaconf
-    - requests
-    - pypdf
-    - openai
-    - pelican[markdown]
-    - invoke
-    - livereload
     - pytailwindcss
+    - pelican[markdown]
     - pelican-redirect
-    - matplotlib
+    - python-dotenv
+    - llama-index-core
+    - llama-index-llms-openai
+    - llama-index-llms-replicate
+    - llama-index-embeddings-huggingface
