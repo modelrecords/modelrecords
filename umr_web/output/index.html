@@ -196,7 +196,147 @@
             <img src="./theme/images/cli.jpg" alt="Screenshot of code from the example repo" class="drop-shadow-2xl">
         </div>
     </div>
-</section><h1>Notable</h1><h1>Cite</h1>    </div>
+</section><section class="max-w-screen-lg w-full mx-auto">
+    <h1 class="text-3xl mb-2">Notable models</h1>
+
+
+<script>
+  function loadData(){
+    return {
+      searchTerm: '',
+      modelTypes: [],
+      toggleFilters(modelType) {
+        if (this.modelTypes.includes(modelType)) {
+          this.modelTypes = this.modelTypes.filter(x => x != modelType);
+        }
+        else {
+          this.modelTypes.push(modelType);
+        }
+      },
+      searchTermMatches(modelName){
+        return this.searchTerm === '' || modelName.toLowerCase().includes(this.searchTerm.toLowerCase());
+      },
+      filterIsSelected(modelType) {
+        return this.modelTypes.length === 0 || this.modelTypes.includes(modelType);
+      },
+      itemMatches(modelName, modelType) {
+        return this.searchTermMatches(modelName) && this.filterIsSelected(modelType);
+      }
+    }
+  }
+</script>
+
+<div class="max-w-screen-lg mx-auto p-4 lg:px-0" x-data="loadData()">
+  <div class="flex items-end mb-4 gap-x-4">
+  
+    <div>
+      <p class="mb-1">Filter by model family</p>
+      <div class="flex" role="group">
+        <button
+          type="button"
+          class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-primary"
+          @click="toggleFilters('family')"
+          :class="{'text-primary' : filterIsSelected('family')}"
+        >
+          Family
+        </button>
+        <button
+          type="button"
+          class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-primary"
+          @click="toggleFilters('model')"
+          :class="{'text-primary' : filterIsSelected('model')}"
+        >
+          Model
+        </button>
+        <button
+          type="button"
+          class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-l border-gray-200 hover:bg-gray-100 hover:text-primary"
+          @click="toggleFilters('dataset')"
+          :class="{'text-primary' : filterIsSelected('dataset')}"
+        >
+          Dataset
+        </button>
+        <button
+          type="button"
+          class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-primary"
+          @click="toggleFilters('system')"
+          :class="{'text-primary' : filterIsSelected('system')}"
+        >
+          System
+        </button>
+      </div>
+    </div>
+      <div class="ml-auto">
+        <a href="/cards.html" class="block px-4 py-2 text-sm font-medium text-gray-900 hover:text-primary">All cards</a>
+      </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-2">
+      <article x-show="itemMatches('BLOOMZ', 'family')">
+        <a href="bloomz/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+          <div class="relative pb-2">
+            <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                <time>2022-11-17</time>
+                <span>v.1.0</span>
+                <span class="capitalize">family</span>
+            </div>
+            <div class="text-sm text-gray-600">
+              <h3 class="text-lg font-semibold text-gray-900">BLOOMZ</h3>
+              <p class="line-clamp-3">
+                No description provided.
+              </p>
+            </div>
+          </div>
+          <div class="relative text-sm text-gray-600">
+              <p class="font-semibold text-gray-900">BigScience Workshop</p>
+              <p>Multitask Fine-tuned Language Model</p>
+          </div>
+        </a>
+      </article>
+      <article x-show="itemMatches('Llama 2 70B', 'model')">
+        <a href="llama2-70b/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+          <div class="relative pb-2">
+            <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                <time>2023-07-19</time>
+                <span>v.1.0.0</span>
+                <span class="capitalize">model</span>
+            </div>
+            <div class="text-sm text-gray-600">
+              <h3 class="text-lg font-semibold text-gray-900">Llama 2 70B</h3>
+              <p class="line-clamp-3">
+                This is the 70B variant.
+              </p>
+            </div>
+          </div>
+          <div class="relative text-sm text-gray-600">
+              <p class="font-semibold text-gray-900">Meta</p>
+              <p>Large Language Model</p>
+          </div>
+        </a>
+      </article>
+      <article x-show="itemMatches('OpenAI GPT', 'family')">
+        <a href="openai-gpt/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+          <div class="relative pb-2">
+            <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+                <span>No date provided.</span>
+                <span>No version provided.</span>
+                <span class="capitalize">family</span>
+            </div>
+            <div class="text-sm text-gray-600">
+              <h3 class="text-lg font-semibold text-gray-900">OpenAI GPT</h3>
+              <p class="line-clamp-3">
+                No description provided.
+              </p>
+            </div>
+          </div>
+          <div class="relative text-sm text-gray-600">
+              <p class="font-semibold text-gray-900">No publisher provided</p>
+              <p>No model type provided</p>
+          </div>
+        </a>
+      </article>
+  </div>
+</div></section><h1>Cite</h1>    </div>
 </main>
 
   <section id="extras" class="hidden">
