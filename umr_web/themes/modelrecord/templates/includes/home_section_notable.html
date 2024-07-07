@@ -1,1 +1,9 @@
-<h1>Notable</h1>
+<section class="max-w-screen-lg w-full mx-auto">
+    <h1 class="text-3xl mb-2">Notable models</h1>
+
+    {% set homepageModels=['bloomz','llama2-70b','openai-gpt'] %}
+
+    {% with keys=homepageModels, showSearch=false, showAllCardsLink=true %}
+        {% include "includes/card_summary.html" %}
+    {% endwith %}
+</section>

@@ -51,7 +51,7 @@ RELATIVE_URLS = True
 PLUGIN_PATHS = ['../modelrecords/pelican_plugins']
 PLUGINS = ['load_pkgs', 'pelican_redirect', 'svg_generator']
 
-LOAD_CONTENT_CACHE = False
+LOAD_CONTENT_CACHE = True
 
 # Ensure static files are copied to the output directory
 STATIC_PATHS = ['static']

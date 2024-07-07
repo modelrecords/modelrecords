@@ -1,0 +1,134 @@
+<script>
+  function loadData(){
+    return {
+      searchTerm: '',
+      modelTypes: [],
+      toggleFilters(modelType) {
+        if (this.modelTypes.includes(modelType)) {
+          this.modelTypes = this.modelTypes.filter(x => x != modelType);
+        }
+        else {
+          this.modelTypes.push(modelType);
+        }
+      },
+      searchTermMatches(modelName){
+        return this.searchTerm === '' || modelName.toLowerCase().includes(this.searchTerm.toLowerCase());
+      },
+      filterIsSelected(modelType) {
+        return this.modelTypes.length === 0 || this.modelTypes.includes(modelType);
+      },
+      itemMatches(modelName, modelType) {
+        return this.searchTermMatches(modelName) && this.filterIsSelected(modelType);
+      }
+    }
+  }
+</script>
+
+<div class="max-w-screen-lg mx-auto p-4 lg:px-0" x-data="loadData()">
+  <div class="flex items-end mb-4 gap-x-4">
+    {% if showSearch %}
+      <label class="grow">
+        <span class="block mb-1">Search by model name</span>
+        <input
+          class="block border border-gray-200 focus:outline-none text-gray-700 rounded-lg px-3 py-2 w-full"
+          type="search"
+          x-model="searchTerm"
+        >
+      </label>
+    {% endif %}
+  
+    <div>
+      <p class="mb-1">Filter by model family</p>
+      <div class="flex" role="group">
+        <button
+          type="button"
+          class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-primary"
+          @click="toggleFilters('family')"
+          :class="{'text-primary' : filterIsSelected('family')}"
+        >
+          Family
+        </button>
+        <button
+          type="button"
+          class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-primary"
+          @click="toggleFilters('model')"
+          :class="{'text-primary' : filterIsSelected('model')}"
+        >
+          Model
+        </button>
+        <button
+          type="button"
+          class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-l border-gray-200 hover:bg-gray-100 hover:text-primary"
+          @click="toggleFilters('dataset')"
+          :class="{'text-primary' : filterIsSelected('dataset')}"
+        >
+          Dataset
+        </button>
+        <button
+          type="button"
+          class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-primary"
+          @click="toggleFilters('system')"
+          :class="{'text-primary' : filterIsSelected('system')}"
+        >
+          System
+        </button>
+      </div>
+    </div>
+    {% if showAllCardsLink %}
+      <div class="ml-auto">
+        <a href="/cards.html" class="block px-4 py-2 text-sm font-medium text-gray-900 hover:text-primary">All cards</a>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-2">
+    {% for key in keys %}
+      {% set mr=repo.find(key) %}
+      <article x-show="itemMatches('{{ mr.model_name }}', '{{ mr.type }}')">
+        <a href="{{ key }}/umr.html" class="flex flex-col h-full justify-between p-3 relative before:absolute before:inset-0 before:rounded-lg before:bg-highlight before:opacity-60 hover:before:opacity-100">
+          <div class="relative pb-2">
+            <div class="flex items-center gap-x-4 text-xs text-gray-500 mb-2">
+              {% if mr.params.mr.metadata.release_date and mr.params.mr.metadata.release_date | length > 0 %}
+                <time>{{ mr.params.mr.metadata.release_date }}</time>
+              {% else %}
+                <span>No date provided.</span>
+              {% endif %}
+              {% if mr.params.mr.metadata.version %}
+                <span>v.{{ mr.params.mr.metadata.version }}</span>
+              {% else %}
+                <span>No version provided.</span>
+              {% endif %}
+              {% if mr.type %}
+                <span class="capitalize">{{ mr.type }}</span>
+              {% else %}
+                <span>No model family provided.</span>
+              {% endif %}
+            </div>
+            <div class="text-sm text-gray-600">
+              <h3 class="text-lg font-semibold text-gray-900">{{ mr.model_name }}</h3>
+              <p class="line-clamp-3">
+              {% if mr.params.mr.metadata.description and mr.params.mr.metadata.description | length > 0 %}
+                {{ mr.params.mr.metadata.description }}
+              {% else %}
+                No description provided.
+              {% endif %}
+              </p>
+            </div>
+          </div>
+          <div class="relative text-sm text-gray-600">
+            {% if mr.params.mr.metadata.publisher %}
+              <p class="font-semibold text-gray-900">{{ mr.params.mr.metadata.publisher }}</p>
+            {% else %}
+              <p class="font-semibold text-gray-900">No publisher provided</p>
+            {% endif %}
+            {% if mr.params.mr.metadata.model_type %}
+              <p>{{ mr.params.mr.metadata.model_type }}</p>
+            {% else %}
+              <p>No model type provided</p>
+            {% endif %}
+          </div>
+        </a>
+      </article>
+    {% endfor %}
+  </div>
+</div>
