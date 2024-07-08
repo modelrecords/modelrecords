@@ -23,45 +23,38 @@
 
 <body>
   <header class="bg-primarylight flex px-8 py-4 items-baseline">
-    <h1><a href="{{ SITEURL }}/" class="text-white text-2xl font-bold">{{ SITENAME }}</a></h1>
+    <a href="{{ SITEURL }}/" class="block text-white text-2xl font-bold">{{ SITENAME }}</a>
     <nav class="px-8">
       <ul class="flex gap-5">
         {% for title, link, external in MENUITEMS %}
-        <li>
-          <a
-            href="{{ link }}"
-            class="text-highlight hover:text-white flex gap-x-1 items-center"
-            {% if external == 'true' %}
-            target="_blank"
-            {% endif %}
-          >
-            {{ title }}
-            {% if external == 'true' %}
-            <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="currentColor"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
-            {% endif %}
-          </a>
-        </li>
+          <li>
+            <a
+              href="{{ link }}"
+              class="text-highlight hover:text-white flex gap-x-1 items-center"
+              {% if external == 'true' %}target="_blank"{% endif %}
+            >
+              {{ title }}
+              {% if external == 'true' %}
+                <svg xmlns="http://www.w3.org/2000/svg" height="14px" viewBox="0 -960 960 960" width="14px" fill="currentColor"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/></svg>
+              {% endif %}
+            </a>
+          </li>
         {% endfor %}
       </ul>
     </nav>
-  </header><!-- /#banner -->
+  </header>
 
   {% block content %}{% endblock %}
 
-  <section id="extras" class="hidden">
+  <footer class="bg-primarylight py-10 px-4 flex flex-col items-center gap-y-4 text-white">
     {% if SOCIAL %}
-    <div class="social">
-      <h2>{{ SOCIAL_WIDGET_NAME | default('social') }}</h2>
-      <ul>
-        {% for name, link in SOCIAL %}
-        <li><a href="{{ link }}">{{ name }}</a></li>
-        {% endfor %}
-      </ul>
-    </div><!-- /.social -->
+    <ul class="flex gap-x-2">
+      {% for icon, link in SOCIAL %}
+        <li><a href="{{ link }}" class="opacity-80 hover:opacity-100">{{ icon }}</a></li>
+      {% endfor %}
+    </ul>
     {% endif %}
-  </section><!-- /#extras -->
-
-  <footer id="contentinfo" class="body">
-  </footer><!-- /#contentinfo -->
+    <p>&copy; <script>document.write(new Date().getFullYear())</script> {{ SITENAME }}. All rights reserved.</p>
+  </footer>
 </body>
 </html>
