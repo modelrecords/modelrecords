@@ -11,8 +11,10 @@
     {% include "includes/page_header.html" %}
   {% endwith %}
 
-  {% with keys=repo.all_packages(), showSearch=true, showAllCardsLink=false %}
-    {% include "includes/card_summary.html" %}
-  {% endwith %}
+  <div class="pt-4 pb-20 px-4">
+    {% with keys=repo.all_packages(), showSearch=true, showAllCardsLink=false %}
+      {% include "includes/card_summary.html" %}
+    {% endwith %}
+  </div>
 </main>
 {% endblock %}
