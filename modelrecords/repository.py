@@ -6,7 +6,7 @@ from modelrecords.modelrecord import ModelRecord
 from modelrecords.utils import content_extract_text
 from modelrecords.package_parser import PackageParser
 
-BASE_REPO_PATH = f'{resources.files('modelrecords')}/repository'
+BASE_REPO_PATH = f"{resources.files('modelrecords')}/repository"
 RESERVED_FOLDERS = ['_refs']
 
 # fields we are ignoring when we merge:
