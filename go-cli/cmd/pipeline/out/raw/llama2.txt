@@ -1,0 +1,38 @@
+Model Details:
+  Name: Llama 2
+  Version: 2
+  Release Date: July 2023
+  Developed By: Meta
+  Model Type: Large Language Models (LLMs)
+
+Intended Use:
+  - Commercial and research use in English
+  - Assistant-like chat for tuned models
+  - Adaptable for a variety of natural language generation tasks for pretrained models
+
+Factors:
+  - Custom training libraries
+  - Meta's Research Super Cluster and production clusters for pretraining
+  - Third-party cloud compute for fine-tuning, annotation, and evaluation
+
+Metrics:
+  - Internal evaluation library results for academic benchmarks
+  - Human evaluations for helpfulness and safety
+
+Evaluation Data:
+  Description: Uses a mix of standard academic benchmarks and safety-specific datasets like TruthfulQA and ToxiGen to evaluate model performance.
+
+Training Data:
+  Description: Pretrained on 2 trillion tokens from publicly available sources, excluding Meta user data. Fine-tuning data includes publicly available instruction datasets and over one million new human-annotated examples.
+
+Ethical Considerations:
+  - The model may produce inaccurate, biased, or other objectionable responses to user prompts.
+  - Testing has been primarily in English and may not cover all possible scenarios or languages.
+
+Caveats and Recommendations:
+  - Developers should perform safety testing and tuning tailored to their specific applications of the model.
+  - Use outside of English requires developer fine-tuning in compliance with the Llama 2 Community License and Acceptable Use Policy.
+
+Additional Information:
+  - Custom commercial license available for download.
+  - Responsible Use Guide and model [README](README.md) provided for guidelines on providing feedback or comments.

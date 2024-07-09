@@ -1,0 +1,16 @@
+data_sources:
+  - name: Bloom
+    type: website
+    source: https://huggingface.co/bigscience/bloom/raw/main/README.md
+
+  - name: Bloomz
+    type: website
+    source: https://huggingface.co/bigscience/bloomz/raw/main/README.md
+
+  - name: Inflection1
+    type: pdf
+    source: https://inflection.ai/assets/Inflection-1_0622.pdf
+
+  - name: Llama2
+    type: website
+    source: https://raw.githubusercontent.com/meta-llama/llama/main/MODEL_CARD.md
