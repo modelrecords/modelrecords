@@ -126,4 +126,4 @@ class Repository:
         ref_path = f'{self.base_repo_path}/_refs/{pkg}'
         Path(f'{ref_path}').mkdir(parents=True, exist_ok=True)
         text_files = content_extract_text(refs, ref_path)
-        return text_files#
+        return text_files

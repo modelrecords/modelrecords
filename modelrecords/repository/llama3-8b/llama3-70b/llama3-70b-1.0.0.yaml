@@ -1,0 +1,13 @@
+mr:
+  type: model
+  metadata:
+    name: Llama 3 70B
+    version: '1.0'
+    publisher: Meta
+    model_type: Large Language Model
+    release_date: '2024-04-18'
+  tags:
+  - opensource
+  relations:
+    upstream:
+    - llama3

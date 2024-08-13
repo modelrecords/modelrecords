@@ -1,0 +1,11 @@
+mr:
+  type: model
+  metadata:
+    name: Llama 3.1 8B
+    version: '1.0'
+    publisher: Meta
+  tags:
+  - opensource
+  relations:
+    upstream:
+    - llama3.1

@@ -46,7 +46,7 @@ def detect_format(url, content):
         return url.split('.')[-1].lower()
 
 
-def content_extract_text(self, refs, ref_path):
+def content_extract_text(refs, ref_path):
         text_files = []
         
         for idx, url in enumerate(refs):
