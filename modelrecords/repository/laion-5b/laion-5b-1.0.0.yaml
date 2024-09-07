@@ -4,7 +4,7 @@ mr:
     name: LAION 5B
     refs:
     description: ''
-  safety:
+  risk:
     nsfw: true
     csam: true
     violence: true

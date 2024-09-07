@@ -1,0 +1,9 @@
+mr:
+  type: dataset
+  metadata:
+    name: Pathology twitter
+    refs:
+    description: '208,214 pathology image-text pairs from pathology Twitter hashtags, from strict data quality filtering used to train PLIP.'
+  relations:
+    upstream: 
+    - twitter
