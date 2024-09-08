@@ -1,5 +1,6 @@
 {% set cardType='umr' %}
 {% set mr=repo.find(page.model_pkg_name) %}
+{% set model_upstream = mr.params.mr.get('upstream', {}) %}
 
 {% extends "card.html" %}
 {% block title %}{{ mr.model_name | striptags }} - UMR Card ({{ mr.params.type }}) {% endblock %}
@@ -26,17 +27,21 @@
       {% include "includes/section_heading.html" %}
     {% endwith %}
     <div class="section-content">
-      <ul>
-        {% for (pkg, rel) in mr.upstream_relations_package(): %}
-          <li><a href="/{{pkg}}/umr.html">{{rel}}</a></li>
-        {% endfor %}
-      </ul>
+      {% set relations = mr.upstream_relations_package() %}
+      {% if relations %}
+        <ul>
+          {% for (pkg, rel) in relations %}
+            <li><a href="/{{pkg}}/umr.html">{{rel}}</a></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No relations specified.</p>
+      {% endif %}
     </div>
   </section>
 
-  <!-- New RELATIONSHIP GRAPH section -->
   <section class="mb-3.5">
-    {% with heading="RELATIONSHIP GRAPH" %}
+    {% with heading="Relationship Graph" %}
       {% include "includes/section_heading.html" %}
     {% endwith %}
     <div class="section-content">
@@ -49,11 +54,16 @@
       {% include "includes/section_heading.html" %}
     {% endwith %}
     <div class="section-content">
-      <ul>
-        {% for item in mr.params.mr.get('upstream', {}).get('intended_use', []): %}
-          <li>{{item}}</li>
-        {% endfor %}
-      </ul>
+      {% set intended_use = model_upstream.get('intended_use', []) %}
+      {% if intended_use %}
+        <ul>
+          {% for item in intended_use %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No intended use specified.</p>
+      {% endif %}
     </div>
   </section>
 
@@ -62,11 +72,16 @@
       {% include "includes/section_heading.html" %}
     {% endwith %}
     <div class="section-content">
-      <ul>
-        {% for item in mr.params.mr.get('upstream', {}).get('factors', []): %}
-          <li>{{item}}</li>
-        {% endfor %}
-      </ul>
+      {% set factors = model_upstream.get('factors', []) %}
+      {% if factors %}
+        <ul>
+          {% for item in factors %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No factors specified.</p>
+      {% endif %}
     </div>
   </section>
 
@@ -75,11 +90,16 @@
       {% include "includes/section_heading.html" %}
     {% endwith %}
     <div class="section-content">
-      <ul>
-      {% for item in mr.params.mr.get('upstream', {}).get('evaluation_data', []): %}
-          <li>{{item}}</li>
-      {% endfor %}
-      </ul>
+      {% set evaluation_data = model_upstream.get('evaluation_data', []) %}
+      {% if evaluation_data %}
+        <ul>
+          {% for item in evaluation_data %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No evaluation data specified.</p>
+      {% endif %}
     </div>
   </section>
 
@@ -88,43 +108,54 @@
       {% include "includes/section_heading.html" %}
     {% endwith %}
     <div class="section-content">
-      <ul>
-      {% for item in mr.params.mr.get('upstream', {}).get('training_data', []): %}
-          <li>{{item}}</li>
-      {% endfor %}
-      </ul>
-    </div>
-  </section>
-
-  <section class="mb-3.5">
-    {% with heading="Additional Information" %}
-      {% include "includes/section_heading.html" %}
-    {% endwith %}
-    <div class="section-content">
-      <ul>
-        {% for item in mr.params.mr.get('upstream', {}).get('additional_information', []): %}
-          <li>{{item}}</li>
-        {% endfor %}
-      </ul>
-    </div>
-  </section>
-
-  <section class="mb-3.5">
-    {% with heading="Recommendations" %}
-      {% include "includes/section_heading.html" %}
-    {% endwith %}
-    <div class="section-content">
-      <ul>
-        {% for item in mr.params.mr.get('upstream', {}).get('recommendations', []): %}
-          <li>{{item}}</li>
-        {% endfor %}
-      </ul>
+      {% set training_data = model_upstream.get('training_data', []) %}
+      {% if training_data %}
+        <ul>
+          {% for item in training_data %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No training data specified.</p>
+      {% endif %}
     </div>
   </section>
 {% endblock %}
 
 {% block card_content_right %}
-  <div>
-    right
-  </div>
+  <section class="mb-3.5">
+    {% with heading="Additional Information" %}
+      {% include "includes/section_heading.html" %}
+    {% endwith %}
+    <div class="section-content">
+      {% set additional_information = model_upstream.get('additional_information', []) %}
+      {% if additional_information %}
+        <ul>
+          {% for item in additional_information %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No additional information specified.</p>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="mb-3.5 bg-highlight py-1 px-2.5">
+    {% with heading="Recommendations", color="text-black", border="border-black" %}
+      {% include "includes/section_heading.html" %}
+    {% endwith %}
+    <div class="section-content">
+      {% set recommendations = model_upstream.get('recommendations', []) %}
+      {% if recommendations %}
+        <ul>
+          {% for item in recommendations %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No recommendations specified.</p>
+      {% endif %}
+    </div>
+  </section>
 {% endblock %}
