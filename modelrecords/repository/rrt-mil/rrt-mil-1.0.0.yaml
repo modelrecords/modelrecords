@@ -1,0 +1,12 @@
+mr:
+  type: model
+  metadata:
+    name: RRT-MIL
+    refs:
+    - https://github.com/DearCaat/RRT-MIL
+    - https://openaccess.thecvf.com/content/CVPR2024/papers/Tang_Feature_Re-Embedding_Towards_Foundation_Model-Level_Performance_in_Computational_Pathology_CVPR_2024_paper.pdf
+    description: ''
+    model_type:
+  relations:
+    upstream:
+      - plip

@@ -7,4 +7,6 @@ mr:
     model_type: Contrastive Model
   relations:
     upstream:
+      - clip
       - laion-5b
+      - pathology-twitter
