@@ -8,35 +8,35 @@
  viewBox="0.00 0.00 130.00 99.43" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 95.43)">
 <polygon fill="white" stroke="none" points="-4,4 -4,-95.43 126,-95.43 126,4 -4,4"/>
-<!-- xp3 -->
-<g id="node1" class="node">
-<title>xp3</title>
-<path fill="#e0b7f3" stroke="black" stroke-width="0.5" d="M54,-89.22C54,-90.44 41.9,-91.43 27,-91.43 12.1,-91.43 0,-90.44 0,-89.22 0,-89.22 0,-69.25 0,-69.25 0,-68.02 12.1,-67.03 27,-67.03 41.9,-67.03 54,-68.02 54,-69.25 54,-69.25 54,-89.22 54,-89.22"/>
-<path fill="none" stroke="black" stroke-width="0.5" d="M54,-89.22C54,-87.99 41.9,-87 27,-87 12.1,-87 0,-87.99 0,-89.22"/>
-<text text-anchor="middle" x="27" y="-75.56" font-family="Helvetica,sans-Serif" font-size="9.00">xP3</text>
-</g>
 <!-- bloomz -->
-<g id="node2" class="node">
+<g id="node1" class="node">
 <title>bloomz</title>
 <path fill="#cbc3e3" stroke="black" stroke-width="0.5" d="M102.12,-21.6C102.12,-21.6 66.64,-29.74 66.64,-29.74 63.82,-30.38 58.18,-30.38 55.36,-29.74 55.36,-29.74 19.88,-21.6 19.88,-21.6 17.06,-20.95 14.25,-17.42 14.25,-14.53 14.25,-14.53 14.27,-8.74 14.27,-8.74 14.28,-5.85 17.17,-2.96 20.07,-2.96 20.07,-2.96 101.93,-2.96 101.93,-2.96 104.83,-2.96 107.72,-5.85 107.73,-8.74 107.73,-8.74 107.75,-14.53 107.75,-14.53 107.75,-17.42 104.94,-20.95 102.12,-21.6"/>
 <text text-anchor="middle" x="61" y="-11.84" font-family="Helvetica,sans-Serif" font-size="9.00">BLOOMZ</text>
 </g>
-<!-- xp3&#45;&gt;bloomz -->
+<!-- xp3&#45;all -->
+<g id="node2" class="node">
+<title>xp3&#45;all</title>
+<path fill="#e0b7f3" stroke="black" stroke-width="0.5" d="M54,-89.22C54,-90.44 41.9,-91.43 27,-91.43 12.1,-91.43 0,-90.44 0,-89.22 0,-89.22 0,-69.25 0,-69.25 0,-68.02 12.1,-67.03 27,-67.03 41.9,-67.03 54,-68.02 54,-69.25 54,-69.25 54,-89.22 54,-89.22"/>
+<path fill="none" stroke="black" stroke-width="0.5" d="M54,-89.22C54,-87.99 41.9,-87 27,-87 12.1,-87 0,-87.99 0,-89.22"/>
+<text text-anchor="middle" x="27" y="-75.56" font-family="Helvetica,sans-Serif" font-size="9.00">xP3all</text>
+</g>
+<!-- xp3&#45;all&#45;&gt;bloomz -->
 <g id="edge1" class="edge">
-<title>xp3&#45;&gt;bloomz</title>
+<title>xp3&#45;all&#45;&gt;bloomz</title>
 <path fill="none" stroke="#545454" stroke-width="0.75" d="M34.12,-67.25C34.12,-67.25 34.12,-33.2 34.12,-33.2"/>
 <polygon fill="#545454" stroke="#545454" stroke-width="0.75" points="36.74,-33.2 34.12,-25.7 31.49,-33.2 36.74,-33.2"/>
 </g>
-<!-- xp3&#45;all -->
+<!-- xp3 -->
 <g id="node3" class="node">
-<title>xp3&#45;all</title>
+<title>xp3</title>
 <path fill="#e0b7f3" stroke="black" stroke-width="0.5" d="M122,-89.22C122,-90.44 109.9,-91.43 95,-91.43 80.1,-91.43 68,-90.44 68,-89.22 68,-89.22 68,-69.25 68,-69.25 68,-68.02 80.1,-67.03 95,-67.03 109.9,-67.03 122,-68.02 122,-69.25 122,-69.25 122,-89.22 122,-89.22"/>
 <path fill="none" stroke="black" stroke-width="0.5" d="M122,-89.22C122,-87.99 109.9,-87 95,-87 80.1,-87 68,-87.99 68,-89.22"/>
-<text text-anchor="middle" x="95" y="-75.56" font-family="Helvetica,sans-Serif" font-size="9.00">xP3all</text>
+<text text-anchor="middle" x="95" y="-75.56" font-family="Helvetica,sans-Serif" font-size="9.00">xP3</text>
 </g>
-<!-- xp3&#45;all&#45;&gt;bloomz -->
+<!-- xp3&#45;&gt;bloomz -->
 <g id="edge2" class="edge">
-<title>xp3&#45;all&#45;&gt;bloomz</title>
+<title>xp3&#45;&gt;bloomz</title>
 <path fill="none" stroke="#545454" stroke-width="0.75" d="M87.88,-67.25C87.88,-67.25 87.88,-33.2 87.88,-33.2"/>
 <polygon fill="#545454" stroke="#545454" stroke-width="0.75" points="90.51,-33.2 87.88,-25.7 85.26,-33.2 90.51,-33.2"/>
 </g>
