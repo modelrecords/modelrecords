@@ -1,0 +1,9 @@
+mr:
+  type: dataset
+  metadata:
+    name: BookCorpus
+    refs:
+    description:  A collection of over 11,000 books, primarily unpublished novels, covering a wide range of genres and topics.
+
+  relations:
+    upstream:
