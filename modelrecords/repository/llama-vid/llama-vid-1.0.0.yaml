@@ -1,0 +1,13 @@
+mr:
+  type: model
+  metadata:
+    name: LLaMA-VID
+    version: 1.0.0
+    refs:
+    publisher: 
+    model_type:
+  relations:
+    upstream:
+      - claude2
+      - gpt4
+      - bert

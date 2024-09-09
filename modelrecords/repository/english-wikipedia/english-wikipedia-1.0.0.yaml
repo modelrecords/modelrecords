@@ -1,0 +1,10 @@
+mr:
+  type: dataset
+  metadata:
+    name: English Wikipedia
+    refs:
+    description: The text from the entire English Wikipedia (about 2.5 billion words) was used, excluding lists, tables, and headers.
+
+  relations:
+    upstream:
+    - wikipedia

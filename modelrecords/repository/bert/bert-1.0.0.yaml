@@ -1,0 +1,12 @@
+mr:
+  type: model
+  metadata:
+    name: BERT
+    version: 1.0.0
+    refs:
+    publisher: Google AI
+    model_type:
+  relations:
+    upstream:
+      - BookCorpus
+      - English Wikipedia
