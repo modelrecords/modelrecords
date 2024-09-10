@@ -1,0 +1,8 @@
+mr:
+  type: dataset
+  metadata:
+    name: MovieNet
+    refs:
+    description: 'a large-scale dataset designed for research and development in video understanding, especially focused on movies.'
+  relations:
+    upstream:

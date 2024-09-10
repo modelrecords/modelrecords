@@ -1,0 +1,8 @@
+mr:
+  type: dataset
+  metadata:
+    name: MSVD
+    refs:
+    description: 'MSR-VTT (Microsoft Research Video to Text) is a large-scale video dataset designed for video captioning, video retrieval, and other video understanding tasks'
+  relations:
+    upstream:

@@ -1,0 +1,12 @@
+mr:
+  type: dataset
+  metadata:
+    name: MME
+    refs:
+    description: 'MME (Multimodal Model Evaluation) is a framework or benchmark designed for evaluating multimodal models, which are models that process and integrate data from multiple modalities, such as text, images, video, or audio'
+  relations:
+    upstream:
+      - coco
+      - msr-vtt
+      - flickr30k
+      - YouCook2

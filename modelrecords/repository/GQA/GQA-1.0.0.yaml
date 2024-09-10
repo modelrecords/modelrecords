@@ -1,0 +1,8 @@
+mr:
+  type: dataset
+  metadata:
+    name: GQA
+    refs:
+    description: 'GQA contains over 22 million questions and 113,000 images sourced from the Visual Genome dataset'
+  relations:
+    upstream:

@@ -11,3 +11,15 @@ mr:
       - claude2
       - gpt4
       - bert
+      - MovieNet
+      - MSVD
+      - msr-vtt
+      - ActivityNet
+      - GQA
+      - MMBench
+      - mme
+      - pope
+      - science-qa
+      - text-vqa
+      - vizwiz
+      - vqa-v2

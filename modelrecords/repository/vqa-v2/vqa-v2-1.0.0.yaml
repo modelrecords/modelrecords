@@ -1,0 +1,9 @@
+mr:
+  type: dataset
+  metadata:
+    name: VQA V2
+    refs:
+    description: 'Visual Question Answering version 2, over 1.1 million questions about 204,721 images'
+  relations:
+    upstream:
+    - vqa

@@ -1,0 +1,9 @@
+mr:
+  type: dataset
+  metadata:
+    name: SEED
+    refs:
+    description: 'Scalable and Efficient Extraction of Data from Images'
+  relations:
+    upstream:
+    - coco

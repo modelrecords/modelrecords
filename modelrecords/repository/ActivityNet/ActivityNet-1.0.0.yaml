@@ -1,0 +1,8 @@
+mr:
+  type: dataset
+  metadata:
+    name: ActivityNet
+    refs:
+    description: 'ActivityNet contains over 20,000 videos annotated with action labels'
+  relations:
+    upstream:

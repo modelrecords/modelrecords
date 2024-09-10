@@ -1,0 +1,8 @@
+mr:
+  type: dataset
+  metadata:
+    name: MMBench
+    refs:
+    description: 'MMBench is a large-scale multimodal benchmark designed to evaluate models that can process and integrate multiple types of data modalities, such as text, images, audio, and video'
+  relations:
+    upstream:

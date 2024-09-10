@@ -1,0 +1,9 @@
+mr:
+  type: dataset
+  metadata:
+    name: POPE
+    refs:
+    description: '22,498 questions about objects that are actually present in 3,248 images'
+  relations:
+    upstream:
+    - coco
