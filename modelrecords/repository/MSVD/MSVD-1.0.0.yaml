@@ -1,0 +1,8 @@
+mr:
+  type: dataset
+  metadata:
+    name: MSVD
+    refs:
+    description: 'MSVD, or the Microsoft Video Description dataset, is a widely used dataset for video captioning tasks. It contains short video clips (typically sourced from YouTube) with multiple human-annotated descriptions in various languages, focusing mainly on English.'
+  relations:
+    upstream:

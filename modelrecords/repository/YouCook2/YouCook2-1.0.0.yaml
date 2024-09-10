@@ -1,0 +1,8 @@
+mr:
+  type: dataset
+  metadata:
+    name: YouCook2
+    refs:
+    description: '2,000 cooking videos from YouTube'
+  relations:
+    upstream:

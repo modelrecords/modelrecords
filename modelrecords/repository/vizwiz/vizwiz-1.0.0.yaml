@@ -1,0 +1,10 @@
+mr:
+  type: dataset
+  metadata:
+    name: VizWiz
+    refs:
+    publisher: University of Texas at Austin
+    published: 2018
+    description: 'a dataset and task designed to advance computer vision systems that can answer visual questions asked by blind and visually impaired individuals about their surroundings'
+  relations:
+    upstream:

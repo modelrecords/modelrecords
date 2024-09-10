@@ -1,0 +1,9 @@
+mr:
+  type: dataset
+  metadata:
+    name: TextVQA
+    refs:
+    description: '5,336 questions on 28,408 images from the OpenImages dataset'
+  relations:
+    upstream:
+    - OpenImages

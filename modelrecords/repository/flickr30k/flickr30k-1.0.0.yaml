@@ -1,0 +1,8 @@
+mr:
+  type: dataset
+  metadata:
+    name: Flickr30k
+    refs:
+    description: 'contains 31,783 images collected from Flickr'
+  relations:
+    upstream:

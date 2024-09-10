@@ -1,0 +1,8 @@
+mr:
+  type: family
+  metadata:
+    name: Claude
+    refs:
+    description: 'a series of large language models developed by Anthropic'
+  relations:
+    upstream:
